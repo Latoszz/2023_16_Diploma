@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using CardBattles.Enums;
+using CardBattles.Particles;
+using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CardBattles.Managers {
     public class EffectVisualsManager : MonoBehaviour {
@@ -31,14 +34,18 @@ namespace CardBattles.Managers {
             };
         }
 
+        [Required] [SerializeField]
+        private Transform particlesParent;
 
-        [SerializeField] private GameObject healVFX;
-        
+        [SerializeField] private ParticleParent healVFX;
+        [SerializeField] private float healAnimationDuration = 1f;
+
+        // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator HealVisual(Component target) {
-            var x = Instantiate(healVFX);//.transform.SetParent(target.transform);
-            x.transform.position = target.transform.position;
-            yield return new WaitForSeconds(10f);
-            Destroy(x);
+            var newParticleParent = Instantiate(healVFX, particlesParent, true);
+            newParticleParent.transform.position = target.transform.position;
+          
+            StartCoroutine(newParticleParent.PlayFor(healAnimationDuration));
             yield return null;
         }
 
@@ -48,6 +55,13 @@ namespace CardBattles.Managers {
 
         private IEnumerator ChangeAttackAnimation(Component target) {
             yield return null;
+        }
+
+
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
+        private void HealVisual() {
+            var x = this;
+            StartCoroutine(HealVisual(x));
         }
     }
 }

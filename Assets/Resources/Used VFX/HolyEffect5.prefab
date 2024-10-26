@@ -23760,8 +23760,8 @@ GameObject:
   m_Component:
   - component: {fileID: 400010}
   - component: {fileID: 3133077071317550087}
-  - component: {fileID: 747500025152926129}
-  - component: {fileID: 1144626851284049312}
+  - component: {fileID: 3007663272729274957}
+  - component: {fileID: -8946148685868355160}
   m_Layer: 0
   m_Name: HolyEffect5
   m_TagString: Untagged
@@ -23802,7 +23802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2d51cd96616d7418f4bdf22e018f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!198 &747500025152926129
+  ps: {fileID: 3007663272729274957}
+--- !u!198 &3007663272729274957
 ParticleSystem:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24432,7 +24433,7 @@ ParticleSystem:
         m_RotationOrder: 4
   ShapeModule:
     serializedVersion: 6
-    enabled: 0
+    enabled: 1
     type: 4
     angle: 25
     length: 5
@@ -24634,7 +24635,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
@@ -28525,7 +28526,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &1144626851284049312
+--- !u!199 &-8946148685868355160
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0
