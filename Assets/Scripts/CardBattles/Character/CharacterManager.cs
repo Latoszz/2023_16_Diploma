@@ -181,7 +181,7 @@ namespace CardBattles.Character {
         }
 
         public IEnumerator EndOfTurn() {
-            yield return BoardManager.Instance.Attack(IsPlayers);
+            yield return StartCoroutine(BoardManager.Instance.Attack(IsPlayers));
             foreach (var card in boardSide.GetNoNullCards()) {
                 card.DoEffect(EffectTrigger.OnEndTurn);
             }

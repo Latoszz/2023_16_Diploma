@@ -23802,7 +23802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2d51cd96616d7418f4bdf22e018f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 3007663272729274957}
 --- !u!198 &3007663272729274957
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -24433,7 +24432,7 @@ ParticleSystem:
         m_RotationOrder: 4
   ShapeModule:
     serializedVersion: 6
-    enabled: 1
+    enabled: 0
     type: 4
     angle: 25
     length: 5
@@ -24635,7 +24634,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2

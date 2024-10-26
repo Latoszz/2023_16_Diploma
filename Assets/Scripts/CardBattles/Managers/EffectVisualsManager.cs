@@ -34,7 +34,9 @@ namespace CardBattles.Managers {
             };
         }
 
-        [Required] [SerializeField]
+        [InfoBox("Assign not prefabs, but pull the prefab into the game, and assign that game object")]
+        [Required]
+        [SerializeField]
         private Transform particlesParent;
 
         [SerializeField] private ParticleParent healVFX;
@@ -44,7 +46,7 @@ namespace CardBattles.Managers {
         private IEnumerator HealVisual(Component target) {
             var newParticleParent = Instantiate(healVFX, particlesParent, true);
             newParticleParent.transform.position = target.transform.position;
-          
+
             StartCoroutine(newParticleParent.PlayFor(healAnimationDuration));
             yield return null;
         }

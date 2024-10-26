@@ -31,7 +31,6 @@ namespace CardBattles.Particles {
 			ps.Play(true);
 			yield return new WaitForSeconds(time);
 			ps.Stop(true);
-			Debug.Log($"{gameObject.name} active state: {gameObject.activeInHierarchy}");
 
 			StartCoroutine(KillWhenDone());
 		}

@@ -91,8 +91,8 @@ namespace CardBattles.CardScripts {
         }
 
         public virtual IEnumerator Play() {
-            yield return StartCoroutine(cardAnimation.Play(this));
             yield return StartCoroutine(DoEffect(EffectTrigger.OnPlay));
+            yield return StartCoroutine(cardAnimation.Play(this));
         }
 
         public IEnumerator DoEffect(EffectTrigger effectTrigger) {
