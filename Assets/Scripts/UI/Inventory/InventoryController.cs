@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using CardBattles.CardScripts.CardDatas;
 using Items;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
 
-public class InventoryController : MonoBehaviour, ISaveable {
+public class InventoryController : MonoBehaviour {
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private ManageCardSetDetails manageCardSetDetails;
     [SerializeField] private InputAction rightClickAction;
@@ -135,78 +134,5 @@ public class InventoryController : MonoBehaviour, ISaveable {
 
     public bool IsOpen() {
         return isOpen;
-    }
-
-
-    public void PopulateSaveData(SaveDataOld saveDataOld) {
-        //TODO change how card sets are handled -> Card Data
-        for (int i = 0; i < itemSlots.Count; i++) {
-            if (!itemSlots[i].IsOccupied()) 
-                continue;
-            Item item = itemSlots[i].GetItem();
-           
-            InventorySaveDataOld.ItemData itemData = new InventorySaveDataOld.ItemData {
-                index = i,
-                name = item.GetName(),
-                image = AssetDatabase.GetAssetPath(item.GetSprite())
-            };
-            ((InventorySaveDataOld)saveDataOld).itemDatas.Add(itemData);
-        }
-        
-        for (int i = 0; i < cardSetSlots.Count; i++) {
-            if (!cardSetSlots[i].IsOccupied()) 
-                continue;
-            Item item = cardSetSlots[i].GetItem();
-            
-            InventorySaveDataOld.CardSetItemData itemData = new InventorySaveDataOld.CardSetItemData() {
-                index = i,
-                name = item.GetName(),
-                image = AssetDatabase.GetAssetPath(item.GetSprite()),
-                cardSetData = AssetDatabase.GetAssetPath(((CardSetItem)item).GetCardSetData())
-            };
-            ((InventorySaveDataOld)saveDataOld).cardSetDatas.Add(itemData);
-        }
-        
-        for (int i = 0; i < deckSlots.Count; i++) {
-            if (!deckSlots[i].IsOccupied()) 
-                continue;
-            Item item = deckSlots[i].GetItem();
-            
-            InventorySaveDataOld.CardSetItemData itemData = new InventorySaveDataOld.CardSetItemData() {
-                index = i,
-                name = item.GetName(),
-                image = AssetDatabase.GetAssetPath(item.GetSprite()),
-                cardSetData = AssetDatabase.GetAssetPath(((CardSetItem)item).GetCardSetData())
-            };
-            ((InventorySaveDataOld)saveDataOld).deckDatas.Add(itemData);
-        }
-    }
-
-    public void LoadSaveData(SaveDataOld saveDataOld) {
-        InventorySaveDataOld inventorySaveDataOld = (InventorySaveDataOld)saveDataOld;
-        for (int i = 0; i < inventorySaveDataOld.itemDatas.Count; i++) {
-            CollectibleItem item = new GameObject().AddComponent<CollectibleItem>();
-            item.SetName(inventorySaveDataOld.itemDatas[i].name);
-            item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveDataOld.itemDatas[i].image));
-            itemSlots[inventorySaveDataOld.itemDatas[i].index].AddItem(item);
-        }
-        
-        for (int i = 0; i < inventorySaveDataOld.cardSetDatas.Count; i++) {
-            CardSetItem item = new GameObject().AddComponent<CardSetItem>();
-            item.SetName(inventorySaveDataOld.cardSetDatas[i].name);
-            item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveDataOld.cardSetDatas[i].image));
-            item.SetCardSetData(AssetDatabase.LoadAssetAtPath<CardSetData>(inventorySaveDataOld.cardSetDatas[i].cardSetData));
-            
-            cardSetSlots[inventorySaveDataOld.cardSetDatas[i].index].AddItem(item);
-        }
-        
-        for (int i = 0; i < inventorySaveDataOld.deckDatas.Count; i++) {
-            CardSetItem item = new GameObject().AddComponent<CardSetItem>();
-            item.SetName(inventorySaveDataOld.deckDatas[i].name);
-            item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveDataOld.deckDatas[i].image));
-            item.SetCardSetData(AssetDatabase.LoadAssetAtPath<CardSetData>(inventorySaveDataOld.deckDatas[i].cardSetData));
-            
-            deckSlots[inventorySaveDataOld.deckDatas[i].index].AddItem(item);
-        }
     }
 }
