@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace CardBattles.Managers {
     public static class EffectManager {
-        private static Dictionary<EffectName, EffectAnimationManager.EffectAnimationDelegate> Animation =>
-            EffectAnimationManager.Animation;
+        private static Dictionary<EffectName, EffectVisualsManager.EffectAnimationDelegate> Visual =>
+            EffectVisualsManager.Instance.visual;
 
         public delegate IEnumerator EffectDelegate(List<GameObject> targets, int value);
 
@@ -24,7 +24,7 @@ namespace CardBattles.Managers {
             foreach (var target in targets) {
                 if (target.TryGetComponent(typeof(IDamageable), out var component)) {
                     ((IDamageable)component).Heal(heal);
-                    yield return Animation[EffectName.Heal](component);
+                    yield return Visual[EffectName.Heal](component);
                 }
             }
         }
@@ -34,7 +34,7 @@ namespace CardBattles.Managers {
             foreach (var target in targets) {
                 if (target.TryGetComponent(typeof(IDamageable), out var component)) {
                     ((IDamageable)component).TakeDamage(damage);
-                    yield return Animation[EffectName.DealDamage](component);
+                    yield return Visual[EffectName.DealDamage](component);
                 }
             }
         }

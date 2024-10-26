@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CardBattles.Managers {
     public class ParticleManager : MonoBehaviour
@@ -13,7 +14,13 @@ namespace CardBattles.Managers {
                 Destroy(gameObject);
             }
         }
-   
+        
+        [SerializeField] private GameObject healEffectPrefab;
+        [SerializeField] private GameObject damageEffectPrefab;
+        //[SerializeField] private GameObject healEffectPrefab;
+        //[SerializeField] private GameObject healEffectPrefab;
+        //[SerializeField] private GameObject healEffectPrefab;
+
     }
 }
 

@@ -86,8 +86,11 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 2
+      targetType: 2
+      value: 5
 --- !u!114 &4154407072327070877
 MonoBehaviour:
   m_ObjectHideFlags: 0
