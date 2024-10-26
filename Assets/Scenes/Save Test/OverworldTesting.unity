@@ -637,8 +637,8 @@ GameObject:
   - component: {fileID: 87115876}
   - component: {fileID: 87115875}
   - component: {fileID: 87115874}
-  - component: {fileID: 87115877}
   - component: {fileID: 87115878}
+  - component: {fileID: 87115877}
   - component: {fileID: 87115880}
   - component: {fileID: 87115879}
   m_Layer: 15
@@ -17301,7 +17301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Cats 2
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cardSetData: {fileID: 11400000, guid: 156e66a02aa2a5b4ebee7ac4ace2be87, type: 2}
+  cardSetData: {fileID: 11400000, guid: 93a68ce33da350a4c95448a9156b6763, type: 2}
 --- !u!1 &305754600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4789186708790236404, guid: 97903a1a4e3f7c94e9fb7d0eb3615189, type: 3}

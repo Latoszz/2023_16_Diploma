@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using CardBattles.CardScripts.CardDatas;
 using Esper.ESave;
 using Items;
 using UnityEngine;
@@ -52,13 +53,39 @@ namespace SaveSystem.SaveData {
                 
                 CollectibleItem item = (CollectibleItem)itemSlot.GetItem();
                 string itemName = item.GetName();
-                string itemSprite = item.GetSprite().name;
+                string itemSpritePath = item.GetSprite().name;
                 CollectibleItemData itemData = item.GetItemData();
                 string id = itemData.itemID;
                 
                 saveFile.AddOrUpdateData(itemSlotID + "_item", id);
                 saveFile.AddOrUpdateData(id + "_name", itemName);
-                saveFile.AddOrUpdateData(id + "_sprite", "Sprites/" + itemSprite);
+                saveFile.AddOrUpdateData(id + "_sprite", "Sprites/" + itemSpritePath);
+            }
+            
+            PopulateCardSetData(saveFile, allCardSets, CardSetSaveID);
+            PopulateCardSetData(saveFile, allDeckCardSets, DeckSaveID);
+        }
+
+        private void PopulateCardSetData(SaveFile saveFile, List<ItemSlot> itemSlotList, string saveID) {
+            saveFile.AddOrUpdateData(saveID, saveID);
+            foreach (ItemSlot itemSlot in itemSlotList) {
+                string itemSlotID = itemSlot.GetID();
+                
+                if (saveFile.HasData(itemSlotID))
+                    saveFile.DeleteData(itemSlotID);
+                saveFile.AddOrUpdateData(itemSlotID, itemSlot.IsOccupied());
+                
+                if (!itemSlot.IsOccupied()) {
+                    continue;
+                }
+                
+                CardSetItem item = (CardSetItem)itemSlot.GetItem();
+                string itemName = item.GetName();
+                CardSetData cardSetData = item.GetCardSetData();
+                string jsonData = JsonUtility.ToJson(cardSetData);
+                
+                saveFile.AddOrUpdateData(itemSlotID + "_item", itemName);
+                saveFile.AddOrUpdateData(itemName + "_json", jsonData);
             }
         }
 
@@ -80,6 +107,34 @@ namespace SaveSystem.SaveData {
                     item.SetItemData(itemData);
                     item.SetName(saveFile.GetData<string>(id + "_name"));
                     item.SetSprite(Resources.Load(saveFile.GetData<string>(id + "_sprite")) as Sprite);
+                    
+                    itemSlot.AddItem(item);
+                }
+            }
+            
+            LoadCardSetData(saveFile, allCardSets, CardSetSaveID);
+            LoadCardSetData(saveFile, allDeckCardSets, DeckSaveID);
+        }
+
+        private void LoadCardSetData(SaveFile saveFile, List<ItemSlot> itemSlotList, string saveID) {
+            if(!saveFile.HasData(saveID))
+                return;
+            
+            foreach (ItemSlot itemSlot in itemSlotList) {
+                string itemSlotID = itemSlot.GetID();
+                itemSlot.SetIsOccupied(saveFile.GetData<bool>(itemSlotID));
+
+                if (itemSlot.IsOccupied()) {
+                    GameObject itemObject = new GameObject();
+                    itemObject.AddComponent<DraggableItem>();
+                    CardSetItem item = itemObject.AddComponent<CardSetItem>();
+                    string itemName = saveFile.GetData<string>(itemSlotID + "_item");
+                    item.SetName(itemName);
+                    
+                    CardSetData cardSetData = ScriptableObject.CreateInstance<CardSetData>();
+                    JsonUtility.FromJsonOverwrite(saveFile.GetData<string>(itemName + "_json"), cardSetData);
+                    item.SetCardSetData(cardSetData);
+                    item.SetSprite(cardSetData.cardSetIcon);
                     
                     itemSlot.AddItem(item);
                 }

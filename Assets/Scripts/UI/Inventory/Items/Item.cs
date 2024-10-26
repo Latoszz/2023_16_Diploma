@@ -4,8 +4,8 @@ using UnityEngine.EventSystems;
 
 [System.Serializable]
 public abstract class Item: MonoBehaviour {
-    [SerializeField] private string itemName;
-    [SerializeField] private Sprite sprite;
+    [SerializeField] protected string itemName;
+    [SerializeField] protected Sprite sprite;
 
     public string GetName() {
         return itemName;
