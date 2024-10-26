@@ -65,5 +65,11 @@ namespace CardBattles.Managers {
             var x = this;
             StartCoroutine(HealVisual(x));
         }
+
+        [SerializeField] private ParticleParent purpleFogVFX;
+        [SerializeField] private ParticleParent purplefogSmallVFX;
+        private IEnumerator EndGameEffect(Component target) {
+            yield return null;
+        }
     }
 }

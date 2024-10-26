@@ -1,4 +1,5 @@
 using System.Collections;
+using CardBattles.Enums;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEditor;
@@ -31,11 +32,13 @@ namespace CardBattles.Managers {
         }
 
         private IEnumerator LoseGame() {
+            EffectVisualsManager.Instance.visual[EffectName.EndOfGame](new Component());
             Debug.Log("Boohoo :(  LOSER");
             yield return new WaitForSecondsRealtime(2f);
             if (Application.isEditor)
                 EditorApplication.isPlaying = false;
         }
+        
 
 
         [BoxGroup("SlowDown"), SerializeField] private float endGameSlowDownFinalTimeScaleValue = 0.1f;

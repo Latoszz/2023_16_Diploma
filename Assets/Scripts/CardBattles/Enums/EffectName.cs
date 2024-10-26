@@ -3,5 +3,6 @@ namespace CardBattles.Enums {
         ChangeAttack,
         DealDamage,
         Heal,
+        EndOfGame
     }
 }

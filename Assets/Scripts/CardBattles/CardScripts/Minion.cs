@@ -23,7 +23,8 @@ namespace CardBattles.CardScripts {
             }
         }
 
-        [SerializeField] [BoxGroup("Data")] private int maxHealth;
+        [SerializeField] [BoxGroup("Data")]
+        private int maxHealth;
 
         private int MaxHealth {
             get => maxHealth;
@@ -64,7 +65,6 @@ namespace CardBattles.CardScripts {
             dataChanged.AddListener(cardDisplay.UpdateData);
         }
 
-   
 
         public Action<Vector3, IDamageable> action;
         public int GetAttack() => Attack;
@@ -99,6 +99,12 @@ namespace CardBattles.CardScripts {
             StartCoroutine(
                 cardAnimation.AttackAnimation(
                     this, target));
+        }
+
+        public IEnumerator ChangeSortingOrderTemporarily(int num) {
+            canvas.sortingOrder += num;
+            yield return new WaitForSeconds(2f);
+            canvas.sortingOrder -= num;
         }
 
         private void OnDestroy() {

@@ -60,6 +60,10 @@ namespace CardBattles.Managers {
                     continue;
                 if (attackers[i].GetAttack() <= 0)
                     continue;
+                if (attackers[i] is Minion minion) {
+                    StartCoroutine(minion.ChangeSortingOrderTemporarily(10 + i));
+                }
+
                 attackers[i].AttackTarget(targets[i]);
                 yield return new WaitForSeconds(betweenAttacksTime);
             }
@@ -67,7 +71,7 @@ namespace CardBattles.Managers {
 
         public delegate List<GameObject> TargetsDelegate(TargetType targetType, Card card);
 
-        
+
         public List<GameObject> GetTargets(TargetType targetType, Card card) {
             bool isPlayers = card.IsPlayers;
             List<GameObject> targets = new List<GameObject>();
