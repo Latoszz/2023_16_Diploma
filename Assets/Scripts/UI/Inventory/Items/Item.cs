@@ -1,6 +1,4 @@
-using Events;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 [System.Serializable]
 public abstract class Item: MonoBehaviour {

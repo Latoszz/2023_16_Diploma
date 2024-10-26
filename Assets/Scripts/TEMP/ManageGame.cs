@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Save_System_old;
+using SaveSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,12 +14,9 @@ public class ManageGame : MonoBehaviour {
     [SerializeField] private GameObject wall;
     [SerializeField] private ParticleSystem removablePS;
     [SerializeField] private List<CardSetItem> cardSets;
-        
-    public bool IsStarted => SceneManager.GetActiveScene().name is "beta-release" or "beta-release-2" or "New Scene";
-    public static ManageGame Instance = null;
     
-    public bool IsAfterTutorial { get; set; }
-    public bool IsAfterSecondFight { get; set; }
+    public static ManageGame Instance = null;
+
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -31,61 +28,12 @@ public class ManageGame : MonoBehaviour {
     }
 
     private void Start() {
-        if (SceneManager.GetActiveScene().name == "Irys playspace")
+        if (SaveManager.Instance.HasSaveData())
             return;
-        //LoadSettings();
-        /*
         foreach (CardSetItem cardSet in cardSets) {
             InventoryController.Instance.AddItem(cardSet);
         }
-        */
         
-    }
-    
-    private void Update() {
-        if (IsAfterTutorial && SceneManager.GetActiveScene().name == "beta-release") {
-            enemy.ChangeState(EnemyState.Undefeated);
-            IsAfterTutorial = false;
-        }
-        
-    }
-    public void SaveSettings() {
-        SettingsSaveDataOld settingsSaveDataOld = new SettingsSaveDataOld();
-        //settingsManager.PopulateSaveData(settingsSaveDataOld);
-        SaveManager.SaveGame(SaveManager.settingsSavePath, settingsSaveDataOld);
-    }
-
-    public void LoadSettings() {
-        if (SaveManager.settingsSaveExists) {
-            SettingsSaveDataOld settingsSaveDataOld = SaveManager.LoadGame<SettingsSaveDataOld>(SaveManager.settingsSavePath);
-            //settingsManager.LoadSaveData(settingsSaveDataOld);
-        }
-    }
-
-    public void SaveInventory() {
-        InventorySaveDataOld inventorySaveDataOld = new InventorySaveDataOld();
-        inventoryController.PopulateSaveData(inventorySaveDataOld);
-        SaveManager.SaveGame(SaveManager.inventorySavePath, inventorySaveDataOld);
-    }
-
-    public void LoadInventory() {
-        if (SaveManager.inventorySaveExists) {
-            InventorySaveDataOld inventorySaveDataOld = SaveManager.LoadGame<InventorySaveDataOld>(SaveManager.inventorySavePath);
-            inventoryController.LoadSaveData(inventorySaveDataOld);
-        }
-    }
-    
-    public void SaveEnemy() {
-        EnemySaveDataOld enemySaveDataOld = new EnemySaveDataOld();
-        enemyStateManager.PopulateSaveData(enemySaveDataOld);
-        SaveManager.SaveGame(SaveManager.enemySavePath, enemySaveDataOld);
-    }
-    
-    public void LoadEnemy() {
-        if (SaveManager.enemySaveExists) {
-            EnemySaveDataOld enemySaveDataOld = SaveManager.LoadGame<EnemySaveDataOld>(SaveManager.enemySavePath);
-            enemyStateManager.LoadSaveData(enemySaveDataOld);
-        }
     }
 
 }

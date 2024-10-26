@@ -638,9 +638,9 @@ GameObject:
   - component: {fileID: 87115875}
   - component: {fileID: 87115874}
   - component: {fileID: 87115878}
-  - component: {fileID: 87115877}
   - component: {fileID: 87115880}
   - component: {fileID: 87115879}
+  - component: {fileID: 87115881}
   m_Layer: 15
   m_Name: Card Set 1
   m_TagString: Untagged
@@ -734,21 +734,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87115872}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &87115877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87115872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c3650a81a2ca6841aba5ff73f0f110c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: Card Set 1
-  sprite: {fileID: 21300000, guid: e5eae2c6d71262d4ba0fa2c773995d7d, type: 2}
-  cardSetData: {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
 --- !u!54 &87115878
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -807,6 +792,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionDistance: 8
+--- !u!114 &87115881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87115872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a97e6238e364307ade8ebfc724cd9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Card set
+  sprite: {fileID: 0}
+  cardSetData: {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
 --- !u!1 &94182115
 GameObject:
   m_ObjectHideFlags: 0
