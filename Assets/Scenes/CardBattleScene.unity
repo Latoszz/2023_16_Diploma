@@ -25827,7 +25827,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 72bb30eb48597bd44aa606222bfa96cf, type: 3}
+    m_Font: {fileID: 12800000, guid: 2d00ed5b3dd0502448e381bbc6157a03, type: 3}
     m_FontSize: 28
     m_FontStyle: 1
     m_BestFit: 0
@@ -32162,7 +32162,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 72bb30eb48597bd44aa606222bfa96cf, type: 3}
+    m_Font: {fileID: 12800000, guid: 2d00ed5b3dd0502448e381bbc6157a03, type: 3}
     m_FontSize: 28
     m_FontStyle: 1
     m_BestFit: 0
@@ -33772,6 +33772,10 @@ PrefabInstance:
     - target: {fileID: 8652541029627356794, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760486684950253312, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
