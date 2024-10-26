@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -254,6 +254,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Love Hit '
       objectReference: {fileID: 0}
+    - target: {fileID: 7802979462468201273, guid: bddb971e34eb14d48be30c7b922eb077, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -339,6 +343,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Fire Hit '
       objectReference: {fileID: 0}
+    - target: {fileID: 162584487599433031, guid: 39f852c28f9c3fd45a427c24f3564ba7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2378385045970906311, guid: 39f852c28f9c3fd45a427c24f3564ba7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.9451838
@@ -413,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: a9a7c26e48a21e846987b46aa921770e, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 53068f241cd5fbf489acdfb77661f8ed, type: 2}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -539,6 +547,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Basic Hit '
       objectReference: {fileID: 0}
+    - target: {fileID: 3463157229188906966, guid: 47096eff328e11a418ace7db2d72aa97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4697243134390949263, guid: 47096eff328e11a418ace7db2d72aa97, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.9451838
@@ -599,7 +611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &823748828
 Transform:
   m_ObjectHideFlags: 0
@@ -731,7 +743,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 963194228}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 131072
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
@@ -959,6 +971,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basic Hit 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7728366230342544413, guid: 212ef1a41838ce044a9ac54994866708, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1116,6 +1132,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Ice Hit '
       objectReference: {fileID: 0}
+    - target: {fileID: 6675302182551818641, guid: 5bc9a0bf98f67d240a936bf476ba2082, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9176896100540421079, guid: 5bc9a0bf98f67d240a936bf476ba2082, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.0548162
@@ -1177,6 +1197,10 @@ PrefabInstance:
     - target: {fileID: 5933602760919840800, guid: fcb74f28d107e284e80af037bfec14ca, type: 3}
       propertyPath: m_Name
       value: Lightning Hit Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5933602760919840800, guid: fcb74f28d107e284e80af037bfec14ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5977592190014054552, guid: fcb74f28d107e284e80af037bfec14ca, type: 3}
       propertyPath: m_LocalPosition.x
