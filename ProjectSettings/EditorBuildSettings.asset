@@ -32,4 +32,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CardBattleScene.unity
     guid: 4d600143119613d42915187cc29ba103
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: e4f053f5fb376ed43b9a3a2d6753ab50, type: 2}
