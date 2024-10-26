@@ -807,6 +807,7 @@ MonoBehaviour:
   itemName: Card set
   sprite: {fileID: 0}
   cardSetData: {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
+  itemID: f98c6b3a-57e6-4185-924e-cf63eae82c8a
 --- !u!1 &94182115
 GameObject:
   m_ObjectHideFlags: 0
@@ -17246,6 +17247,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 350688004}
+    - targetCorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 350688013}
     - targetCorrespondingSourceObject: {fileID: 7579804712398496299, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 38404673}
@@ -22496,6 +22500,21 @@ MonoBehaviour:
   audioConfig: {fileID: 11400000, guid: 5a56d19f0663bff459578f7d25de4c81, type: 2}
   detectionDistance: 8
   npcID: 5700a080-c0e2-4e99-9051-593ecf739a4a
+--- !u!114 &350688013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350688003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ec7274d6824f7ebfb37640a23facf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questInfo: {fileID: 11400000, guid: 1bb66266a9ac46c47b720aeddd45825d, type: 2}
+  startPoint: 1
+  finishPoint: 1
 --- !u!1 &362838657
 GameObject:
   m_ObjectHideFlags: 0
@@ -40531,6 +40550,7 @@ MonoBehaviour:
   itemName: Item 2
   sprite: {fileID: 21300000, guid: d49f909240647554a8427bbd4043f665, type: 2}
   itemData: {fileID: 11400000, guid: a2912944b121e664b917cda9c8ab548c, type: 2}
+  itemID: e45c1e50-e91c-4e09-a39b-94d6267b9ce1
 --- !u!65 &689072732
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53255,6 +53275,128 @@ Terrain:
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
+--- !u!1 &914408966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 914408971}
+  - component: {fileID: 914408970}
+  - component: {fileID: 914408969}
+  - component: {fileID: 914408968}
+  - component: {fileID: 914408967}
+  m_Layer: 0
+  m_Name: WateringCan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &914408967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914408966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497ab3d9b7184582b3d70b2e62e075b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: WateringCan
+  sprite: {fileID: 0}
+  itemData: {fileID: 0}
+  itemID: 08d341db-3099-435e-afca-5e59faf08f2c
+--- !u!135 &914408968
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914408966}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &914408969
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914408966}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &914408970
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914408966}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &914408971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914408966}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.62, y: 6.29, z: 9.39}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &923221997
 GameObject:
   m_ObjectHideFlags: 0
@@ -91620,7 +91762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1483364684
 Transform:
   m_ObjectHideFlags: 0
@@ -140989,6 +141131,7 @@ MonoBehaviour:
   itemName: Item 1
   sprite: {fileID: 21300000, guid: 10233e55736c1964893a2748c6995ecd, type: 2}
   itemData: {fileID: 11400000, guid: f83b07278439a5140bf64fda3bc02de8, type: 2}
+  itemID: a9a22b81-ae59-4cf5-9d8a-c765fe4ad34b
 --- !u!54 &2086719489
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -147514,3 +147657,4 @@ SceneRoots:
   - {fileID: 1483364684}
   - {fileID: 807472347}
   - {fileID: 1732561212}
+  - {fileID: 914408971}

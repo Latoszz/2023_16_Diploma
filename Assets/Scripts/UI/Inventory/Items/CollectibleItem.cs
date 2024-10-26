@@ -26,7 +26,7 @@ public class CollectibleItem : Item, ICollectible, IPointerClickHandler {
         InventoryController.Instance.AddItem(this);
         collected = true;
         gameObject.SetActive(false);
-        GameEventsManager.Instance.ItemEvents.ItemCollected();
+        GameEventsManager.Instance.ItemEvents.ItemWithIdCollected(itemName);
     }
 
     public void OnPointerClick(PointerEventData eventData) {
