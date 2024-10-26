@@ -52,13 +52,13 @@ namespace SaveSystem.SaveData {
                 
                 CollectibleItem item = (CollectibleItem)itemSlot.GetItem();
                 string itemName = item.GetName();
-                Sprite itemSprite = item.GetSprite();
+                string itemSprite = item.GetSprite().name;
                 CollectibleItemData itemData = item.GetItemData();
                 string id = itemData.itemID;
                 
                 saveFile.AddOrUpdateData(itemSlotID + "_item", id);
                 saveFile.AddOrUpdateData(id + "_name", itemName);
-                //saveFile.AddOrUpdateData(id + "_sprite", itemSprite);
+                saveFile.AddOrUpdateData(id + "_sprite", "Sprites/" + itemSprite);
             }
         }
 
@@ -79,7 +79,7 @@ namespace SaveSystem.SaveData {
                     CollectibleItem item = itemObject.AddComponent<CollectibleItem>();
                     item.SetItemData(itemData);
                     item.SetName(saveFile.GetData<string>(id + "_name"));
-                    //item.SetSprite(saveFile.GetData<Sprite>(id + "_sprite"));
+                    item.SetSprite(Resources.Load(saveFile.GetData<string>(id + "_sprite")) as Sprite);
                     
                     itemSlot.AddItem(item);
                 }

@@ -40529,7 +40529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Item 2
-  sprite: {fileID: 21300000, guid: 2964d65d71ec0ed4c8de2bd7a5f65dc4, type: 2}
+  sprite: {fileID: 21300000, guid: d49f909240647554a8427bbd4043f665, type: 2}
   itemData: {fileID: 11400000, guid: a2912944b121e664b917cda9c8ab548c, type: 2}
 --- !u!65 &689072732
 BoxCollider:
@@ -140987,7 +140987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Item 1
-  sprite: {fileID: 21300000, guid: 2964d65d71ec0ed4c8de2bd7a5f65dc4, type: 2}
+  sprite: {fileID: 21300000, guid: 10233e55736c1964893a2748c6995ecd, type: 2}
   itemData: {fileID: 11400000, guid: f83b07278439a5140bf64fda3bc02de8, type: 2}
 --- !u!54 &2086719489
 Rigidbody:
