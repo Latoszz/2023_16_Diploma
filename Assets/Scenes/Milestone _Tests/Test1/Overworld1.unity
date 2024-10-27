@@ -58030,6 +58030,7 @@ MonoBehaviour:
   itemName: WateringCan
   sprite: {fileID: 21300260, guid: 388e8eb6de557964999d88f8d42114db, type: 3}
   itemData: {fileID: 11400000, guid: f83b07278439a5140bf64fda3bc02de8, type: 2}
+  npc: {fileID: 1989324600}
   itemID: 614cb452-6437-4488-ae86-0e5afd03451e
 --- !u!1 &973526801
 GameObject:

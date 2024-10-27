@@ -27,7 +27,7 @@ public class InventoryController : MonoBehaviour {
         else if (Instance != this) {
             Destroy(gameObject);
         }          
-        //DontDestroyOnLoad(gameObject); 
+        DontDestroyOnLoad(gameObject); 
         if (inventoryUI == null)
             inventoryUI = GameObject.FindWithTag("Inventory UI");
         postProcessVolume = GameObject.FindWithTag("MainCamera").GetComponent<PostProcessVolume>();
