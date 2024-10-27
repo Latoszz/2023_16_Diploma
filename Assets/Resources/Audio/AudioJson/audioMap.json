@@ -2,5 +2,8 @@
   "Cards": {
     "Draw": "drawKnife1",
     "Place": "impactSoft_medium_003"
+  },
+  "Button": {
+    "Click": "click3"
   }
 }

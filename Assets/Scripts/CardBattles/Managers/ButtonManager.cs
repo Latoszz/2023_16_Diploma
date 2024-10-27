@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,7 +10,27 @@ namespace CardBattles.Managers {
     public class ButtonManager : MonoBehaviour {
         public static ButtonManager Instance { get; private set; }
         private bool buttonsEnabled;
-        private bool drawButtonCooldown = false;
+        private bool buttonCooldown = false;
+
+
+        //[SerializeField] private Sprite spriteOn;
+        [SerializeField] private Sprite spriteOff;
+
+        private List<Button> buttons = new List<Button>();
+
+        [SerializeField] private float buttonCooldownTime = 0.5f;
+
+        [BoxGroup("End Turn"), SerializeField]
+        private Button endTurnButton;
+
+        [BoxGroup("End Turn"), SerializeField]
+        private UnityEvent endTurnButtonEvent;
+
+        [BoxGroup("Draw"), SerializeField]
+        private Button drawButton;
+
+        [BoxGroup("Draw"), SerializeField]
+        private UnityEvent drawButtonEvent;
 
         private void Awake() {
             if (Instance is null) {
@@ -27,18 +48,11 @@ namespace CardBattles.Managers {
                     buttons.Add(button);
             }
 
-            drawButton.onClick.AddListener(OnDrawButtonClick);
+            drawButton.onClick.AddListener(DrawButtonClickHandler);
+            endTurnButton.onClick.AddListener(EndTurnButtonClickHandler);
             StartCoroutine(CheckForButtonEnabled());
         }
 
-        [SerializeField] private List<Button> buttons;
-
-
-        [BoxGroup("Draw"), SerializeField] private Button drawButton;
-        [BoxGroup("Draw"), SerializeField] private float drawButtonCooldownTime = 0.5f;
-
-        [InfoBox("Make sure to add onclick events here, not in the button")] [BoxGroup("Draw"), SerializeField]
-        private UnityEvent drawButtonEvent;
 
         private IEnumerator CheckForButtonEnabled() {
             do {
@@ -51,22 +65,47 @@ namespace CardBattles.Managers {
         private void ButtonsEnabled(bool value) {
             buttonsEnabled = value;
             foreach (var button in buttons) {
-                button.enabled = value;
+                button.interactable = value;
             }
         }
 
-        private void OnDrawButtonClick() {
-            if (!drawButtonCooldown) {
-                drawButtonEvent.Invoke();
-                StartCoroutine(DrawButtonCooldownRoutine());
-            }
+        private void DrawButtonClickHandler() {
+            if (buttonCooldown) return;
+
+            drawButtonEvent?.Invoke();
+            StartCoroutine(ButtonCooldownRoutine());
+            StartCoroutine(PressButtonVisual(drawButton));
+        }
+
+        private void EndTurnButtonClickHandler() {
+            if (buttonCooldown) return;
+
+            endTurnButtonEvent?.Invoke();
+            StartCoroutine(ButtonCooldownRoutine());
+            StartCoroutine(PressButtonVisual(endTurnButton));
+        }
+
+        [SerializeField] private float spriteOffDuration = 0.5f;
+
+        private IEnumerator PressButtonVisual(Button button) {
+            button.image.overrideSprite = spriteOff;
+            StartCoroutine(ButtonSound());
+            yield return new WaitForSeconds(spriteOffDuration);
+            button.image.overrideSprite = null;
+        }
+
+        [SerializeField] private string buttonClickSoundString;
+        private IEnumerator ButtonSound() {
+            var clip = AudioCollection.Instance.GetClip(buttonClickSoundString);
+            AudioManager.Instance.PlayWithVariation(clip);
+            yield return null;
         }
 
 
-        private IEnumerator DrawButtonCooldownRoutine() {
-            drawButtonCooldown = true;
-            yield return new WaitForSeconds(drawButtonCooldownTime);
-            drawButtonCooldown = false;
+        private IEnumerator ButtonCooldownRoutine() {
+            buttonCooldown = true;
+            yield return new WaitForSeconds(buttonCooldownTime);
+            buttonCooldown = false;
         }
 
         //TODO add some fancy shmansy OnHover, OnHoverExit Actions that allow mana to highlight
