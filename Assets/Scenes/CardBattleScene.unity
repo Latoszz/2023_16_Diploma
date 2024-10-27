@@ -14563,6 +14563,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 336690235}
   text: {fileID: 1885312097}
+--- !u!1001 &362069484
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 774098338}
+    m_Modifications:
+    - target: {fileID: 100004, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+      propertyPath: m_Name
+      value: BloodEffect5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+--- !u!4 &362069485 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+  m_PrefabInstance: {fileID: 362069484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &362069486 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114000010939643548, guid: fbd6b129ea0617d4f82c7527f026058d, type: 3}
+  m_PrefabInstance: {fileID: 362069484}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2d51cd96616d7418f4bdf22e018f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &369407535
 GameObject:
   m_ObjectHideFlags: 0
@@ -21252,6 +21325,7 @@ Transform:
   - {fileID: 1014420597}
   - {fileID: 1832924178}
   - {fileID: 694886077}
+  - {fileID: 362069485}
   m_Father: {fileID: 881371145}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &823916255
@@ -27648,6 +27722,7 @@ MonoBehaviour:
   particlesGameObject: {fileID: 881371145}
   healVFX: {fileID: 1118512203}
   healAnimationDuration: 1
+  damageVFX: {fileID: 362069486}
   loseVFX: {fileID: 1014420598}
   winVFX: {fileID: 694886074}
   PlayerHero: {fileID: 68240585}
@@ -36078,7 +36153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 11471108929920545, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: cardSetDatas.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11471108929920545, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: cardSetDatas.Array.data[0]

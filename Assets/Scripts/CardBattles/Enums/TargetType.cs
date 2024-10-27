@@ -11,6 +11,9 @@ namespace CardBattles.Enums {
         YourHero,
         OpposingHero,
 
+        Allies,
+        Enemies,
+        
         CardSet
     }
 }

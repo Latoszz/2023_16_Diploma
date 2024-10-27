@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using Audio;
 using CardBattles.CardScripts.CardDatas;
+using CardBattles.Enums;
 using CardBattles.Interfaces;
 using CardBattles.Managers;
+using DG.Tweening;
 using NaughtyAttributes;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace CardBattles.CardScripts {
     public class Minion : Card, IAttacker {
@@ -73,7 +76,7 @@ namespace CardBattles.CardScripts {
         public void ChangeAttackBy(int amount) => Attack += amount;
 
         [SerializeField] private string takeDamageSound = "Damage.Card";
-        public void TakeDamage(int amount) {
+        public void TakeDamage(int amount, bool isInstaKill = false) {
             amount = amount > 0 ? amount : 0;
             CurrentHealth -= amount;
             var x =AudioCollection.Instance.GetClip(takeDamageSound);
@@ -102,6 +105,12 @@ namespace CardBattles.CardScripts {
         }
 
         public void AttackTarget(IDamageable target) {
+            if(properties.Contains(AdditionalProperty.Chance50ToNotAttack))
+                if (Random.value < 0.5f) {
+                    transform.DOShakePosition(0.5f,20f,20);
+                    return;
+                }
+
             StartCoroutine(
                 cardAnimation.AttackAnimation(
                     this, target));
@@ -112,7 +121,10 @@ namespace CardBattles.CardScripts {
             yield return new WaitForSeconds(2f);
             canvas.sortingOrder -= num;
         }
-
+        public void BuffHp(int amount) {
+            MaxHealth += amount;
+            Heal(amount);
+        }
         private void OnDestroy() {
             if (isPlacedAt is not null) {
                 if (isPlacedAt.card is not null) {

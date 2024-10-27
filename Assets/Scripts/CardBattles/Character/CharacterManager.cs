@@ -180,6 +180,10 @@ namespace CardBattles.Character {
             yield return Draw(1);
 
             manaManager.RefreshMana();
+            var cards = boardSide.GetNoNullCards();
+            foreach (var card in cards) {
+                card.DoEffect(EffectTrigger.OnStartTurn);
+            }
         }
         public IEnumerator TurnChangeSoundEffect() {
             yield return new WaitForSeconds(0.4f);

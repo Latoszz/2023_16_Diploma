@@ -30,30 +30,47 @@ namespace CardBattles.Managers {
             visual = new Dictionary<EffectName, EffectAnimationDelegate> {
                 { EffectName.Heal, HealVisual },
                 { EffectName.DealDamage, DamageVisual },
-                { EffectName.ChangeAttack, ChangeAttackAnimation },
-                //{ EffectName.EndOfGame, EndGameEffect }
+                { EffectName.ChangeAttack, ChangeAttackVisual },
+                { EffectName.BuffHp, BuffHpVisual },
+                {EffectName.ChangeAttack, ChangeAttackVisual}
             };
         }
+
 
         [InfoBox("Assign not prefabs, but pull the prefab into the game, and assign that game object")]
         [Required]
         [SerializeField]
         private Transform particlesGameObject;
 
+        private ParticleParent ParticleFactory(ParticleParent vfx, Vector3 position, float duration = 1f) {
+            var newParticleParent = Instantiate(vfx, particlesGameObject, true);
+            newParticleParent.transform.position = position;
+
+            StartCoroutine(newParticleParent.PlayFor(duration));
+            return newParticleParent;
+        }
+
         [SerializeField] private ParticleParent healVFX;
         [SerializeField] private float healAnimationDuration = 1f;
 
         // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator HealVisual(Component target) {
-            ParticleFactory(healVFX, target.transform.position,healAnimationDuration);
+            ParticleFactory(healVFX, target.transform.position, healAnimationDuration);
             yield return null;
         }
+
+        [SerializeField] private ParticleParent damageVFX;
 
         private IEnumerator DamageVisual(Component target) {
+            ParticleFactory(damageVFX, target.transform.position);
             yield return null;
         }
 
-        private IEnumerator ChangeAttackAnimation(Component target) {
+        private IEnumerator ChangeAttackVisual(Component target) {
+            yield return null;
+        }
+
+        private IEnumerator BuffHpVisual(Component target) {
             yield return null;
         }
 
@@ -74,6 +91,7 @@ namespace CardBattles.Managers {
         public void EndGameEffectTrigger(bool isItAWin) {
             StartCoroutine(EndGameEffect(isItAWin));
         }
+
         private IEnumerator EndGameEffect(bool isItAWin) {
             var heroTransform = isItAWin ? EnemyHero : PlayerHero;
             var particle = isItAWin ? winVFX : loseVFX;
@@ -86,23 +104,17 @@ namespace CardBattles.Managers {
                 float y = Mathf.Sin(angle) * offset;
                 ParticleFactory(particle, heroTransform.position + new Vector3(x, y, 0), 30);
             }
+
             yield return new WaitForSecondsRealtime(0.2f);
             yield return null;
         }
 
-        private ParticleParent ParticleFactory(ParticleParent vfx, Vector3 position, float duration = 1f) {
-           
-            var newParticleParent = Instantiate(vfx, particlesGameObject, true);
-            newParticleParent.transform.position = position;
-            
-            StartCoroutine(newParticleParent.PlayFor(duration));
-            return newParticleParent;
-        }
+
         [SerializeField] private ParticleParent explosionVFX;
         [SerializeField] private string explosionSoundName = "Boom";
-        
+
         public ParticleParent Explosion(Vector3 position, float duration = 1f) {
-            var x =AudioCollection.Instance.GetClip(explosionSoundName);
+            var x = AudioCollection.Instance.GetClip(explosionSoundName);
             AudioManager.Instance.PlayWithVariation(x);
             return ParticleFactory(explosionVFX, position, duration);
         }

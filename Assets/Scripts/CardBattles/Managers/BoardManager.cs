@@ -107,6 +107,18 @@ namespace CardBattles.Managers {
                 case TargetType.CardSet:
                     targets.AddRange(PlayingCharacter(isPlayers).deck.GetCardFromSameCardSet(card));
                     break;
+                case TargetType.Allies:
+                    targets.AddRange(Playing(isPlayers).GetNoNullCardsObjects());
+                    targets.Add(Playing(isPlayers).hero.gameObject);
+                    break;
+                case TargetType.Enemies:
+                    targets.AddRange(Waiting(isPlayers).GetNoNullCardsObjects());
+                    targets.Add(Waiting(isPlayers).hero.gameObject);
+                    break;
+
+
+
+                    
             }
 
             return targets;

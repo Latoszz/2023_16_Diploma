@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Audio;
+using CardBattles.Enums;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
 using CardBattles.Managers;
@@ -140,14 +141,21 @@ namespace CardBattles.CardScripts.Additional {
         //TODO Add distance scaling to animaation
         //USE LIKE A STATIC METHOD 
         public IEnumerator AttackAnimation(IAttacker attacker, IDamageable damageable) {
+            bool poisonous = false;
+            if (attacker is Minion minion) {
+                if (minion.properties.Contains(AdditionalProperty.Poisonous)) {
+                    Debug.Log("poisonous attack haveth happened");
+                    poisonous = true;
+                }
+            }
             var attack = attacker.GetAttack();
             var attackerTransform = attacker.GetTransform();
             var originalPosition = attackerTransform.position;
             var targetPosition = damageable.GetTransform().position;
             var moveDirection = (targetPosition - originalPosition).normalized;
             yield return AttackMoveToTarget(attackerTransform, targetPosition);
-
-            damageable.TakeDamage(attack);
+            
+            damageable.TakeDamage(attack,poisonous);
 
             //TODO add variable to determine how much time to stop for at a target
             yield return new WaitForEndOfFrame();

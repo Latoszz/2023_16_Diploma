@@ -16,8 +16,18 @@ namespace CardBattles.Managers {
                 new() {
                     { EffectName.Heal, Heal },
                     { EffectName.DealDamage, DealDamage },
-                    { EffectName.ChangeAttack, ChangeAttack }
+                    { EffectName.ChangeAttack, ChangeAttack },
+                    { EffectName.BuffHp, BuffHp }
                 };
+
+        private static IEnumerator BuffHp(List<GameObject> targets, int value) {
+            foreach (var target in targets) {
+                if (target.TryGetComponent(typeof(IDamageable), out var component)) {
+                    ((IDamageable)component).BuffHp(value);
+                    yield return Visual[EffectName.BuffHp](component);
+                }
+            }
+        }
 
 
         private static IEnumerator Heal(List<GameObject> targets, int heal) {
@@ -40,7 +50,12 @@ namespace CardBattles.Managers {
         }
 
         private static IEnumerator ChangeAttack(List<GameObject> targets, int value) {
-            throw new System.NotImplementedException();
+            foreach (var target in targets) {
+                if (target.TryGetComponent(typeof(IAttacker), out var component)) {
+                    ((IAttacker)component).ChangeAttackBy(value);
+                    yield return Visual[EffectName.DealDamage](component);
+                }
+            }
         }
     }
 }
