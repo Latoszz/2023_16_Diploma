@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class obstacleDataManager : MonoBehaviour {
     public static obstacleDataManager Instance;
     [SerializeField] private tmpListObstacle tmpListObstacle;
-    private static int i = -1;
+    [SerializeField] [HideInInspector]
+    private int i = -1;
+
+    [ShowNativeProperty]
+    private int I => i;
     private void Awake() {
         if (Instance != null) {
             Destroy(this.gameObject);
@@ -20,12 +25,20 @@ public class obstacleDataManager : MonoBehaviour {
     public void changeNextObstacle(bool val) {
         if (val)
             i += 1;
+        Debug.Log("i: " +i);
         aa();
     }
 
     public void aa() {
+        Debug.Log("i: " +i);
         for (int j = 0; j < tmpListObstacle.obstacles.Count; j++) {
-            tmpListObstacle.obstacles[j].SetObstacle( j<=i);
+            if (tmpListObstacle.obstacles[j] is not null) {
+                var tmpObstacle = tmpListObstacle.obstacles[j];
+                var boolean = (j > i);
+
+                Debug.Log($"{tmpObstacle.GetID()}: {tmpObstacle.IsObstacle()}=> {boolean}");
+                tmpObstacle.SetObstacle(boolean);
+            }
         }
     }
     

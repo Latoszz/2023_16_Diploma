@@ -5,18 +5,21 @@ using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace CardBattles.Managers {
     public class EndGameManager : MonoBehaviour {
         [SerializeField] private Text endGameText;
         private void OnEnable() {
-            quitBattles.AddListener(SceneSwitcher.Instance.ExitOutOfBattles);
+            quitBattles.AddListener(ChangeScene);
+            quitBattles.AddListener(obstacleDataManager.Instance.changeNextObstacle);
         }
         
 
         private void OnDisable() {
-            quitBattles.RemoveListener(SceneSwitcher.Instance.ExitOutOfBattles);
+            quitBattles.RemoveListener(ChangeScene);
+            quitBattles.RemoveListener(obstacleDataManager.Instance.changeNextObstacle);
         }
 
         [SerializeField, Required] private CanvasGroup rayCastBlocker;
@@ -70,6 +73,9 @@ namespace CardBattles.Managers {
             if(!animationEnded) return;
             Debug.Log("quit battles  invoked");
             quitBattles?.Invoke(gameWon);
+        }
+        private void ChangeScene(bool val) {
+            SceneManager.LoadScene("Overworld1");
         }
 
         [BoxGroup("SlowDown"), SerializeField] private float endGameSlowDownFinalTimeScaleValue = 0.5f;
