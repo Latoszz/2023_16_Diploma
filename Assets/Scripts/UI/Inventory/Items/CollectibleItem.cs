@@ -1,11 +1,13 @@
 using System;
 using Events;
 using Items;
+using NPC;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CollectibleItem : Item, ICollectible, IPointerClickHandler {
     [SerializeField] private CollectibleItemData itemData;
+    [SerializeField] private TalkableNPC npc;
     [SerializeField] private string itemID;
     [ContextMenu("Generate guid for id")]
     private void GenerateGuid() {
@@ -31,6 +33,8 @@ public class CollectibleItem : Item, ICollectible, IPointerClickHandler {
 
     public void OnPointerClick(PointerEventData eventData) {
         Collect();
+        if(npc != null)
+            npc.SetUpNextDialogue();
     }
 
     public string GetID() {
