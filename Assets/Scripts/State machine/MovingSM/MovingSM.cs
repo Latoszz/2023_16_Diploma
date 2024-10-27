@@ -16,6 +16,7 @@ public class MovingSM : StateMachine, IPointerClickHandler {
     
     [SerializeField] private float waitTimeSeconds;
     [SerializeField] private Transform[] waypoints;
+    [SerializeField] private bool isEnemy;
     
     private NavMeshAgent navMeshAgent;
     private GameObject player;
@@ -73,6 +74,8 @@ public class MovingSM : StateMachine, IPointerClickHandler {
         IsDialogue = false;
     }
     public void OnPointerClick(PointerEventData eventData) {
+        if (isEnemy)
+            return;
         if(Vector3.Distance(player.transform.position, navMeshAgent.transform.position) < detectionDistance)
             IsDialogue = true;
     }

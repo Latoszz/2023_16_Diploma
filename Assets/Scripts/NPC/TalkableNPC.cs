@@ -33,7 +33,6 @@ namespace NPC {
             if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
                 Talk(dialogue[0]);
                 talkedTo = true;
-
             }
         }
 
