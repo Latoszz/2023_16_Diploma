@@ -51,7 +51,7 @@ namespace CardBattles.Character.Mana {
                         $"Not enough mana to play a card\ncost: {cost.GetCost()}   mana: {currentMana}"), (Object)cost);
             }
 
-            CurrentMana -= 1;
+            CurrentMana -= cost.GetCost();
         }
 
 

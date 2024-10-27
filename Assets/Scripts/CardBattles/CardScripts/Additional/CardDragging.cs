@@ -84,7 +84,8 @@ namespace CardBattles.CardScripts.Additional {
             transform
                 .DOMove(originalPosition,
                     animationTime)
-                .SetEase(Ease.InOutSine);
+                .SetEase(Ease.InOutSine)
+                .SetLink(gameObject,LinkBehaviour.KillOnDestroy);
         }
     }
 }

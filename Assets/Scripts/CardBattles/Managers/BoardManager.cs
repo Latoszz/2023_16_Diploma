@@ -115,10 +115,8 @@ namespace CardBattles.Managers {
                     targets.AddRange(Waiting(isPlayers).GetNoNullCardsObjects());
                     targets.Add(Waiting(isPlayers).hero.gameObject);
                     break;
-
-
-
-                    
+                case TargetType.None:
+                    break;
             }
 
             return targets;

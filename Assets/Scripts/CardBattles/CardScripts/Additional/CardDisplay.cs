@@ -94,7 +94,7 @@ namespace CardBattles.CardScripts.Additional {
             frontOfCard.enabled = !visible;
             backOfCard.enabled = !visible;
             frontVisible = visible;
-            transform.DORotate(new Vector3(0, 0, 0), 0.1f);
+            transform.DORotate(new Vector3(0, 0, 0), 0.1f).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
         }
 
         public void ChangeCardVisible() {
@@ -126,7 +126,7 @@ namespace CardBattles.CardScripts.Additional {
             if (textComponent.text != newValue.ToString()) {
                 Vector3 originalScale = textComponent.transform.localScale;
 
-                Sequence scaleSequence = DOTween.Sequence();
+                Sequence scaleSequence = DOTween.Sequence().SetLink(gameObject,LinkBehaviour.KillOnDestroy);
                 scaleSequence.Append(textComponent.transform.DOScale(originalScale * growScale, growDuration));
                 scaleSequence.AppendCallback(() => {
                     textComponent.text = newValue.ToString();
@@ -145,7 +145,7 @@ namespace CardBattles.CardScripts.Additional {
             }
 
             transform.DOScale(scaleOnHover,
-                scaleOnHoverTime);
+                scaleOnHoverTime).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
         }
 
         public void OnPointerExit(PointerEventData eventData) {
@@ -153,7 +153,7 @@ namespace CardBattles.CardScripts.Additional {
                 return;
             }
 
-            transform.DOScale(Vector3.one * currentScale, scaleOnHoverTime);
+            transform.DOScale(Vector3.one * currentScale, scaleOnHoverTime).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
         }
 
         public void IsPlacedOnBoard(bool isNotNull) {
@@ -171,7 +171,7 @@ namespace CardBattles.CardScripts.Additional {
 
         private void ChangeCurrentScale(float scale) {
             currentScale = scale;
-            transform.DOScale(currentScale, 0.3f);
+            transform.DOScale(currentScale, 0.3f).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
         }
     }
 }

@@ -14,6 +14,8 @@ namespace CardBattles.Enums {
         Allies,
         Enemies,
         
-        CardSet
+        CardSet,
+        
+        None
     }
 }

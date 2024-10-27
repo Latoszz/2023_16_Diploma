@@ -86,6 +86,7 @@ namespace CardBattles.CardScripts {
                 Debug.LogWarning("Properties list is not initialized in Minion.");
             }
             if (!(properties.Contains(AdditionalProperty.ImmuneToPoison)) && isInstaKill) {
+                
                 Die();
             }
 

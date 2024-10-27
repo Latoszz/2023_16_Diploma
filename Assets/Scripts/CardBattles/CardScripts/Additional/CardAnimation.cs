@@ -47,7 +47,8 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         private IEnumerator PlayerDrawAnimationCoroutine(Vector3 finalPosition) {
-            var sequence = DOTween.Sequence();
+            var sequence = DOTween.Sequence().SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+            
             sequence
                 .Append(transform
                     .DOMove(showPosition, timeToShow)
@@ -69,7 +70,7 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         private IEnumerator EnemyDrawAnimationCoroutine(Vector3 finalPosition) {
-            var sequence = DOTween.Sequence();
+            var sequence = DOTween.Sequence().SetLink(gameObject,LinkBehaviour.KillOnDestroy);;
             sequence.Append(
                 transform
                     .DOMove(finalPosition, enemyDraw)
@@ -94,6 +95,7 @@ namespace CardBattles.CardScripts.Additional {
             yield return transform
                 .DOMove(vector3, moveToAnimationTime)
                 .SetEase(Ease.InOutSine)
+                .SetLink(gameObject,LinkBehaviour.KillOnDestroy)
                 .WaitForCompletion(true);
         }
 
@@ -108,7 +110,9 @@ namespace CardBattles.CardScripts.Additional {
                 .DOMove(
                     cardSpot.transform.position,
                     playCardTime)
-                .SetEase(playCardEase).WaitForCompletion();
+                .SetEase(playCardEase)
+                .SetLink(gameObject,LinkBehaviour.KillOnDestroy)
+                .WaitForCompletion();
             CardSpot.PlayDropSound();
 
         }
@@ -172,6 +176,7 @@ namespace CardBattles.CardScripts.Additional {
                     finalPosition,
                     attackMoveToTime)
                 .SetEase(attackMoveToEase)
+                .SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy)
                 .WaitForCompletion(true);
             yield return moveToTarget;
         }
@@ -181,7 +186,7 @@ namespace CardBattles.CardScripts.Additional {
             //var move = StartCoroutine(AttackKnockbackMove(attackerTransform, moveDirection));
             //var shake = StartCoroutine(AttackKnockbackShake(attackerTransform));
             //TODO so i had to do this
-            var sequence = DOTween.Sequence();
+            var sequence = DOTween.Sequence().SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy);
 
             var knockbackPosition = attackerTransform.position - (moveDirection * attackKnockBackAmount);
 
@@ -213,6 +218,8 @@ namespace CardBattles.CardScripts.Additional {
                     knockbackPosition,
                     attackKnockBackTime)
                 .SetEase(attackKnockBackEase)
+                .SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy)
+
                 .WaitForCompletion(true);
             yield return knockBack;
         }
@@ -223,6 +230,8 @@ namespace CardBattles.CardScripts.Additional {
                     attackKnockBackTime,
                     attackKnockBackShakeStrength)
                 .SetEase(attackMoveToEase)
+                .SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy)
+
                 .WaitForCompletion(true);
             yield return shake;
         }
@@ -233,6 +242,8 @@ namespace CardBattles.CardScripts.Additional {
                     originalPosition,
                     attackMoveBackTime)
                 .SetEase(attackMoveBackEase)
+                .SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy)
+
                 .WaitForCompletion(true);
             yield return moveBack;
         }
@@ -277,13 +288,17 @@ namespace CardBattles.CardScripts.Additional {
             yield return ((CanvasGroup)canvasGroup)
                 .DOFade(0f, cardFadeOutDuration)
                 .SetEase(cardFadeOutEase)
+                .SetLink(cardGameObject, LinkBehaviour.KillOnDestroy)
                 .WaitForCompletion();
         }
 
         private IEnumerator Spin(GameObject cardGameObject) {
             
-            var cor = transform.DORotate(new Vector3(360, 0,0), 1f, RotateMode.FastBeyond360).SetRelative(true)
-                .SetEase(Ease.Linear).SetLoops(-1).SetLink(cardGameObject,LinkBehaviour.KillOnDestroy);
+            var cor = transform
+                .DORotate(new Vector3(360, 0,0), 1f, RotateMode.FastBeyond360)
+                .SetRelative(true)
+                .SetEase(Ease.Linear).SetLoops(-1)
+                .SetLink(cardGameObject,LinkBehaviour.KillOnDestroy);
             cor.Play();
             yield return new WaitForSeconds(cardFadeOutDuration);
             

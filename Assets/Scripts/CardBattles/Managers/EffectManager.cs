@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
+using CardBattles.Interfaces.InterfaceObjects;
 using UnityEngine;
 
 namespace CardBattles.Managers {
@@ -17,18 +19,25 @@ namespace CardBattles.Managers {
                     { EffectName.Heal, Heal },
                     { EffectName.DealDamage, DealDamage },
                     { EffectName.ChangeAttack, ChangeAttack },
-                    { EffectName.BuffHp, BuffHp }
+                    { EffectName.BuffHp, BuffHp },
+                    { EffectName.DrawACard , DrawACard},
+                    { EffectName.DealOrHeal , DealOrHeal}
                 };
 
-        private static IEnumerator BuffHp(List<GameObject> targets, int value) {
+        private static IEnumerator DealOrHeal(List<GameObject> targets, int value) {
             foreach (var target in targets) {
                 if (target.TryGetComponent(typeof(IDamageable), out var component)) {
-                    ((IDamageable)component).BuffHp(value);
-                    yield return Visual[EffectName.BuffHp](component);
+                    if (Random.value > 0.5f) {
+                        ((IDamageable)component).Heal(value);
+                        yield return Visual[EffectName.Heal](component);
+                    }
+                    else {
+                        ((IDamageable)component).TakeDamage(value);
+                        yield return Visual[EffectName.DealDamage](component);
+                    }
                 }
             }
         }
-
 
         private static IEnumerator Heal(List<GameObject> targets, int heal) {
             foreach (var target in targets) {
@@ -57,5 +66,21 @@ namespace CardBattles.Managers {
                 }
             }
         }
+        private static IEnumerator BuffHp(List<GameObject> targets, int value) {
+            foreach (var target in targets) {
+                if (target.TryGetComponent(typeof(IDamageable), out var component)) {
+                    ((IDamageable)component).BuffHp(value);
+                    yield return Visual[EffectName.BuffHp](component);
+                }
+            }
+        }
+        
+        //Expects a hero
+        private static IEnumerator DrawACard(List<GameObject> targets, int value) {
+            Debug.Log("wooo you drew a card");
+            yield return null;
+
+        }
+
     }
 }

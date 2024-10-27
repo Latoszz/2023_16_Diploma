@@ -20953,7 +20953,7 @@ RectTransform:
   m_Father: {fileID: 1879748496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.7157895, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21248,8 +21248,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 857763222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.7157895, y: 0}
+  m_AnchorMax: {x: 0.7157895, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21769,7 +21769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &964680010
 Transform:
   m_ObjectHideFlags: 0
@@ -36018,6 +36018,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 726530921}
     m_Modifications:
+    - target: {fileID: 15981639191630999, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
+      propertyPath: cardSetDatas.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 15981639191630999, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
+      propertyPath: cardSetDatas.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6246ffd852358894aacf7b90dd47d8ae, type: 2}
+    - target: {fileID: 15981639191630999, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
+      propertyPath: cardSetDatas.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90ca613ec69893d4f83c2c0734f5abae, type: 2}
     - target: {fileID: 1582190124498597894, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
       propertyPath: m_Name
       value: Enemy Prefab
@@ -36153,7 +36165,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 11471108929920545, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: cardSetDatas.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11471108929920545, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: cardSetDatas.Array.data[0]
@@ -36163,6 +36175,14 @@ PrefabInstance:
       propertyPath: cardSetDatas.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 93a68ce33da350a4c95448a9156b6763, type: 2}
+    - target: {fileID: 11471108929920545, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
+      propertyPath: cardSetDatas.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90ca613ec69893d4f83c2c0734f5abae, type: 2}
+    - target: {fileID: 11471108929920545, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
+      propertyPath: cardSetDatas.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1083da3e8b781724f87d230d2dfee831, type: 2}
     - target: {fileID: 675005521252453992, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_TagString
       value: Player
