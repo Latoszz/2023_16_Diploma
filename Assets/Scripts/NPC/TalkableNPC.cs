@@ -15,6 +15,7 @@ namespace NPC {
         [SerializeField] private float detectionDistance = 8;
 
         private GameObject player;
+        private bool talkedTo = false;
         [SerializeField] private string npcID;
 
         [ContextMenu("Generate guid for id")]
@@ -29,6 +30,7 @@ namespace NPC {
         public override void Interact() {
             if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
                 Talk(dialogue[0]);
+                talkedTo = true;
             }
         }
 
@@ -45,6 +47,10 @@ namespace NPC {
 
         public string GetID() {
             return npcID;
+        }
+
+        public bool TalkedTo() {
+            return talkedTo;
         }
     }
 }
