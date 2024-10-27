@@ -86,11 +86,18 @@ namespace CardBattles.Managers {
         }
 
         [SerializeField] private float spriteOffDuration = 0.5f;
-
+        [SerializeField] private float textMoveDownAmount = 3f;
+        // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator PressButtonVisual(Button button) {
-            button.image.overrideSprite = spriteOff;
             StartCoroutine(ButtonSound());
+            
+            button.image.overrideSprite = spriteOff;
+            var rectTransform = button.GetComponent<ButtonTextVal>().text.GetComponent<RectTransform>();
+            rectTransform.position += new Vector3(0,-textMoveDownAmount,0);
+            
             yield return new WaitForSeconds(spriteOffDuration);
+            
+            rectTransform.position -= new Vector3(0,-textMoveDownAmount,0);
             button.image.overrideSprite = null;
         }
 

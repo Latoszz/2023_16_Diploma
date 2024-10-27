@@ -39,7 +39,6 @@ namespace Audio {
         // ReSharper disable Unity.PerformanceAnalysis
         public void Play([CanBeNull] AudioClip clip,float volume=1f, float pitch =1f) 
         {
-            Debug.Log(clip.name);
             if (clip is null) {
                 Debug.Log("Tried to play a non existant sound");
                 return;
