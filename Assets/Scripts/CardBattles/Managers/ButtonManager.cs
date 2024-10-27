@@ -4,6 +4,7 @@ using Audio;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace CardBattles.Managers {
@@ -15,7 +16,8 @@ namespace CardBattles.Managers {
 
         //[SerializeField] private Sprite spriteOn;
         [SerializeField] private Sprite spriteOff;
-
+        
+        [SerializeField]
         private List<Button> buttons = new List<Button>();
 
         [SerializeField] private float buttonCooldownTime = 0.5f;
@@ -47,6 +49,7 @@ namespace CardBattles.Managers {
                 if (!buttons.Contains(button))
                     buttons.Add(button);
             }
+            ButtonsEnabled(false);
 
             drawButton.onClick.AddListener(DrawButtonClickHandler);
             endTurnButton.onClick.AddListener(EndTurnButtonClickHandler);
@@ -58,7 +61,11 @@ namespace CardBattles.Managers {
             do {
                 var isPlayersTurn = TurnManager.Instance.isPlayersTurn;
                 if (buttonsEnabled != isPlayersTurn) {
+                    if (isPlayersTurn) {
+                        yield return new WaitForSeconds(1f);
+                    }
                     ButtonsEnabled(isPlayersTurn);
+
                 }
 
                 yield return new WaitForSeconds(0.1f);
@@ -68,6 +75,7 @@ namespace CardBattles.Managers {
         private void ButtonsEnabled(bool value) {
             buttonsEnabled = value;
             foreach (var button in buttons) {
+                button.enabled = value;
                 button.interactable = value;
             }
         }
@@ -79,13 +87,20 @@ namespace CardBattles.Managers {
             StartCoroutine(ButtonCooldownRoutine());
             StartCoroutine(PressButtonVisualCoroutine(drawButton));
         }
-
+        [SerializeField]
+        private float endTurnButtonStartTurnDelay = 0.2f;
         private void EndTurnButtonClickHandler() {
             if (buttonCooldown) return;
+            ButtonsEnabled(false);
 
-            endTurnButtonEvent?.Invoke();
+            StartCoroutine(EndTurnButtonClickCoroutine());
             StartCoroutine(ButtonCooldownRoutine());
             StartCoroutine(PressButtonVisualCoroutine(endTurnButton, true));
+        }
+
+        private IEnumerator EndTurnButtonClickCoroutine() {
+            yield return new WaitForSeconds(endTurnButtonStartTurnDelay);
+            endTurnButtonEvent?.Invoke();
         }
 
         [SerializeField] private float spriteOffDuration = 0.5f;
@@ -98,7 +113,10 @@ namespace CardBattles.Managers {
 
 
             yield return new WaitForSeconds(spriteOffDuration);
-            if (isEndTurnButton) yield return new WaitUntil(() => TurnManager.Instance.isPlayersTurn);
+            if (isEndTurnButton) {
+                yield return new WaitUntil(() => !TurnManager.Instance.isPlayersTurn);
+                yield return new WaitUntil(() => TurnManager.Instance.isPlayersTurn);
+            }
             ButtonVisual(button, true);
         }
 
@@ -107,7 +125,7 @@ namespace CardBattles.Managers {
             button.image.overrideSprite = buttonUp ? null : spriteOff;
             var rectTransform = button.GetComponent<ButtonTextVal>().text.GetComponent<RectTransform>();
             rectTransform.position +=
-                buttonUp ? new Vector3(0, -textMoveDownAmount, 0) : new Vector3(0, textMoveDownAmount, 0);
+                buttonUp ? new Vector3(0, textMoveDownAmount, 0) : new Vector3(0, -textMoveDownAmount, 0);
         }
 
         [SerializeField] private string buttonClickSoundString;

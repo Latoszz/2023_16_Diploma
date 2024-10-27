@@ -14410,9 +14410,23 @@ MonoBehaviour:
   - key: Cards.Draw
     clip: {fileID: 8300000, guid: 08a47ec0224c9224e82f517d0e7e1165, type: 3}
   - key: Cards.Place
-    clip: {fileID: 8300000, guid: ff2ad343c1ac6de4698263d6da675a14, type: 3}
+    clip: {fileID: 8300000, guid: 7b07d30b2954f4841b79a07d4506a8ae, type: 3}
   - key: Button.Click
     clip: {fileID: 8300000, guid: a0c53d2c46b504848abe4b1519a9248f, type: 3}
+  - key: Boom
+    clip: {fileID: 8300000, guid: e8f0efdb9287dbf488cfd4d8f3bb01bd, type: 3}
+  - key: Damage.Hero
+    clip: {fileID: 8300000, guid: 1c50c99b24e3f7f47861d1534cdf6d3d, type: 3}
+  - key: Damage.Card
+    clip: {fileID: 8300000, guid: 0e57b9090b013794b968a32331f11676, type: 3}
+  - key: Lose
+    clip: {fileID: 8300000, guid: 0cb44cbe1d7336b41adee703ba244600, type: 3}
+  - key: Win
+    clip: {fileID: 8300000, guid: 4ed18becd14b9b7409fa61ffa1d0ec4c, type: 3}
+  - key: TurnStart
+    clip: {fileID: 8300000, guid: ddd5861696db93c4889c50638ad3f42b, type: 3}
+  - key: TurnEnd
+    clip: {fileID: 8300000, guid: d53a3d45324a8f24e8e6d7ec78d26e92, type: 3}
 --- !u!1 &336690233
 GameObject:
   m_ObjectHideFlags: 0
@@ -18679,7 +18693,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1203400964}
   m_Father: {fileID: 726530921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -18707,7 +18722,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1867790779
   m_SortingOrder: 101
   m_TargetDisplay: 0
 --- !u!225 &633087930
@@ -18752,7 +18767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -18806,6 +18821,52 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!1 &639543941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 639543943}
+  - component: {fileID: 639543942}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &639543942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639543941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f5bf0ec4ab9344ea7f86c54931c83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  cameraPivot: {fileID: 0}
+--- !u!4 &639543943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639543941}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 109.606415, y: -190.59607, z: -68.25098}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &660815137
 GameObject:
   m_ObjectHideFlags: 0
@@ -21746,8 +21807,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1228417406}
-        m_TargetAssemblyTypeName: CardBattles.Managers.EndGameManager, Assembly-CSharp
+      - m_Target: {fileID: 1228417404}
+        m_TargetAssemblyTypeName: CardBattles.Managers.TurnManager, Assembly-CSharp
         m_MethodName: EndGame
         m_Mode: 6
         m_Arguments:
@@ -25540,6 +25601,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400010, guid: 825737b4f3e59ea408add66dfb772477, type: 3}
   m_PrefabInstance: {fileID: 877184195}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1203400963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1203400964}
+  - component: {fileID: 1203400965}
+  - component: {fileID: 1203400966}
+  m_Layer: 5
+  m_Name: EndGameText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1203400964
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203400963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 633087928}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 3.93}
+  m_SizeDelta: {x: 1000, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1203400965
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203400963}
+  m_CullTransparentMesh: 1
+--- !u!114 &1203400966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203400963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2d00ed5b3dd0502448e381bbc6157a03, type: 3}
+    m_FontSize: 100
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!1 &1228417403
 GameObject:
   m_ObjectHideFlags: 0
@@ -25608,13 +25748,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac40849d6a094b6b8c049a692f7ae326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endGameText: {fileID: 1203400966}
   rayCastBlocker: {fileID: 633087930}
   endGameEventVisual:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1654402907}
+        m_TargetAssemblyTypeName: CardBattles.Managers.EffectVisualsManager, Assembly-CSharp
+        m_MethodName: EndGameEffectTrigger
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  fadeDuration: 2.5
+  fadeEase: 1
+  quitBattles:
+    m_PersistentCalls:
       m_Calls: []
-  endGameSlowDownFinalTimeScaleValue: 0.05
+  endGameSlowDownFinalTimeScaleValue: 0.5
   endGameSlowDownTime: 2
-  endGameSlowDownEase: 14
+  endGameSlowDownEase: 2
 --- !u!114 &1228417407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27113,6 +27271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteOff: {fileID: 1872217001, guid: f2f1cf68878ff1a4683521f12c9b458c, type: 3}
+  buttons: []
   buttonCooldownTime: 0.5
   endTurnButton: {fileID: 667533253}
   endTurnButtonEvent:
@@ -27146,6 +27305,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  endTurnButtonStartTurnDelay: 0.2
   spriteOffDuration: 0.5
   textMoveDownAmount: 5
   buttonClickSoundString: Button.Click
@@ -27493,6 +27653,8 @@ MonoBehaviour:
   PlayerHero: {fileID: 68240585}
   EnemyHero: {fileID: 466022520}
   offset: 250
+  explosionVFX: {fileID: 114000013578891942, guid: 100a4b1ea60ed6946929b963910930b2, type: 3}
+  explosionSoundName: Boom
 --- !u!4 &1654402908
 Transform:
   m_ObjectHideFlags: 0
@@ -33832,8 +33994,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1228417406}
-        m_TargetAssemblyTypeName: CardBattles.Managers.EndGameManager, Assembly-CSharp
+      - m_Target: {fileID: 1228417404}
+        m_TargetAssemblyTypeName: CardBattles.Managers.TurnManager, Assembly-CSharp
         m_MethodName: EndGame
         m_Mode: 6
         m_Arguments:
@@ -36120,3 +36282,4 @@ SceneRoots:
   - {fileID: 1228417405}
   - {fileID: 1654402908}
   - {fileID: 964680010}
+  - {fileID: 639543943}

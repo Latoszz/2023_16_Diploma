@@ -10,7 +10,7 @@ namespace CardBattles.CardScripts {
             base.Initialize(cardData, isPlayersCard);
             if (cardData.EffectDictionary.Keys.Any(k => k != EffectTrigger.OnPlay)) {
                 // Only the key EffectTrigger.OnPlay exists
-                Debug.LogWarning($"SPELL {cardData.name} HAS EFFECTS IT SHOULD NOT HAVE, OR DOES NOT HAVE ONPLAY EFFECTS");
+                Debug.LogWarning($"SPELL {cardData.name} HAS EFFECTS IT SHOULD NOT HAVE, OR IT DOES NOT HAVE ONPLAY EFFECTS");
             }
 
             if (cardData is not SpellData spellData) 

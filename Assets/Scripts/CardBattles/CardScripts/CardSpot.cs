@@ -21,7 +21,7 @@ namespace CardBattles.CardScripts {
         private Color defaultColor = Color.clear;
         [SerializeField] private Color highlightColor = Color.cyan;
 
-        [SerializeField] private string cardsPlayClipName = "Cards.Place";
+        [SerializeField] private static string cardsPlayClipName = "Cards.Place";
 
         private void Awake() {
             image = GetComponent<Image>();
@@ -54,7 +54,7 @@ namespace CardBattles.CardScripts {
             StopHighlight();
         }
 
-        private void PlayDropSound() {
+        public static void PlayDropSound() {
             var placeClip = AudioCollection.Instance.GetClip(cardsPlayClipName);
             AudioManager.Instance.PlayWithVariation(placeClip);
         }

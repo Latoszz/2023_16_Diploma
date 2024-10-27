@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using CardBattles.Enums;
 using CardBattles.Particles;
 using NaughtyAttributes;
@@ -44,7 +45,7 @@ namespace CardBattles.Managers {
 
         // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator HealVisual(Component target) {
-            ParticleFactory(healVFX, target.transform.position);
+            ParticleFactory(healVFX, target.transform.position,healAnimationDuration);
             yield return null;
         }
 
@@ -77,13 +78,13 @@ namespace CardBattles.Managers {
             var heroTransform = isItAWin ? EnemyHero : PlayerHero;
             var particle = isItAWin ? winVFX : loseVFX;
 
-            ParticleFactory(particle, heroTransform.position, 0);
-            yield return new WaitForSecondsRealtime(0.2f);
+            ParticleFactory(particle, heroTransform.position, 30);
+            yield return new WaitForSecondsRealtime(0.4f);
             for (int i = 0; i < 8; i++) {
                 float angle = i * Mathf.PI * 2f / 8;
                 float x = Mathf.Cos(angle) * offset;
                 float y = Mathf.Sin(angle) * offset;
-                ParticleFactory(particle, heroTransform.position + new Vector3(x, y, 0), 0);
+                ParticleFactory(particle, heroTransform.position + new Vector3(x, y, 0), 30);
             }
             yield return new WaitForSecondsRealtime(0.2f);
             yield return null;
@@ -94,8 +95,16 @@ namespace CardBattles.Managers {
             var newParticleParent = Instantiate(vfx, particlesGameObject, true);
             newParticleParent.transform.position = position;
             
-            StartCoroutine(newParticleParent.PlayFor(healAnimationDuration));
+            StartCoroutine(newParticleParent.PlayFor(duration));
             return newParticleParent;
+        }
+        [SerializeField] private ParticleParent explosionVFX;
+        [SerializeField] private string explosionSoundName = "Boom";
+        
+        public ParticleParent Explosion(Vector3 position, float duration = 1f) {
+            var x =AudioCollection.Instance.GetClip(explosionSoundName);
+            AudioManager.Instance.PlayWithVariation(x);
+            return ParticleFactory(explosionVFX, position, duration);
         }
     }
 }

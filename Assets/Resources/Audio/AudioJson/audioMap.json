@@ -1,9 +1,18 @@
 {
   "Cards": {
     "Draw": "drawKnife1",
-    "Place": "impactSoft_medium_003"
+    "Place": "footstep_carpet_003"
   },
   "Button": {
     "Click": "click3"
-  }
+  },
+  "Boom": "metallic-boom",
+  "Damage": {
+    "Hero": "impactWood_heavy_003",
+    "Card": "impactWood_medium_002"
+  },
+  "Lose": "jingles_SAX07",
+  "Win": "jingles_SAX10",
+  "TurnStart": "jingles_SAX04",
+  "TurnEnd": "jingles_SAX05"
 }

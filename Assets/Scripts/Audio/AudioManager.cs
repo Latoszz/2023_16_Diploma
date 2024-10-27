@@ -1,4 +1,5 @@
 ﻿using System;
+using CardBattles.Managers;
 using JetBrains.Annotations;
 using NaughtyAttributes;
 using Unity.VisualScripting;
@@ -43,6 +44,12 @@ namespace Audio {
                 Debug.Log("Tried to play a non existant sound");
                 return;
             }
+            if (TurnManager.Instance.gameHasEnded && clip.name.StartsWith("End.")) {
+                Debug.Log("TurnManager.Instance.gameHasEnded so no more audio");
+                return;
+            }
+
+            
             effectsSource.volume = volume;
             effectsSource.pitch = pitch;
             effectsSource.PlayOneShot(clip, volume);

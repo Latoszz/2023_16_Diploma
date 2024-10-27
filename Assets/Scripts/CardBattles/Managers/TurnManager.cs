@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Audio;
 using CardBattles.Character;
 using NaughtyAttributes;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace CardBattles.Managers {
         private float startOfGameWait = 0.1f;
 
         [BoxGroup("Wait Times"), SerializeField]
-        private float turnChangeBuffer = 0.8f;
+        private float turnChangeBuffer = 0.2f;
 
         public static TurnManager Instance { get; private set; }
 
@@ -45,7 +46,7 @@ namespace CardBattles.Managers {
         }
 
 
-        private void EndGame(bool isPlayersHero) {
+        public void EndGame(bool isPlayersHero) {
             if (gameHasEnded) {
                 return;
             }
@@ -95,6 +96,7 @@ namespace CardBattles.Managers {
 
         [Button(enabledMode: EButtonEnableMode.Playmode)]
         private IEnumerator ChangeTurn() {
+        
             if (gameHasEnded)
                 yield break;
 
@@ -103,11 +105,12 @@ namespace CardBattles.Managers {
 
             isPlayersTurn = waiting.IsPlayers;
             UpdatePlayers();
-            if (playing == enemy) {
-                yield return enemyAi.PlayTurn();
-                yield return new WaitForSeconds(turnChangeBuffer);
-                StartCoroutine(ChangeTurn());
-            }
+            
+            if (playing != enemy) yield break;
+            
+            yield return enemyAi.PlayTurn();
+            yield return new WaitForSeconds(turnChangeBuffer);
+            StartCoroutine(ChangeTurn());
         }
 
         private IEnumerator ChangeTurnActions() {
@@ -116,6 +119,7 @@ namespace CardBattles.Managers {
             yield return waiting.StartOfTurn();
         }
 
+        
         //TODO
         private IEnumerator TurnChangeAnimation() {
             yield return null;

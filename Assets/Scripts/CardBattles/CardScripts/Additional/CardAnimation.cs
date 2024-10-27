@@ -3,6 +3,7 @@ using System.Collections;
 using Audio;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
+using CardBattles.Managers;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
@@ -106,7 +107,9 @@ namespace CardBattles.CardScripts.Additional {
                 .DOMove(
                     cardSpot.transform.position,
                     playCardTime)
-                .SetEase(playCardEase);
+                .SetEase(playCardEase).WaitForCompletion();
+            CardSpot.PlayDropSound();
+
         }
 
 
@@ -232,6 +235,9 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         public IEnumerator Die() {
+            yield return new WaitForSeconds(0.4f);
+            EffectVisualsManager.Instance.Explosion(transform.position, 3);
+            
             yield return null;
         }
 

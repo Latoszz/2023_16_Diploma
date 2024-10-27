@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using Audio;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Interfaces;
+using CardBattles.Managers;
 using NaughtyAttributes;
 using Unity.Mathematics;
 using UnityEngine;
@@ -70,11 +72,14 @@ namespace CardBattles.CardScripts {
         public int GetAttack() => Attack;
         public void ChangeAttackBy(int amount) => Attack += amount;
 
-
+        [SerializeField] private string takeDamageSound = "Damage.Card";
         public void TakeDamage(int amount) {
             amount = amount > 0 ? amount : 0;
             CurrentHealth -= amount;
+            var x =AudioCollection.Instance.GetClip(takeDamageSound);
+            AudioManager.Instance.PlayWithVariation(x);
         }
+        
 
         public void Heal(int amount) {
             amount = amount > 0 ? amount : 0;
@@ -87,6 +92,7 @@ namespace CardBattles.CardScripts {
 
         private IEnumerator DeathCoroutine() {
             yield return StartCoroutine(cardAnimation.Die());
+            
             yield return new WaitForSeconds(dyingDuration);
             Destroy(gameObject);
         }
