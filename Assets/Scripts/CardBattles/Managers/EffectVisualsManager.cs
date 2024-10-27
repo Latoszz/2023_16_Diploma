@@ -31,8 +31,7 @@ namespace CardBattles.Managers {
                 { EffectName.Heal, HealVisual },
                 { EffectName.DealDamage, DamageVisual },
                 { EffectName.ChangeAttack, ChangeAttackVisual },
-                { EffectName.BuffHp, BuffHpVisual },
-                {EffectName.ChangeAttack, ChangeAttackVisual}
+                { EffectName.BuffHp, BuffHpVisual }
             };
         }
 

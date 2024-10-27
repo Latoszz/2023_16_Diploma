@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Audio;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Enums;
@@ -77,8 +78,17 @@ namespace CardBattles.CardScripts {
 
         [SerializeField] private string takeDamageSound = "Damage.Card";
         public void TakeDamage(int amount, bool isInstaKill = false) {
+                
+                
             amount = amount > 0 ? amount : 0;
             CurrentHealth -= amount;
+            if (properties == null) {
+                Debug.LogWarning("Properties list is not initialized in Minion.");
+            }
+            if (!(properties.Contains(AdditionalProperty.ImmuneToPoison)) && isInstaKill) {
+                Die();
+            }
+
             var x =AudioCollection.Instance.GetClip(takeDamageSound);
             AudioManager.Instance.PlayWithVariation(x);
         }
@@ -122,6 +132,7 @@ namespace CardBattles.CardScripts {
             canvas.sortingOrder -= num;
         }
         public void BuffHp(int amount) {
+            Debug.Log($"{name} buffed by {amount}");
             MaxHealth += amount;
             Heal(amount);
         }

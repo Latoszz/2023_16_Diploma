@@ -19,7 +19,7 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 00000000
+    m_keys: 02000000
     m_values:
     - effectName: 0
       targetType: 4

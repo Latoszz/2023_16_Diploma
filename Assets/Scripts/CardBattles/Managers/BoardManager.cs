@@ -91,7 +91,7 @@ namespace CardBattles.Managers {
                     targets.AddRange(GetOpposingCard(card));
                     break;
                 case TargetType.AdjacentMinions:
-                    targets.AddRange(Playing(isPlayers).GetAdjecentCards());
+                    targets.AddRange(Playing(isPlayers).GetAdjecentCards(card));
                     break;
                 case TargetType.BothHeroes:
                     targets.Add(player.hero.gameObject);

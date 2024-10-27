@@ -182,7 +182,7 @@ namespace CardBattles.Character {
             manaManager.RefreshMana();
             var cards = boardSide.GetNoNullCards();
             foreach (var card in cards) {
-                card.DoEffect(EffectTrigger.OnStartTurn);
+                StartCoroutine(card.DoEffect(EffectTrigger.OnStartTurn));
             }
         }
         public IEnumerator TurnChangeSoundEffect() {
@@ -197,11 +197,10 @@ namespace CardBattles.Character {
         }
 
         public IEnumerator EndOfTurn() {
-           
-
+            
             yield return StartCoroutine(BoardManager.Instance.Attack(IsPlayers));
             foreach (var card in boardSide.GetNoNullCards()) {
-                card.DoEffect(EffectTrigger.OnEndTurn);
+                StartCoroutine(card.DoEffect(EffectTrigger.OnEndTurn));
             }
 
             yield return null;

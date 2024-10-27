@@ -3,6 +3,7 @@ namespace CardBattles.Enums {
         FreeToPlay,
         Chance50ToNotAttack,
         Poisonous,
+        ImmuneToPoison,
         Unimplemented
     }
 }
