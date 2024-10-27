@@ -72,3 +72,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 /Assets/Thirdparty/CardBattles/Sprout Lands/premium stuff
 /Assets/Thirdparty/CardBattles/premium stuff
+ProjectSettings/TimeManager.asset
