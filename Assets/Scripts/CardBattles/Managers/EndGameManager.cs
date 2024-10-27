@@ -1,14 +1,23 @@
+using System;
 using System.Collections;
-using CardBattles.Enums;
 using DG.Tweening;
 using NaughtyAttributes;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CardBattles.Managers {
     public class EndGameManager : MonoBehaviour {
-        [SerializeField, Required] private CanvasGroup rayCastBlocker;
+        private void OnEnable() {
+            quitBattles.AddListener(SceneSwitcher.Instance.ExitOutOfBattles);
+        }
 
+        private void OnDisable() {
+            quitBattles.RemoveListener(SceneSwitcher.Instance.ExitOutOfBattles);
+        }
+
+        [SerializeField, Required] private CanvasGroup rayCastBlocker;
+        [SerializeField] public UnityEvent<bool> endGameEventVisual;
+        private bool animationEnded = false;
         public void EndGame(bool isPlayersHero) {
             StartCoroutine(EndGameCoroutine(isPlayersHero));
             StartCoroutine(GameSlowDown());
@@ -16,28 +25,37 @@ namespace CardBattles.Managers {
 
         private IEnumerator EndGameCoroutine(bool isPlayersHero) {
             rayCastBlocker.blocksRaycasts = true;
+            endGameEventVisual?.Invoke(!isPlayersHero);
+            yield return new WaitForSecondsRealtime(endGameSlowDownTime);
             if (isPlayersHero) {
                 yield return LoseGame();
             }
             else {
                 yield return WinGame();
             }
+
+            animationEnded = true;
         }
 
         private IEnumerator WinGame() {
             Debug.Log("Congrats you won");
-            yield return new WaitForSecondsRealtime(2f);
-            if (Application.isEditor)
-                EditorApplication.isPlaying = false;
+            
+            yield return null;
         }
 
         private IEnumerator LoseGame() {
-            EffectVisualsManager.Instance.visual[EffectName.EndOfGame](new Component());
             Debug.Log("Boohoo :(  LOSER");
-            yield return new WaitForSecondsRealtime(2f);
-            if (Application.isEditor)
-                EditorApplication.isPlaying = false;
+            yield return null;
         }
+
+        private UnityEvent quitBattles;
+        public void QuitGame() {
+            if(!animationEnded) return;
+            Debug.Log("quit battles invoked");
+            quitBattles?.Invoke();
+        }
+        
+        
         
 
 

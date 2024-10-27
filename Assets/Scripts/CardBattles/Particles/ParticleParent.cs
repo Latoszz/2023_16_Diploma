@@ -28,6 +28,11 @@ namespace CardBattles.Particles {
 		}
 
 		public IEnumerator PlayFor(float time = 1f) {
+			if (time <= 0f) {
+				PlayVFX();
+				yield return null;
+			}
+			
 			ps.Play(true);
 			yield return new WaitForSeconds(time);
 			ps.Stop(true);

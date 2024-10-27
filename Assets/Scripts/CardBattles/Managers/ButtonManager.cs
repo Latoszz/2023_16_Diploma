@@ -56,8 +56,11 @@ namespace CardBattles.Managers {
 
         private IEnumerator CheckForButtonEnabled() {
             do {
-                if (buttonsEnabled != TurnManager.Instance.isPlayersTurn)
-                    ButtonsEnabled(TurnManager.Instance.isPlayersTurn);
+                var isPlayersTurn = TurnManager.Instance.isPlayersTurn;
+                if (buttonsEnabled != isPlayersTurn) {
+                    ButtonsEnabled(isPlayersTurn);
+                }
+
                 yield return new WaitForSeconds(0.1f);
             } while (!TurnManager.Instance.gameHasEnded);
         }
@@ -74,7 +77,7 @@ namespace CardBattles.Managers {
 
             drawButtonEvent?.Invoke();
             StartCoroutine(ButtonCooldownRoutine());
-            StartCoroutine(PressButtonVisual(drawButton));
+            StartCoroutine(PressButtonVisualCoroutine(drawButton));
         }
 
         private void EndTurnButtonClickHandler() {
@@ -82,26 +85,33 @@ namespace CardBattles.Managers {
 
             endTurnButtonEvent?.Invoke();
             StartCoroutine(ButtonCooldownRoutine());
-            StartCoroutine(PressButtonVisual(endTurnButton));
+            StartCoroutine(PressButtonVisualCoroutine(endTurnButton, true));
         }
 
         [SerializeField] private float spriteOffDuration = 0.5f;
         [SerializeField] private float textMoveDownAmount = 3f;
-        // ReSharper disable Unity.PerformanceAnalysis
-        private IEnumerator PressButtonVisual(Button button) {
+
+        private IEnumerator PressButtonVisualCoroutine(Button button, bool isEndTurnButton = false) {
             StartCoroutine(ButtonSound());
-            
-            button.image.overrideSprite = spriteOff;
-            var rectTransform = button.GetComponent<ButtonTextVal>().text.GetComponent<RectTransform>();
-            rectTransform.position += new Vector3(0,-textMoveDownAmount,0);
-            
+
+            ButtonVisual(button, false);
+
+
             yield return new WaitForSeconds(spriteOffDuration);
-            
-            rectTransform.position -= new Vector3(0,-textMoveDownAmount,0);
-            button.image.overrideSprite = null;
+            if (isEndTurnButton) yield return new WaitUntil(() => TurnManager.Instance.isPlayersTurn);
+            ButtonVisual(button, true);
+        }
+
+        // ReSharper disable Unity.PerformanceAnalysis
+        private void ButtonVisual(Button button, bool buttonUp) {
+            button.image.overrideSprite = buttonUp ? null : spriteOff;
+            var rectTransform = button.GetComponent<ButtonTextVal>().text.GetComponent<RectTransform>();
+            rectTransform.position +=
+                buttonUp ? new Vector3(0, -textMoveDownAmount, 0) : new Vector3(0, textMoveDownAmount, 0);
         }
 
         [SerializeField] private string buttonClickSoundString;
+
         private IEnumerator ButtonSound() {
             var clip = AudioCollection.Instance.GetClip(buttonClickSoundString);
             AudioManager.Instance.PlayWithVariation(clip);
