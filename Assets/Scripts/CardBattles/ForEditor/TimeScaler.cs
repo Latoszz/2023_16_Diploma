@@ -1,5 +1,6 @@
 using System;
 using NaughtyAttributes;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,8 @@ namespace CardBattles.ForEditor {
             UpdateTimeCallback();
         }
         public void UpdateTimeCallbackValue(float val) {
-            if(!enabled)
+            
+            if(!enabled || !Application.isPlaying)
                 return;
             timeScale = val;
             UpdateTimeCallback();

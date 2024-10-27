@@ -30,7 +30,8 @@ namespace CardBattles.Managers {
             visual = new Dictionary<EffectName, EffectAnimationDelegate> {
                 { EffectName.Heal, HealVisual },
                 { EffectName.DealDamage, DamageVisual },
-                { EffectName.ChangeAttack, ChangeAttackAnimation }
+                { EffectName.ChangeAttack, ChangeAttackAnimation },
+                { EffectName.EndOfGame, EndGameEffect}
             };
         }
 
