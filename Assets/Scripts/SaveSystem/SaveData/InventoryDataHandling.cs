@@ -137,6 +137,7 @@ namespace SaveSystem.SaveData {
                     item.SetSprite(cardSetData.cardSetIcon);
                     
                     itemSlot.AddItem(item);
+                    Destroy(itemObject);
                 }
             }
         }
