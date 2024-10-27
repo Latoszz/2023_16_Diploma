@@ -46,8 +46,7 @@ namespace Audio {
             }
             effectsSource.volume = volume;
             effectsSource.pitch = pitch;
-            effectsSource.clip = clip;
-            effectsSource.Play();
+            effectsSource.PlayOneShot(clip, volume);
         } 
 
         // ReSharper disable ParameterHidesMember
