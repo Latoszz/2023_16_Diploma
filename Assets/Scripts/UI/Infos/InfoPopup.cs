@@ -3,6 +3,7 @@ using DG.Tweening;
 using Events;
 using QuestSystem;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InfoPopup : MonoBehaviour {
@@ -25,6 +26,11 @@ public class InfoPopup : MonoBehaviour {
     }
 
     private void ShowInfo(string questId) {
+        StartCoroutine(ShowInfoCoroutine(questId));
+    }
+
+    private IEnumerator ShowInfoCoroutine(string questId) {
+        yield return new WaitUntil((() => DialogueController.Instance.DialogueClosed));
         QuestInfoSO questInfo = questManager.GetQuestById(questId).info;
         infoTitle.text = questInfo.displayName;
         infoDescription.text = questInfo.questDescription;
