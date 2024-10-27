@@ -19,10 +19,11 @@ namespace CardBattles.CardScripts {
     [SuppressMessage("ReSharper", "UnusedMember.Local")]
     public abstract class Card : PlayerEnemyMonoBehaviour, IHasCost {
         [NonSerialized] private EffectManager.EffectDelegate effectDelegate;
+        [NonSerialized] protected Canvas canvas;
 
         [NonSerialized] protected CardDisplay cardDisplay;
         [NonSerialized] protected CardAnimation cardAnimation;
-        [NonSerialized] protected CardDragging cardDragging;
+        [NonSerialized] public CardDragging cardDragging;
 
         [BoxGroup("Card")] public string cardName;
         [BoxGroup("Card"), ResizableTextArea] public string description;
@@ -38,6 +39,7 @@ namespace CardBattles.CardScripts {
         [HorizontalLine(1f)] [CanBeNull] protected CardSpot isPlacedAt;
 
         private void Awake() {
+            canvas = GetComponent<Canvas>();
             cardDisplay = GetComponent<CardDisplay>();
             cardAnimation = GetComponent<CardAnimation>();
             cardDragging = GetComponent<CardDragging>();
@@ -91,8 +93,8 @@ namespace CardBattles.CardScripts {
         }
 
         public virtual IEnumerator Play() {
-            yield return StartCoroutine(cardAnimation.Play(this));
             yield return StartCoroutine(DoEffect(EffectTrigger.OnPlay));
+            yield return StartCoroutine(cardAnimation.Play(this));
         }
 
         public IEnumerator DoEffect(EffectTrigger effectTrigger) {

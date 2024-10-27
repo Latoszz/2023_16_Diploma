@@ -31,8 +31,6 @@ namespace CardBattles.CardScripts.Additional {
                 return;
             }
 
-            var clip = AudioCollection.Instance.GetClip("ggg.Abc");
-            //AudioManager.Instance.PlayWithVariation();
             baseOrder = canvas.sortingOrder;
             canvas.sortingOrder = 100;
             
@@ -72,7 +70,7 @@ namespace CardBattles.CardScripts.Additional {
                 enabled = false;
             }
             else {
-                SnapBack();
+                 SnapBack();
             }
         }
 

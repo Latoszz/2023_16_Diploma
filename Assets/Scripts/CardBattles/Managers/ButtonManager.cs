@@ -1,15 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace CardBattles.Managers {
     public class ButtonManager : MonoBehaviour {
         public static ButtonManager Instance { get; private set; }
         private bool buttonsEnabled;
-        private bool drawButtonCooldown = false;
+        private bool buttonCooldown = false;
+
+
+        //[SerializeField] private Sprite spriteOn;
+        [SerializeField] private Sprite spriteOff;
+        
+        [SerializeField]
+        private List<Button> buttons = new List<Button>();
+
+        [SerializeField] private float buttonCooldownTime = 0.5f;
+
+        [BoxGroup("End Turn"), SerializeField]
+        private Button endTurnButton;
+
+        [BoxGroup("End Turn"), SerializeField]
+        private UnityEvent endTurnButtonEvent;
+
+        [BoxGroup("Draw"), SerializeField]
+        private Button drawButton;
+
+        [BoxGroup("Draw"), SerializeField]
+        private UnityEvent drawButtonEvent;
 
         private void Awake() {
             if (Instance is null) {
@@ -26,24 +49,25 @@ namespace CardBattles.Managers {
                 if (!buttons.Contains(button))
                     buttons.Add(button);
             }
+            ButtonsEnabled(false);
 
-            drawButton.onClick.AddListener(OnDrawButtonClick);
+            drawButton.onClick.AddListener(DrawButtonClickHandler);
+            endTurnButton.onClick.AddListener(EndTurnButtonClickHandler);
             StartCoroutine(CheckForButtonEnabled());
         }
 
-        [SerializeField] private List<Button> buttons;
-
-
-        [BoxGroup("Draw"), SerializeField] private Button drawButton;
-        [BoxGroup("Draw"), SerializeField] private float drawButtonCooldownTime = 0.5f;
-
-        [InfoBox("Make sure to add onclick events here, not in the button")] [BoxGroup("Draw"), SerializeField]
-        private UnityEvent drawButtonEvent;
 
         private IEnumerator CheckForButtonEnabled() {
             do {
-                if (buttonsEnabled != TurnManager.Instance.isPlayersTurn)
-                    ButtonsEnabled(TurnManager.Instance.isPlayersTurn);
+                var isPlayersTurn = TurnManager.Instance.isPlayersTurn;
+                if (buttonsEnabled != isPlayersTurn) {
+                    if (isPlayersTurn) {
+                        yield return new WaitForSeconds(1f);
+                    }
+                    ButtonsEnabled(isPlayersTurn);
+
+                }
+
                 yield return new WaitForSeconds(0.1f);
             } while (!TurnManager.Instance.gameHasEnded);
         }
@@ -52,21 +76,71 @@ namespace CardBattles.Managers {
             buttonsEnabled = value;
             foreach (var button in buttons) {
                 button.enabled = value;
+                button.interactable = value;
             }
         }
 
-        private void OnDrawButtonClick() {
-            if (!drawButtonCooldown) {
-                drawButtonEvent.Invoke();
-                StartCoroutine(DrawButtonCooldownRoutine());
+        private void DrawButtonClickHandler() {
+            if (buttonCooldown) return;
+
+            drawButtonEvent?.Invoke();
+            StartCoroutine(ButtonCooldownRoutine());
+            StartCoroutine(PressButtonVisualCoroutine(drawButton));
+        }
+        [SerializeField]
+        private float endTurnButtonStartTurnDelay = 0.2f;
+        private void EndTurnButtonClickHandler() {
+            if (buttonCooldown) return;
+            ButtonsEnabled(false);
+
+            StartCoroutine(EndTurnButtonClickCoroutine());
+            StartCoroutine(ButtonCooldownRoutine());
+            StartCoroutine(PressButtonVisualCoroutine(endTurnButton, true));
+        }
+
+        private IEnumerator EndTurnButtonClickCoroutine() {
+            yield return new WaitForSeconds(endTurnButtonStartTurnDelay);
+            endTurnButtonEvent?.Invoke();
+        }
+
+        [SerializeField] private float spriteOffDuration = 0.5f;
+        [SerializeField] private float textMoveDownAmount = 3f;
+
+        private IEnumerator PressButtonVisualCoroutine(Button button, bool isEndTurnButton = false) {
+            StartCoroutine(ButtonSound());
+
+            ButtonVisual(button, false);
+
+
+            yield return new WaitForSeconds(spriteOffDuration);
+            if (isEndTurnButton) {
+                yield return new WaitUntil(() => !TurnManager.Instance.isPlayersTurn);
+                yield return new WaitUntil(() => TurnManager.Instance.isPlayersTurn);
             }
+            ButtonVisual(button, true);
+        }
+
+        // ReSharper disable Unity.PerformanceAnalysis
+        private void ButtonVisual(Button button, bool buttonUp) {
+            button.image.overrideSprite = buttonUp ? null : spriteOff;
+            var rectTransform = button.GetComponent<ButtonTextVal>().text.GetComponent<RectTransform>();
+            rectTransform.position +=
+                buttonUp ? new Vector3(0, textMoveDownAmount, 0) : new Vector3(0, -textMoveDownAmount, 0);
+        }
+
+        [SerializeField] private string buttonClickSoundString;
+
+        private IEnumerator ButtonSound() {
+            var clip = AudioCollection.Instance.GetClip(buttonClickSoundString);
+            AudioManager.Instance.PlayWithVariation(clip);
+            yield return null;
         }
 
 
-        private IEnumerator DrawButtonCooldownRoutine() {
-            drawButtonCooldown = true;
-            yield return new WaitForSeconds(drawButtonCooldownTime);
-            drawButtonCooldown = false;
+        private IEnumerator ButtonCooldownRoutine() {
+            buttonCooldown = true;
+            yield return new WaitForSeconds(buttonCooldownTime);
+            buttonCooldown = false;
         }
 
         //TODO add some fancy shmansy OnHover, OnHoverExit Actions that allow mana to highlight

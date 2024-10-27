@@ -14,7 +14,7 @@ namespace CardBattles.Character {
         //[SerializeField] private UnityEvent drawEvent;
         [InfoBox("Move to a separate component")]
         [Foldout("Audio"), SerializeField]
-        private AudioClip drawClip = null;
+        private string drawClipName;
 
         
         //TODO after adding each card, sort the objects in hand so the order matches the order in Cards
@@ -76,7 +76,6 @@ namespace CardBattles.Character {
                 coroutines.Add(coroutine);
 
                 if (cardsToDraw.Count > 1) {
-                   // drawEvent?.Invoke();
                     yield return new WaitForSeconds(timeBetweenDrawingManyCard);
                 }
             }
@@ -91,8 +90,12 @@ namespace CardBattles.Character {
         }
 
         private IEnumerator DrawCoroutine(Card card, Vector3 finalposition) {
-            AudioManager.Instance.PlayWithVariation(drawClip);
-            yield return new WaitForSeconds(drawClip.length*.8f);
+            var drawClip = AudioCollection.Instance.GetClip(drawClipName);
+            if (drawClip is not null) {
+                AudioManager.Instance.PlayWithVariation(drawClip);
+                yield return new WaitForSeconds(drawClip.length * .8f);
+            }
+
             card.ChangeCardVisible(isPlayers);
             var coroutine = StartCoroutine(card.DrawAnimation(finalposition));
             yield return coroutine;

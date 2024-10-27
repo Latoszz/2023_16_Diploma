@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace CardBattles.Managers {
     public static class EffectManager {
-        private static Dictionary<EffectName, EffectAnimationManager.EffectAnimationDelegate> Animation =>
-            EffectAnimationManager.Animation;
+        private static Dictionary<EffectName, EffectVisualsManager.EffectAnimationDelegate> Visual =>
+            EffectVisualsManager.Instance.visual;
 
         public delegate IEnumerator EffectDelegate(List<GameObject> targets, int value);
 
@@ -16,15 +16,25 @@ namespace CardBattles.Managers {
                 new() {
                     { EffectName.Heal, Heal },
                     { EffectName.DealDamage, DealDamage },
-                    { EffectName.ChangeAttack, ChangeAttack }
+                    { EffectName.ChangeAttack, ChangeAttack },
+                    { EffectName.BuffHp, BuffHp }
                 };
+
+        private static IEnumerator BuffHp(List<GameObject> targets, int value) {
+            foreach (var target in targets) {
+                if (target.TryGetComponent(typeof(IDamageable), out var component)) {
+                    ((IDamageable)component).BuffHp(value);
+                    yield return Visual[EffectName.BuffHp](component);
+                }
+            }
+        }
 
 
         private static IEnumerator Heal(List<GameObject> targets, int heal) {
             foreach (var target in targets) {
                 if (target.TryGetComponent(typeof(IDamageable), out var component)) {
                     ((IDamageable)component).Heal(heal);
-                    yield return Animation[EffectName.Heal](component);
+                    yield return Visual[EffectName.Heal](component);
                 }
             }
         }
@@ -34,13 +44,18 @@ namespace CardBattles.Managers {
             foreach (var target in targets) {
                 if (target.TryGetComponent(typeof(IDamageable), out var component)) {
                     ((IDamageable)component).TakeDamage(damage);
-                    yield return Animation[EffectName.DealDamage](component);
+                    yield return Visual[EffectName.DealDamage](component);
                 }
             }
         }
 
         private static IEnumerator ChangeAttack(List<GameObject> targets, int value) {
-            throw new System.NotImplementedException();
+            foreach (var target in targets) {
+                if (target.TryGetComponent(typeof(IAttacker), out var component)) {
+                    ((IAttacker)component).ChangeAttackBy(value);
+                    yield return Visual[EffectName.DealDamage](component);
+                }
+            }
         }
     }
 }

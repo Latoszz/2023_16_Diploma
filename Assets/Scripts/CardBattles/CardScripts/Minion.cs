@@ -1,11 +1,16 @@
 using System;
 using System.Collections;
+using Audio;
 using CardBattles.CardScripts.CardDatas;
+using CardBattles.Enums;
 using CardBattles.Interfaces;
+using CardBattles.Managers;
+using DG.Tweening;
 using NaughtyAttributes;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace CardBattles.CardScripts {
     public class Minion : Card, IAttacker {
@@ -23,7 +28,8 @@ namespace CardBattles.CardScripts {
             }
         }
 
-        [SerializeField] [BoxGroup("Data")] private int maxHealth;
+        [SerializeField] [BoxGroup("Data")]
+        private int maxHealth;
 
         private int MaxHealth {
             get => maxHealth;
@@ -64,17 +70,19 @@ namespace CardBattles.CardScripts {
             dataChanged.AddListener(cardDisplay.UpdateData);
         }
 
-   
 
         public Action<Vector3, IDamageable> action;
         public int GetAttack() => Attack;
         public void ChangeAttackBy(int amount) => Attack += amount;
 
-
-        public void TakeDamage(int amount) {
+        [SerializeField] private string takeDamageSound = "Damage.Card";
+        public void TakeDamage(int amount, bool isInstaKill = false) {
             amount = amount > 0 ? amount : 0;
             CurrentHealth -= amount;
+            var x =AudioCollection.Instance.GetClip(takeDamageSound);
+            AudioManager.Instance.PlayWithVariation(x);
         }
+        
 
         public void Heal(int amount) {
             amount = amount > 0 ? amount : 0;
@@ -87,6 +95,7 @@ namespace CardBattles.CardScripts {
 
         private IEnumerator DeathCoroutine() {
             yield return StartCoroutine(cardAnimation.Die());
+            
             yield return new WaitForSeconds(dyingDuration);
             Destroy(gameObject);
         }
@@ -96,11 +105,26 @@ namespace CardBattles.CardScripts {
         }
 
         public void AttackTarget(IDamageable target) {
+            if(properties.Contains(AdditionalProperty.Chance50ToNotAttack))
+                if (Random.value < 0.5f) {
+                    transform.DOShakePosition(0.5f,20f,20);
+                    return;
+                }
+
             StartCoroutine(
                 cardAnimation.AttackAnimation(
                     this, target));
         }
 
+        public IEnumerator ChangeSortingOrderTemporarily(int num) {
+            canvas.sortingOrder += num;
+            yield return new WaitForSeconds(2f);
+            canvas.sortingOrder -= num;
+        }
+        public void BuffHp(int amount) {
+            MaxHealth += amount;
+            Heal(amount);
+        }
         private void OnDestroy() {
             if (isPlacedAt is not null) {
                 if (isPlacedAt.card is not null) {

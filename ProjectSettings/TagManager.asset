@@ -28,7 +28,7 @@ TagManager:
   - Border
   - Collectible
   - 
-  - 
+  - Post Proessing
   - 
   - 
   - 
@@ -64,4 +64,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: VFX
+    uniqueID: 1867790779
     locked: 0

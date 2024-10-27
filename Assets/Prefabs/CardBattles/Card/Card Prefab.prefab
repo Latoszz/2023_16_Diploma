@@ -943,8 +943,8 @@ MonoBehaviour:
   attackKnockBackEase: 3
   attackMoveBackTime: 0.25
   attackMoveBackEase: 4
-  cardFadeOutDuration: 0.7
-  cardFadeOutEase: 7
+  cardFadeOutDuration: 1.3
+  cardFadeOutEase: 3
 --- !u!114 &-6973358634639818209
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -61,6 +61,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMana: 2
+  spendMana: {fileID: 0}
+  refreshMana: {fileID: 0}
 --- !u!223 &236794669833872205
 Canvas:
   m_ObjectHideFlags: 0
@@ -151,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abcae5c24102411d969f44c5765011d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawClip: {fileID: 8300000, guid: d474c3dfcfe62e148b4bdfba0b7a1d51, type: 3}
+  drawClipName: Cards.Draw
   timeBetweenDrawingManyCard: 0.5
   distanceMulti: 240
 --- !u!223 &3147822543683485689
@@ -319,10 +321,6 @@ MonoBehaviour:
   shakeTime: 0.15
   noManaAnimationEase: 7
   refreshAnimationFlashColor: {r: 1, g: 1, b: 1, a: 1}
-  refreshAnimationDuration: 0.5
-  refreshAnimationEasePercentage: 0.3
-  refreshAnimationInEase: 8
-  refreshAnimationOutEase: 21
 --- !u!222 &5643885046872754150
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -577,7 +575,7 @@ RectTransform:
   m_GameObject: {fileID: 6991344830743389148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 383297406531746151}
@@ -616,11 +614,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 72bb30eb48597bd44aa606222bfa96cf, type: 3}
-    m_FontSize: 16
+    m_Font: {fileID: 12800000, guid: 2d00ed5b3dd0502448e381bbc6157a03, type: 3}
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0

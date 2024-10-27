@@ -1,4 +1,5 @@
 ﻿using System;
+using CardBattles.Managers;
 using JetBrains.Annotations;
 using NaughtyAttributes;
 using Unity.VisualScripting;
@@ -30,6 +31,12 @@ namespace Audio {
         public AudioSource musicSource;
 
 
+        
+        private void Start() {
+            SceneManager.activeSceneChanged += ChangeMusic;
+        }
+        
+        
         // ReSharper disable Unity.PerformanceAnalysis
         public void Play([CanBeNull] AudioClip clip,float volume=1f, float pitch =1f) 
         {
@@ -37,10 +44,15 @@ namespace Audio {
                 Debug.Log("Tried to play a non existant sound");
                 return;
             }
+            if (TurnManager.Instance.gameHasEnded && clip.name.StartsWith("End.")) {
+                Debug.Log("TurnManager.Instance.gameHasEnded so no more audio");
+                return;
+            }
+
+            
             effectsSource.volume = volume;
             effectsSource.pitch = pitch;
-            effectsSource.clip = clip;
-            effectsSource.Play();
+            effectsSource.PlayOneShot(clip, volume);
         } 
 
         // ReSharper disable ParameterHidesMember
@@ -78,10 +90,6 @@ namespace Audio {
                 Instance = this;
             }
             DontDestroyOnLoad(this);
-        }
-
-        private void Update() {
-            SceneManager.activeSceneChanged += ChangeMusic;
         }
 
         private void ChangeMusic(Scene scene, Scene scene1) {

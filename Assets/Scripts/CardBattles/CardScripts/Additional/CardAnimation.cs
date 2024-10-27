@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using Audio;
+using CardBattles.Enums;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
+using CardBattles.Managers;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
@@ -106,7 +108,9 @@ namespace CardBattles.CardScripts.Additional {
                 .DOMove(
                     cardSpot.transform.position,
                     playCardTime)
-                .SetEase(playCardEase);
+                .SetEase(playCardEase).WaitForCompletion();
+            CardSpot.PlayDropSound();
+
         }
 
 
@@ -137,14 +141,21 @@ namespace CardBattles.CardScripts.Additional {
         //TODO Add distance scaling to animaation
         //USE LIKE A STATIC METHOD 
         public IEnumerator AttackAnimation(IAttacker attacker, IDamageable damageable) {
+            bool poisonous = false;
+            if (attacker is Minion minion) {
+                if (minion.properties.Contains(AdditionalProperty.Poisonous)) {
+                    Debug.Log("poisonous attack haveth happened");
+                    poisonous = true;
+                }
+            }
             var attack = attacker.GetAttack();
             var attackerTransform = attacker.GetTransform();
             var originalPosition = attackerTransform.position;
             var targetPosition = damageable.GetTransform().position;
             var moveDirection = (targetPosition - originalPosition).normalized;
             yield return AttackMoveToTarget(attackerTransform, targetPosition);
-
-            damageable.TakeDamage(attack);
+            
+            damageable.TakeDamage(attack,poisonous);
 
             //TODO add variable to determine how much time to stop for at a target
             yield return new WaitForEndOfFrame();
@@ -232,6 +243,9 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         public IEnumerator Die() {
+            yield return new WaitForSeconds(0.4f);
+            EffectVisualsManager.Instance.Explosion(transform.position, 3);
+            
             yield return null;
         }
 
@@ -242,10 +256,10 @@ namespace CardBattles.CardScripts.Additional {
         public IEnumerator Play(Card card) {
             switch (card) {
                 case Spell:
-                    StartCoroutine(FadeOut(card.gameObject));
+                    yield return StartCoroutine(FadeOut(card.gameObject));
                     break;
             }
-
+            
             yield return null;
         }
 
@@ -259,10 +273,20 @@ namespace CardBattles.CardScripts.Additional {
             if (!TryGetComponent(typeof(CanvasGroup), out var canvasGroup))
                 yield break;
 
+            StartCoroutine(Spin(cardGameObject));
             yield return ((CanvasGroup)canvasGroup)
                 .DOFade(0f, cardFadeOutDuration)
                 .SetEase(cardFadeOutEase)
                 .WaitForCompletion();
+        }
+
+        private IEnumerator Spin(GameObject cardGameObject) {
+            
+            var cor = transform.DORotate(new Vector3(360, 0,0), 1f, RotateMode.FastBeyond360).SetRelative(true)
+                .SetEase(Ease.Linear).SetLoops(-1).SetLink(cardGameObject,LinkBehaviour.KillOnDestroy);
+            cor.Play();
+            yield return new WaitForSeconds(cardFadeOutDuration);
+            
         }
     }
 }

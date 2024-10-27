@@ -1,5 +1,6 @@
     using System.Collections;
 using System.Reflection.Emit;
+using Audio;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
@@ -59,9 +60,12 @@ namespace CardBattles.Character.Hero {
             }*/
         }
 
+        [SerializeField] private string takeDamageSound = "Damage.Hero";
         private void GetHit() {
             SetCurrentHealth(hero.currentHealth);
             StartCoroutine(GetHitAnimation());
+            var x =AudioCollection.Instance.GetClip(takeDamageSound);
+            AudioManager.Instance.PlayWithVariation(x);
         }
 
         private IEnumerator GetHitAnimation() {
