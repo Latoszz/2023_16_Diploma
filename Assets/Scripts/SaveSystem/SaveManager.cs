@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Esper.ESave;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace SaveSystem {
@@ -61,7 +62,8 @@ namespace SaveSystem {
             saveFile.Save();
             Debug.Log("Game saved");
         }
-        
+        public UnityEvent tmp;
+
         public void LoadGame() {
             if (!HasSaveData()) {
                 Debug.Log("Tried loading but no data");
@@ -74,7 +76,9 @@ namespace SaveSystem {
                 savableObject.LoadSaveData(saveFile);
             }
             Debug.Log("Game loaded");
+            tmp?.Invoke();
         }
+        
 
         private List<ISavable> FindAllSavableObjects() {
             IEnumerable<ISavable> objects = FindObjectsOfType<MonoBehaviour>(true)
@@ -94,5 +98,6 @@ namespace SaveSystem {
         private void OnApplicationQuit() {
             SaveGame();
         }
+        
     }
 }

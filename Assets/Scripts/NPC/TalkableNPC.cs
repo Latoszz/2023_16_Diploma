@@ -4,6 +4,7 @@ using Audio;
 using Interaction;
 using ScriptableObjects.Dialogue;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace NPC {
     public class TalkableNPC : NPC, ITalkable {
@@ -15,6 +16,8 @@ namespace NPC {
         [SerializeField] private float detectionDistance = 8;
 
         private GameObject player;
+        private bool talkedTo = false;
+
         [SerializeField] private string npcID;
 
         [ContextMenu("Generate guid for id")]
@@ -29,10 +32,14 @@ namespace NPC {
         public override void Interact() {
             if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
                 Talk(dialogue[0]);
+                talkedTo = true;
+
             }
         }
 
+        [SerializeField] public UnityEvent changeEnemyState;
         public void Talk(DialogueText dialogueText) {
+            changeEnemyState?.Invoke();
             dialogueController.DisplaySentence(dialogueText);
             dialogueController.SetCurrentAudioConfig(audioConfig);
             questIndicator.HideQuestIcon();
@@ -45,6 +52,9 @@ namespace NPC {
 
         public string GetID() {
             return npcID;
+        }
+        public bool TalkedTo() {
+            return talkedTo;
         }
     }
 }

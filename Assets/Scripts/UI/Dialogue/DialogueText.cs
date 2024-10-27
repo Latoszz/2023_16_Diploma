@@ -7,7 +7,7 @@ namespace ScriptableObjects.Dialogue {
         [SerializeField] private string nameText;
         [TextArea(5, 10)]
         [SerializeField] private string[] sentences;
-
+        
         public Sprite Icon => icon;
         public string NameText => nameText;
         public string[] Sentences => sentences;

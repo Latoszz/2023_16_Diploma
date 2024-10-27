@@ -20904,6 +20904,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 667533253}
   text: {fileID: 1579003734}
+--- !u!1 &690749945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 690749947}
+  - component: {fileID: 690749946}
+  m_Layer: 0
+  m_Name: obstdataman
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &690749946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690749945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb3d2f055db9e74babfab5f5d22e81a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpListObstacle: {fileID: 0}
+--- !u!4 &690749947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690749945}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 129.48526, y: -157.87598, z: 201.956}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &694886074 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114000012621004594, guid: 3c11fdfbee91dbd4f885d0eedeeefa87, type: 3}
@@ -25843,7 +25888,19 @@ MonoBehaviour:
   fadeEase: 1
   quitBattles:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 690749946}
+        m_TargetAssemblyTypeName: obstacleDataManager, Assembly-CSharp
+        m_MethodName: changeNextObstacle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   endGameSlowDownFinalTimeScaleValue: 0.5
   endGameSlowDownTime: 2
   endGameSlowDownEase: 2
@@ -36378,3 +36435,4 @@ SceneRoots:
   - {fileID: 1654402908}
   - {fileID: 964680010}
   - {fileID: 639543943}
+  - {fileID: 690749947}

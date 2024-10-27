@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Interaction.Objects {
     public class Obstacle: MonoBehaviour {
         [SerializeField] private string obstacleID;
         [ContextMenu("Generate guid for id")]
+        
         private void GenerateGuid() {
             obstacleID = Guid.NewGuid().ToString();
         }
@@ -20,5 +22,8 @@ namespace Interaction.Objects {
         public string GetID() {
             return obstacleID;
         }
+
+        public static UnityEvent<string> getObtacleEvent;
+        
     }
 }

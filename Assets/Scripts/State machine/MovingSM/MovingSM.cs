@@ -68,7 +68,10 @@ public class MovingSM : StateMachine, IPointerClickHandler {
     public void SetWaiting(bool value) {
         waiting = value;
     }
-    
+
+    public void DialogueChangeToFalse() {
+        IsDialogue = false;
+    }
     public void OnPointerClick(PointerEventData eventData) {
         if(Vector3.Distance(player.transform.position, navMeshAgent.transform.position) < detectionDistance)
             IsDialogue = true;
