@@ -6,6 +6,7 @@ using CardBattles.Particles;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.Splines;
 
 namespace CardBattles.Managers {
     public class EffectVisualsManager : MonoBehaviour {
@@ -31,7 +32,7 @@ namespace CardBattles.Managers {
                 { EffectName.Heal, HealVisual },
                 { EffectName.DealDamage, DamageVisual },
                 { EffectName.ChangeAttack, ChangeAttackAnimation },
-                { EffectName.EndOfGame, EndGameEffect}
+                { EffectName.EndOfGame, EndGameEffect }
             };
         }
 
@@ -69,8 +70,16 @@ namespace CardBattles.Managers {
 
         [SerializeField] private ParticleParent purpleFogVFX;
         [SerializeField] private ParticleParent purplefogSmallVFX;
-        private IEnumerator EndGameEffect(Component target) {
+
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
+        private IEnumerator EndGameEffect() {
+            StartCoroutine(EndGameEffect(new Component()));
             yield return null;
+        }
+
+        private IEnumerator EndGameEffect(Component target) {
+            
+            yield return new WaitForSecondsRealtime(0.2f);
         }
     }
 }
