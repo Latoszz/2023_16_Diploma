@@ -22,4 +22,8 @@ public class CollectItemsQuestStep : QuestStep {
             FinishQuestStep();
         }
     }
+
+    protected override void SetQuestStepState(string state) {
+        
+    }
 }

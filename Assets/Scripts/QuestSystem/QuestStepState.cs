@@ -17,35 +17,17 @@ OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHE
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  ***/
 
-using Events;
-using UnityEngine;
-
 namespace QuestSystem {
-    public abstract class QuestStep: MonoBehaviour {
-        private string questId;
-        private bool isFinished = false;
-        private int stepIndex;
+    [System.Serializable]
+    public class QuestStepState {
+        public string state;
 
-        public void InitializeQuestStep(string questId, int stepIndex, string questStepState) {
-            this.questId = questId;
-            this.stepIndex = stepIndex;
-            if (!string.IsNullOrEmpty(questStepState)) {
-                SetQuestStepState(questStepState);
-            }
+        public QuestStepState(string state) {
+            this.state = state;
         }
 
-        protected void FinishQuestStep() {
-            if (!isFinished) {
-                isFinished = true;
-                GameEventsManager.Instance.QuestEvents.AdvanceQuest(questId);
-                Destroy(this.gameObject);
-            }
+        public QuestStepState() {
+            this.state = "";
         }
-
-        protected void ChangeState(string newState) {
-            GameEventsManager.Instance.QuestEvents.QuestStepStateChange(questId, stepIndex, new QuestStepState(newState));
-        }
-
-        protected abstract void SetQuestStepState(string state);
     }
 }

@@ -24,11 +24,23 @@ namespace QuestSystem {
         public QuestInfoSO info;
         public QuestState state;
         private int currentQuestStepIndex;
+        private QuestStepState[] questStepStates;
 
         public Quest(QuestInfoSO questInfo) {
             this.info = questInfo;
             this.state = QuestState.REQUIREMENTS_NOT_MET;
             this.currentQuestStepIndex = 0;
+            this.questStepStates = new QuestStepState[info.questSteps.Length];
+            for (int i = 0; i < questStepStates.Length; i++) {
+                questStepStates[i] = new QuestStepState();
+            }
+        }
+        
+        public Quest(QuestInfoSO questInfo, QuestState questState, int currentQuestStepIndex, QuestStepState[] questStepStates) {
+            this.info = questInfo;
+            this.state = questState;
+            this.currentQuestStepIndex = currentQuestStepIndex;
+            this.questStepStates = questStepStates;
         }
 
         public void MoveToNextStep() {
@@ -43,7 +55,7 @@ namespace QuestSystem {
             GameObject questStepPrefab = GetCurrentQuestStepPrefab();
             if (questStepPrefab != null) {
                 QuestStep questStep = Object.Instantiate(questStepPrefab, parentTransform).GetComponent<QuestStep>();
-                questStep.InitializeQuestStep(info.id);
+                questStep.InitializeQuestStep(info.id, currentQuestStepIndex, questStepStates[currentQuestStepIndex].state);
             }
         }
 
@@ -57,6 +69,28 @@ namespace QuestSystem {
                                  info.id + " stepIndex = " + currentQuestStepIndex);
             }
             return questStepPrefab;
+        }
+
+        public void StoreQuestStepState(QuestStepState questStepState, int stepIndex) {
+            if (stepIndex < questStepStates.Length) {
+                questStepStates[stepIndex].state = questStepState.state;
+            }
+        }
+
+        public int GetCurrentQuestStepIndex() {
+            return currentQuestStepIndex;
+        }
+        
+        public void SetCurrentQuestStepIndex(int value) { 
+            currentQuestStepIndex = value;
+        }
+
+        public QuestStepState[] GetQuestStepStates() {
+            return questStepStates;
+        }
+        
+        public void SetQuestStepStates(QuestStepState[] questStepStates) {
+            this.questStepStates = questStepStates;
         }
     }
 }

@@ -18,6 +18,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  ***/
 
 using System.Collections.Generic;
+using Esper.ESave;
 using Events;
 using UnityEngine;
 
@@ -25,24 +26,37 @@ namespace QuestSystem {
     public class QuestManager: MonoBehaviour {
         private Dictionary<string, Quest> questsDict;
 
+        public static QuestManager Instance;
+        private static string QuestSaveID = "Quest data";
+
         private void Awake() {
+            if (Instance != null && Instance != this) {
+                Destroy(gameObject);
+            } else {
+                Instance = this;
+            }
             questsDict = CreateQuestsDict();
         }
 
         private void OnEnable() {
             GameEventsManager.Instance.QuestEvents.OnStartQuest += StartQuest;
             GameEventsManager.Instance.QuestEvents.OnAdvanceQuest += AdvanceQuest;
+            GameEventsManager.Instance.QuestEvents.OnQuestStepStateChange += QuestStepStateChange;
             GameEventsManager.Instance.QuestEvents.OnFinishQuest += FinishQuest;
         }
 
         private void OnDisable() {
             GameEventsManager.Instance.QuestEvents.OnStartQuest -= StartQuest;
             GameEventsManager.Instance.QuestEvents.OnAdvanceQuest -= AdvanceQuest;
+            GameEventsManager.Instance.QuestEvents.OnQuestStepStateChange -= QuestStepStateChange;
             GameEventsManager.Instance.QuestEvents.OnFinishQuest -= FinishQuest;
         }
 
         private void Start() {
             foreach (Quest quest in questsDict.Values) {
+                if (quest.state == QuestState.IN_PROGRESS) {
+                    quest.InstantiateCurrentQuestStep(this.transform);
+                }
                 GameEventsManager.Instance.QuestEvents.QuestStateChange(quest);
             }
         }
@@ -99,6 +113,12 @@ namespace QuestSystem {
             //TODO implement rewards
             Debug.Log("Good job!");
         }
+
+        private void QuestStepStateChange(string id, int stepIndex, QuestStepState questStepState) {
+            Quest quest = GetQuestById(id);
+            quest.StoreQuestStepState(questStepState, stepIndex);
+            ChangeQuestState(id, quest.state);
+        }
         
         private Dictionary<string, Quest> CreateQuestsDict() {
             QuestInfoSO[] allQuests = Resources.LoadAll<QuestInfoSO>("Quests");
@@ -113,6 +133,39 @@ namespace QuestSystem {
 
         public Quest GetQuestById(string id) {
             return questsDict[id];
+        }
+
+        public Dictionary<string, Quest> GetQuestList() {
+            return questsDict;
+        }
+
+        public void SaveQuests(SaveFile saveFile) {
+            saveFile.AddOrUpdateData(QuestSaveID, QuestSaveID);
+            foreach (Quest quest in questsDict.Values) {
+                string id = quest.info.id;
+                if(saveFile.HasData(id))
+                    saveFile.DeleteData(id);
+
+                string questStepStates = JsonUtility.ToJson(quest.GetQuestStepStates());
+                saveFile.AddOrUpdateData(id + "_state", quest.state);
+                saveFile.AddOrUpdateData(id + "_stepIndex", quest.GetCurrentQuestStepIndex());
+                saveFile.AddOrUpdateData(id + "_stepStates", questStepStates);
+                saveFile.Save();
+            }
+        }
+
+        public void LoadQuests(SaveFile saveFile) {
+            if (!saveFile.HasData(QuestSaveID))
+                return;
+            
+            foreach (Quest quest in questsDict.Values) {
+                string id = quest.info.id;
+                QuestState state = saveFile.GetData<QuestState>(id + "_state");
+                int currentQuestStepIndex = saveFile.GetData<int>(id + "_stepIndex");
+                string questStepStates = saveFile.GetData<string>(id + "_stepStates");
+                quest.SetCurrentQuestStepIndex(currentQuestStepIndex);
+                ChangeQuestState(id, state);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Esper.ESave;
+using QuestSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -59,6 +60,7 @@ namespace SaveSystem {
             foreach (ISavable savableObject in savableObjects) {
                 savableObject.PopulateSaveData(saveFile);
             }
+            QuestManager.Instance.SaveQuests(saveFile);
             saveFile.Save();
             Debug.Log("Game saved");
         }
@@ -76,6 +78,7 @@ namespace SaveSystem {
             foreach (ISavable savableObject in savableObjects) {
                 savableObject.LoadSaveData(saveFile);
             }
+        QuestManager.Instance.LoadQuests(saveFile);
             Debug.Log("Game loaded");
         }
         

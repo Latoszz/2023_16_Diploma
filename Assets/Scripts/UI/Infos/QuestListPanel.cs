@@ -18,7 +18,14 @@ public class QuestListPanel : MonoBehaviour {
     private Dictionary<string, GameObject> listOfQuests;
 
     private void Awake() {
+        var loadedQuests = QuestManager.Instance.GetQuestList();   
         listOfQuests = new Dictionary<string, GameObject>();
+        if (loadedQuests != null) {
+            foreach (Quest quest in loadedQuests.Values) {
+                if(quest.state is QuestState.IN_PROGRESS)
+                    AddQuestToList(quest.info.id);
+            }
+        }
     }
     
     private void OnEnable() {
