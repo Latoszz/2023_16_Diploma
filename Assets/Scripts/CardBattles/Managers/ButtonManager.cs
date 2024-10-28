@@ -35,12 +35,13 @@ namespace CardBattles.Managers {
         private UnityEvent drawButtonEvent;
 
         private void Awake() {
-            if (Instance is null) {
-                Instance = this;
-            }
-            else {
+            if (Instance != null && Instance != this) {
                 Destroy(gameObject);
             }
+            else {
+                Instance = this;
+            }
+            DontDestroyOnLoad(this);
         }
 
         private void Start() {
