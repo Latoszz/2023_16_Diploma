@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using NaughtyAttributes;
+using SaveSystem;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class obstacleDataManager : MonoBehaviour {
     public static obstacleDataManager Instance;
@@ -23,23 +21,12 @@ public class obstacleDataManager : MonoBehaviour {
     }
 
     public void changeNextObstacle(bool val) {
-        if (val)
+        if (val) {
             i += 1;
-        Debug.Log("i: " +i);
-        aa();
-    }
-
-    public void aa() {
-        Debug.Log("i: " +i);
-        for (int j = 0; j < tmpListObstacle.obstacles.Count; j++) {
-            if (tmpListObstacle.obstacles[j] is not null) {
-                var tmpObstacle = tmpListObstacle.obstacles[j];
-                var boolean = (j > i);
-
-                Debug.Log($"{tmpObstacle.GetID()}: {tmpObstacle.IsObstacle()}=> {boolean}");
-                tmpObstacle.SetObstacle(boolean);
-            }
+            SaveManager.Instance.ChangeObstacleData(tmpListObstacle.obstacleIds[i], false);
         }
+
+        Debug.Log("i: " +i);
     }
     
 }

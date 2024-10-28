@@ -35,10 +35,8 @@ namespace NPC {
                 talkedTo = true;
             }
         }
-
-        [SerializeField] public UnityEvent changeEnemyState;
+        
         public void Talk(DialogueText dialogueText) {
-            changeEnemyState?.Invoke();
             dialogueController.DisplaySentence(dialogueText);
             dialogueController.SetCurrentAudioConfig(audioConfig);
             questIndicator.HideQuestIcon();
