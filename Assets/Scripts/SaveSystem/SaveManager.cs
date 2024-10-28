@@ -66,8 +66,10 @@ namespace SaveSystem {
         public void LoadGame() {
             if (!HasSaveData()) {
                 Debug.Log("Tried loading but no data");
+                #if UNITY_EDITOR
                 saveFile.AddOrUpdateData(InitialSaveDataID, 0);
                 saveFile.Save();
+                #endif
                 return;
             }
             

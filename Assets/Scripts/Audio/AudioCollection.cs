@@ -38,8 +38,9 @@ namespace Audio {
 
         void Start()
         {
-            
+            #if UNITY_EDITOR
             LoadDataFromJson();
+            #endif
         }
 
     
@@ -134,12 +135,14 @@ namespace Audio {
             {
                 return entry.clip;
             }
-
+            
+            #if UNITY_EDITOR
             // If the entry is not found, add a new one with a null AudioClip
             var newEntry = new AudioEntry { key = key, clip = null };
             audioMap.Add(newEntry);
             Debug.Log($"Added new key '{key}' to the audio map with a null AudioClip. You can assign a clip later.");
             UpdateJsonFromDictionary();
+            #endif
             return null;
         }
 #if UNITY_EDITOR
@@ -215,8 +218,6 @@ namespace Audio {
                 Debug.LogError($"Failed to save JSON to file: {e.Message}");
             }
         }
-    
+#endif
     }
 }
-
-#endif

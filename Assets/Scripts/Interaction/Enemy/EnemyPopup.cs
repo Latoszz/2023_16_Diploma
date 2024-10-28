@@ -1,4 +1,5 @@
 using SaveSystem;
+using UI.Inventory;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,6 +27,7 @@ public class EnemyPopup : MonoBehaviour {
         if (CheckDeck(3)) {
             EnemyStateManager.Instance.SetCurrentEnemy(Enemy);
             Close();
+            InventoryDeckManager.Instance.UpdateDeck();
             SaveManager.Instance.SaveGame();
             SceneSwitcher.Instance.LoadScene(BattleSceneName);
         }

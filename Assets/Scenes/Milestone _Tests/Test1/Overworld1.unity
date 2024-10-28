@@ -32466,6 +32466,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419754316}
   m_CullTransparentMesh: 1
+--- !u!1 &424208970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6347267319737226041, guid: 9ef293c1a6fdd3c419d29e78412bd609, type: 3}
+  m_PrefabInstance: {fileID: 2825809131530419386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &424208973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424208970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 1
+  m_VerticalFit: 0
 --- !u!1 &438012855
 GameObject:
   m_ObjectHideFlags: 0
@@ -63265,6 +63284,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980102729}
   m_CullTransparentMesh: 1
+--- !u!1 &990828506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 990828508}
+  - component: {fileID: 990828507}
+  m_Layer: 0
+  m_Name: InventoryDeckManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &990828507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990828506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad3a34bf1e846b1a384c9aeb102b2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &990828508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990828506}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.105516, y: 4.6248865, z: -10.554716}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1004977412
 GameObject:
   m_ObjectHideFlags: 0
@@ -86092,9 +86155,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2142827946}
   - {fileID: 1647093809}
   - {fileID: 1013884774}
+  - {fileID: 2142827948}
   m_Father: {fileID: 711465379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1227636059
@@ -146957,11 +147020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425f3330934486e40a502ecebadb7a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2142827946 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1022987417242815241, guid: ea1a823c8564feb4683477db0c674e75, type: 3}
-  m_PrefabInstance: {fileID: 2355305683728142919}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2142827947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146977,6 +147035,11 @@ MonoBehaviour:
   itemList: {fileID: 1866393277}
   deckList: {fileID: 899892843}
   cardSetList: {fileID: 417561726}
+--- !u!4 &2142827948 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1022987417242815241, guid: ea1a823c8564feb4683477db0c674e75, type: 3}
+  m_PrefabInstance: {fileID: 2355305683728142919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &733145944535868894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -147487,6 +147550,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 575181926}
+    - target: {fileID: 2929688842504552007, guid: 9ef293c1a6fdd3c419d29e78412bd609, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3322142765136634507, guid: 9ef293c1a6fdd3c419d29e78412bd609, type: 3}
       propertyPath: m_Name
       value: QuestListPanel
@@ -147578,7 +147645,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6347267319737226041, guid: 9ef293c1a6fdd3c419d29e78412bd609, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 424208973}
   m_SourcePrefab: {fileID: 100100000, guid: 9ef293c1a6fdd3c419d29e78412bd609, type: 3}
 --- !u!1001 &3885285781976178914
 PrefabInstance:
@@ -147746,6 +147816,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 329134584}
     m_Modifications:
+    - target: {fileID: 70256666841414459, guid: 32d36d001ac088f4fb690c44b09caa17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 70256666841414459, guid: 32d36d001ac088f4fb690c44b09caa17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1013884773}
+    - target: {fileID: 70256666841414459, guid: 32d36d001ac088f4fb690c44b09caa17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 70256666841414459, guid: 32d36d001ac088f4fb690c44b09caa17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 70256666841414459, guid: 32d36d001ac088f4fb690c44b09caa17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1622753417415180961, guid: 32d36d001ac088f4fb690c44b09caa17, type: 3}
       propertyPath: m_Name
       value: Options View
@@ -148131,6 +148221,7 @@ SceneRoots:
   - {fileID: 7092030444858428485}
   - {fileID: 6723989374039271843}
   - {fileID: 7141268221703146637}
+  - {fileID: 990828508}
   - {fileID: 1893222052}
   - {fileID: 8874856105195882976}
   - {fileID: 1955889537}

@@ -5,6 +5,7 @@ using CardBattles.CardScripts;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Interfaces.InterfaceObjects;
 using CardBattles.Managers;
+using UI.Inventory;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -22,10 +23,9 @@ namespace CardBattles.Character {
         
         private void Start() {
             
-            /*
-            if (!Application.isEditor)
+            
+            //if (!Application.isEditor)
                 cardSetDatas = LoadCardSetData();
-                */
 
             if (cardSetDatas == null) {
                 Debug.LogError("cardSetDatas is null");
@@ -42,7 +42,7 @@ namespace CardBattles.Character {
         
         private List<CardSetData> LoadCardSetData() {
             if (IsPlayers)
-                return InventoryController.Instance.GetDeck();
+                return InventoryDeckManager.Instance.GetDeck();
             return EnemyStateManager.Instance.GetCurrentEnemy().GetDeck();
         }
         

@@ -15,12 +15,14 @@ namespace CardBattles.Managers {
         private void OnEnable() {
             quitBattles.AddListener(ChangeScene);
             quitBattles.AddListener(obstacleDataManager.Instance.changeNextObstacle);
+            quitBattles.AddListener(ChangeEnemyState);
         }
         
 
         private void OnDisable() {
             quitBattles.RemoveListener(ChangeScene);
             quitBattles.RemoveListener(obstacleDataManager.Instance.changeNextObstacle);
+            quitBattles.RemoveListener(ChangeEnemyState);
         }
 
         [SerializeField, Required] private CanvasGroup rayCastBlocker;
@@ -79,6 +81,11 @@ namespace CardBattles.Managers {
             Time.timeScale = 1f;
             GameEventsManager.Instance.ObstacleEvents.ObstacleChange(val);
             SceneManager.LoadScene("Overworld1");
+        }
+
+        private void ChangeEnemyState(bool defeated) {
+            if(defeated)
+                EnemyStateManager.Instance.ChangeEnemyState(EnemyState.Defeated);
         }
 
         [BoxGroup("SlowDown"), SerializeField] private float endGameSlowDownFinalTimeScaleValue = 0.5f;

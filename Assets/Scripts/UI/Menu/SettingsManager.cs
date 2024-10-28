@@ -17,7 +17,7 @@ public class SettingsManager : MonoBehaviour, ISavable {
 
     private float currentMusicVolume = 0.5f;
     private float currentSFXVolume = 0.5f;
-    private Resolution[] resolutions;
+    private List<Resolution> resolutions;
     private static List<string> options;
     private int currentResolutionIndex;
     private bool isFullscreen = true;
@@ -53,18 +53,25 @@ public class SettingsManager : MonoBehaviour, ISavable {
     }
 
     private void SetUpResolutions() {
-        resolutions = Screen.resolutions;
+        resolutions = new List<Resolution>();
+        var availableResolutions = Screen.resolutions;
         options = new List<string>();
         
-        for (int i = 0; i <resolutions.Length; i++) {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
+        for (int i = 0; i < availableResolutions.Length; i++) {
+            int width = availableResolutions[i].width;
+            int height = availableResolutions[i].height;
+            
+            if(height < 720)
+                continue;
+            resolutions.Add(availableResolutions[i]);
+            string option = width+ " x " + height;
             options.Add(option);
 
-            if (!isResolutionLoaded) {
-                if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height) {
+           // if (!isResolutionLoaded) {
+                if (availableResolutions[i].width == Screen.width && availableResolutions[i].height == Screen.height) {
                     currentResolutionIndex = i;
                 }
-            }
+            //}
         }
         resolutionDropdown.ClearOptions();
         resolutionDropdown.AddOptions(options);

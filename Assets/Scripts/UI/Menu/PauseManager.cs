@@ -5,7 +5,6 @@ public class PauseManager : MonoBehaviour {
     [SerializeField] private GameObject pauseView;
     [SerializeField] private GameObject optionsView;
     [SerializeField] private GameObject audioVideoPanel;
-    [SerializeField] private GameObject controlsPanel;
     
     private PostProcessVolume postProcessVolume;
     
@@ -55,12 +54,6 @@ public class PauseManager : MonoBehaviour {
         pauseView.SetActive(false);
         optionsView.SetActive(true);
         audioVideoPanel.SetActive(true);
-        controlsPanel.SetActive(false);
-    }
-    
-    public void ControlsClicked() {
-        audioVideoPanel.SetActive(false);
-        controlsPanel.SetActive(true);
     }
 
     public void ExitClicked() {
