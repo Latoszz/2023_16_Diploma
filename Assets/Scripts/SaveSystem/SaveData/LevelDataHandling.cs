@@ -58,7 +58,6 @@ namespace SaveSystem.SaveData {
             foreach (Obstacle obstacle in allObstacles) {
                 bool isObstacle = saveFile.GetData<bool>(obstacle.GetID());
                 obstacle.SetObstacle(isObstacle);
-                Debug.Log($"Loaded: {obstacle.name} -> {isObstacle}");
             }
             
             if (!saveFile.HasData(ItemSaveData))
