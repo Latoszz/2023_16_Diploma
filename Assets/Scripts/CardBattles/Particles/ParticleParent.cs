@@ -6,6 +6,7 @@ using UnityEngine;
 namespace CardBattles.Particles {
 	public class ParticleParent : MonoBehaviour {
 
+		[SerializeField]
 		private ParticleSystem ps;
 
 		private void Awake() {
@@ -31,9 +32,10 @@ namespace CardBattles.Particles {
 			
 			ps.Play(true);
 			yield return new WaitForSeconds(time);
-			ps.Stop(true);
-
-			StartCoroutine(KillWhenDone());
+			if (ps is not null) {
+				ps.Stop(true);
+				StartCoroutine(KillWhenDone());
+			}
 		}
 
 		private IEnumerator KillWhenDone() {

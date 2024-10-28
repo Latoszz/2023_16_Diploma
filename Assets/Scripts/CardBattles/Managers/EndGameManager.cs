@@ -75,6 +75,7 @@ namespace CardBattles.Managers {
             quitBattles?.Invoke(gameWon);
         }
         private void ChangeScene(bool val) {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Overworld1");
         }
 

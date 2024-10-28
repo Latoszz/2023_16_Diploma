@@ -27,7 +27,9 @@ namespace Audio {
         [SerializeField]
         private float highPitchRange = 1.15f;
     
+        [SerializeField]
         public AudioSource effectsSource;
+        [SerializeField]
         public AudioSource musicSource;
 
 
