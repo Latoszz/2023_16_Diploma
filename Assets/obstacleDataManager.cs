@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using SaveSystem;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,8 +24,11 @@ public class obstacleDataManager : MonoBehaviour {
     }
 
     public void changeNextObstacle(bool val) {
-        if (val)
+        if (val) {
             i += 1;
+            SaveManager.Instance.ChangeObstacleData(tmpListObstacle.obstacleIds[i], false);
+        }
+
         Debug.Log("i: " +i);
         aa();
     }
@@ -37,7 +41,7 @@ public class obstacleDataManager : MonoBehaviour {
                 var boolean = (j > i);
 
                 Debug.Log($"{tmpObstacle.GetID()}: {tmpObstacle.IsObstacle()}=> {boolean}");
-                tmpObstacle.SetObstacle(boolean);
+                //tmpObstacle.SetObstacle(boolean);
             }
         }
     }

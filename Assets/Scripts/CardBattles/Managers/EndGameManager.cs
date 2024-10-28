@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Audio;
 using DG.Tweening;
+using Events;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -75,6 +76,7 @@ namespace CardBattles.Managers {
             quitBattles?.Invoke(gameWon);
         }
         private void ChangeScene(bool val) {
+            GameEventsManager.Instance.ObstacleEvents.ObstacleChange(val);
             SceneManager.LoadScene("Overworld1");
         }
 

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Esper.ESave;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace SaveSystem {
@@ -25,8 +24,9 @@ namespace SaveSystem {
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
             Debug.Log("Scene loaded");
-            if (scene.name != "Overworld1" && scene.name != "Main Menu")
+            if (scene.name != "Overworld1" && scene.name != "Main Menu") {
                 return;
+            }
             Debug.Log("Scene " + scene.name);
             saveFileSetup = GetComponent<SaveFileSetup>();
             saveFile = saveFileSetup.GetSaveFile();
@@ -62,7 +62,6 @@ namespace SaveSystem {
             saveFile.Save();
             Debug.Log("Game saved");
         }
-        public UnityEvent tmp;
 
         public void LoadGame() {
             if (!HasSaveData()) {
@@ -76,7 +75,6 @@ namespace SaveSystem {
                 savableObject.LoadSaveData(saveFile);
             }
             Debug.Log("Game loaded");
-            tmp?.Invoke();
         }
         
 
@@ -98,6 +96,5 @@ namespace SaveSystem {
         private void OnApplicationQuit() {
             SaveGame();
         }
-        
     }
 }
