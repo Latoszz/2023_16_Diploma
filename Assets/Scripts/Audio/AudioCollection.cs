@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections.Generic;
 using System.IO;
 using NaughtyAttributes;
@@ -38,6 +38,7 @@ namespace Audio {
 
         void Start()
         {
+            
             LoadDataFromJson();
         }
 

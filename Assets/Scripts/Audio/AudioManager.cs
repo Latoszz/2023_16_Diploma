@@ -33,6 +33,15 @@ namespace Audio {
         public AudioSource musicSource;
 
 
+        private void Awake() {
+            if (Instance != null && Instance != this) {
+                Destroy(gameObject);
+            }
+            else {
+                Instance = this;
+            }
+            DontDestroyOnLoad(this);
+        }
         
         private void Start() {
             SceneManager.activeSceneChanged += ChangeMusic;
@@ -80,19 +89,7 @@ namespace Audio {
             PlayWithVariation(clips[randomIndex]);
         }
     
-        private void Awake() {
-            if (Instance != null && Instance != this) {
-                if (effectsSource is not null)
-                    Instance.effectsSource = effectsSource;
-                if (musicSource is not null)
-                    Instance.musicSource = musicSource;
-                Destroy(gameObject);
-            }
-            else {
-                Instance = this;
-            }
-            DontDestroyOnLoad(this);
-        }
+       
 
         private void ChangeMusic(Scene scene, Scene scene1) {
             if (scene1.name == "Main Menu") {

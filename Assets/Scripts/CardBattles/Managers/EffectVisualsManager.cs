@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections.Generic;
 using Audio;
@@ -15,7 +15,6 @@ namespace CardBattles.Managers {
             if (Instance is null) {
                 Instance = this;
                 InitializeVisualDictionary();
-                DontDestroyOnLoad(this);
             }
             else {
                 Destroy(gameObject);
