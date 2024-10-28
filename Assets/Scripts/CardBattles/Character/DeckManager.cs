@@ -22,8 +22,10 @@ namespace CardBattles.Character {
         
         private void Start() {
             
+            /*
             if (!Application.isEditor)
                 cardSetDatas = LoadCardSetData();
+                */
 
             if (cardSetDatas == null) {
                 Debug.LogError("cardSetDatas is null");
