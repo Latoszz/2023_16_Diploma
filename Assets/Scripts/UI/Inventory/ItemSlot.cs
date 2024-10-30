@@ -15,13 +15,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
         itemSlotID = Guid.NewGuid().ToString();
     }
 
+    private InventoryController inventoryController;
     private string parentName;
     private Item item;
     private bool isOccupied = false;
-    private bool isActive;
 
     private void Awake() {
         parentName = transform.parent.name;
+        inventoryController = InventoryController.Instance;
     }
     
     public void AddItem(Item item) {
@@ -62,15 +63,23 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        if (eventData.button == PointerEventData.InputButton.Left)
-            SelectSlot();
+        if (eventData.button != PointerEventData.InputButton.Left) 
+            return;
+        
+        if (selectedShader.activeSelf) {
+            inventoryController.DeselectAllSlots();
+            if (item is CardSetItem)
+                inventoryController.HideCardSetDetails();
+            return;
+        }
+        SelectSlot();
     }
 
     private void SelectSlot() {
-        InventoryController.Instance.DeselectAllSlots();
+        inventoryController.DeselectAllSlots();
         selectedShader.SetActive(true);
         if (item is CardSetItem cardSet) {
-            InventoryController.Instance.ShowCardSetDetails(cardSet.GetCardSetData());
+            inventoryController.ShowCardSetDetails(cardSet.GetCardSetData());
         }
     }
 

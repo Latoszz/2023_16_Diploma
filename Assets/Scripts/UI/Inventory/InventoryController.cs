@@ -17,6 +17,7 @@ public class InventoryController : MonoBehaviour {
     private PostProcessVolume postProcessVolume;
 
     private bool isOpen;
+    private bool isCardSetDetailsOpen;
     
     public static InventoryController Instance = null; 
 
@@ -103,8 +104,17 @@ public class InventoryController : MonoBehaviour {
     }
 
     public void ShowCardSetDetails(CardSetData cardSetData) {
-        if (!manageCardSetDetails.IsOpen)
+        if (!isCardSetDetailsOpen) {
             manageCardSetDetails.ReadCardSet(cardSetData);
+            isCardSetDetailsOpen = true;
+        }
+    }
+    
+    public void HideCardSetDetails() {
+        if (isCardSetDetailsOpen) {
+            manageCardSetDetails.Hide();
+            isCardSetDetailsOpen = false;
+        }
     }
 
     public List<ItemSlot> GetDeckSlots() {
@@ -142,5 +152,9 @@ public class InventoryController : MonoBehaviour {
 
     public bool IsOpen() {
         return isOpen;
+    }
+
+    public bool IsCardSetDetailsOpen() {
+        return isCardSetDetailsOpen;
     }
 }

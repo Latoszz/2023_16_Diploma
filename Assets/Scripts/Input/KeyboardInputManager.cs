@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 [DefaultExecutionOrder(-90)]
@@ -17,29 +16,43 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     }
     
     public void OnInventory(InputAction.CallbackContext context) {
-        if (context.performed) {
-            InventoryController inventoryController = InventoryController.Instance;
-            if (inventoryController.IsOpen()) {
-                inventoryController.HideInventory();
-                playerControls.PlayerActionMap.Pause.Enable();
-            }
-            else {
-                inventoryController.ShowInventory();
-                playerControls.PlayerActionMap.Pause.Disable();
-            }
+        if (!context.performed) return;
+        
+        InventoryController inventoryController = InventoryController.Instance;
+        if (inventoryController.IsOpen()) {
+            inventoryController.HideInventory();
+            playerControls.PlayerActionMap.Pause.Enable();
+        }
+        else {
+            inventoryController.ShowInventory();
+            playerControls.PlayerActionMap.Pause.Disable();
         }
     }
     
     public void OnPause(InputAction.CallbackContext context) {
-        if (context.performed) {
-            if (PauseManager.Instance.IsOpen) {
-                PauseManager.Instance.Close();
-                playerControls.PlayerActionMap.Inventory.Enable();
-            }
-            else {
-                PauseManager.Instance.Open();
-                playerControls.PlayerActionMap.Inventory.Disable();
-            }
+        if (!context.performed) 
+            return;
+        
+        if (PauseManager.Instance.IsOpen) {
+            PauseManager.Instance.Close();
+            playerControls.PlayerActionMap.Inventory.Enable();
+        }
+        else {
+            PauseManager.Instance.Open();
+            playerControls.PlayerActionMap.Inventory.Disable();
+        }
+    }
+
+    public void OnEscape(InputAction.CallbackContext context) {
+        if (!context.performed) 
+            return;
+
+        InventoryController inventoryController = InventoryController.Instance;
+        if (!inventoryController.IsOpen()) 
+            return;
+        
+        if (inventoryController.IsCardSetDetailsOpen()) {
+            inventoryController.HideCardSetDetails();
         }
     }
 }

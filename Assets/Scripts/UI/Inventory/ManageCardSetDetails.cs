@@ -13,8 +13,6 @@ public class ManageCardSetDetails : MonoBehaviour {
 
     private List<CardData> cards = new List<CardData>();
     private Animator animator;
-    private bool isOpen;
-    public bool IsOpen => isOpen;
 
     private void Awake() {
         animator = GetComponent<Animator>();
@@ -22,7 +20,6 @@ public class ManageCardSetDetails : MonoBehaviour {
     }
 
     public void ReadCardSet(CardSetData cardSetData) {
-        isOpen = true;
         nameText.text = cardSetData.displayName;
 
         foreach (CardData cardData in cardSetData.cards) {
@@ -55,6 +52,5 @@ public class ManageCardSetDetails : MonoBehaviour {
         }
         cards.Clear();
         nameText.text = "";
-        isOpen = false;
     }
 }
