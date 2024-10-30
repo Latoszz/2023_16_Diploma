@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
+using DG.Tweening;
 using NaughtyAttributes;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CardBattles.Particles {
     public class ParticleParent : MonoBehaviour {
@@ -12,6 +14,19 @@ namespace CardBattles.Particles {
             ps = GetComponent<ParticleSystem>();
         }
 
+        public static UnityEvent killAllParticles = new UnityEvent();
+
+        private void OnEnable() {
+            killAllParticles.AddListener(Kill);
+        }
+
+        private void OnDisable() {
+            killAllParticles.RemoveListener(Kill);
+        }
+
+        private void Kill() {
+            Destroy(gameObject);
+        }
 
         private void TurnOffDefaultParticles() {
             this.AddComponent<ParticleSystem>();
@@ -28,17 +43,24 @@ namespace CardBattles.Particles {
         }
 
         public IEnumerator PlayFor(float time = 1f) {
-            ps.Play(true);
-            yield return new WaitForSeconds(time);
+            var localPs = ps;
+            float x = 0;
+            var tween = DOTween
+                .To(() => x,
+                    y => x = y,
+                    5f,
+                    time);
+            
+            tween.OnPlay(() => { localPs.Play(true); });
+            tween.OnComplete(() => {
+                    localPs.Stop();
+                    StartCoroutine(KillWhenDone());
+                    ;
+                }).SetLink(this.gameObject, LinkBehaviour.KillOnDestroy)
+                .WaitForCompletion();
 
-            if (ps is not null) {
-                ps.Stop(true);
-                StartCoroutine(KillWhenDone());
-            }
-            if (ps is null){
-                Destroy(gameObject);
-                yield break;
-            }
+            tween.Play();
+            yield return tween;
         }
 
         private void OnDestroy() {

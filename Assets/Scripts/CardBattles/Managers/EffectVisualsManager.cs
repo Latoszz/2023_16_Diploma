@@ -16,6 +16,7 @@ namespace CardBattles.Managers {
                 Destroy(gameObject);
             }
             else {
+                InitializeVisualDictionary();
                 Instance = this;
             }
             DontDestroyOnLoad(this);
@@ -97,13 +98,13 @@ namespace CardBattles.Managers {
             var heroTransform = isItAWin ? EnemyHero : PlayerHero;
             var particle = isItAWin ? winVFX : loseVFX;
 
-            ParticleFactory(particle, heroTransform.position, 30);
+            ParticleFactory(particle, heroTransform.position, 10);
             yield return new WaitForSecondsRealtime(0.4f);
             for (int i = 0; i < 8; i++) {
                 float angle = i * Mathf.PI * 2f / 8;
                 float x = Mathf.Cos(angle) * offset;
                 float y = Mathf.Sin(angle) * offset;
-                ParticleFactory(particle, heroTransform.position + new Vector3(x, y, 0), 30);
+                ParticleFactory(particle, heroTransform.position + new Vector3(x, y, 0), 10);
             }
 
             yield return new WaitForSecondsRealtime(0.2f);

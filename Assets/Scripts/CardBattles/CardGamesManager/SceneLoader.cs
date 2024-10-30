@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using CardBattles.Particles;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,19 +41,30 @@ namespace CardBattles.CardGamesManager {
             }
         }
 
+        public void ForceLoad(SceneName sceneName) {
+            Debug.Log(sceneName);
+            var sceneString = GetSceneName(sceneName);
+            ParticleParent.killAllParticles?.Invoke();
+            SceneManager.LoadScene(sceneString);
+        }
         public IEnumerator LoadSceneAsync(SceneName sceneName) {
             var sceneString = GetSceneName(sceneName);
-            
+            var lastProgress = 0f;
             operation = SceneManager.LoadSceneAsync(sceneString);
 
             LoadingScreen(true);
             operation.allowSceneActivation = false;
 
             while (!operation.isDone) {
+                if (lastProgress - operation.progress >= 0.1f) {
+                    lastProgress = operation.progress;
+                    Debug.Log(lastProgress);
+                }
                 if (operation.progress >= 0.9f) {
                     LoadingScreen(false);
 
                     operation.allowSceneActivation = true;
+                    ParticleParent.killAllParticles?.Invoke();
                 }
 
                 yield return null;
@@ -59,8 +72,16 @@ namespace CardBattles.CardGamesManager {
         }
 
         private void LoadingScreen(bool val) {
-            Debug.Log("implement loading screens");
             return;
+        }
+
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
+        private void LoadCardBattles() {
+            StartCoroutine(LoadSceneAsync(SceneName.CardBattle));
+        }
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
+        private void LoadOverworld() {
+            StartCoroutine(LoadSceneAsync(SceneName.Overworld));
         }
     }
 }

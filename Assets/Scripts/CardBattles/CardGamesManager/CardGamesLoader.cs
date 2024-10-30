@@ -39,6 +39,12 @@ namespace CardBattles.CardGamesManager {
             DontDestroyOnLoad(this);
         }
 
+        public void ForceBeginBattleDebug() {
+            //currentBattleData = new BattleData();
+            //InventoryDeckManager.Instance.GetDeck();
+            SceneLoader.Instance.ForceLoad(SceneName.CardBattle);
+            BattleDataHolder.Instance.DebugGetFirstBattleData();
+        }
 
         public void BeginBattleDebug() {
             //currentBattleData = new BattleData();
