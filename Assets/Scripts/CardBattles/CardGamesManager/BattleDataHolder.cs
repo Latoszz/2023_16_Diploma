@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
@@ -19,6 +20,9 @@ namespace CardBattles.CardGamesManager {
             DontDestroyOnLoad(this);
         }
 
+        public BattleData DebugGetFirstBattleData() {
+            return battleDatasWithFlags.Keys.First();
+        }
         public BattleState GetBattleDataState(BattleData battleData) {
             return battleDatasWithFlags[battleData];
         }

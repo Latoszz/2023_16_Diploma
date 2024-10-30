@@ -31,12 +31,14 @@ namespace CardBattles.Particles {
             ps.Play(true);
             yield return new WaitForSeconds(time);
 
+            if (ps is not null) {
+                ps.Stop(true);
+                StartCoroutine(KillWhenDone());
+            }
             if (ps is null){
                 Destroy(gameObject);
                 yield break;
             }
-            ps.Stop(true);
-            StartCoroutine(KillWhenDone());
         }
 
         private void OnDestroy() {

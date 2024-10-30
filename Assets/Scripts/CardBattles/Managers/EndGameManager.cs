@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Audio;
+using CardBattles.CardGamesManager;
 using DG.Tweening;
 using Events;
 using NaughtyAttributes;
@@ -13,15 +14,15 @@ namespace CardBattles.Managers {
     public class EndGameManager : MonoBehaviour {
         [SerializeField] private Text endGameText;
         private void OnEnable() {
-            quitBattles.AddListener(ChangeScene);
-            quitBattles.AddListener(obstacleDataManager.Instance.changeNextObstacle);
+            quitBattles.AddListener(CardGamesLoader.Instance.EndGame);
+//            quitBattles.AddListener(obstacleDataManager.Instance.changeNextObstacle);
             quitBattles.AddListener(ChangeEnemyState);
         }
         
 
         private void OnDisable() {
-            quitBattles.RemoveListener(ChangeScene);
-            quitBattles.RemoveListener(obstacleDataManager.Instance.changeNextObstacle);
+            quitBattles.RemoveListener(CardGamesLoader.Instance.EndGame);
+     //       quitBattles.RemoveListener(obstacleDataManager.Instance.changeNextObstacle);
             quitBattles.RemoveListener(ChangeEnemyState);
         }
 
@@ -74,13 +75,9 @@ namespace CardBattles.Managers {
         private UnityEvent<bool> quitBattles;
         public void QuitGame() {
             if(!animationEnded) return;
+            Time.timeScale = 1f;
             Debug.Log("quit battles  invoked");
             quitBattles?.Invoke(gameWon);
-        }
-        private void ChangeScene(bool val) {
-            Time.timeScale = 1f;
-            GameEventsManager.Instance.ObstacleEvents.ObstacleChange(val);
-            SceneManager.LoadScene("Overworld1");
         }
 
         private void ChangeEnemyState(bool defeated) {

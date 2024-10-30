@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using CardBattles.CardScripts.CardDatas;
 using NaughtyAttributes;
+using UI.Inventory;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -11,9 +12,10 @@ namespace CardBattles.CardGamesManager {
     [DefaultExecutionOrder(-1)]
     public class CardGamesLoader : MonoBehaviour {
         public static CardGamesLoader Instance;
-        
-        
+
+
         private BattleData currentBattleData = null;
+
         [ShowNativeProperty]
         private string CurrentBattleDataName {
             get {
@@ -38,15 +40,23 @@ namespace CardBattles.CardGamesManager {
         }
 
 
-        public void BeginBattle(BattleData battleData, List<CardSetData> playerCardSetDatas) {
-            currentBattleData = battleData;
+        public void BeginBattleDebug() {
+            //currentBattleData = new BattleData();
             StartCoroutine(SceneLoader.Instance.LoadSceneAsync(SceneName.CardBattle));
+            //InventoryDeckManager.Instance.GetDeck();
+            BattleDataHolder.Instance.DebugGetFirstBattleData();
+        }
+
+        public IEnumerator BeginBattle(BattleData battleData, List<CardSetData> playerCardSetDatas) {
+            currentBattleData = battleData;
+            yield return StartCoroutine(SceneLoader.Instance.LoadSceneAsync(SceneName.CardBattle));
             loadEnemyCards?.Invoke(battleData.GetCardSets);
             loadPlayerCards?.Invoke(playerCardSetDatas);
         }
 
         public void EndGame(bool val) {
-            BattleDataHolder.Instance.SetBattleDataState(currentBattleData, val);
+            if (currentBattleData is not null)
+                BattleDataHolder.Instance.SetBattleDataState(currentBattleData, val);
             currentBattleData = null;
             StartCoroutine(SceneLoader.Instance.LoadSceneAsync(SceneName.Overworld));
         }

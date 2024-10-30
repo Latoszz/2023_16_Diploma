@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CardBattles.CardGamesManager;
@@ -35,12 +36,8 @@ namespace CardBattles.Character {
         public void SetCardSetData(List<CardSetData> loadedCardSetDatas) {
             cardSetDatas = loadedCardSetDatas;
         }
-        private void Start() {
-            cardSetDatas = LoadCardSetData();
-
-            if (cardSetDatas == null) {
-                Debug.LogError("cardSetDatas is null");
-            }
+        private IEnumerator Start() {
+            yield return new WaitUntil(() => cardSetDatas != null);
             InitializeDeck();
         }
 
@@ -48,14 +45,6 @@ namespace CardBattles.Character {
             CreateCardSetsFromData(); 
             CreateCardFromDeck();
         }
-        
-        
-        private List<CardSetData> LoadCardSetData() {
-            if (IsPlayers)
-                return InventoryDeckManager.Instance.GetDeck();
-            return EnemyStateManager.Instance.GetCurrentEnemy().GetDeck();
-        }
-        
 
         private void CreateCardSetsFromData() {
             int i = 0;
