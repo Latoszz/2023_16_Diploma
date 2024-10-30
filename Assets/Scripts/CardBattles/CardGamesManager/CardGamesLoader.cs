@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using CardBattles.CardScripts.CardDatas;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -10,8 +11,17 @@ namespace CardBattles.CardGamesManager {
     [DefaultExecutionOrder(-1)]
     public class CardGamesLoader : MonoBehaviour {
         public static CardGamesLoader Instance;
-        public BattleData currentBattleData = null;
-
+        
+        
+        private BattleData currentBattleData = null;
+        [ShowNativeProperty]
+        private string CurrentBattleDataName {
+            get {
+                if (currentBattleData is null)
+                    return "null";
+                return currentBattleData.name;
+            }
+        }
 
         [SerializeField] public UnityEvent<List<CardSetData>> loadEnemyCards;
         [SerializeField] public UnityEvent<List<CardSetData>> loadPlayerCards;

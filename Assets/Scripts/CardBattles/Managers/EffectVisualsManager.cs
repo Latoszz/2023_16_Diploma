@@ -21,6 +21,7 @@ namespace CardBattles.Managers {
             DontDestroyOnLoad(this);
         }
 
+        
         public delegate IEnumerator EffectAnimationDelegate(Component target);
 
         public Dictionary<EffectName, EffectAnimationDelegate> visual;
@@ -36,10 +37,12 @@ namespace CardBattles.Managers {
 
 
         [InfoBox("Assign not prefabs, but pull the prefab into the game, and assign that game object")]
-        [Required]
         [SerializeField]
         private Transform particlesGameObject;
 
+        private GameObject Particleprefab;
+        
+        
         private ParticleParent ParticleFactory(ParticleParent vfx, Vector3 position, float duration = 1f) {
             var newParticleParent = Instantiate(vfx, particlesGameObject, true);
             newParticleParent.transform.position = position;
