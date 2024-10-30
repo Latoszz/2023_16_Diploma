@@ -25,6 +25,8 @@ public class PauseManager : MonoBehaviour {
     }
 
     public void Open() {
+        if (InventoryController.Instance.IsOpen())
+            return;
         pauseView.SetActive(true);
         optionsView.SetActive(false);
         postProcessVolume.enabled = true;

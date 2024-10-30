@@ -44,7 +44,7 @@ public class EnemyPopup : MonoBehaviour {
     public void ClosePopup() {
         deckPopup.SetActive(false);
         Close();
-        InventoryController.Instance.ShowInventory(new InputAction.CallbackContext());
+        InventoryController.Instance.ShowInventory();
     }
 
     private void Close() {

@@ -35,15 +35,25 @@ public class InventoryController : MonoBehaviour {
 
     private void OnEnable() {
         rightClickAction.Enable();
-        rightClickAction.performed += ShowInventory;
+        rightClickAction.performed += ToggleInventory;
     }
 
     private void OnDisable() {
-        rightClickAction.performed -= ShowInventory;
+        rightClickAction.performed -= ToggleInventory;
         rightClickAction.Disable();
     }
 
-    public void ShowInventory(InputAction.CallbackContext context) {
+    private void ToggleInventory(InputAction.CallbackContext context) {
+        if (PauseManager.Instance.IsOpen)
+            return;
+        if(isOpen)
+            HideInventory();
+        else {
+            ShowInventory();
+        }
+    }
+    
+    public void ShowInventory() {
         if (PauseManager.Instance.IsOpen)
             return;
         inventoryUI.SetActive(true);
@@ -54,8 +64,6 @@ public class InventoryController : MonoBehaviour {
     }
 
     public void HideInventory() {
-        if (PauseManager.Instance.IsOpen)
-            return;
         postProcessVolume.enabled = false;
         manageCardSetDetails.Hide();
         DeselectAllSlots();

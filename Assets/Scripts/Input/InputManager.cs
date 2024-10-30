@@ -4,8 +4,6 @@ using UnityEngine;
 public class InputManager : MonoBehaviour {
     public static InputManager Instance = null;
 
-    public PlayerControls playerControls;
-
     [SerializeField] private MouseInputManager mouseInputManager;
 
     private void Awake() {
@@ -16,7 +14,6 @@ public class InputManager : MonoBehaviour {
             Instance = this;
         }
         //DontDestroyOnLoad(this);
-        playerControls = new PlayerControls();
     }
 
     public void EnableInput() {
