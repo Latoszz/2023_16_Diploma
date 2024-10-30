@@ -27532,15 +27532,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0dfd707515fb3a45bde33dc25c2ac74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beginBattle:
-    m_PersistentCalls:
-      m_Calls: []
+  currentBattleData: {fileID: 0}
   loadEnemyCards:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2127471824}
+        m_TargetAssemblyTypeName: CardBattles.Character.DeckManager, Assembly-CSharp
+        m_MethodName: InitializeDeck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   loadPlayerCards:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4994773569284584969}
+        m_TargetAssemblyTypeName: CardBattles.Character.DeckManager, Assembly-CSharp
+        m_MethodName: InitializeDeck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1597161969
 Transform:
   m_ObjectHideFlags: 0
@@ -36118,6 +36140,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
+--- !u!114 &2127471824 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 15981639191630999, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
+  m_PrefabInstance: {fileID: 2127471823}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfed68ce1ac141b1b7bc0de9526ba763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1911326628061783153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36406,6 +36439,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba40ff045a58c4e43b4ffae9ea1c9a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4994773569284584969 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 11471108929920545, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
+  m_PrefabInstance: {fileID: 4994773569284584966}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfed68ce1ac141b1b7bc0de9526ba763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5096501760891315364

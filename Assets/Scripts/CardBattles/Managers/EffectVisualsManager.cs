@@ -12,13 +12,13 @@ namespace CardBattles.Managers {
         public static EffectVisualsManager Instance;
 
         private void Awake() {
-            if (Instance is null) {
-                Instance = this;
-                InitializeVisualDictionary();
-            }
-            else {
+            if (Instance != null && Instance != this) {
                 Destroy(gameObject);
             }
+            else {
+                Instance = this;
+            }
+            DontDestroyOnLoad(this);
         }
 
         public delegate IEnumerator EffectAnimationDelegate(Component target);

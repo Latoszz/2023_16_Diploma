@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using CardBattles.Enums;
 
 [Serializable]
-public class BattleDataFlagDictionary : SerializableDictionary<BattleData, bool>{}
+public class BattleDataFlagDictionary : SerializableDictionary<BattleData, BattleState>{}
 [Serializable]
 public class TriggerEffectDictionary : SerializableDictionary<EffectTrigger, EffectTargetValue>{}
 [Serializable]

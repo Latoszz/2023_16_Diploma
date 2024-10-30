@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CardBattles.CardGamesManager;
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Interfaces.InterfaceObjects;
@@ -13,7 +14,16 @@ namespace CardBattles.Character {
     public class DeckManager : PlayerEnemyMonoBehaviour {
         [SerializeField] private List<CardSetData> cardSetDatas = new List<CardSetData>();
 
-        
+        private void OnEnable() {
+            var x = IsPlayers ? CardGamesLoader.Instance.loadPlayerCards : CardGamesLoader.Instance.loadEnemyCards;
+            x.AddListener(SetCardSetData);
+        }
+
+        private void OnDisable() {
+            var x = IsPlayers ? CardGamesLoader.Instance.loadPlayerCards : CardGamesLoader.Instance.loadEnemyCards;
+            x.RemoveListener(SetCardSetData);
+        }
+
         //TODO ADD SERIAZABLE DICTIONARY
         [SerializeField]
         private SerializableDictionary<string, List<Card>> cardSets =
