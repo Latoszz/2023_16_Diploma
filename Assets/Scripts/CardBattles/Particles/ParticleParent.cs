@@ -14,6 +14,7 @@ namespace CardBattles.Particles {
             ps = GetComponent<ParticleSystem>();
         }
 
+        /*
         public static UnityEvent killAllParticles = new UnityEvent();
 
         private void OnEnable() {
@@ -26,7 +27,7 @@ namespace CardBattles.Particles {
 
         private void Kill() {
             Destroy(gameObject);
-        }
+        }*/
 
         private void TurnOffDefaultParticles() {
             this.AddComponent<ParticleSystem>();

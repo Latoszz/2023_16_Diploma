@@ -44,8 +44,8 @@ namespace CardBattles.CardGamesManager {
         public void ForceLoad(SceneName sceneName) {
             Debug.Log(sceneName);
             var sceneString = GetSceneName(sceneName);
-            ParticleParent.killAllParticles?.Invoke();
             SceneManager.LoadScene(sceneString);
+            OnSceneLoad();
         }
         public IEnumerator LoadSceneAsync(SceneName sceneName) {
             var sceneString = GetSceneName(sceneName);
@@ -61,16 +61,21 @@ namespace CardBattles.CardGamesManager {
                     Debug.Log(lastProgress);
                 }
                 if (operation.progress >= 0.9f) {
+                    OnSceneLoad();
+
                     LoadingScreen(false);
 
-                    operation.allowSceneActivation = true;
-                    ParticleParent.killAllParticles?.Invoke();
                 }
 
                 yield return null;
             }
         }
 
+        private void OnSceneLoad() {
+            operation.allowSceneActivation = true;
+            //ParticleParent.killAllParticles?.Invoke();
+            Time.timeScale = 1f;
+        }
         private void LoadingScreen(bool val) {
             return;
         }

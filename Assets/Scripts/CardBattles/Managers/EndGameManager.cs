@@ -69,6 +69,7 @@ namespace CardBattles.Managers {
         private IEnumerator IncreaseTextAlpha() {
            yield return rayCastBlocker.DOFade(1, fadeDuration)
                 .SetEase(fadeEase)
+                .SetLink(this.gameObject, LinkBehaviour.KillOnDestroy)
                 .WaitForCompletion();
         }
         [SerializeField]
@@ -96,7 +97,8 @@ namespace CardBattles.Managers {
                     x => Time.timeScale = x,
                     endGameSlowDownFinalTimeScaleValue,
                     endGameSlowDownTime)
-                .SetEase(endGameSlowDownEase);
+                .SetEase(endGameSlowDownEase)
+                .SetLink(this.gameObject, LinkBehaviour.KillOnDestroy);;
         }
     }
 }

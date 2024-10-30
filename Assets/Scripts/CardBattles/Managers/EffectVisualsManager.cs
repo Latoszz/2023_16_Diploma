@@ -19,7 +19,6 @@ namespace CardBattles.Managers {
                 InitializeVisualDictionary();
                 Instance = this;
             }
-            DontDestroyOnLoad(this);
         }
 
         

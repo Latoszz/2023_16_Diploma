@@ -34899,17 +34899,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624316170}
   m_CullTransparentMesh: 1
---- !u!114 &625075564 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6011907210044374588, guid: 109683baadc88a74c87898bf1102216a, type: 3}
-  m_PrefabInstance: {fileID: 2101221224}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0dfd707515fb3a45bde33dc25c2ac74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &625844308
 GameObject:
   m_ObjectHideFlags: 0
@@ -125607,7 +125596,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 625075564}
+      - m_Target: {fileID: 6011907210044374588, guid: 109683baadc88a74c87898bf1102216a, type: 3}
         m_TargetAssemblyTypeName: CardBattles.CardGamesManager.CardGamesLoader, Assembly-CSharp
         m_MethodName: BeginBattleDebug
         m_Mode: 1
@@ -126382,9 +126371,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 625075564}
+      - m_Target: {fileID: 6011907210044374588, guid: 109683baadc88a74c87898bf1102216a, type: 3}
         m_TargetAssemblyTypeName: CardBattles.CardGamesManager.CardGamesLoader, Assembly-CSharp
-        m_MethodName: BeginBattleDebug
+        m_MethodName: ForceBeginBattleDebug
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -126444,12 +126433,12 @@ GameObject:
   - component: {fileID: 1848911666}
   - component: {fileID: 1848911668}
   m_Layer: 0
-  m_Name: Debug
+  m_Name: Debug (doesnt work)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1848911666
 CanvasRenderer:
   m_ObjectHideFlags: 0

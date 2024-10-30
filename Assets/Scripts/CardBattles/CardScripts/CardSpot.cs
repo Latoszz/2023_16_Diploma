@@ -74,12 +74,12 @@ namespace CardBattles.CardScripts {
         private void Highlight() {
             highlight?.Invoke(this);
             isActive = true;
-            image.DOColor(highlightColor, 0.1f).SetEase(Ease.InOutQuad);
+            image.DOColor(highlightColor, 0.1f).SetEase(Ease.InOutQuad).SetLink(this.gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         private void StopHighlight() {
             isActive = false;
-            image.DOColor(defaultColor, 0.1f).SetEase(Ease.InOutQuad);
+            image.DOColor(defaultColor, 0.1f).SetEase(Ease.InOutQuad).SetLink(this.gameObject, LinkBehaviour.KillOnDestroy);;
         }
 
         private bool CanHighlight(PointerEventData eventData) {

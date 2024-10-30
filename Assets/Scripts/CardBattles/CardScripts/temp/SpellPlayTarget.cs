@@ -16,12 +16,12 @@ namespace CardBattles.CardScripts.temp {
 
         private bool IsActive {
             set {
+                var alpha = 0f;
                 if (value) {
-                    image.DOColor(new Color(0.5f,0.5f,0.5f,0.5f), 0.1f).SetEase(Ease.InOutQuad);
+                    alpha = 0.5f;
                 }
-                else {
-                    image.DOColor(new Color(0.5f,0.5f,0.5f,0.0f), 0.1f).SetEase(Ease.InOutQuad);
-                }
+                image.DOColor(new Color(0.5f,0.5f,0.5f,alpha), 0.1f).SetEase(Ease.InOutQuad).SetLink(this.gameObject, LinkBehaviour.KillOnDestroy);;
+                
                 canvas.overrideSorting = value;
                 isActive = value;
                 
@@ -67,7 +67,7 @@ namespace CardBattles.CardScripts.temp {
             if(!IsActive)
                 return;
             IsActive = false;
-            image.DOColor(new Color(0.5f,0.5f,0.5f,0.0f), 0.1f).SetEase(Ease.InOutQuad);
+            image.DOColor(new Color(0.5f,0.5f,0.5f,0.0f), 0.1f).SetEase(Ease.InOutQuad).SetLink(this.gameObject, LinkBehaviour.KillOnDestroy);;
         }
     }
 }

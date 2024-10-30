@@ -35,7 +35,7 @@ namespace CardBattles.CardGamesManager {
         
 #if UNITY_EDITOR
         [Button]
-        public void LoadCardBattles() {
+        public void LoadCardBattleData() {
             var i = 0;
             var path = "Assets/Scripts/CardBattles/Scriptable objects/CardBattle";
             var assets = AssetDatabase.LoadAllAssetsAtPath(path);

@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Audio;
 using CardBattles.CardScripts;
-using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Events;
 using Math = System.Math;
 
 namespace CardBattles.Character {
