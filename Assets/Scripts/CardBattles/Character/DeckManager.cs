@@ -20,17 +20,17 @@ namespace CardBattles.Character {
             new SerializableDictionary<string, List<Card>>();
 
         public List<Card> cards = new List<Card>();
-        
+
+
+        public void SetCardSetData(List<CardSetData> loadedCardSetDatas) {
+            cardSetDatas = loadedCardSetDatas;
+        }
         private void Start() {
-            
-            
-            //if (!Application.isEditor)
-                cardSetDatas = LoadCardSetData();
+            cardSetDatas = LoadCardSetData();
 
             if (cardSetDatas == null) {
                 Debug.LogError("cardSetDatas is null");
             }
-            
             InitializeDeck();
         }
 
