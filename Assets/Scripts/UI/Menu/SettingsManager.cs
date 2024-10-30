@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+#pragma warning disable CS0414 // Field is assigned but its value is never used
 
 public class SettingsManager : MonoBehaviour, ISavable {
     [SerializeField] private TMP_Dropdown resolutionDropdown;

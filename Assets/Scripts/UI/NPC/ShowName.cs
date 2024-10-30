@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+#pragma warning disable CS0414 // Field is assigned but its value is never used
 
 public class ShowName: MonoBehaviour {
     [SerializeField] private float timeToWait = 0.5f;
