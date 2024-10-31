@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class MouseInputManager : MonoBehaviour, IPointerUpHandler {
+public class MouseInputManager : MonoBehaviour {
     [SerializeField] private InputAction mouseClickAction;
+    [SerializeField] private InputAction mouseHoldAction;
     [SerializeField] private ParticleSystem clickEffect;
     [SerializeField] private GameObject player;
     private Camera mainCamera;
@@ -32,14 +32,13 @@ public class MouseInputManager : MonoBehaviour, IPointerUpHandler {
     }
     
     void Update() {
-        if (pointerOverUI || InventoryController.Instance.IsOpen()) {
+        if (!mouseClickEnabled)
             return;
-        }
         
-        if (Input.GetMouseButton(0)) {
+        if (mouseHoldAction.ReadValue<float>() > 0) {
             MoveTowardsCursor();
         }
-
+        
         // Speed control
         if (navMeshAgent.hasPath) {
             float distance = Vector3.Distance(transform.position, navMeshAgent.destination);
@@ -53,34 +52,18 @@ public class MouseInputManager : MonoBehaviour, IPointerUpHandler {
         }
     }
 
-    void MoveTowardsCursor() {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0) {
-            var hitPoint = hit.point;
-            if (Vector3.Distance(navMeshAgent.transform.position, hitPoint) > stopDistance) {
-                navMeshAgent.isStopped = false;
-                navMeshAgent.SetDestination(hitPoint);
-            }
-        }
-    }
-
     private void OnEnable() {
         mouseClickAction.Enable();
-        mouseClickAction.performed += MovePlayer;
+        mouseHoldAction.Enable();
+        mouseClickAction.performed += OnClick;
+        mouseHoldAction.performed += OnHold;
     }
 
     private void OnDisable() {
-        mouseClickAction.performed -= MovePlayer;
+        mouseClickAction.performed -= OnClick;
+        mouseHoldAction.performed -= OnHold;
         mouseClickAction.Disable();
-    }
-    
-    private void MovePlayer(InputAction.CallbackContext context) {
-        if (!mouseClickEnabled)
-            return;
-        if (pointerOverUI) {
-            return;
-        }
-        SetTargetPoint();
+        mouseHoldAction.Disable();
     }
     
     // Call this when the pointer enters a UI element
@@ -93,11 +76,21 @@ public class MouseInputManager : MonoBehaviour, IPointerUpHandler {
         pointerOverUI = false;
     }
     
+    private void OnClick(InputAction.CallbackContext context) {
+        if (!mouseClickEnabled)
+            return;
+        if (pointerOverUI) {
+            return;
+        }
+        SetTargetPoint();
+    }
+    
     private void SetTargetPoint() {
         Vector3 mousePos = Mouse.current.position.ReadValue();
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0) {
             targetPosition = hit.point;
+            navMeshAgent.isStopped = false;
             Instantiate(clickEffect, hit.point + new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
             Walk(targetPosition);
             StopAllCoroutines();
@@ -126,16 +119,31 @@ public class MouseInputManager : MonoBehaviour, IPointerUpHandler {
         animator.SetBool(IsMoving, false);
     }
 
+    private void OnHold(InputAction.CallbackContext context) {
+        if (!mouseClickEnabled)
+            return;
+        if (pointerOverUI) {
+            return;
+        }
+        MoveTowardsCursor();
+    }
+    
+    private void MoveTowardsCursor() {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0) {
+            var hitPoint = hit.point;
+            if (Vector3.Distance(navMeshAgent.transform.position, hitPoint) > stopDistance) {
+                navMeshAgent.isStopped = false;
+                navMeshAgent.SetDestination(hitPoint);
+            }
+        }
+    }
+
     public void EnableMouseControls() {
         mouseClickEnabled = true;
     }
     
     public void DisableMouseControls() {
         mouseClickEnabled = false;
-    }
-
-    public void OnPointerUp(PointerEventData eventData) {
-        Debug.Log(eventData.position);
-        Instantiate(clickEffect, (Vector3)eventData.position + new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
     }
 }

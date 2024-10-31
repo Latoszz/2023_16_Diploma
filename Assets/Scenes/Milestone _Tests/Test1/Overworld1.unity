@@ -148223,6 +148223,82 @@ PrefabInstance:
       propertyPath: slowDownRadius
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_Name
+      value: Mouse Hold
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 86c752c1-53f6-4420-bb84-074cbfacb5eb
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 540fd4a4-6728-4bc9-8f07-af6104eaa781
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 433ad0b3-8a36-4367-a0aa-affd0ad96a3e
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[3].m_Id
+      value: 240ebaa5-3469-403d-b6a1-eb14901d5716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Mouse>/leftButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[1].m_Name
+      value: 1D Axis
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[1].m_Path
+      value: 1DAxis
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[2].m_Name
+      value: negative
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[3].m_Name
+      value: positive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[1].m_Flags
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[2].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[3].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Mouse Hold
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Mouse Hold
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Mouse Hold
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[3].m_Action
+      value: Mouse Hold
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[0].m_Interactions
+      value: Hold(duration=0.6)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
