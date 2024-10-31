@@ -97,8 +97,7 @@ namespace CardBattles.CardScripts {
 
         private bool HoldsPlayableMinion(PointerEventData eventData) {
             if (eventData.pointerDrag is not null &&
-                !eventData.pointerDrag.TryGetComponent(typeof(Minion), out var minion)
-               )
+                !eventData.pointerDrag.TryGetComponent(typeof(Minion), out var minion))
                 if (minion is Minion)
                     return false;
             return true;

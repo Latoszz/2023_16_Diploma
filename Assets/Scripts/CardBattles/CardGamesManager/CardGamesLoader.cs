@@ -54,10 +54,13 @@ namespace CardBattles.CardGamesManager {
         }
 
         public IEnumerator BeginBattle(BattleData battleData, List<CardSetData> playerCardSetDatas = null) {
-            if(playerCardSetDatas is null)
-                playerCardSetDatas =InventoryDeckManager.Instance.GetDeck();
+            playerCardSetDatas ??= InventoryDeckManager.Instance.GetDeck();
+            
             currentBattleData = battleData;
-            yield return StartCoroutine(SceneLoader.Instance.LoadSceneAsync(SceneName.CardBattle));
+            yield return StartCoroutine(
+                SceneLoader.Instance.LoadSceneAsync(
+                    SceneName.CardBattle));
+            
             loadEnemyCards?.Invoke(battleData.GetCardSets);
             loadPlayerCards?.Invoke(playerCardSetDatas);
         }

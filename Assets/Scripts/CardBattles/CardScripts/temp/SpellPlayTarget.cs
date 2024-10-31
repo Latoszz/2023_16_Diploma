@@ -1,4 +1,3 @@
-using System;
 using CardBattles.Character;
 using CardBattles.Interfaces;
 using DG.Tweening;
@@ -11,8 +10,8 @@ namespace CardBattles.CardScripts.temp {
     public class SpellPlayTarget : MonoBehaviour,ICardPlayTarget, IDropHandler, IPointerEnterHandler,IPointerExitHandler {
         private Image image;
         private Canvas canvas;
-        
-        private bool isActive = false;
+
+        private bool isActive;
 
         private bool IsActive {
             set {
@@ -20,7 +19,10 @@ namespace CardBattles.CardScripts.temp {
                 if (value) {
                     alpha = 0.5f;
                 }
-                image.DOColor(new Color(0.5f,0.5f,0.5f,alpha), 0.1f).SetEase(Ease.InOutQuad).SetLink(this.gameObject, LinkBehaviour.KillOnDestroy);;
+                image
+                    .DOColor(new Color(0.5f,0.5f,0.5f,alpha), 0.1f)
+                    .SetEase(Ease.InOutQuad)
+                    .SetLink(this.gameObject, LinkBehaviour.KillOnDestroy);
                 
                 canvas.overrideSorting = value;
                 isActive = value;
@@ -67,7 +69,9 @@ namespace CardBattles.CardScripts.temp {
             if(!IsActive)
                 return;
             IsActive = false;
-            image.DOColor(new Color(0.5f,0.5f,0.5f,0.0f), 0.1f).SetEase(Ease.InOutQuad).SetLink(this.gameObject, LinkBehaviour.KillOnDestroy);;
+            image.DOColor(new Color(0.5f,0.5f,0.5f,0.0f), 0.1f)
+                .SetEase(Ease.InOutQuad)
+                .SetLink(this.gameObject, LinkBehaviour.KillOnDestroy);;
         }
     }
 }
