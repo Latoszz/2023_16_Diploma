@@ -153,12 +153,12 @@ Transform:
   m_GameObject: {fileID: 9130539}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.13445598, z: -0, w: 0.9909196}
-  m_LocalPosition: {x: 24.8, y: 18.8, z: -52.43}
-  m_LocalScale: {x: 34.713245, y: 2.6824737, z: 21.811663}
+  m_LocalPosition: {x: 23.338833, y: 6.17712, z: -27.413258}
+  m_LocalScale: {x: 34.713245, y: 2.6824737, z: 21.81166}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1213212118}
-  m_Father: {fileID: 331944093}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9130541
 MonoBehaviour:
@@ -185,7 +185,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
@@ -17286,7 +17286,6 @@ Transform:
   - {fileID: 625844309}
   - {fileID: 1757944751}
   - {fileID: 274036292}
-  - {fileID: 9130540}
   - {fileID: 737738170}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51886,6 +51885,26 @@ PrefabInstance:
       propertyPath: itemSlotID
       value: 2f9d6ea5-0380-49f9-9e34-a7bb4cae4cf5
       objectReference: {fileID: 0}
+    - target: {fileID: 2180664925633971188, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 575181926}
+    - target: {fileID: 2180664925633971188, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 575181926}
+    - target: {fileID: 2180664925633971188, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPointerEnter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2180664925633971188, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPointerExit
+      objectReference: {fileID: 0}
+    - target: {fileID: 2180664925633971188, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MouseInputManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2274957312270988360, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: itemSlotID
       value: 2dcb0377-0bef-4dc2-88f9-791c055ca312
@@ -52107,8 +52126,8 @@ PrefabInstance:
       value: Inventory UI
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 2180664925633971188, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
     - {fileID: 8572875216459960694, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+    - {fileID: 2180664925633971188, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -148188,6 +148207,22 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 205406000}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: maxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: normalSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: stopDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: slowDownRadius
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -148291,6 +148326,7 @@ SceneRoots:
   - {fileID: 2140830633}
   - {fileID: 1346929604}
   - {fileID: 331944093}
+  - {fileID: 9130540}
   - {fileID: 1814125799}
   - {fileID: 254177788}
   - {fileID: 1153992186}
