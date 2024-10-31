@@ -144,6 +144,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1549342750163232669}
   - component: {fileID: 4367769247858789708}
+  - component: {fileID: 5983714762109454407}
+  - component: {fileID: 5680627007427340626}
   m_Layer: 5
   m_Name: CardSet Detail
   m_TagString: Untagged
@@ -199,6 +201,37 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &5983714762109454407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3605576278557314391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abab38be4af2495b89fc8d3fbd5fae03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardData: {fileID: 0}
+  cardSprite: {fileID: 7913229056639280691}
+  cardNameText: {fileID: 9017507638789771957}
+  cardDescriptionText: {fileID: 0}
+--- !u!114 &5680627007427340626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3605576278557314391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111819cffb944d388a8ef4bcb0a6d88c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToWait: 0.5
+  descriptionWindow: {fileID: 4420133595110403426}
+  descriptionText: {fileID: 4537412799245469344}
 --- !u!1 &6345725608644050369
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +315,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1549342750163232669}
     m_Modifications:
+    - target: {fileID: 1347241436278903924, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347241436278903924, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3219392622169063251, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_fontSize
       value: 36
@@ -408,3 +449,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3387494698571748497, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
   m_PrefabInstance: {fileID: 1321160454381255155}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4537412799245469344 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3219392622169063251, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
+  m_PrefabInstance: {fileID: 1321160454381255155}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

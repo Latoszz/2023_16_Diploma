@@ -79,6 +79,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
         inventoryController.DeselectAllSlots();
         selectedShader.SetActive(true);
         if (item is CardSetItem cardSet) {
+            if (inventoryController.IsCardSetDetailsOpen())
+                inventoryController.HideCardSetDetails();
             inventoryController.ShowCardSetDetails(cardSet.GetCardSetData());
         }
     }

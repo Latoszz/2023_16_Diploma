@@ -18,7 +18,6 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private Transform initialParent;
     
     private void Awake() {
-        cardData = GetComponent<CardDetail>().cardData;
         initialParent = transform.parent;
     }
     
@@ -69,6 +68,10 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
         descriptionText.text = displayText;
         descriptionWindow.gameObject.SetActive(true);
     }
+
+    public void SetUpData(CardData cardData) {
+        this.cardData = cardData;
+    }
     
     private void ShowDetails() {
         ReadCardData();
@@ -76,10 +79,5 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     
     private void HideDetails() {
         descriptionWindow.gameObject.SetActive(false);
-    }
-
-    public void SetComponents(RectTransform window, TMP_Text tmpText) {
-        descriptionWindow = window;
-        descriptionText = tmpText;
     }
 }

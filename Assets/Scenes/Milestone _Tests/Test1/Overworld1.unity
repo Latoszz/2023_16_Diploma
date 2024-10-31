@@ -52079,6 +52079,10 @@ PrefabInstance:
       value: fd276bae-1824-4965-9483-55e716667ba2
       objectReference: {fileID: 0}
     - target: {fileID: 8295542358791338146, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: cardItemPool
+      value: 
+      objectReference: {fileID: 2142827949}
+    - target: {fileID: 8295542358791338146, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 0}
@@ -147048,6 +147052,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1022987417242815241, guid: ea1a823c8564feb4683477db0c674e75, type: 3}
   m_PrefabInstance: {fileID: 2355305683728142919}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2142827949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962359055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce391727dfe4957a884e1b2b2c2c9e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardItemPrefab: {fileID: 3605576278557314391, guid: 143fa8369e4c97d468013ddf40b01ab3, type: 3}
+  initialPoolSize: 5
 --- !u!1001 &733145944535868894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -147545,6 +147563,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7289906007173557808, guid: ea1a823c8564feb4683477db0c674e75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2142827947}
+    - targetCorrespondingSourceObject: {fileID: 7289906007173557808, guid: ea1a823c8564feb4683477db0c674e75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2142827949}
   m_SourcePrefab: {fileID: 100100000, guid: ea1a823c8564feb4683477db0c674e75, type: 3}
 --- !u!1001 &2825809131530419386
 PrefabInstance:
