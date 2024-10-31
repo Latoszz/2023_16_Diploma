@@ -306,8 +306,10 @@ namespace CardBattles.CardScripts.Additional {
 
         private IEnumerator SpellShowcase() {
 
-            var x = GetComponent<CardDisplay>();
-            Instantiate(x, )
+            var x  = Instantiate(this,spellShowcasePosition,transform.rotation).transform;
+            x.localScale = Vector3.one * startScaleSpellShowcase;
+            var y = DOTween.Sequence().SetLink(x.gameObject, LinkBehaviour.KillOnDestroy);
+            y.Append(x.DOScale(maxScaleSpellShowcase, growTimeSpellShowcase));
             
             yield return null;
         }
