@@ -1,0 +1,14 @@
+{
+  "name": "com.pandaroo.auto-rule-tile",
+  "version": "1.0.0",
+  "displayName": "Auto Rule Tile",
+  "description": "Little tool to help create new Rule Tile based on templates",
+  "documentationUrl": "https://alex-pandaroo.itch.io/tilemap-auto-rule-tile-unity-template",
+  "licensesUrl": "https://gitlab.com/pandaroo-public/auto-rule-tile/-/blob/main/license.txt",
+  "hideInEditor": false,
+  "author": {
+    "name": "Alex Brull - Pandaroo",
+    "email": "contact@pandaroo.be",
+    "url": "https://pandaroo.be"
+  }
+}

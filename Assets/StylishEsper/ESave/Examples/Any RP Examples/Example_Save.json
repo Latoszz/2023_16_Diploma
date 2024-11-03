@@ -1,0 +1,563 @@
+{
+  "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Esper.ESave.SavableObjects.SavableObject, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+  "ObjectPosition0": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "position": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.0453029461,
+        "y": -0.90034616,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "localPosition": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.0453029461,
+        "y": -0.90034616,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "rotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -0.1394826,
+        "y": 0.0575491823,
+        "z": 0.730538964,
+        "w": 0.6659922
+      },
+      "localRotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -0.1394826,
+        "y": 0.0575491823,
+        "z": 0.730538964,
+        "w": 0.6659922
+      },
+      "localScale": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.584900558,
+        "y": 0.584900558,
+        "z": 0.584900558,
+        "w": 0.0
+      },
+      "id": null
+    },
+    "id": "ObjectPosition0"
+  },
+  "ObjectColor0": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "$values": [
+        0.251794726,
+        0.159500465,
+        0.45906195,
+        1.0
+      ]
+    },
+    "id": "ObjectColor0"
+  },
+  "ObjectPosition1": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "position": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 1.22993267,
+        "y": -6.16616535,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "localPosition": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 1.22993267,
+        "y": -6.16616535,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "rotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -0.135056719,
+        "y": 0.747996747,
+        "z": -0.572363853,
+        "w": 0.307669
+      },
+      "localRotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -0.135056719,
+        "y": 0.747996747,
+        "z": -0.572363853,
+        "w": 0.307669
+      },
+      "localScale": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.6027879,
+        "y": 0.6027879,
+        "z": 0.6027879,
+        "w": 0.0
+      },
+      "id": null
+    },
+    "id": "ObjectPosition1"
+  },
+  "ObjectColor1": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "$values": [
+        0.0462502129,
+        0.0500079766,
+        0.07322003,
+        1.0
+      ]
+    },
+    "id": "ObjectColor1"
+  },
+  "ObjectPosition2": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "position": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 1.83028936,
+        "y": 7.674125,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "localPosition": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 1.83028936,
+        "y": 7.674125,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "rotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -0.572915435,
+        "y": 0.7719599,
+        "z": -0.267432839,
+        "w": 0.06576858
+      },
+      "localRotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -0.572915435,
+        "y": 0.7719599,
+        "z": -0.267432839,
+        "w": 0.06576858
+      },
+      "localScale": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 1.0220294,
+        "y": 1.0220294,
+        "z": 1.0220294,
+        "w": 0.0
+      },
+      "id": null
+    },
+    "id": "ObjectPosition2"
+  },
+  "ObjectColor2": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "$values": [
+        0.911308348,
+        0.878119051,
+        0.8612084,
+        1.0
+      ]
+    },
+    "id": "ObjectColor2"
+  },
+  "ObjectPosition3": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "position": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -0.71321106,
+        "y": -4.67054,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "localPosition": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -0.71321106,
+        "y": -4.67054,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "rotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -0.648921132,
+        "y": 0.171705782,
+        "z": 0.2162589,
+        "w": 0.7089786
+      },
+      "localRotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -0.648921132,
+        "y": 0.171705782,
+        "z": 0.2162589,
+        "w": 0.7089786
+      },
+      "localScale": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.970523536,
+        "y": 0.970523536,
+        "z": 0.970523536,
+        "w": 0.0
+      },
+      "id": null
+    },
+    "id": "ObjectPosition3"
+  },
+  "ObjectColor3": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "$values": [
+        0.09615427,
+        0.7549002,
+        0.7822127,
+        1.0
+      ]
+    },
+    "id": "ObjectColor3"
+  },
+  "ObjectPosition4": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "position": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 4.881164,
+        "y": -5.507766,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "localPosition": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 4.881164,
+        "y": -5.507766,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "rotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.40548858,
+        "y": 0.8816329,
+        "z": -0.2390346,
+        "w": -0.0341302529
+      },
+      "localRotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.40548858,
+        "y": 0.8816329,
+        "z": -0.2390346,
+        "w": -0.0341302529
+      },
+      "localScale": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.97246,
+        "y": 0.97246,
+        "z": 0.97246,
+        "w": 0.0
+      },
+      "id": null
+    },
+    "id": "ObjectPosition4"
+  },
+  "ObjectColor4": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "$values": [
+        0.436258852,
+        0.4429787,
+        0.2583864,
+        1.0
+      ]
+    },
+    "id": "ObjectColor4"
+  },
+  "ObjectPosition5": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "position": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 5.783887,
+        "y": 4.335216,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "localPosition": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 5.783887,
+        "y": 4.335216,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "rotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -0.3217267,
+        "y": -0.338549435,
+        "z": 0.7979575,
+        "w": -0.380972564
+      },
+      "localRotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -0.3217267,
+        "y": -0.338549435,
+        "z": 0.7979575,
+        "w": -0.380972564
+      },
+      "localScale": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.500438869,
+        "y": 0.500438869,
+        "z": 0.500438869,
+        "w": 0.0
+      },
+      "id": null
+    },
+    "id": "ObjectPosition5"
+  },
+  "ObjectColor5": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "$values": [
+        0.05851435,
+        0.04066698,
+        0.0795241743,
+        1.0
+      ]
+    },
+    "id": "ObjectColor5"
+  },
+  "ObjectPosition6": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "position": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -3.28619981,
+        "y": -2.65642,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "localPosition": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -3.28619981,
+        "y": -2.65642,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "rotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.350791782,
+        "y": 0.467859954,
+        "z": -0.7831013,
+        "w": -0.211670712
+      },
+      "localRotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.350791782,
+        "y": 0.467859954,
+        "z": -0.7831013,
+        "w": -0.211670712
+      },
+      "localScale": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.8195727,
+        "y": 0.8195727,
+        "z": 0.8195727,
+        "w": 0.0
+      },
+      "id": null
+    },
+    "id": "ObjectPosition6"
+  },
+  "ObjectColor6": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "$values": [
+        0.138276517,
+        0.400743753,
+        0.403843969,
+        1.0
+      ]
+    },
+    "id": "ObjectColor6"
+  },
+  "ObjectPosition7": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "position": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -4.852136,
+        "y": 2.69365788,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "localPosition": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -4.852136,
+        "y": 2.69365788,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "rotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.4322913,
+        "y": -0.194251671,
+        "z": -0.58023417,
+        "w": 0.6623586
+      },
+      "localRotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.4322913,
+        "y": -0.194251671,
+        "z": -0.58023417,
+        "w": 0.6623586
+      },
+      "localScale": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.800389767,
+        "y": 0.800389767,
+        "z": 0.800389767,
+        "w": 0.0
+      },
+      "id": null
+    },
+    "id": "ObjectPosition7"
+  },
+  "ObjectColor7": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "$values": [
+        0.09516595,
+        0.284600675,
+        0.23582752,
+        1.0
+      ]
+    },
+    "id": "ObjectColor7"
+  },
+  "ObjectPosition8": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "position": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 1.79058111,
+        "y": -0.7179979,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "localPosition": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 1.79058111,
+        "y": -0.7179979,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "rotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.508609354,
+        "y": 0.7001222,
+        "z": -0.116099283,
+        "w": -0.487510473
+      },
+      "localRotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.508609354,
+        "y": 0.7001222,
+        "z": -0.116099283,
+        "w": -0.487510473
+      },
+      "localScale": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.504922569,
+        "y": 0.504922569,
+        "z": 0.504922569,
+        "w": 0.0
+      },
+      "id": null
+    },
+    "id": "ObjectPosition8"
+  },
+  "ObjectColor8": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "$values": [
+        0.287709177,
+        0.227926031,
+        0.274429083,
+        1.0
+      ]
+    },
+    "id": "ObjectColor8"
+  },
+  "ObjectPosition9": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SavableObjects.SavableTransform, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "position": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -1.85164177,
+        "y": -7.379902,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "localPosition": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": -1.85164177,
+        "y": -7.379902,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "rotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.009234164,
+        "y": 0.35737744,
+        "z": 0.109509848,
+        "w": 0.9274717
+      },
+      "localRotation": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.009234164,
+        "y": 0.35737744,
+        "z": 0.109509848,
+        "w": 0.9274717
+      },
+      "localScale": {
+        "$type": "Esper.ESave.SavableObjects.SavableVector, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "x": 0.6135195,
+        "y": 0.6135195,
+        "z": 0.6135195,
+        "w": 0.0
+      },
+      "id": null
+    },
+    "id": "ObjectPosition9"
+  },
+  "ObjectColor9": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "System.Single[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "$values": [
+        0.363488585,
+        0.470956117,
+        0.4534117,
+        1.0
+      ]
+    },
+    "id": "ObjectColor9"
+  }
+}

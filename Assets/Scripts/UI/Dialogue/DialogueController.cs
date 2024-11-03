@@ -107,13 +107,13 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
     private void ShowDialogue() {
         isTyping = false;
         nextIcon.SetActive(false);
-        InputManager.Instance.DisableAllInput();
+        InputManager.Instance.DisableInput();
         StopAllCoroutines();
         StartCoroutine(TypeSentence());
     }
     
     private void HideDialogue() {
-        InputManager.Instance.EnableAllInput();
+        InputManager.Instance.EnableInput();
         dialogueClosed = true;
         dialoguePanel.SetActive(false);
     }

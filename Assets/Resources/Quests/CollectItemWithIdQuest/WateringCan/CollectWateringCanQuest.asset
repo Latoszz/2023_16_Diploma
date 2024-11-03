@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043ae4447d464171b505fcf412ad7c87, type: 3}
+  m_Name: CollectWateringCanQuest
+  m_EditorClassIdentifier: 
+  id: CollectWateringCan
+  displayName: Help the flowers!
+  questDescription: Can you find something to help Bella's flowers grow?
+  questPrerequisites: []
+  questSteps:
+  - {fileID: 2240715771090674663, guid: 9eeed74e4ad4a04478ef98a33acd044a, type: 3}
+  questRewards: []

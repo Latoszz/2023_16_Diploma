@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using CardBattles.Character.Mana.Additional;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
@@ -29,6 +30,9 @@ namespace CardBattles.Character.Mana {
             }
         }
 
+        [SerializeField] private AudioClip spendMana;
+        [SerializeField] private AudioClip refreshMana;
+
         private void Awake() {
             isPlayers = CompareTag("Player");
             manaDisplay = GetComponentInChildren<ManaDisplay>();
@@ -47,8 +51,9 @@ namespace CardBattles.Character.Mana {
                         $"Not enough mana to play a card\ncost: {cost.GetCost()}   mana: {currentMana}"), (Object)cost);
             }
 
-            CurrentMana -= 1;
+            CurrentMana -= cost.GetCost();
         }
+
 
 
         public bool TryUseMana(IHasCost cost) {
@@ -65,7 +70,7 @@ namespace CardBattles.Character.Mana {
             return TryUseMana(new HasCost(cost));
         }
 
-        [Button]
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
         public void RefreshMana() {
             CurrentMana = maxMana;
         }

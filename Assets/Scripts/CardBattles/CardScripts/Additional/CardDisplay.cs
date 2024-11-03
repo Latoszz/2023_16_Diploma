@@ -9,34 +9,52 @@ using UnityEngine.UI;
 namespace CardBattles.CardScripts.Additional {
     public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
         [Foldout("Card scale"), SerializeField]
-        public float scaleInHand = 0.9f;
+        public static float scaleInDeck = 0.8f;
 
         [Foldout("Card scale"), SerializeField]
-        private float scaleOnBoard = 1f;
+        public static float scaleInHand = 0.9f;
 
         [Foldout("Card scale"), SerializeField]
-        private float scaleOnHover = 1.1f;
+        public static float scaleOnBoard = 1f;
 
+        [Foldout("Card scale"), SerializeField]
+        public static float scaleOnHover = 1.1f;
+
+        [InfoBox("All the other scales are static, TODO make them visible here, to edit them edit code  ")]
         private float currentScale = 1f;
 
         [Header("Front/Back")] [Foldout("Objects")] [SerializeField]
         private CanvasGroup frontOfCard;
 
-        [Foldout("Objects")] [SerializeField] private Image backOfCard;
+        [Foldout("Objects")] [SerializeField]
+        private Image backOfCard;
 
         [Space, Header("Elements")] [Foldout("Objects")] [SerializeField]
         private TextMeshProUGUI cardName;
 
-        [Foldout("Objects")] [SerializeField] private TextMeshProUGUI description;
-        [Foldout("Objects")] [SerializeField] private TextMeshProUGUI attack;
-        [Foldout("Objects")] [SerializeField] private TextMeshProUGUI health;
-        [Foldout("Objects")] [SerializeField] private Image cardImage;
-        [Foldout("Objects")] [SerializeField] private Image cardSetSymbolBox;
-        [Foldout("Objects")] [SerializeField] private Image cardSetSymbol;
+        [Foldout("Objects")] [SerializeField]
+        private TextMeshProUGUI description;
 
-        [Foldout("Objects")] [SerializeField] private Image cardType;
+        [Foldout("Objects")] [SerializeField]
+        private TextMeshProUGUI attack;
 
-        [Foldout("Objects")] [SerializeField] private CanvasGroup minionOnlyElements;
+        [Foldout("Objects")] [SerializeField]
+        private TextMeshProUGUI health;
+
+        [Foldout("Objects")] [SerializeField]
+        private Image cardImage;
+
+        [Foldout("Objects")] [SerializeField]
+        private Image cardSetSymbolBox;
+
+        [Foldout("Objects")] [SerializeField]
+        private Image cardSetSymbol;
+
+        [Foldout("Objects")] [SerializeField]
+        private Image cardType;
+
+        [Foldout("Objects")] [SerializeField]
+        private CanvasGroup minionOnlyElements;
 
         public bool frontVisible;
 
@@ -52,7 +70,7 @@ namespace CardBattles.CardScripts.Additional {
 
             cardSetSymbol.sprite = cardData.cardSet.cardSetIcon;
             cardSetSymbolBox.color = cardData.cardSet.setColor;
-            
+
             switch (cardData) {
                 case MinionData minionData:
                     SetMinionDisplayData(minionData);
@@ -76,7 +94,7 @@ namespace CardBattles.CardScripts.Additional {
             frontOfCard.enabled = !visible;
             backOfCard.enabled = !visible;
             frontVisible = visible;
-            transform.DORotate(new Vector3(0, 0, 0), 0.1f);
+            transform.DORotate(new Vector3(0, 0, 0), 0.1f).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
         }
 
         public void ChangeCardVisible() {
@@ -84,17 +102,38 @@ namespace CardBattles.CardScripts.Additional {
             backOfCard.enabled = !frontVisible;
             frontVisible = !frontVisible;
         }
-        internal void UpdateData(int newAttack, int newCurrentHealth, int newMaxHealth) {
-            attack.text = newAttack.ToString();
-            health.text = newCurrentHealth.ToString();
-            
-            //TODO Make it red when this is true
-            if(newCurrentHealth!= newMaxHealth)
-                return;
-            else {
-                return;
-            }
 
+        internal void UpdateData(int newAttack, int newCurrentHealth, int newMaxHealth) {
+            UpdateStat(attack, newAttack);
+            UpdateStat(health, newCurrentHealth);
+         
+
+            //TODO Make it red when this is true
+            if (newCurrentHealth != newMaxHealth) {
+                health.color = new Color(0.8f,0.3f,0.4f);
+            } else {
+                health.color = Color.white;
+            }
+        }
+
+        [SerializeField, Foldout("UpdateStat")]
+        private float growScale = 1.5f;
+        [SerializeField, Foldout("UpdateStat")]
+        private float growDuration = 0.2f;
+        [SerializeField, Foldout("UpdateStat")]
+        private float shrinkDuration = 0.3f;
+        private void UpdateStat(TextMeshProUGUI textComponent, int newValue) {
+            if (textComponent.text != newValue.ToString()) {
+                Vector3 originalScale = textComponent.transform.localScale;
+
+                Sequence scaleSequence = DOTween.Sequence().SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+                scaleSequence.Append(textComponent.transform.DOScale(originalScale * growScale, growDuration));
+                scaleSequence.AppendCallback(() => {
+                    textComponent.text = newValue.ToString();
+                });
+                scaleSequence.Append(textComponent.transform.DOScale(originalScale, shrinkDuration));
+                scaleSequence.Play();
+            }
         }
 
         [SerializeField] private float scaleOnHoverTime = 0.1f;
@@ -106,7 +145,7 @@ namespace CardBattles.CardScripts.Additional {
             }
 
             transform.DOScale(scaleOnHover,
-                scaleOnHoverTime);
+                scaleOnHoverTime).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
         }
 
         public void OnPointerExit(PointerEventData eventData) {
@@ -114,7 +153,7 @@ namespace CardBattles.CardScripts.Additional {
                 return;
             }
 
-            transform.DOScale(Vector3.one * currentScale, scaleOnHoverTime);
+            transform.DOScale(Vector3.one * currentScale, scaleOnHoverTime).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
         }
 
         public void IsPlacedOnBoard(bool isNotNull) {
@@ -132,7 +171,7 @@ namespace CardBattles.CardScripts.Additional {
 
         private void ChangeCurrentScale(float scale) {
             currentScale = scale;
-            transform.DOScale(currentScale, 0.3f);
+            transform.DOScale(currentScale, 0.3f).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
         }
     }
 }

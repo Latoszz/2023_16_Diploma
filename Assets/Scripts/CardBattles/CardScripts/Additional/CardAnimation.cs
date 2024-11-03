@@ -1,20 +1,22 @@
 using System;
 using System.Collections;
+using Audio;
+using CardBattles.Enums;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
+using CardBattles.Managers;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
 namespace CardBattles.CardScripts.Additional {
     public class CardAnimation : PlayerEnemyMonoBehaviour {
-        private float scaleInHand;
-
-
+     
         [Header("Show")] [Foldout("Draw"), SerializeField]
         public Vector3 showPosition;
 
-        [Foldout("Draw"), SerializeField] public Vector3 showScale = Vector3.one;
+        [Foldout("Draw"), SerializeField]
+        public Vector3 showScale = Vector3.one;
 
 
         [Space, Header("Deck to show")] [Foldout("Draw"), SerializeField]
@@ -37,11 +39,6 @@ namespace CardBattles.CardScripts.Additional {
         [Foldout("Draw"), Range(0, 1), SerializeField]
         private float enemyDraw = 0.5f;
 
-
-        private void Start() {
-            scaleInHand = GetComponent<CardDisplay>().scaleInHand;
-        }
-
         public IEnumerator DrawAnimation(Vector3 finalPosition) {
             var drawAnimation = StartCoroutine(IsPlayers
                 ? PlayerDrawAnimationCoroutine(finalPosition)
@@ -50,7 +47,8 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         private IEnumerator PlayerDrawAnimationCoroutine(Vector3 finalPosition) {
-            var sequence = DOTween.Sequence();
+            var sequence = DOTween.Sequence().SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+            
             sequence
                 .Append(transform
                     .DOMove(showPosition, timeToShow)
@@ -64,7 +62,7 @@ namespace CardBattles.CardScripts.Additional {
                     .DOMove(finalPosition, timeToHand)
                     .SetEase(showToHand))
                 .Join(transform
-                    .DOScale(Vector3.one * scaleInHand, timeToHand)
+                    .DOScale(Vector3.one * CardDisplay.scaleInHand, timeToHand)
                     .SetEase(showToHand));
 
             sequence.Play();
@@ -72,28 +70,32 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         private IEnumerator EnemyDrawAnimationCoroutine(Vector3 finalPosition) {
-            var sequence = DOTween.Sequence();
+            var sequence = DOTween.Sequence().SetLink(gameObject,LinkBehaviour.KillOnDestroy);;
             sequence.Append(
                 transform
                     .DOMove(finalPosition, enemyDraw)
                     .SetEase(enemyToHand));
             sequence.Join(
                 transform
-                    .DOScale(Vector3.one * scaleInHand
+                    .DOScale(Vector3.one * CardDisplay.scaleInHand
                         , enemyDraw));
             sequence.Play();
             yield return sequence.WaitForCompletion();
         }
 
 
-        [Foldout("Move To")] [SerializeField] private float moveToAnimationTime = 0.3f;
-        [Foldout("Move To")] [SerializeField] private Ease moveToEase;
+        [Foldout("Move To")] [SerializeField]
+        private float moveToAnimationTime = 0.3f;
+
+        [Foldout("Move To")] [SerializeField]
+        private Ease moveToEase;
 
 
         public IEnumerator MoveTo(Vector3 vector3) {
             yield return transform
                 .DOMove(vector3, moveToAnimationTime)
                 .SetEase(Ease.InOutSine)
+                .SetLink(gameObject,LinkBehaviour.KillOnDestroy)
                 .WaitForCompletion(true);
         }
 
@@ -108,7 +110,11 @@ namespace CardBattles.CardScripts.Additional {
                 .DOMove(
                     cardSpot.transform.position,
                     playCardTime)
-                .SetEase(playCardEase);
+                .SetEase(playCardEase)
+                .SetLink(gameObject,LinkBehaviour.KillOnDestroy)
+                .WaitForCompletion();
+            CardSpot.PlayDropSound();
+
         }
 
 
@@ -139,14 +145,21 @@ namespace CardBattles.CardScripts.Additional {
         //TODO Add distance scaling to animaation
         //USE LIKE A STATIC METHOD 
         public IEnumerator AttackAnimation(IAttacker attacker, IDamageable damageable) {
+            bool poisonous = false;
+            if (attacker is Minion minion) {
+                if (minion.properties.Contains(AdditionalProperty.Poisonous)) {
+                    Debug.Log("poisonous attack haveth happened");
+                    poisonous = true;
+                }
+            }
             var attack = attacker.GetAttack();
             var attackerTransform = attacker.GetTransform();
             var originalPosition = attackerTransform.position;
             var targetPosition = damageable.GetTransform().position;
             var moveDirection = (targetPosition - originalPosition).normalized;
             yield return AttackMoveToTarget(attackerTransform, targetPosition);
-
-            damageable.TakeDamage(attack);
+            
+            damageable.TakeDamage(attack,poisonous);
 
             //TODO add variable to determine how much time to stop for at a target
             yield return new WaitForEndOfFrame();
@@ -163,6 +176,7 @@ namespace CardBattles.CardScripts.Additional {
                     finalPosition,
                     attackMoveToTime)
                 .SetEase(attackMoveToEase)
+                .SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy)
                 .WaitForCompletion(true);
             yield return moveToTarget;
         }
@@ -172,7 +186,7 @@ namespace CardBattles.CardScripts.Additional {
             //var move = StartCoroutine(AttackKnockbackMove(attackerTransform, moveDirection));
             //var shake = StartCoroutine(AttackKnockbackShake(attackerTransform));
             //TODO so i had to do this
-            var sequence = DOTween.Sequence();
+            var sequence = DOTween.Sequence().SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy);
 
             var knockbackPosition = attackerTransform.position - (moveDirection * attackKnockBackAmount);
 
@@ -204,6 +218,8 @@ namespace CardBattles.CardScripts.Additional {
                     knockbackPosition,
                     attackKnockBackTime)
                 .SetEase(attackKnockBackEase)
+                .SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy)
+
                 .WaitForCompletion(true);
             yield return knockBack;
         }
@@ -214,6 +230,8 @@ namespace CardBattles.CardScripts.Additional {
                     attackKnockBackTime,
                     attackKnockBackShakeStrength)
                 .SetEase(attackMoveToEase)
+                .SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy)
+
                 .WaitForCompletion(true);
             yield return shake;
         }
@@ -224,6 +242,8 @@ namespace CardBattles.CardScripts.Additional {
                     originalPosition,
                     attackMoveBackTime)
                 .SetEase(attackMoveBackEase)
+                .SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy)
+
                 .WaitForCompletion(true);
             yield return moveBack;
         }
@@ -234,6 +254,9 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         public IEnumerator Die() {
+            yield return new WaitForSeconds(0.4f);
+            EffectVisualsManager.Instance.Explosion(transform.position, 3);
+            
             yield return null;
         }
 
@@ -247,22 +270,38 @@ namespace CardBattles.CardScripts.Additional {
                     yield return StartCoroutine(FadeOut(card.gameObject));
                     break;
             }
+            
             yield return null;
         }
 
         [Space, Header("FadeOut"), Foldout("FadeOut"), SerializeField]
         private float cardFadeOutDuration = 0.7f;
 
-        [Foldout("FadeOut"), SerializeField] 
+        [Foldout("FadeOut"), SerializeField]
         private Ease cardFadeOutEase = Ease.InOutQuad;
 
         private IEnumerator FadeOut(GameObject cardGameObject) {
             if (!TryGetComponent(typeof(CanvasGroup), out var canvasGroup))
                 yield break;
 
+            StartCoroutine(Spin(cardGameObject));
             yield return ((CanvasGroup)canvasGroup)
                 .DOFade(0f, cardFadeOutDuration)
-                .SetEase(cardFadeOutEase);
+                .SetEase(cardFadeOutEase)
+                .SetLink(cardGameObject, LinkBehaviour.KillOnDestroy)
+                .WaitForCompletion();
+        }
+
+        private IEnumerator Spin(GameObject cardGameObject) {
+            
+            var cor = transform
+                .DORotate(new Vector3(360, 0,0), 1f, RotateMode.FastBeyond360)
+                .SetRelative(true)
+                .SetEase(Ease.Linear).SetLoops(-1)
+                .SetLink(cardGameObject,LinkBehaviour.KillOnDestroy);
+            cor.Play();
+            yield return new WaitForSeconds(cardFadeOutDuration);
+            
         }
     }
 }

@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: One
   deck:
-  - {fileID: 11400000, guid: 72bc5e3aaa632ee40b6874351870f1c2, type: 2}
-  - {fileID: 11400000, guid: 72bc5e3aaa632ee40b6874351870f1c2, type: 2}
-  - {fileID: 11400000, guid: 72bc5e3aaa632ee40b6874351870f1c2, type: 2}
-  state: 1
+  - {fileID: 11400000, guid: 93a68ce33da350a4c95448a9156b6763, type: 2}
+  - {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
+  - {fileID: 11400000, guid: 90ca613ec69893d4f83c2c0734f5abae, type: 2}

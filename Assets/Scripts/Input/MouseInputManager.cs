@@ -9,6 +9,7 @@ public class MouseInputManager : MonoBehaviour {
     [SerializeField] private GameObject player;
     private Camera mainCamera;
     private NavMeshAgent navMeshAgent;
+    private bool pointerOverUI;
     
     private Vector3 targetPosition;
     private int groundLayer;
@@ -36,9 +37,22 @@ public class MouseInputManager : MonoBehaviour {
     }
     
     private void MovePlayer(InputAction.CallbackContext context) {
-        if (!ManageGame.Instance.IsStarted || !mouseClickEnabled)
+        if (!mouseClickEnabled)
             return;
+        if (pointerOverUI) {
+            return;
+        }
         SetTargetPoint();
+    }
+    
+    // Call this when the pointer enters a UI element
+    public void OnPointerEnter() {
+        pointerOverUI = true;
+    }
+
+    // Call this when the pointer exits a UI element
+    public void OnPointerExit() {
+        pointerOverUI = false;
     }
     
     private void SetTargetPoint() {
@@ -79,8 +93,6 @@ public class MouseInputManager : MonoBehaviour {
     }
     
     public void DisableMouseControls() {
-        if(ManageGame.Instance.IsStarted)
-            navMeshAgent.ResetPath();
         mouseClickEnabled = false;
     }
 }

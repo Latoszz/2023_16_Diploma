@@ -1,37 +1,37 @@
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-using System;
+using SaveSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour {
     [SerializeField] private GameObject mainView;
     [SerializeField] private GameObject optionsView;
     [SerializeField] private GameObject creditsView;
-    [SerializeField] private GameObject continueButton;
+    [SerializeField] private Button continueButton;
 
     [SerializeField] private GameObject audioVideoPanel;
     [SerializeField] private GameObject controlsPanel;
     
     private void Awake() {
-        mainView.SetActive(true);
-        optionsView.SetActive(false);
-        creditsView.SetActive(false);
+        BackClicked();
     }
 
     private void Start() {
-        if(SaveManager.saveExists)
-            continueButton.SetActive(true);
+        if(SaveManager.Instance.HasSaveData())
+            continueButton.interactable = true;
     }
 
     #region  Main View
     public void StartClicked(string sceneName) {
-        SceneSwitcher.Instance.LoadScene(sceneName);
+        SaveManager.Instance.NewGame();
+        SceneManager.LoadScene(sceneName);
     }
 
-    public void ContinueClicked() {
-        //TODO Load latest save
+    public void ContinueClicked(string sceneName) {
+        SceneManager.LoadScene(sceneName);
     }
 
     public void OptionsClicked() {
@@ -61,6 +61,8 @@ public class MenuManager : MonoBehaviour {
     #endregion
 
     public void BackClicked() {
-        Awake();
+        mainView.SetActive(true);
+        optionsView.SetActive(false);
+        creditsView.SetActive(false);
     }
 }

@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using CardBattles.Interfaces.InterfaceObjects;
 using DG.Tweening;
 using NaughtyAttributes;
+using Unity.Mathematics;
 using UnityEngine;
 
 
 //TODO hate this script, someone please rework it, its awful, thankfully this isn't important code but :(
 namespace CardBattles.Character.Mana.Additional {
-    public class ManaDisplay : MonoBehaviour {
+    public class ManaDisplay : PlayerEnemyMonoBehaviour {
         [SerializeField] public GameObject manaPointPrefab;
 
-        [SerializeField] private float distanceBetweenManaPoints = 150f;
+        [SerializeField] private float distanceBetweenManaPoints = 30f;
         [SerializeField] private List<ManaPoint> manaPoints;
 
-        [SerializeField] private Vector3 startingPositionOffset;
+        [SerializeField] private Transform firstPointTransform;
 
         [Space] [BoxGroup("No mana animation"), Label("Shake Strength"), SerializeField]
         private int noManaShakeStrength = 15;
@@ -23,31 +25,22 @@ namespace CardBattles.Character.Mana.Additional {
 
         [BoxGroup("No mana animation"), Label("Ease"), SerializeField]
         private Ease noManaAnimationEase;
-        
+
 
         [BoxGroup("Refresh Animation"), SerializeField, Label("Flash Color")]
         private Color refreshAnimationFlashColor = Color.white;
 
-        [Space]
-        [BoxGroup("Refresh Animation"), SerializeField, Label("Duration")]
+        /*[Space] [BoxGroup("Refresh Animation"), SerializeField, Label("Duration")]
         private float refreshAnimationDuration = 0.8f;
 
         [BoxGroup("Refresh Animation"), SerializeField, Label("% Duration of ease in"), Range(0, 1)]
         private float refreshAnimationEasePercentage = 0.5f;
 
-        [Space]
-        [BoxGroup("Refresh Animation"), SerializeField, Label("In Ease")]
+        [Space] [BoxGroup("Refresh Animation"), SerializeField, Label("In Ease")]
         private Ease refreshAnimationInEase = Ease.InCubic;
 
         [BoxGroup("Refresh Animation"), SerializeField, Label("Out Ease")]
-        private Ease refreshAnimationOutEase = Ease.OutCubic;
-
-
-        [Space] [BoxGroup("Mana Point"), SerializeField, Label("Available")]
-        private Color isAvailableColor = Color.cyan;
-
-        [BoxGroup("Mana Point"), SerializeField, Label("Empty")]
-        private Color isEmptyColor = Color.gray;
+        private Ease refreshAnimationOutEase = Ease.OutCubic;*/
 
 
         private int currentMana; // backing field
@@ -73,7 +66,7 @@ namespace CardBattles.Character.Mana.Additional {
         private void SetMaxManaPointAmount(int value) {
             if (value == manaPoints.Count)
                 return;
-            var firstPosition = transform.position + startingPositionOffset;
+            var firstPosition = firstPointTransform.position;
             var positions = new List<Vector3>();
             for (int i = 0; i < value; i++) {
                 var pos = firstPosition;
@@ -89,6 +82,8 @@ namespace CardBattles.Character.Mana.Additional {
                 var manaPoint = Instantiate(manaPointPrefab, transform);
                 manaPoints.Add(manaPoint.GetComponent<ManaPoint>());
                 manaPoint.transform.position = pos;
+                if (!IsPlayers)
+                    manaPoint.transform.rotation *= quaternion.Euler(math.PI, 0, 0);
             }
             //
         }
@@ -99,12 +94,7 @@ namespace CardBattles.Character.Mana.Additional {
             }
 
             for (int i = 0; i < manaPoints.Count; i++) {
-                if (i < value)
-                    StartCoroutine(MakeAvailable(manaPoints[i]));
-                else {
-                    manaPoints[i].isAvailable = false;
-                    manaPoints[i].image.DOColor(isEmptyColor, 0.2f);
-                }
+                manaPoints[i].SetState(i < value);
             }
         }
 
@@ -120,22 +110,23 @@ namespace CardBattles.Character.Mana.Additional {
             sequence.Append(boxShake);
 
             foreach (var manaPoint in manaPoints) {
-                var manaPointColorSwitch = manaPoint.image
-                    .DOColor(Color.red, shakeTime)
-                    .SetEase(noManaAnimationEase)
-                    .SetLoops(4, LoopType.Yoyo);
-                sequence.Join(manaPointColorSwitch);
+                foreach (var image in manaPoint.Images) {
+                    var manaPointColorSwitch = image
+                        .DOColor(Color.red, shakeTime)
+                        .SetEase(noManaAnimationEase)
+                        .SetLoops(4, LoopType.Yoyo);
+                    sequence.Join(manaPointColorSwitch);
+                }
             }
 
             yield return sequence.Play();
         }
 
+        /*
         private IEnumerator MakeAvailable(ManaPoint manaPoint, bool skipAnimation = false) {
             if (manaPoint.isAvailable && !skipAnimation) {
                 yield return MakeAvailable(manaPoint, true);
             }
-
-            manaPoint.isAvailable = true;
 
             var changeSequence = DOTween.Sequence();
 
@@ -144,7 +135,7 @@ namespace CardBattles.Character.Mana.Additional {
                 duration = 0f;
 
 
-            var flashTween = manaPoint.image
+            /*var flashTween = manaPoint.image
                 .DOColor(
                     refreshAnimationFlashColor,
                     duration * refreshAnimationEasePercentage)
@@ -157,8 +148,10 @@ namespace CardBattles.Character.Mana.Additional {
 
             changeSequence.Join(flashTween);
             changeSequence.Append(colorToAvailable);
+            #1#
 
             yield return changeSequence;
         }
+    }*/
     }
 }

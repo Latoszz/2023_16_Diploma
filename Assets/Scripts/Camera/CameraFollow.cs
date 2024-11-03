@@ -6,8 +6,6 @@ public class CameraFollow : MonoBehaviour {
     [SerializeField] private Vector3 offset;
 
     private void Update() {
-        if (!ManageGame.Instance.IsStarted)
-            return;
         Vector3 newPosition = target.position + offset;
         transform.position = Vector3.Lerp (transform.position, newPosition, smoothing * Time.deltaTime);
     }

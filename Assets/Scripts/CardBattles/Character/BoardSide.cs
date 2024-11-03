@@ -10,8 +10,10 @@ using UnityEngine;
 namespace CardBattles.Character {
     public class BoardSide : PlayerEnemyMonoBehaviour {
         [SerializeField] public CardSpot[] cardSpots = new CardSpot[4];
-        [SerializeField,Required] public Hero.Hero hero = null!;
-      
+
+        [SerializeField, Required]
+        public Hero.Hero hero = null!;
+
 
         private void Start() {
             GetCardSpots();
@@ -32,6 +34,7 @@ namespace CardBattles.Character {
             if (cards.Count != cardSpots.Length) {
                 Debug.LogError(":(");
             }
+
             foreach (var card in cards) {
                 if (card is not IDamageable damageable)
                     output.Add(hero);
@@ -39,9 +42,11 @@ namespace CardBattles.Character {
                     output.Add(damageable);
                 }
             }
+
             if (output.Count != cardSpots.Length) {
                 Debug.LogError(">:(");
             }
+
             return output;
         }
 
@@ -54,6 +59,7 @@ namespace CardBattles.Character {
             if (cards.Count != cardSpots.Length) {
                 Debug.LogError(":(");
             }
+
             foreach (var card in cards) {
                 if (card is not IAttacker attacker) {
                     output.Add(null);
@@ -77,6 +83,7 @@ namespace CardBattles.Character {
 
             return output;
         }
+
         public List<Card> GetNoNullCards() {
             List<Card> output = new List<Card>();
             var cards = cardSpots.Select(e => e.card).ToList();
@@ -85,11 +92,24 @@ namespace CardBattles.Character {
                     output.Add(card);
                 }
             }
+
             return output;
         }
 
-        public IEnumerable<GameObject> GetAdjecentCards() {
-            throw new System.NotImplementedException();
+        public List<GameObject> GetAdjecentCards(Card card) {
+            List<GameObject> output = new List<GameObject>();
+            for (int i = 0; i < cardSpots.Length; i++) {
+                if (cardSpots[i].card == card) {
+                    if (i < 3)
+                        if (cardSpots[i + 1].card is not null)
+                            output.Add(cardSpots[i + 1].card.gameObject);
+                    if (i > 0)
+                        if (cardSpots[i - 1].card is not null)
+                            output.Add(cardSpots[i - 1].card.gameObject);
+                }
+            }
+
+            return output;
         }
     }
 }

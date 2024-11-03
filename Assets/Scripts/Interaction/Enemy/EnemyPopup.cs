@@ -1,3 +1,5 @@
+using SaveSystem;
+using UI.Inventory;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,8 +8,8 @@ public class EnemyPopup : MonoBehaviour {
     [SerializeField] private GameObject popupPanel;
     [SerializeField] private GameObject deckPopup;
     [SerializeField] private string BattleSceneName = "CardBattleScene";
-    
-    public Enemy Enemy { get; set; }
+
+    public EnemySM Enemy;
     public bool IsOpen => enemyPopup.activeSelf;
 
     public static EnemyPopup Instance;
@@ -25,6 +27,8 @@ public class EnemyPopup : MonoBehaviour {
         if (CheckDeck(3)) {
             EnemyStateManager.Instance.SetCurrentEnemy(Enemy);
             Close();
+            InventoryDeckManager.Instance.UpdateDeck();
+            SaveManager.Instance.SaveGame();
             SceneSwitcher.Instance.LoadScene(BattleSceneName);
         }
         else {
@@ -46,12 +50,12 @@ public class EnemyPopup : MonoBehaviour {
     private void Close() {
         Enemy = null;
         enemyPopup.SetActive(false);
-        InputManager.Instance.EnableAllInput();
+        InputManager.Instance.EnableInput();
     }
 
     private bool CheckDeck(int count) {
         int occupiedCount = 0;
-        foreach (ItemSlot slot in InventoryController.Instance.GetDeck()) {
+        foreach (ItemSlot slot in InventoryController.Instance.GetDeckSlots()) {
             if (slot.IsOccupied())
                 occupiedCount++;
         }

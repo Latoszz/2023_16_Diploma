@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Audio;
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.Additional;
 using CardBattles.Character.Mana;
@@ -12,6 +13,7 @@ using CardBattles.Managers;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+
 // ReSharper disable Unity.PerformanceCriticalCodeInvocation
 
 namespace CardBattles.Character {
@@ -21,7 +23,9 @@ namespace CardBattles.Character {
         }
 
 
-        [Header("Data")] [SerializeField] public HandManager hand;
+        [Header("Data")] [SerializeField]
+        public HandManager hand;
+
         [SerializeField] public DeckManager deck;
         [SerializeField] public Hero.Hero hero;
         [SerializeField] public BoardSide boardSide;
@@ -41,7 +45,6 @@ namespace CardBattles.Character {
 
         public void Awake() {
             onCardPlayed.AddListener(OnCardPlayedHandler);
-            
         }
 
         public void OnDestroy() {
@@ -68,18 +71,19 @@ namespace CardBattles.Character {
                     wasPlayed = PlayMinion(minion, target);
                     break;
                 case Spell spell:
-                    wasPlayed =PlaySpell(spell, target);
+                    wasPlayed = PlaySpell(spell, target);
                     break;
                 default:
                     Debug.LogError("Card type not valid");
                     break;
             }
-            if(!wasPlayed)
+
+            if (!wasPlayed)
                 return;
-            
+
             manaManager.UseMana(card);
             hand.Cards.Remove(card);
-
+            card.cardDragging.droppedOnSlot = true;
             StartCoroutine(card.Play());
 
             hand.UpdateCardPositions();
@@ -94,11 +98,11 @@ namespace CardBattles.Character {
                     WrongCardTargetCombo();
                     return false;
             }
+
             return true;
         }
 
-     
-        
+
         //TODO FIX
         private bool PlaySpell(Spell spell, ICardPlayTarget target) {
             Debug.Log($"{spell.name} has been played");
@@ -128,7 +132,7 @@ namespace CardBattles.Character {
             card.GetComponent<CardDisplay>().ChangeCardVisible(true);
             if (IsPlayers)
                 card.GetComponent<RectTransform>().position =
-                    cardSpot.GetComponent<RectTransform>().position; 
+                    cardSpot.GetComponent<RectTransform>().position;
             else {
                 StartCoroutine(
                     card.GetComponent<CardAnimation>()
@@ -171,19 +175,32 @@ namespace CardBattles.Character {
 
         // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator StartOfTurn() {
+            if (IsPlayers)
+                StartCoroutine(TurnChangeSoundEffect());
             yield return Draw(1);
 
             manaManager.RefreshMana();
+            var cards = boardSide.GetNoNullCards();
+            foreach (var card in cards) {
+                StartCoroutine(card.DoEffect(EffectTrigger.OnStartTurn));
+            }
         }
+        public IEnumerator TurnChangeSoundEffect() {
+            yield return new WaitForSeconds(0.4f);
+            var clipName ="TurnStart";
+            var x =AudioCollection.Instance.GetClip(clipName);
+            AudioManager.Instance.Play(x);
 
+        }
         public void DrawACard() {
             StartCoroutine(Draw(1, 1));
         }
 
         public IEnumerator EndOfTurn() {
-            yield return BoardManager.Instance.Attack(IsPlayers);
+            
+            yield return StartCoroutine(BoardManager.Instance.Attack(IsPlayers));
             foreach (var card in boardSide.GetNoNullCards()) {
-                card.DoEffect(EffectTrigger.OnEndTurn);
+                StartCoroutine(card.DoEffect(EffectTrigger.OnEndTurn));
             }
 
             yield return null;

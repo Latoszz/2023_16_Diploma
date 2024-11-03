@@ -1,3 +1,4 @@
+using Audio;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
@@ -29,6 +30,7 @@ namespace CardBattles.CardScripts.Additional {
                 enabled = false;
                 return;
             }
+
             baseOrder = canvas.sortingOrder;
             canvas.sortingOrder = 100;
             
@@ -68,7 +70,7 @@ namespace CardBattles.CardScripts.Additional {
                 enabled = false;
             }
             else {
-                SnapBack();
+                 SnapBack();
             }
         }
 
@@ -82,7 +84,8 @@ namespace CardBattles.CardScripts.Additional {
             transform
                 .DOMove(originalPosition,
                     animationTime)
-                .SetEase(Ease.InOutSine);
+                .SetEase(Ease.InOutSine)
+                .SetLink(gameObject,LinkBehaviour.KillOnDestroy);
         }
     }
 }

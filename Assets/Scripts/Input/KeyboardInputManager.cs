@@ -34,9 +34,6 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     }
     
     private void Update() {
-        if (!ManageGame.Instance.IsStarted)
-            return;
-        
         movementVector.Normalize();
         targetDirection = Vector3.Lerp(targetDirection, movementVector, speed * Time.deltaTime);
         navMeshAgent.Move(targetDirection * (navMeshAgent.speed * Time.deltaTime));
@@ -49,8 +46,6 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     }
     
     public void OnMove(InputAction.CallbackContext context) {
-        if (!ManageGame.Instance.IsStarted)
-            return;
         navMeshAgent.ResetPath();
         if (context.performed)
             isWalking = true;

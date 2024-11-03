@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043ae4447d464171b505fcf412ad7c87, type: 3}
+  m_Name: CollectItemsQuest
+  m_EditorClassIdentifier: 
+  id: CollectItemsQuest
+  displayName: Collect items!
+  questDescription: Collect 3 items to make cats happy ^-^
+  questPrerequisites: []
+  questSteps:
+  - {fileID: 5372521551121816490, guid: 02be5a61adafb75418f2228807a4d008, type: 3}
+  questRewards: []

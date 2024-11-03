@@ -898,9 +898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b644e4a967a2495e87e3a521f10be06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleInHand: 0.85
-  scaleOnBoard: 1
-  scaleOnHover: 1.1
   frontOfCard: {fileID: 1394851734013426853}
   backOfCard: {fileID: 823127779925956174}
   cardName: {fileID: 2107554566278885536}
@@ -928,7 +925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showPosition: {x: 450, y: 0, z: 0}
   showScale: {x: 2, y: 2, z: 2}
-  playerToShow: 13
+  playerToShow: 6
   timeToShow: 0.4
   showToHand: 2
   timeToHand: 0.4
@@ -946,6 +943,8 @@ MonoBehaviour:
   attackKnockBackEase: 3
   attackMoveBackTime: 0.25
   attackMoveBackEase: 4
+  cardFadeOutDuration: 1.3
+  cardFadeOutEase: 3
 --- !u!114 &-6973358634639818209
 MonoBehaviour:
   m_ObjectHideFlags: 0

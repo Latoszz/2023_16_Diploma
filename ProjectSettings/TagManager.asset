@@ -27,9 +27,9 @@ TagManager:
   - Tree
   - Border
   - Collectible
-  - 
-  - 
-  - 
+  - Obstacle
+  - Post Proessing
+  - Building
   - 
   - 
   - 
@@ -44,6 +44,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Border
+    uniqueID: 2630121031
+    locked: 0
+  - name: Background
+    uniqueID: 2608002139
+    locked: 0
+  - name: Under Ground
+    uniqueID: 1199872287
+    locked: 0
+  - name: Ground
+    uniqueID: 2807606227
+    locked: 0
+  - name: On Ground
+    uniqueID: 3897613895
+    locked: 0
+  - name: Above all
+    uniqueID: 1645593349
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: VFX
+    uniqueID: 1867790779
     locked: 0

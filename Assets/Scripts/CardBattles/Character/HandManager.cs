@@ -1,13 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using CardBattles.CardScripts;
+using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 using Math = System.Math;
 
 namespace CardBattles.Character {
+    //TODO change to the better monobehaviour
     public class HandManager : MonoBehaviour {
-        
+        //[SerializeField] private UnityEvent drawEvent;
+        [InfoBox("Move to a separate component")]
+        [Foldout("Audio"), SerializeField]
+        private string drawClipName;
+
         
         //TODO after adding each card, sort the objects in hand so the order matches the order in Cards
         //it will make all the cards lay on top of each other correctly
@@ -28,6 +36,7 @@ namespace CardBattles.Character {
             isPlayers = CompareTag("Player");
         }
 
+        [OnValueChanged("UpdateCardPositions")]
         [SerializeField] [Range(100, 1000)] public float distanceMulti = 300f;
 
 
@@ -58,13 +67,11 @@ namespace CardBattles.Character {
             for (; i < (Cards.Count - cardsToDraw.Count); i++) {
                 StartCoroutine(Cards[i].Move(finalPositions[i]));
             }
-
             yield return new WaitForEndOfFrame();
 
             for (int j = 0; i < Cards.Count && j < cardsToDraw.Count; i++, j++) {
-                Cards[i].ChangeCardVisible(isPlayers);
                 Cards[i].transform.SetParent(transform, true);
-                var coroutine = StartCoroutine(Cards[i].DrawAnimation(finalPositions[i]));
+                var coroutine = StartCoroutine(DrawCoroutine(Cards[i],finalPositions[i]));
 
                 coroutines.Add(coroutine);
 
@@ -82,6 +89,18 @@ namespace CardBattles.Character {
             }
         }
 
+        private IEnumerator DrawCoroutine(Card card, Vector3 finalposition) {
+            var drawClip = AudioCollection.Instance.GetClip(drawClipName);
+            if (drawClip is not null) {
+                AudioManager.Instance.PlayWithVariation(drawClip);
+                yield return new WaitForSeconds(drawClip.length * .8f);
+            }
+
+            card.ChangeCardVisible(isPlayers);
+            var coroutine = StartCoroutine(card.DrawAnimation(finalposition));
+            yield return coroutine;
+        }
+
 
         private void AddNewCards(List<Card> cardsAdded) {
             foreach (var card in cardsAdded) {
@@ -89,8 +108,12 @@ namespace CardBattles.Character {
             }
         }
 
+        [Button(text: "Force Update Card Positions",enabledMode: EButtonEnableMode.Playmode)]
+        public void UpdateCardPositions() {
+            UpdateCardPositions(0);
+        }
 
-        public void UpdateCardPositions(int additionalCards = 0) {
+        private void UpdateCardPositions(int additionalCards) {
             var newHandPositions = CalculateCardPositions(Cards.Count + additionalCards);
             for (int i = 0; i < Cards.Count; i++) {
                 StartCoroutine(Cards[i].Move(newHandPositions[i]));

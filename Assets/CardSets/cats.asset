@@ -40,7 +40,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
   description: Has a 50% chance to not attack
   flavourText: 
-  properties: 
+  properties: 01000000
   effectDictionary:
     m_keys: 
     m_values: []
@@ -82,12 +82,15 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Feeding time
   sprite: {fileID: -572797459, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: Gives all other cards in this set +3 health
+  description: Heal our minions by 3hp
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 2
+      targetType: 2
+      value: 3
 --- !u!114 &4154407072327070877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,11 +129,14 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Catnip Tea
   sprite: {fileID: 634790958, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: Buffs your cards
+  description: At the start of turn buff give your other minion +2 health
   flavourText: Its totally not wine
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 03000000
+    m_values:
+    - effectName: 3
+      targetType: 2
+      value: 2
   attack: 1
-  maxHealth: 3
+  maxHealth: 2

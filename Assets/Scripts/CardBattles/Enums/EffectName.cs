@@ -3,5 +3,8 @@ namespace CardBattles.Enums {
         ChangeAttack,
         DealDamage,
         Heal,
+        BuffHp,
+        DrawACard,
+        DealOrHeal
     }
 }

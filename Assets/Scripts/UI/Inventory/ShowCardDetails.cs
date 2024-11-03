@@ -1,9 +1,9 @@
-using System;
-using CardBattles.CardScripts;
+using CardBattles.CardScripts.CardDatas;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     [SerializeField] private float timeToWait = 0.5f;
@@ -12,22 +12,18 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     
     private float hoverTimer = 0f;
 
-    private Card card;
-    [Obsolete]
-    private CardDetail cardDetail;
+    private CardData cardData;
 
     private bool isMouseOver;
+    private Transform initialParent;
     
-    [Obsolete("Obsolete")]
     private void Awake() {
-        card = GetComponent<Card>();
-        cardDetail = GetComponent<CardDetail>();
+        cardData = GetComponent<CardDetail>().cardData;
+        initialParent = transform.parent;
     }
     
     private void Update() {
         if (PauseManager.Instance.IsOpen)
-            return;
-        if (cardDetail is not null && InventoryController.Instance.IsOpen())
             return;
         
         if (isMouseOver) {
@@ -45,10 +41,13 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     
     public void OnPointerEnter(PointerEventData eventData) {
         isMouseOver = true;
+        descriptionWindow.transform.SetParent(transform.parent.transform.parent);
+        descriptionWindow.transform.SetAsLastSibling();
     }
 
     public void OnPointerExit(PointerEventData eventData) {
         isMouseOver = false;
+        descriptionWindow.transform.SetParent(initialParent);
     }
     
     private void MoveTextNearCursor() {
@@ -59,25 +58,16 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
 
     private void ReadCardData() {
-        //TODO UPDATE TO NEW ONES
-        /*if (cardOld is not null) {
-            cardData = cardOld.cardData;
-        }
-        else {
-            cardData = cardDetail.CardDatas;
-        }
         string displayText = cardData.cardName + "\nDescription: ";
         displayText += "description text";
         
-        if (cardData is Minion) {
-            displayText += "\nPower: " + ((MinionCardData)cardData).power;
-            displayText += "\nHealth: " + ((MinionCardData)cardData).maxHealth;
+        if (cardData is MinionData) {
+            displayText += "\nPower: " + ((MinionData)cardData).attack;
+            displayText += "\nHealth: " + ((MinionData)cardData).maxHealth;
         }
         
-
         descriptionText.text = displayText;
         descriptionWindow.gameObject.SetActive(true);
-        */
     }
     
     private void ShowDetails() {

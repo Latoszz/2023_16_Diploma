@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0bf5758c3e302a64f99e998c6d75cd7d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - TileMap: {instanceID: 0}
+  - RuleTileTemplate: {fileID: 11400000, guid: 33ce7decb55eb5c488d6abe0006d60ee, type: 2}
+  - OverrideExistingRuleTile: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

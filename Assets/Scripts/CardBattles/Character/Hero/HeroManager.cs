@@ -48,7 +48,7 @@ namespace CardBattles.Character.Hero {
             isPlayers = CompareTag("Player");
         }
 
-        public void TakeDamage(int amount) {
+        public void TakeDamage(int amount, bool isInstaKill) {
             CurrentHealth -= amount;
             takeDamageAction.Invoke();
         }
@@ -64,6 +64,10 @@ namespace CardBattles.Character.Hero {
 
         public Transform GetTransform() {
             return transform;
+        }
+
+        public void BuffHp(int amount) {
+            MaxHealth += amount;
         }
     }
 }
