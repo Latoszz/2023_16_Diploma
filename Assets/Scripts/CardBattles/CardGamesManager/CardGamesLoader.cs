@@ -24,8 +24,8 @@ namespace CardBattles.CardGamesManager {
             }
         }
 
-        [SerializeField] public UnityEvent<List<CardSetData>> loadEnemyCards;
-        [SerializeField] public UnityEvent<List<CardSetData>> loadPlayerCards;
+        [SerializeField] [HideInInspector]public UnityEvent<List<CardSetData>> loadEnemyCards;
+        [SerializeField] [HideInInspector]public UnityEvent<List<CardSetData>> loadPlayerCards;
 
         private void Awake() {
             if (Instance != null && Instance != this) {
@@ -67,6 +67,13 @@ namespace CardBattles.CardGamesManager {
         public void EndGame(bool val) {
             if (currentBattleData is not null)
                 BattleDataHolder.Instance.SetBattleDataState(currentBattleData, val);
+            /*
+             * We can add a static event here, if you add a script like
+             * class BattleDataContainer: MonoBehaviour
+             * [serialize field] BattleData battledata
+             *
+             * który słucha i cos robi od razu jak zmieni się stan       
+             */
             currentBattleData = null;
             StartCoroutine(SceneLoader.Instance.LoadSceneAsync(SceneName.Overworld));
         }
