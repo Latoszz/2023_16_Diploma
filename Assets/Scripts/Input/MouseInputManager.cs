@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class MouseInputManager : MonoBehaviour {
     [SerializeField] private InputAction mouseClickAction;
     [SerializeField] private InputAction mouseHoldAction;
+    [SerializeField] private InputAction rightClickAction;
     [SerializeField] private ParticleSystem clickEffect;
     [SerializeField] private GameObject player;
     private Camera mainCamera;
@@ -55,6 +56,8 @@ public class MouseInputManager : MonoBehaviour {
     private void OnEnable() {
         mouseClickAction.Enable();
         mouseHoldAction.Enable();
+        rightClickAction.Enable();
+        rightClickAction.performed += ToggleInventory;
         mouseClickAction.performed += OnClick;
         mouseHoldAction.performed += OnHold;
     }
@@ -62,6 +65,8 @@ public class MouseInputManager : MonoBehaviour {
     private void OnDisable() {
         mouseClickAction.performed -= OnClick;
         mouseHoldAction.performed -= OnHold;
+        rightClickAction.performed -= ToggleInventory;
+        rightClickAction.Disable();
         mouseClickAction.Disable();
         mouseHoldAction.Disable();
     }
@@ -136,6 +141,19 @@ public class MouseInputManager : MonoBehaviour {
                 navMeshAgent.isStopped = false;
                 navMeshAgent.SetDestination(hitPoint);
             }
+        }
+    }
+    
+    private void ToggleInventory(InputAction.CallbackContext context) {
+        if (PauseManager.Instance.IsOpen)
+            return;
+
+        InventoryController inventoryController = InventoryController.Instance;
+        if (inventoryController.IsOpen()) {
+            inventoryController.HideInventory();
+        }
+        else {
+            inventoryController.ShowInventory();
         }
     }
 

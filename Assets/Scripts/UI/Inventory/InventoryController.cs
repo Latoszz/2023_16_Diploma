@@ -8,7 +8,6 @@ using UnityEngine.Rendering.PostProcessing;
 public class InventoryController : MonoBehaviour {
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private ManageCardSetDetails manageCardSetDetails;
-    [SerializeField] private InputAction rightClickAction;
 
     [SerializeField] private List<ItemSlot> itemSlots;
     [SerializeField] private List<ItemSlot> cardSetSlots;
@@ -32,26 +31,6 @@ public class InventoryController : MonoBehaviour {
         if (inventoryUI == null)
             inventoryUI = GameObject.FindWithTag("Inventory UI");
         postProcessVolume = GameObject.FindWithTag("MainCamera").GetComponent<PostProcessVolume>();
-    }
-
-    private void OnEnable() {
-        rightClickAction.Enable();
-        rightClickAction.performed += ToggleInventory;
-    }
-
-    private void OnDisable() {
-        rightClickAction.performed -= ToggleInventory;
-        rightClickAction.Disable();
-    }
-
-    private void ToggleInventory(InputAction.CallbackContext context) {
-        if (PauseManager.Instance.IsOpen)
-            return;
-        if(isOpen)
-            HideInventory();
-        else {
-            ShowInventory();
-        }
     }
     
     public void ShowInventory() {

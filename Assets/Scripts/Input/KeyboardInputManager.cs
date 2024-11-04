@@ -17,6 +17,8 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     
     public void OnInventory(InputAction.CallbackContext context) {
         if (!context.performed) return;
+        if (PauseManager.Instance.IsOpen)
+            return;
         
         InventoryController inventoryController = InventoryController.Instance;
         if (inventoryController.IsOpen()) {
@@ -31,6 +33,9 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     
     public void OnPause(InputAction.CallbackContext context) {
         if (!context.performed) 
+            return;
+        
+        if(InventoryController.Instance.IsOpen())
             return;
         
         if (PauseManager.Instance.IsOpen) {

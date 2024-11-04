@@ -34079,6 +34079,7 @@ GameObject:
   - component: {fileID: 545831619}
   - component: {fileID: 545831618}
   - component: {fileID: 545831617}
+  - component: {fileID: 545831620}
   m_Layer: 5
   m_Name: Pause Button
   m_TagString: Untagged
@@ -34200,6 +34201,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545831615}
   m_CullTransparentMesh: 1
+--- !u!114 &545831620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545831615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 575181926}
+          m_TargetAssemblyTypeName: MouseInputManager, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 575181926}
+          m_TargetAssemblyTypeName: MouseInputManager, Assembly-CSharp
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &563525905
 GameObject:
   m_ObjectHideFlags: 0
@@ -45922,6 +45968,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 807472347}
+  - component: {fileID: 807472348}
   m_Layer: 0
   m_Name: ==== DEBUG ===
   m_TagString: Untagged
@@ -45944,6 +45991,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &807472348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807472346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c5e8505f9e3404c93cd64e1b03bc751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &809588063
 GameObject:
   m_ObjectHideFlags: 0
@@ -119457,6 +119516,7 @@ GameObject:
   - component: {fileID: 1733224875}
   - component: {fileID: 1733224874}
   - component: {fileID: 1733224873}
+  - component: {fileID: 1733224876}
   m_Layer: 5
   m_Name: Inventory Button
   m_TagString: Untagged
@@ -119578,6 +119638,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733224871}
   m_CullTransparentMesh: 1
+--- !u!114 &1733224876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733224871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 575181926}
+          m_TargetAssemblyTypeName: MouseInputManager, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 575181926}
+          m_TargetAssemblyTypeName: MouseInputManager, Assembly-CSharp
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1734773396
 GameObject:
   m_ObjectHideFlags: 0
@@ -148228,7 +148333,15 @@ PrefabInstance:
       value: Mouse Hold
       objectReference: {fileID: 0}
     - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: rightClickAction.m_Name
+      value: Right Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
       propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: rightClickAction.m_SingletonActionBindings.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
@@ -148246,6 +148359,10 @@ PrefabInstance:
     - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
       propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[3].m_Id
       value: 240ebaa5-3469-403d-b6a1-eb14901d5716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: rightClickAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: ff0980d3-09c0-4f6e-a22b-eab10552c86b
       objectReference: {fileID: 0}
     - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
       propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[0].m_Path
@@ -148280,6 +148397,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: rightClickAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Mouse>/rightButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
       propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[0].m_Action
       value: Mouse Hold
       objectReference: {fileID: 0}
@@ -148294,6 +148415,10 @@ PrefabInstance:
     - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
       propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[3].m_Action
       value: Mouse Hold
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: rightClickAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Right Click
       objectReference: {fileID: 0}
     - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
       propertyPath: mouseHoldAction.m_SingletonActionBindings.Array.data[0].m_Interactions
