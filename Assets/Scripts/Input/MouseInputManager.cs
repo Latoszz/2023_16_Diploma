@@ -35,6 +35,9 @@ public class MouseInputManager : MonoBehaviour {
     void Update() {
         if (!mouseClickEnabled)
             return;
+        if (pointerOverUI) {
+            return;
+        }
         
         if (mouseHoldAction.ReadValue<float>() > 0) {
             MoveTowardsCursor();
