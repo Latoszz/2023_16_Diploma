@@ -338,5 +338,9 @@ namespace CardBattles.CardScripts.Additional {
             yield return sequence.WaitForCompletion();
         }
 
+        [SerializeField] private float onPlayEffectDelay = 0.16f;
+        public IEnumerator OnPlayEffectDelay() {
+            yield return new WaitForSeconds(onPlayEffectDelay);
+        }
     }
 }

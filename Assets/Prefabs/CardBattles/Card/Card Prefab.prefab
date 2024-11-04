@@ -954,6 +954,7 @@ MonoBehaviour:
   growTimeSpellShowcase: 0.75
   stayForTimeSpellShowcase: 1
   shrinkTimeSpellShowcase: 0.25
+  onPlayEffectDelay: 0.16
 --- !u!114 &-6973358634639818209
 MonoBehaviour:
   m_ObjectHideFlags: 0
