@@ -16,4 +16,9 @@ public class TestLog : MonoBehaviour
     public void fun4() {
         Debug.Log("fun4");
     }
+
+    public void funCustom(string custom) {
+        Debug.Log(custom);
+
+    }
 }
