@@ -18,6 +18,8 @@ public class IntStringDictionary : SerializableDictionary<int, string> {}
 [Serializable]
 public class StringFloatDictionary :  SerializableDictionary<string, float>{ }
 [Serializable]
+public class EnemyBrainDictionary :  SerializableDictionary<EnemyAiAction, float>{ }
+[Serializable]
 public class StringIntDictionary : SerializableDictionary<string, int> {}
 
 

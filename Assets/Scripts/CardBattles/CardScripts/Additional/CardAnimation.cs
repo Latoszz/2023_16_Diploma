@@ -249,14 +249,25 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         public IEnumerator Play(Card card) {
+            var cardDisplay= card.GetComponent<CardDisplay>();
+            cardDisplay.ChangeCardVisible(true);
             switch (card) {
                 case Spell:
+                    if (!card.IsPlayers)
+                        yield return StartCoroutine(MoveToMiddle(card));
+                    StartCoroutine(card.DoEffect(EffectTrigger.OnPlay));
                     StartCoroutine(SpellShowcase(card.gameObject));
                     yield return StartCoroutine(FadeOut(card.gameObject));
                     break;
             }
 
             yield return null;
+        }
+
+        private IEnumerator MoveToMiddle(Card card) {
+            StartCoroutine(card.ChangeSortingOrderTemporarily(15));
+            var cor = card.transform.DOMove(Vector3.zero, 0.5f).SetEase(Ease.InOutCubic).SetLink(card.gameObject,LinkBehaviour.KillOnDestroy);
+            yield return cor.WaitForCompletion();
         }
 
         [Space, Header("FadeOut"), Foldout("FadeOut"), SerializeField]
@@ -307,7 +318,9 @@ namespace CardBattles.CardScripts.Additional {
 
         private IEnumerator SpellShowcase(GameObject spellGameObject) 
         {
-            var x = Instantiate(spellGameObject, spellShowcasePosition, transform.rotation).transform;
+            
+            var x = Instantiate(spellGameObject, spellShowcasePosition, Quaternion.identity).transform;
+           
             x.localScale = Vector3.one * startScaleSpellShowcase;
 
             var sequence = DOTween.Sequence().SetLink(x.gameObject, LinkBehaviour.KillOnDestroy);

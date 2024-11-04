@@ -92,8 +92,7 @@ namespace CardBattles.CardScripts {
         }
 
         public virtual IEnumerator Play() {
-            StartCoroutine(DoEffect(EffectTrigger.OnPlay));
-            yield return StartCoroutine(cardAnimation.Play(this));
+            yield return StartCoroutine(cardAnimation.Play(this)); //it has the trigger inside
         }
 
         
@@ -109,9 +108,17 @@ namespace CardBattles.CardScripts {
             yield return StartCoroutine(
                 EffectManager.effectDictionary[effectTargetValue.effectName](targets, effectTargetValue.value));
         }
-
+        public IEnumerator ChangeSortingOrderTemporarily(int num) {
+            canvas.sortingOrder += num;
+            yield return new WaitForSeconds(2f);
+            canvas.sortingOrder -= num;
+        }
         private List<GameObject> GetTargets(TargetType targetType) {
             return BoardManager.Instance.GetTargets(targetType, this);
+        }
+
+        private void OnDestroy() {
+            StopAllCoroutines();
         }
     }
 }
