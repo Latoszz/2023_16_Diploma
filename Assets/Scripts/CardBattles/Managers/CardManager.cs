@@ -12,14 +12,16 @@ namespace CardBattles.Managers {
         public GameObject spellPrefab;
 
         private void Awake() {
-            if (Instance is null) {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else {
+            if (Instance != null && Instance != this) {
                 Destroy(gameObject);
             }
+            else {
+                Instance = this;
+            }
+
+            DontDestroyOnLoad(this);
         }
+
 
         public Card CreateCard(CardData cardData, PlayerEnemyMonoBehaviour parentComponent) {
             GameObject cardObject;

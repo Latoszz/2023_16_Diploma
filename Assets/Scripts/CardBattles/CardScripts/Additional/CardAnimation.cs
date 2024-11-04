@@ -251,6 +251,7 @@ namespace CardBattles.CardScripts.Additional {
         public IEnumerator Play(Card card) {
             switch (card) {
                 case Spell:
+                    StartCoroutine(SpellShowcase(card.gameObject));
                     yield return StartCoroutine(FadeOut(card.gameObject));
                     break;
             }
@@ -304,14 +305,38 @@ namespace CardBattles.CardScripts.Additional {
         [SerializeField, Foldout("SpellShowcase"),Label("Shrink Time")]
         private float shrinkTimeSpellShowcase;
 
-        private IEnumerator SpellShowcase() {
-
-            var x  = Instantiate(this,spellShowcasePosition,transform.rotation).transform;
+        private IEnumerator SpellShowcase(GameObject spellGameObject) 
+        {
+            var x = Instantiate(spellGameObject, spellShowcasePosition, transform.rotation).transform;
             x.localScale = Vector3.one * startScaleSpellShowcase;
-            var y = DOTween.Sequence().SetLink(x.gameObject, LinkBehaviour.KillOnDestroy);
-            y.Append(x.DOScale(maxScaleSpellShowcase, growTimeSpellShowcase));
+
+            var sequence = DOTween.Sequence().SetLink(x.gameObject, LinkBehaviour.KillOnDestroy);
+
+            // Growth animation
+            sequence.Append(x.DOScale(maxScaleSpellShowcase, growTimeSpellShowcase).SetEase(Ease.OutElastic));
+
+            // Stay at max scale for a duration
+            sequence.AppendInterval(stayForTimeSpellShowcase);
+
+            // Rotation animation, Shrink and fade out
+            sequence.Append(x.DORotate(new Vector3(0, 360, 0), shrinkTimeSpellShowcase, RotateMode.FastBeyond360)
+                .SetEase(Ease.InCubic));
             
-            yield return null;
+            sequence.Join(x.DOScale(0, shrinkTimeSpellShowcase).SetEase(Ease.OutCubic));
+            sequence.Join(x.GetComponent<CanvasGroup>().DOFade(0, shrinkTimeSpellShowcase));
+            var canvas = x.GetComponent<Canvas>();
+            
+            canvas.overrideSorting = true;
+            canvas.sortingOrder = 100;
+            canvas.sortingLayerName = "Above all";
+
+            // Destroy the object after the sequence
+            sequence.OnComplete(() => Destroy(x.gameObject));
+
+            sequence.Play();
+            
+            yield return sequence.WaitForCompletion();
         }
+
     }
 }
