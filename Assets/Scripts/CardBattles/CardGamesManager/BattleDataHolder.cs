@@ -44,10 +44,10 @@ namespace CardBattles.CardGamesManager {
                 if (asset is not BattleData cardBattle) continue;
                 if (battleDatasWithFlags.ContainsKey((BattleData)asset)) continue;
                 i++;
-                Debug.Log($"Added{asset.name}, to list of battles");
+                Debug.Log($"Added {asset.name}, to list of battles");
                 battleDatasWithFlags.Add((BattleData)asset, false);
             }
-            Debug.Log($"Added{i}, new battles");
+            Debug.Log($"Added {i}, new battles");
 
         }
 #endif
