@@ -12,7 +12,7 @@ namespace CardBattles.Character.Mana {
         private ManaDisplay manaDisplay;
 
         //TODO change
-        [ShowNativeProperty] private int Mana => currentMana;
+        [ShowNativeProperty] private string Mana => $"{currentMana}/{maxMana}";
         [SerializeField] public int maxMana = 2;
 
         [Min(0)] private int currentMana;

@@ -250,12 +250,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitBetweenPlayingCards: 1
-  chanceToEndAfterEachAction: 0.3
   baseWeights:
-    m_keys:
-    - Draw
-    - Play
+    m_keys: 00000000010000000200000003000000
     m_values:
-    - 3
-    - 8
+    - 2
+    - 6
+    - 15
+    - 2
   showInnerDialogue: 0

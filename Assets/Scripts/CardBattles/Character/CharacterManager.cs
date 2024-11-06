@@ -116,8 +116,8 @@ namespace CardBattles.Character {
             Debug.LogError("This card cannot be played at given cardSpot");
         }
 
-        public IEnumerator PlayCardCoroutine(Card card, CardSpot cardSpot, float time) { //time defined in EnemyAi
-            OnCardPlayedHandler(card, cardSpot);
+        public IEnumerator PlayCardCoroutine(Card card,ICardPlayTarget target, float time) { //time defined in EnemyAi
+            OnCardPlayedHandler(card, target);
             yield return new WaitForSeconds(time);
         }
 

@@ -910,6 +910,9 @@ MonoBehaviour:
   cardType: {fileID: 1319922846925468558}
   minionOnlyElements: {fileID: 9072930608417842193}
   frontVisible: 0
+  growScale: 1.5
+  growDuration: 0.2
+  shrinkDuration: 0.3
   scaleOnHoverTime: 0.1
 --- !u!114 &3513187511264810272
 MonoBehaviour:
@@ -945,6 +948,13 @@ MonoBehaviour:
   attackMoveBackEase: 4
   cardFadeOutDuration: 1.3
   cardFadeOutEase: 3
+  spellShowcasePosition: {x: -500, y: 0, z: 0}
+  startScaleSpellShowcase: 0.25
+  maxScaleSpellShowcase: 2
+  growTimeSpellShowcase: 0.75
+  stayForTimeSpellShowcase: 1
+  shrinkTimeSpellShowcase: 0.25
+  onPlayEffectDelay: 0.16
 --- !u!114 &-6973358634639818209
 MonoBehaviour:
   m_ObjectHideFlags: 0

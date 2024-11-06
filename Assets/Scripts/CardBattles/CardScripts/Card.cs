@@ -5,7 +5,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using CardBattles.CardScripts.Additional;
 using CardBattles.CardScripts.CardDatas;
-using CardBattles.CardScripts.Effects;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
@@ -13,7 +12,6 @@ using CardBattles.Managers;
 using JetBrains.Annotations;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace CardBattles.CardScripts {
     [SuppressMessage("ReSharper", "UnusedMember.Local")]
@@ -59,7 +57,6 @@ namespace CardBattles.CardScripts {
         public virtual int GetCost() {
             
             if (properties.Contains(AdditionalProperty.FreeToPlay)) {
-                Debug.Log("that was free");
                 return 0;
             }
             return 1;
@@ -95,21 +92,33 @@ namespace CardBattles.CardScripts {
         }
 
         public virtual IEnumerator Play() {
-            yield return StartCoroutine(DoEffect(EffectTrigger.OnPlay));
-            yield return StartCoroutine(cardAnimation.Play(this));
+            yield return StartCoroutine(cardAnimation.Play(this)); //it has the trigger inside
         }
 
+        
+        
         public IEnumerator DoEffect(EffectTrigger effectTrigger) {
             if (!effectDictionary.TryGetValue(effectTrigger, out var value))
                 yield break;
+
+            if (effectTrigger == EffectTrigger.OnPlay)
+                yield return StartCoroutine(cardAnimation.OnPlayEffectDelay());
             var effectTargetValue = value;
             var targets = GetTargets(effectTargetValue.targetType);
             yield return StartCoroutine(
                 EffectManager.effectDictionary[effectTargetValue.effectName](targets, effectTargetValue.value));
         }
-
+        public IEnumerator ChangeSortingOrderTemporarily(int num) {
+            canvas.sortingOrder += num;
+            yield return new WaitForSeconds(2f);
+            canvas.sortingOrder -= num;
+        }
         private List<GameObject> GetTargets(TargetType targetType) {
             return BoardManager.Instance.GetTargets(targetType, this);
+        }
+
+        private void OnDestroy() {
+            StopAllCoroutines();
         }
     }
 }

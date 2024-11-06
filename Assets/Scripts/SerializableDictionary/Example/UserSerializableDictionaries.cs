@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using CardBattles.CardGamesManager;
 using CardBattles.CardScripts.Effects;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using CardBattles.Enums;
 
+[Serializable]
+public class BattleDataFlagDictionary : SerializableDictionary<BattleData, BattleState>{}
 [Serializable]
 public class TriggerEffectDictionary : SerializableDictionary<EffectTrigger, EffectTargetValue>{}
 [Serializable]
@@ -14,6 +17,8 @@ public class StringStringDictionary : SerializableDictionary<string, string> {}
 public class IntStringDictionary : SerializableDictionary<int, string> {}
 [Serializable]
 public class StringFloatDictionary :  SerializableDictionary<string, float>{ }
+[Serializable]
+public class EnemyBrainDictionary :  SerializableDictionary<EnemyAiAction, float>{ }
 [Serializable]
 public class StringIntDictionary : SerializableDictionary<string, int> {}
 

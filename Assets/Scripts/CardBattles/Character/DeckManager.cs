@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CardBattles.CardGamesManager;
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Interfaces.InterfaceObjects;
@@ -13,24 +15,29 @@ namespace CardBattles.Character {
     public class DeckManager : PlayerEnemyMonoBehaviour {
         [SerializeField] private List<CardSetData> cardSetDatas = new List<CardSetData>();
 
-        
+        private void OnEnable() {
+            var x = IsPlayers ? CardGamesLoader.Instance.loadPlayerCards : CardGamesLoader.Instance.loadEnemyCards;
+            x.AddListener(SetCardSetData);
+        }
+
+        private void OnDisable() {
+            var x = IsPlayers ? CardGamesLoader.Instance.loadPlayerCards : CardGamesLoader.Instance.loadEnemyCards;
+            x.RemoveListener(SetCardSetData);
+        }
+
         //TODO ADD SERIAZABLE DICTIONARY
         [SerializeField]
         private SerializableDictionary<string, List<Card>> cardSets =
             new SerializableDictionary<string, List<Card>>();
 
         public List<Card> cards = new List<Card>();
-        
-        private void Start() {
-            
-            
-            //if (!Application.isEditor)
-                cardSetDatas = LoadCardSetData();
 
-            if (cardSetDatas == null) {
-                Debug.LogError("cardSetDatas is null");
-            }
-            
+
+        public void SetCardSetData(List<CardSetData> loadedCardSetDatas) {
+            cardSetDatas = loadedCardSetDatas;
+        }
+        private IEnumerator Start() {
+            yield return new WaitUntil(() => cardSetDatas != null);
             InitializeDeck();
         }
 
@@ -38,14 +45,6 @@ namespace CardBattles.Character {
             CreateCardSetsFromData(); 
             CreateCardFromDeck();
         }
-        
-        
-        private List<CardSetData> LoadCardSetData() {
-            if (IsPlayers)
-                return InventoryDeckManager.Instance.GetDeck();
-            return EnemyStateManager.Instance.GetCurrentEnemy().GetDeck();
-        }
-        
 
         private void CreateCardSetsFromData() {
             int i = 0;

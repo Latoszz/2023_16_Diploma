@@ -126,12 +126,7 @@ namespace CardBattles.CardScripts {
                 cardAnimation.AttackAnimation(
                     this, target));
         }
-
-        public IEnumerator ChangeSortingOrderTemporarily(int num) {
-            canvas.sortingOrder += num;
-            yield return new WaitForSeconds(2f);
-            canvas.sortingOrder -= num;
-        }
+        
         public void BuffHp(int amount) {
             Debug.Log($"{name} buffed by {amount}");
             MaxHealth += amount;

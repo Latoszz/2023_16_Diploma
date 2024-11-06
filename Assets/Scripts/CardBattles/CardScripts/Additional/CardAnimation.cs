@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Audio;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
@@ -11,7 +10,6 @@ using UnityEngine;
 
 namespace CardBattles.CardScripts.Additional {
     public class CardAnimation : PlayerEnemyMonoBehaviour {
-     
         [Header("Show")] [Foldout("Draw"), SerializeField]
         public Vector3 showPosition;
 
@@ -47,8 +45,8 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         private IEnumerator PlayerDrawAnimationCoroutine(Vector3 finalPosition) {
-            var sequence = DOTween.Sequence().SetLink(gameObject,LinkBehaviour.KillOnDestroy);
-            
+            var sequence = DOTween.Sequence().SetLink(gameObject, LinkBehaviour.KillOnDestroy);
+
             sequence
                 .Append(transform
                     .DOMove(showPosition, timeToShow)
@@ -70,7 +68,7 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         private IEnumerator EnemyDrawAnimationCoroutine(Vector3 finalPosition) {
-            var sequence = DOTween.Sequence().SetLink(gameObject,LinkBehaviour.KillOnDestroy);;
+            var sequence = DOTween.Sequence().SetLink(gameObject, LinkBehaviour.KillOnDestroy);
             sequence.Append(
                 transform
                     .DOMove(finalPosition, enemyDraw)
@@ -95,7 +93,7 @@ namespace CardBattles.CardScripts.Additional {
             yield return transform
                 .DOMove(vector3, moveToAnimationTime)
                 .SetEase(Ease.InOutSine)
-                .SetLink(gameObject,LinkBehaviour.KillOnDestroy)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy)
                 .WaitForCompletion(true);
         }
 
@@ -111,10 +109,9 @@ namespace CardBattles.CardScripts.Additional {
                     cardSpot.transform.position,
                     playCardTime)
                 .SetEase(playCardEase)
-                .SetLink(gameObject,LinkBehaviour.KillOnDestroy)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy)
                 .WaitForCompletion();
             CardSpot.PlayDropSound();
-
         }
 
 
@@ -142,24 +139,24 @@ namespace CardBattles.CardScripts.Additional {
         [Foldout("Attack Animation"), SerializeField]
         private Ease attackMoveBackEase;
 
-        //TODO Add distance scaling to animaation
+        //TODO Add distance scaling to animation
         //USE LIKE A STATIC METHOD 
         public IEnumerator AttackAnimation(IAttacker attacker, IDamageable damageable) {
             bool poisonous = false;
             if (attacker is Minion minion) {
                 if (minion.properties.Contains(AdditionalProperty.Poisonous)) {
-                    Debug.Log("poisonous attack haveth happened");
                     poisonous = true;
                 }
             }
+
             var attack = attacker.GetAttack();
             var attackerTransform = attacker.GetTransform();
             var originalPosition = attackerTransform.position;
             var targetPosition = damageable.GetTransform().position;
             var moveDirection = (targetPosition - originalPosition).normalized;
             yield return AttackMoveToTarget(attackerTransform, targetPosition);
-            
-            damageable.TakeDamage(attack,poisonous);
+
+            damageable.TakeDamage(attack, poisonous);
 
             //TODO add variable to determine how much time to stop for at a target
             yield return new WaitForEndOfFrame();
@@ -182,7 +179,7 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         private IEnumerator AttackKnockback(Transform attackerTransform, Vector3 moveDirection) {
-            //TODO for some reason this doenst animate both shake and move at once
+            //TODO for some reason this doesnt animate both shake and move at once
             //var move = StartCoroutine(AttackKnockbackMove(attackerTransform, moveDirection));
             //var shake = StartCoroutine(AttackKnockbackShake(attackerTransform));
             //TODO so i had to do this
@@ -190,21 +187,11 @@ namespace CardBattles.CardScripts.Additional {
 
             var knockbackPosition = attackerTransform.position - (moveDirection * attackKnockBackAmount);
 
-
             sequence.Join(attackerTransform
                 .DOMove(
                     knockbackPosition,
                     attackKnockBackTime)
                 .SetEase(attackKnockBackEase));
-
-
-            /*
-            sequence.Join(attackerTransform
-                .DOShakePosition(
-                    attackKnockBackTime,
-                    attackKnockBackShakeStrength)
-                .SetEase(attackMoveToEase));*/
-
 
             sequence.Play();
             yield return sequence.WaitForCompletion();
@@ -219,7 +206,6 @@ namespace CardBattles.CardScripts.Additional {
                     attackKnockBackTime)
                 .SetEase(attackKnockBackEase)
                 .SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy)
-
                 .WaitForCompletion(true);
             yield return knockBack;
         }
@@ -231,7 +217,6 @@ namespace CardBattles.CardScripts.Additional {
                     attackKnockBackShakeStrength)
                 .SetEase(attackMoveToEase)
                 .SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy)
-
                 .WaitForCompletion(true);
             yield return shake;
         }
@@ -243,7 +228,6 @@ namespace CardBattles.CardScripts.Additional {
                     attackMoveBackTime)
                 .SetEase(attackMoveBackEase)
                 .SetLink(attackerTransform.gameObject, LinkBehaviour.KillOnDestroy)
-
                 .WaitForCompletion(true);
             yield return moveBack;
         }
@@ -256,7 +240,7 @@ namespace CardBattles.CardScripts.Additional {
         public IEnumerator Die() {
             yield return new WaitForSeconds(0.4f);
             EffectVisualsManager.Instance.Explosion(transform.position, 3);
-            
+
             yield return null;
         }
 
@@ -265,13 +249,25 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         public IEnumerator Play(Card card) {
+            var cardDisplay= card.GetComponent<CardDisplay>();
+            cardDisplay.ChangeCardVisible(true);
             switch (card) {
                 case Spell:
+                    if (!card.IsPlayers)
+                        yield return StartCoroutine(MoveToMiddle(card));
+                    StartCoroutine(card.DoEffect(EffectTrigger.OnPlay));
+                    StartCoroutine(SpellShowcase(card.gameObject));
                     yield return StartCoroutine(FadeOut(card.gameObject));
                     break;
             }
-            
+
             yield return null;
+        }
+
+        private IEnumerator MoveToMiddle(Card card) {
+            StartCoroutine(card.ChangeSortingOrderTemporarily(15));
+            var cor = card.transform.DOMove(Vector3.zero, 0.5f).SetEase(Ease.InOutCubic).SetLink(card.gameObject,LinkBehaviour.KillOnDestroy);
+            yield return cor.WaitForCompletion();
         }
 
         [Space, Header("FadeOut"), Foldout("FadeOut"), SerializeField]
@@ -293,15 +289,71 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         private IEnumerator Spin(GameObject cardGameObject) {
-            
             var cor = transform
-                .DORotate(new Vector3(360, 0,0), 1f, RotateMode.FastBeyond360)
+                .DORotate(new Vector3(360, 0, 0), 1f, RotateMode.FastBeyond360)
                 .SetRelative(true)
                 .SetEase(Ease.Linear).SetLoops(-1)
-                .SetLink(cardGameObject,LinkBehaviour.KillOnDestroy);
+                .SetLink(cardGameObject, LinkBehaviour.KillOnDestroy);
             cor.Play();
             yield return new WaitForSeconds(cardFadeOutDuration);
+        }
+
+        [SerializeField, Foldout("SpellShowcase"),Label("Position")]
+        private Vector3 spellShowcasePosition;
+
+        [SerializeField, Foldout("SpellShowcase"),Label("Start Scale")]
+        private float startScaleSpellShowcase;
+
+        [SerializeField, Foldout("SpellShowcase"),Label("Max Scale")]
+        private float maxScaleSpellShowcase;
+
+        [SerializeField, Foldout("SpellShowcase"),Label("Grow Time")]
+        private float growTimeSpellShowcase;
+
+        [SerializeField, Foldout("SpellShowcase"),Label("Stay ForTime")]
+        private float stayForTimeSpellShowcase;
+
+        [SerializeField, Foldout("SpellShowcase"),Label("Shrink Time")]
+        private float shrinkTimeSpellShowcase;
+
+        private IEnumerator SpellShowcase(GameObject spellGameObject) 
+        {
             
+            var x = Instantiate(spellGameObject, spellShowcasePosition, Quaternion.identity).transform;
+           
+            x.localScale = Vector3.one * startScaleSpellShowcase;
+
+            var sequence = DOTween.Sequence().SetLink(x.gameObject, LinkBehaviour.KillOnDestroy);
+
+            // Growth animation
+            sequence.Append(x.DOScale(maxScaleSpellShowcase, growTimeSpellShowcase).SetEase(Ease.OutElastic));
+
+            // Stay at max scale for a duration
+            sequence.AppendInterval(stayForTimeSpellShowcase);
+
+            // Rotation animation, Shrink and fade out
+            sequence.Append(x.DORotate(new Vector3(0, 360, 0), shrinkTimeSpellShowcase, RotateMode.FastBeyond360)
+                .SetEase(Ease.InCubic));
+            
+            sequence.Join(x.DOScale(0, shrinkTimeSpellShowcase).SetEase(Ease.OutCubic));
+            sequence.Join(x.GetComponent<CanvasGroup>().DOFade(0, shrinkTimeSpellShowcase));
+            var canvas = x.GetComponent<Canvas>();
+            
+            canvas.overrideSorting = true;
+            canvas.sortingOrder = 100;
+            canvas.sortingLayerName = "Above all";
+
+            // Destroy the object after the sequence
+            sequence.OnComplete(() => Destroy(x.gameObject));
+
+            sequence.Play();
+            
+            yield return sequence.WaitForCompletion();
+        }
+
+        [SerializeField] private float onPlayEffectDelay = 0.16f;
+        public IEnumerator OnPlayEffectDelay() {
+            yield return new WaitForSeconds(onPlayEffectDelay);
         }
     }
 }

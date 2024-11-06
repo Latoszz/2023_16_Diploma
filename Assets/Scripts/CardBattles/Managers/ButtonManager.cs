@@ -41,7 +41,6 @@ namespace CardBattles.Managers {
             else {
                 Instance = this;
             }
-            DontDestroyOnLoad(this);
         }
 
         private void Start() {
