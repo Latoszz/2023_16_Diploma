@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Audio;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
@@ -239,8 +240,10 @@ namespace CardBattles.CardScripts.Additional {
 
         public IEnumerator Die() {
             yield return new WaitForSeconds(0.4f);
+            var x =AudioCollection.Instance.GetClip("explosion");
+            AudioManager.Instance.Play(x);
             EffectVisualsManager.Instance.Explosion(transform.position, 3);
-
+            
             yield return null;
         }
 

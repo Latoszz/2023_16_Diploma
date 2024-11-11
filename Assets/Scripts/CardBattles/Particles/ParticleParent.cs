@@ -39,6 +39,7 @@ namespace CardBattles.Particles {
                 .WaitForCompletion();
 
             tween.Play();
+         
             yield return tween;
         }
 

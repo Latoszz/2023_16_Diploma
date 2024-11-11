@@ -116,7 +116,7 @@ namespace CardBattles.CardScripts {
         }
 
         public void AttackTarget(IDamageable target) {
-            if(properties.Contains(AdditionalProperty.Chance50ToNotAttack))
+            if(properties.Contains(AdditionalProperty.Lazy))
                 if (Random.value < 0.5f) {
                     transform.DOShakePosition(0.5f,20f,20);
                     return;
