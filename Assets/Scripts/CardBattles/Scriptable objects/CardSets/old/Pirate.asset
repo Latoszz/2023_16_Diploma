@@ -112,7 +112,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Rum
   sprite: {fileID: 21300000, guid: 7d2ca709821489545ad29fad0cf9c7ea, type: 3}
-  description: Randomly deal or heal 1 hp to all Minions
+  description: Randomly deal or heal 2 hp to all Minions
   flavourText: 
   properties: 
   effectDictionary:
@@ -120,7 +120,7 @@ MonoBehaviour:
     m_values:
     - effectName: 5
       targetType: 0
-      value: 0
+      value: 2
 --- !u!114 &6436932016818055626
 MonoBehaviour:
   m_ObjectHideFlags: 0
