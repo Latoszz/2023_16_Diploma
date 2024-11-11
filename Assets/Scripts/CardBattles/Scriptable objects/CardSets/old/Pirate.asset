@@ -154,10 +154,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
-  m_Name: Esrtranged family member
+  m_Name: Estranged family member
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Esrtranged family member
+  cardName: Estranged family member
   sprite: {fileID: 21300000, guid: 256656f16306ad5449a5ec19ead726fd, type: 3}
   description: Does nothing
   flavourText: 
@@ -167,4 +167,4 @@ MonoBehaviour:
     m_values:
     - effectName: 0
       targetType: 11
-      value: 0
+      value: 4

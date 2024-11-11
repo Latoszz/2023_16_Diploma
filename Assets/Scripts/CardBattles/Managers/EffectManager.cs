@@ -20,8 +20,8 @@ namespace CardBattles.Managers {
                     { EffectName.DealDamage, DealDamage },
                     { EffectName.ChangeAttack, ChangeAttack },
                     { EffectName.BuffHp, BuffHp },
-                    { EffectName.DrawACard , DrawACard},
-                    { EffectName.DealOrHeal , DealOrHeal}
+                    { EffectName.DrawACard, DrawACard },
+                    { EffectName.DealOrHeal, DealOrHeal }
                 };
 
         private static IEnumerator DealOrHeal(List<GameObject> targets, int value) {
@@ -66,6 +66,7 @@ namespace CardBattles.Managers {
                 }
             }
         }
+
         private static IEnumerator BuffHp(List<GameObject> targets, int value) {
             foreach (var target in targets) {
                 if (target.TryGetComponent(typeof(IDamageable), out var component)) {
@@ -74,13 +75,16 @@ namespace CardBattles.Managers {
                 }
             }
         }
-        
+
         //Expects a hero
         private static IEnumerator DrawACard(List<GameObject> targets, int value) {
-            Debug.Log("wooo you drew a card");
+            var x = targets.First();
+            if (!x.TryGetComponent(typeof(PlayerEnemyMonoBehaviour), out var playerEnemyMonoBehaviour))
+                yield break;
+            var isPlayers = ((PlayerEnemyMonoBehaviour)playerEnemyMonoBehaviour).IsPlayers;
+            
+
             yield return null;
-
         }
-
     }
 }

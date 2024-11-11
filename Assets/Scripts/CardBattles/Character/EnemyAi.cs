@@ -8,6 +8,7 @@ using CardBattles.Managers;
 using NaughtyAttributes;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Math = System.Math;
 using Random = System.Random;
 
@@ -24,12 +25,37 @@ namespace CardBattles.Character {
         private List<Minion> MinionsInHand => CardsInHand.OfType<Minion>().ToList();
         private List<Spell> SpellsInHand => CardsInHand.OfType<Spell>().ToList();
 
+        [ShowNativeProperty]
+        private int MinionCount {
+            get {
+                if (Application.isPlaying) {
+                    return MinionsInHand.Count;
+                }
 
-        [BoxGroup("Debug"), SerializeField]
-        private bool showInnerDialogue; //debug
+                return 0;
+            }
+        }
 
+        [ShowNativeProperty]
+        private int SpellCount {
+            get {
+                if (Application.isPlaying) {
+                    return SpellsInHand.Count;
+                }
+
+                return 0;
+            }
+        }
+        
+
+        
+        [Foldout("Debug"), SerializeField]
+        private bool addDelayAfterThinking; 
+
+        [Foldout("Debug"), SerializeField]
         private EnemyBrainDictionary weights;
 
+        
         private void Awake() {
             random = new Random();
             character = GetComponent<CharacterManager>();
@@ -92,6 +118,11 @@ namespace CardBattles.Character {
 
             var nextAction = ChooseActionToDo();
 
+            #if UNITY_EDITOR
+            if(addDelayAfterThinking)
+                yield return new WaitForSeconds(1f);
+            #endif
+            
             switch (nextAction) {
                 case EnemyAiAction.Draw:
                     yield return character.Draw(1, 1);
@@ -241,7 +272,7 @@ namespace CardBattles.Character {
         }
 
         private bool DeckIsEmpty() {
-            return character.deck.cards.Any();
+            return !character.deck.cards.Any();
         }
     }
 }

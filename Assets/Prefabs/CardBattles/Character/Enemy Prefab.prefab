@@ -253,8 +253,8 @@ MonoBehaviour:
   baseWeights:
     m_keys: 00000000010000000200000003000000
     m_values:
-    - 2
+    - 4
     - 6
-    - 15
+    - 4
     - 2
   showInnerDialogue: 0

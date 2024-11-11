@@ -131,7 +131,7 @@ MonoBehaviour:
   sprite: {fileID: 634790958, guid: 91ece539279118a438c900dfb08582ed, type: 3}
   description: At the start of turn buff give your other minion +2 health
   flavourText: Its totally not wine
-  properties: 
+  properties: 00000000
   effectDictionary:
     m_keys: 03000000
     m_values:

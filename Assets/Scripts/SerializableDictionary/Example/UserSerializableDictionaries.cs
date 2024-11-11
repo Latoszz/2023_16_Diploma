@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System;
 using CardBattles.CardGamesManager;
+using CardBattles.CardScripts;
 using CardBattles.CardScripts.Effects;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using CardBattles.Enums;
-
+[Serializable]
+public class CardSetDictionary : SerializableDictionary<string, List<Card>> {
+}
 [Serializable]
 public class BattleDataFlagDictionary : SerializableDictionary<BattleData, BattleState>{}
 [Serializable]

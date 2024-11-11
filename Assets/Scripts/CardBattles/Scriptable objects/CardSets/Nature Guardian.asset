@@ -21,9 +21,9 @@ MonoBehaviour:
   effectDictionary:
     m_keys: 00000000
     m_values:
-    - effectName: 2
-      targetType: 6
-      value: 1
+    - effectName: 0
+      targetType: 0
+      value: 0
   attack: 2
   maxHealth: 4
 --- !u!114 &-8299802616314509996
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Nature Guardian_Minion_9801
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: e8158072827b21b458eb6c9233b03414, type: 3}
   description: 
   flavourText: 
   properties: 

@@ -6,23 +6,25 @@ using UnityEngine;
 
 namespace CardBattles.CardScripts.CardDatas {
     public abstract class CardData : ScriptableObject {
-        
-        [SerializeField] [HideInInspector] public CardSetData cardSet;
+        [SerializeField] [HideInInspector]
+        public CardSetData cardSet;
 
-        [BoxGroup("Card")] [SerializeField] public string cardName;
+        [SerializeField]
+        public string cardName;
 
-        [BoxGroup("Card")] [SerializeField, ShowAssetPreview]
+        [SerializeField, ShowAssetPreview]
         public Sprite sprite;
 
-        [BoxGroup("Card")] [TextArea] [SerializeField]
+        [TextArea] [SerializeField]
         public string description;
 
-        [BoxGroup("Card")] [TextArea] [SerializeField]
+        [TextArea] [SerializeField]
         public string flavourText;
 
-        [BoxGroup("Data")] [SerializeField] public List<AdditionalProperty> properties = new List<AdditionalProperty>();
+        [SerializeField]
+        public List<AdditionalProperty> properties = new List<AdditionalProperty>();
 
-        [BoxGroup("Data")] [SerializeField]
+        [SerializeField]
         private TriggerEffectDictionary effectDictionary = new TriggerEffectDictionary();
 
         public TriggerEffectDictionary EffectDictionary {
@@ -37,5 +39,5 @@ namespace CardBattles.CardScripts.CardDatas {
 
             set => effectDictionary = value;
         }
-    };
+    }
 }

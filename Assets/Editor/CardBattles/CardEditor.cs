@@ -8,14 +8,19 @@ namespace Editor.CardBattles {
     public class CardDataEditor : UnityEditor.Editor {
         public override void OnInspectorGUI() {
             base.OnInspectorGUI();
-            if (GUI.changed) {
+            if (GUI.changed && target != null) {
                 EditorUtility.SetDirty(target);
-                var nameGiven = ((CardData)target).cardName;
-                if (String.IsNullOrWhiteSpace(nameGiven))
-                    nameGiven = "No name given";
-                ((CardData)target).name = nameGiven;
-                AssetDatabase.SaveAssets();
+                var cardData = (CardData)target;
+                if (cardData != null) {
+                    var nameGiven = cardData.cardName;
+                    if (string.IsNullOrWhiteSpace(nameGiven)) {
+                        nameGiven = "No name given";
+                    }
+                    cardData.name = nameGiven;
+                    AssetDatabase.SaveAssets();
+                }
             }
         }
+
     }
 }

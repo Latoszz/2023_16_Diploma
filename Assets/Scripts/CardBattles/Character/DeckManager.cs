@@ -7,6 +7,7 @@ using CardBattles.CardScripts;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Interfaces.InterfaceObjects;
 using CardBattles.Managers;
+using NaughtyAttributes;
 using UI.Inventory;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -25,10 +26,10 @@ namespace CardBattles.Character {
             x.RemoveListener(SetCardSetData);
         }
 
-        //TODO ADD SERIAZABLE DICTIONARY
-        [SerializeField]
-        private SerializableDictionary<string, List<Card>> cardSets =
-            new SerializableDictionary<string, List<Card>>();
+
+        [SerializeField,AllowNesting] 
+        private CardSetDictionary cardSets =
+            new CardSetDictionary();
 
         public List<Card> cards = new List<Card>();
 
@@ -36,22 +37,23 @@ namespace CardBattles.Character {
         public void SetCardSetData(List<CardSetData> loadedCardSetDatas) {
             cardSetDatas = loadedCardSetDatas;
         }
+
         private IEnumerator Start() {
             yield return new WaitUntil(() => cardSetDatas != null);
             InitializeDeck();
         }
 
         public void InitializeDeck() {
-            CreateCardSetsFromData(); 
+            CreateCardSetsFromData();
             CreateCardFromDeck();
         }
 
         private void CreateCardSetsFromData() {
             int i = 0;
             foreach (var cardSetData in cardSetDatas) {
-                i++; 
-                
-                
+                i++;
+
+
                 if (cardSetData == null) {
                     Debug.LogError("cardSetData is null at index ");
                     continue;
@@ -69,7 +71,7 @@ namespace CardBattles.Character {
                     }
 
                     var card = CardManager.Instance.CreateCard
-                    (cardData, this); 
+                        (cardData, this);
 
                     if (card == null) {
                         Debug.LogError("Card creation failed for cardData in cardSetData: " + cardSetData.displayName);
@@ -77,7 +79,9 @@ namespace CardBattles.Character {
                     }
 
                     cardSets.TryAdd(cardSetData.displayName + i, new List<Card>());
-                    cardSets[cardSetData.displayName + i].Add(card);
+                    var cardSetName = cardSetData.displayName + i;
+                    cardSets[cardSetName].Add(card);
+                    card.cardSetName = cardSetName;
                 }
             }
         }
@@ -101,14 +105,13 @@ namespace CardBattles.Character {
         }
 
         public List<GameObject> GetCardFromSameCardSet(Card card) {
-            foreach (var cardSet in cardSets.Values) {
+            if (!cardSets.TryGetValue(card.cardSetName, out var cardsFromSet))
+                return new List<GameObject>();
                 
-                if (cardSet.Contains(card)) {
-                    return cardSet.Select(e => e.gameObject).ToList();
-                }
-            }
-            return new List<GameObject>();
+            var filteredCards = cardsFromSet.Where(e => e != null && e.gameObject != null);
+            return filteredCards.Select(e => e.gameObject).ToList();
         }
+
         public List<GameObject> GetOtherCardFromSameCardSet(Card card) {
             var output = GetCardFromSameCardSet(card);
             output.Remove(card.gameObject);

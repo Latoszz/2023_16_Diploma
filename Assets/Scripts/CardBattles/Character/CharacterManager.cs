@@ -18,9 +18,7 @@ using UnityEngine.Events;
 
 namespace CardBattles.Character {
     public class CharacterManager : PlayerEnemyMonoBehaviour {
-        [Serializable]
-        public class CardEvent : UnityEvent<Card, ICardPlayTarget> {
-        }
+       
 
 
         [Header("Data")] [SerializeField]
@@ -40,7 +38,7 @@ namespace CardBattles.Character {
             }
         }
 
-        private static CardEvent onCardPlayed = new CardEvent();
+        private static UnityEvent<Card, ICardPlayTarget> onCardPlayed = new UnityEvent<Card, ICardPlayTarget>();
 
 
         public void Awake() {
@@ -105,11 +103,7 @@ namespace CardBattles.Character {
 
         //TODO FIX
         private bool PlaySpell(Spell spell, ICardPlayTarget target) {
-            Debug.Log($"{spell.name} has been played");
             return true;
-            /*switch (target) {
-
-            }*/
         }
 
         private void WrongCardTargetCombo() {
@@ -192,9 +186,10 @@ namespace CardBattles.Character {
             AudioManager.Instance.Play(x);
 
         }
-        public void DrawACard() {
-            StartCoroutine(Draw(1, 1));
+        public void DrawACard(int cost = 1) {
+            StartCoroutine(Draw(1, cost));
         }
+        
 
         public IEnumerator EndOfTurn() {
             

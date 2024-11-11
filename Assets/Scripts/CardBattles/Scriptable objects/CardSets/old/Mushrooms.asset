@@ -22,7 +22,7 @@ MonoBehaviour:
     m_keys: 02000000
     m_values:
     - effectName: 0
-      targetType: 4
+      targetType: 5
       value: 2
   attack: 0
   maxHealth: 1
