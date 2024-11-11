@@ -4474,6 +4474,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 756406078947868008, guid: 206f990e23f70504cac5135718e4bb32, type: 3}
+      propertyPath: saveFileData.fileName
+      value: SaveGame
+      objectReference: {fileID: 0}
     - target: {fileID: 1697703657180625388, guid: 206f990e23f70504cac5135718e4bb32, type: 3}
       propertyPath: m_Name
       value: SaveManager
