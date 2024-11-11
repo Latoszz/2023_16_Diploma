@@ -109,5 +109,10 @@ namespace CardBattles.Character {
             }
             return new List<GameObject>();
         }
+        public List<GameObject> GetOtherCardFromSameCardSet(Card card) {
+            var output = GetCardFromSameCardSet(card);
+            output.Remove(card.gameObject);
+            return output;
+        }
     }
 }

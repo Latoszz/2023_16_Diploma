@@ -240,8 +240,6 @@ namespace CardBattles.CardScripts.Additional {
 
         public IEnumerator Die() {
             yield return new WaitForSeconds(0.4f);
-            var x =AudioCollection.Instance.GetClip("explosion");
-            AudioManager.Instance.Play(x);
             EffectVisualsManager.Instance.Explosion(transform.position, 3);
             
             yield return null;

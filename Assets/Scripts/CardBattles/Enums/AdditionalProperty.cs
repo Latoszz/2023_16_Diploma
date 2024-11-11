@@ -36,10 +36,7 @@ namespace CardBattles.Enums {
         Costly,
 
         [PropertyDescription("Takes half damage (rounded up).")]
-        Durable,
-        
-        [PropertyDescription("This property is not yet implemented.")]
-        Unimplemented
+        Durable
 
     }
 

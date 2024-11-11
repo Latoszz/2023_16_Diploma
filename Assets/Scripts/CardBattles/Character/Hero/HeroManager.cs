@@ -48,7 +48,7 @@ namespace CardBattles.Character.Hero {
             isPlayers = CompareTag("Player");
         }
 
-        public void TakeDamage(int amount, bool isInstaKill) {
+        public void TakeDamage(int amount, bool isPoisonous) {
             CurrentHealth -= amount;
             takeDamageAction.Invoke();
         }

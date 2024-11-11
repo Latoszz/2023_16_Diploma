@@ -96,7 +96,7 @@ namespace CardBattles.Character {
                 case EnemyAiAction.Draw:
                     yield return character.Draw(1, 1);
                     break;
-                case EnemyAiAction.PlayMinon:
+                case EnemyAiAction.PlayMinion:
                     yield return PlayAMinion();
                     break;
                 case EnemyAiAction.PlaySpell:
@@ -178,7 +178,7 @@ namespace CardBattles.Character {
             multiplyBy *= (float)Math.Sqrt(MinionsInHand.Count);
             multiplyBy *= 2 * (character.boardSide.GetEmptyCardSpots().Count / 4f);
 
-            weights[EnemyAiAction.PlayMinon] *= multiplyBy;
+            weights[EnemyAiAction.PlayMinion] *= multiplyBy;
         }
 
         private void ModifySpellPlayWeight() {
@@ -215,7 +215,7 @@ namespace CardBattles.Character {
         //Minion
         private bool MinionArePlayable() {
             if (NoMinionsInHand() || NoEmptyCardSpots()) {
-                weights[EnemyAiAction.PlayMinon] = 0f;
+                weights[EnemyAiAction.PlayMinion] = 0f;
                 return false;
             }
 

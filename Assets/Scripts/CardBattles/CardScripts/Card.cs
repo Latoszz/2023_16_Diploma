@@ -59,6 +59,11 @@ namespace CardBattles.CardScripts {
             if (properties.Contains(AdditionalProperty.FreeToPlay)) {
                 return 0;
             }
+
+            if (properties.Contains(AdditionalProperty.Costly)) {
+                return 2;
+            }
+            
             return 1;
         }
 

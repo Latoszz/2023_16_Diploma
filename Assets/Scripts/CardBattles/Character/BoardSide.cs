@@ -111,5 +111,14 @@ namespace CardBattles.Character {
 
             return output;
         }
+
+        public int ContainsCardAtIndex(Card card) {
+            for (int i = 0; i < cardSpots.Length; i++) {
+                if (cardSpots[i].card == card)
+                    return i;
+            }
+
+            return -1;
+        }
     }
 }

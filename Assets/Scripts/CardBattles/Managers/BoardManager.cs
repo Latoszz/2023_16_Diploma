@@ -18,6 +18,7 @@ namespace CardBattles.Managers {
         private BoardSide player;
         private BoardSide enemy;
 
+
         private CharacterManager PlayingCharacter(bool isPlayers) => isPlayers ? playerCharacter : enemyCharacter;
         private CharacterManager WaitingCharacter(bool isPlayers) => isPlayers ? enemyCharacter : playerCharacter;
 
@@ -90,6 +91,9 @@ namespace CardBattles.Managers {
                 case TargetType.OpposingMinion:
                     targets.AddRange(GetOpposingCard(card));
                     break;
+                case TargetType.ThisMinion:
+                    targets.Add(card.gameObject);
+                    break;
                 case TargetType.AdjacentMinions:
                     targets.AddRange(Playing(isPlayers).GetAdjecentCards(card));
                     break;
@@ -102,10 +106,12 @@ namespace CardBattles.Managers {
                     break;
                 case TargetType.OpposingHero:
                     targets.Add(Waiting(isPlayers).hero.gameObject);
-
                     break;
-                case TargetType.CardSet:
+                case TargetType.CardSetAll:
                     targets.AddRange(PlayingCharacter(isPlayers).deck.GetCardFromSameCardSet(card));
+                    break;
+                case TargetType.CardSetNotThis:
+                    targets.AddRange(PlayingCharacter(isPlayers).deck.GetOtherCardFromSameCardSet(card));
                     break;
                 case TargetType.Allies:
                     targets.AddRange(Playing(isPlayers).GetNoNullCardsObjects());
@@ -115,6 +121,9 @@ namespace CardBattles.Managers {
                     targets.AddRange(Waiting(isPlayers).GetNoNullCardsObjects());
                     targets.Add(Waiting(isPlayers).hero.gameObject);
                     break;
+                case TargetType.NoneButGetWhoseIsIt:
+                    targets.Add(card.gameObject);
+                    break;
                 case TargetType.None:
                     break;
             }
@@ -123,7 +132,20 @@ namespace CardBattles.Managers {
         }
 
         private IEnumerable<GameObject> GetOpposingCard(Card card) {
-            throw new System.NotImplementedException();
+            
+            if (card is not Minion) return new List<GameObject>();
+
+
+            var pc = Playing(card.IsPlayers);
+            var index = pc.ContainsCardAtIndex(card);
+
+            if (index == -1) return new List<GameObject>();
+
+            var enemyCard = Waiting(card.IsPlayers).cardSpots[index].card;
+
+            if (enemyCard is null) return new List<GameObject>();
+
+            return new List<GameObject> { enemyCard.gameObject };
         }
     }
 }

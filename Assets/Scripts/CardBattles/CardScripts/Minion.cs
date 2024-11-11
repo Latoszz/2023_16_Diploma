@@ -1,11 +1,9 @@
 using System;
 using System.Collections;
-using System.Linq;
 using Audio;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
-using CardBattles.Managers;
 using DG.Tweening;
 using NaughtyAttributes;
 using Unity.Mathematics;
@@ -47,7 +45,10 @@ namespace CardBattles.CardScripts {
         private int CurrentHealth {
             get => currentHealth;
             set {
+                
                 currentHealth = value > MaxHealth ? MaxHealth : value;
+                
+                
                 dataChanged?.Invoke(attack, currentHealth, maxHealth);
                 if (currentHealth <= 0) {
                     Die();
@@ -76,26 +77,40 @@ namespace CardBattles.CardScripts {
         public int GetAttack() => Attack;
         public void ChangeAttackBy(int amount) => Attack += amount;
 
+        [SerializeField] private UnityEvent poisonTrigger; 
+        [SerializeField] private UnityEvent immuneToPoisonTrigger; 
         [SerializeField] private string takeDamageSound = "Damage.Card";
-        public void TakeDamage(int amount, bool isInstaKill = false) {
-                
-                
+        public void TakeDamage(int amount, bool isPoisonous = false) {
+
+            if (properties.Contains(AdditionalProperty.Durable))
+                amount = (amount + 1) / 2; //divide/2 round up
+            
             amount = amount > 0 ? amount : 0;
             CurrentHealth -= amount;
-            if (properties == null) {
-                Debug.LogWarning("Properties list is not initialized in Minion.");
-            }
-            if (!(properties.Contains(AdditionalProperty.ImmuneToPoison)) && isInstaKill) {
-                
-                Die();
-            }
-
+            
+            PoisonCheck(isPoisonous);
+            
             var x =AudioCollection.Instance.GetClip(takeDamageSound);
             AudioManager.Instance.PlayWithVariation(x);
         }
-        
 
+        private void PoisonCheck(bool isPoisonous) {
+            if (!isPoisonous) return;
+            
+            poisonTrigger?.Invoke();
+            if (properties.Contains(AdditionalProperty.ImmuneToPoison)) {
+                immuneToPoisonTrigger?.Invoke();
+            }
+            else
+                Die();
+        }
+        
+        [SerializeField] private UnityEvent unhealableProc;
         public void Heal(int amount) {
+            if (properties.Contains(AdditionalProperty.Unhealable)) {
+                unhealableProc?.Invoke();
+                return;
+            }
             amount = amount > 0 ? amount : 0;
             CurrentHealth += amount;
         }
@@ -105,6 +120,8 @@ namespace CardBattles.CardScripts {
         }
 
         private IEnumerator DeathCoroutine() {
+            yield return StartCoroutine(DoEffect(EffectTrigger.OnDeath));
+            
             yield return StartCoroutine(cardAnimation.Die());
             
             yield return new WaitForSeconds(dyingDuration);
@@ -115,7 +132,15 @@ namespace CardBattles.CardScripts {
             return transform;
         }
 
+        [SerializeField] private UnityEvent stopsSleeping;
         public void AttackTarget(IDamageable target) {
+            
+            if (properties.Contains(AdditionalProperty.Sleepy)) {
+                properties.Remove(AdditionalProperty.Sleepy);
+                stopsSleeping?.Invoke();
+                return;
+            }
+
             if(properties.Contains(AdditionalProperty.Lazy))
                 if (Random.value < 0.5f) {
                     transform.DOShakePosition(0.5f,20f,20);

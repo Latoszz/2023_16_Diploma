@@ -1,7 +1,7 @@
 namespace CardBattles.Enums {
     public enum EnemyAiAction {
         Draw,
-        PlayMinon,
+        PlayMinion,
         PlaySpell,
         Pass
     }
