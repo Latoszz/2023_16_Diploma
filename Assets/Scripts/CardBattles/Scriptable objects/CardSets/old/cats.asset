@@ -40,7 +40,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
   description: Has a 50% chance to not attack
   flavourText: 
-  properties: 01000000
+  properties: 0100000003000000
   effectDictionary:
     m_keys: 
     m_values: []

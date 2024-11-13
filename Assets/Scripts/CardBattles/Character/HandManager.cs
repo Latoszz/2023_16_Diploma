@@ -16,17 +16,13 @@ namespace CardBattles.Character {
 
         
         //TODO after adding each card, sort the objects in hand so the order matches the order in Cards
-        //it will make all the cards lay on top of each other correctly
+        //it will make all the lay on top of each other correctly
         
         [BoxGroup("Animations")] [SerializeField]
         private float timeBetweenDrawingManyCard = 1.1f;
 
-        private List<Card> cards = new List<Card>();
-
-        public List<Card> Cards {
-            get => cards;
-            set => cards = value;
-        }
+        [ShowNativeProperty]
+        public List<Card> Cards { get; set; } = new List<Card>();
 
         private bool isPlayers;
 
@@ -54,7 +50,16 @@ namespace CardBattles.Character {
                 Debug.LogError("Tried to remove or access a card that isnt contained in Cards");
             return !notInHand;
         }
+
+        private bool isDrawing = false;
         public IEnumerator DrawManyCoroutine(List<Card> cardsToDraw) {
+            yield return new WaitUntil(() => !isDrawing);
+
+            yield return StartCoroutine(DrawMany(cardsToDraw));
+        }
+        private IEnumerator DrawMany(List<Card> cardsToDraw) {
+            isDrawing = true;
+
             AddNewCards(cardsToDraw);
 
             var finalPositions = CalculateCardPositions(Cards.Count);
@@ -85,9 +90,10 @@ namespace CardBattles.Character {
             foreach (var card in Cards) {
                 card.IsDrawn();
             }
+            isDrawing = false;
         }
 
-        private IEnumerator DrawCoroutine(Card card, Vector3 finalposition) {
+        private IEnumerator DrawCoroutine(Card card, Vector3 finalPosition) {
             var drawClip = AudioCollection.Instance.GetClip(drawClipName);
             if (drawClip is not null) {
                 AudioManager.Instance.PlayWithVariation(drawClip);
@@ -95,7 +101,7 @@ namespace CardBattles.Character {
             }
 
             card.ChangeCardVisible(isPlayers);
-            var coroutine = StartCoroutine(card.DrawAnimation(finalposition));
+            var coroutine = StartCoroutine(card.DrawAnimation(finalPosition));
             yield return coroutine;
         }
 

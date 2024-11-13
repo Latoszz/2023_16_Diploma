@@ -43,6 +43,9 @@ namespace CardBattles.Character.Mana {
         public bool CanUseMana(IHasCost cost) {
             return CurrentMana >= cost.GetCost();
         }
+        public bool CanUseMana(int cost) {
+            return CurrentMana >= cost;
+        }
 
         public void UseMana(IHasCost cost) {
             if (!CanUseMana(cost)) {

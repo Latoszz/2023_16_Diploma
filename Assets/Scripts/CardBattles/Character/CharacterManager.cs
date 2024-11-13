@@ -39,29 +39,45 @@ namespace CardBattles.Character {
         }
 
         private static UnityEvent<Card, ICardPlayTarget> onCardPlayed = new UnityEvent<Card, ICardPlayTarget>();
+        private static UnityEvent<PlayerEnemyMonoBehaviour,IHasCost> onDrawCard = new UnityEvent<PlayerEnemyMonoBehaviour,IHasCost>();
 
-
-        public void Awake() {
+        private void Awake() {
             onCardPlayed.AddListener(OnCardPlayedHandler);
+            onDrawCard.AddListener(OnDrawCardHandler);
         }
 
-        public void OnDestroy() {
+        private void OnDestroy() {
             onCardPlayed.RemoveListener(OnCardPlayedHandler);
+            onDrawCard.RemoveListener(OnDrawCardHandler);
+
         }
 
         public static void PlayACard(Card card, ICardPlayTarget target) {
-            onCardPlayed.Invoke(card, target);
+            onCardPlayed?.Invoke(card, target);
+        }
+        public static void DrawACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost ) {
+                onDrawCard?.Invoke(playerEnemyMonoBehaviour,iHasCost);
         }
 
+        public static void DrawACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, int cost = 1) {
+            onDrawCard?.Invoke(playerEnemyMonoBehaviour,new HasCost(cost));
+        }
+
+        private void OnDrawCardHandler(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost) {
+            if(playerEnemyMonoBehaviour.IsPlayers != IsPlayers)
+                return;
+            StartCoroutine(Draw(1, iHasCost));
+        }
 
         private void OnCardPlayedHandler(Card card, ICardPlayTarget target) {
             if (card.IsPlayers != IsPlayers)
                 return;
             if (!IsYourTurn)
                 return;
-            if (!manaManager.CanUseMana(card)) {
+            if (!manaManager.CanUseMana(card)) 
                 return;
-            }
+    
+
 
             bool wasPlayed = false;
             switch (card) {
@@ -141,7 +157,9 @@ namespace CardBattles.Character {
             card.AssignCardSpot(cardSpot);
         }
 
-
+        public IEnumerator Draw(int amount, IHasCost iHasCost) {
+            yield return StartCoroutine(Draw(amount, iHasCost.GetCost()));
+        }
         public IEnumerator Draw(int amount, int cost = 0) {
             if (amount <= 0) {
                 Debug.LogError("Player just tried to draw 0 or less cards");
@@ -154,14 +172,13 @@ namespace CardBattles.Character {
 
             var cardsToDraw = new List<Card>();
             for (int i = 0; i < amount; i++) {
-                if (!deck.cards.Any()) {
+                if (!deck.HasCards) {
                     //TODO ADD FEEDBACK CURRENTLY IS JUST DEBUG LOG
                     deck.NoMoreCards();
                     break;
                 }
 
-                cardsToDraw.Add(deck.cards[0]);
-                deck.cards.RemoveAt(0);
+                cardsToDraw.Add(deck.PopTopCard());
             }
 
             yield return hand.DrawManyCoroutine(cardsToDraw);

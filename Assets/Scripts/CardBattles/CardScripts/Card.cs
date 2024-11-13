@@ -23,18 +23,31 @@ namespace CardBattles.CardScripts {
         [NonSerialized] protected CardAnimation cardAnimation;
         [NonSerialized] public CardDragging cardDragging;
 
-        [BoxGroup("Card")] public string cardName;
-        [BoxGroup("Card"), ResizableTextArea] public string description;
-        [BoxGroup("Card"), ResizableTextArea] public string flavourText;
+        public bool FrontVisible {
+            get {
+                if (this.cardDisplay is null) return false;
+                return this.cardDisplay.frontVisible;
+            }
+        }
 
-        [BoxGroup("Data"), Space] public List<AdditionalProperty> properties;
+        [BoxGroup("Card")] public string cardName;
+
+        [BoxGroup("Card"), ResizableTextArea]
+        public string description;
+
+        [BoxGroup("Card"), ResizableTextArea]
+        public string flavourText;
+
+        [BoxGroup("Data"), Space]
+        public List<AdditionalProperty> properties;
 
         [NonSerialized] public string cardSetName;
 
         [HorizontalLine(1f)] [BoxGroup("Data")]
         public TriggerEffectDictionary effectDictionary;
 
-        [HorizontalLine(1f)] [CanBeNull] protected CardSpot isPlacedAt;
+        [HorizontalLine(1f)] [CanBeNull]
+        protected CardSpot isPlacedAt;
 
         private void Awake() {
             canvas = GetComponent<Canvas>();
@@ -55,7 +68,6 @@ namespace CardBattles.CardScripts {
         }
 
         public virtual int GetCost() {
-            
             if (properties.Contains(AdditionalProperty.FreeToPlay)) {
                 return 0;
             }
@@ -63,7 +75,7 @@ namespace CardBattles.CardScripts {
             if (properties.Contains(AdditionalProperty.Costly)) {
                 return 2;
             }
-            
+
             return 1;
         }
 
@@ -100,8 +112,7 @@ namespace CardBattles.CardScripts {
             yield return StartCoroutine(cardAnimation.Play(this)); //it has the trigger inside
         }
 
-        
-        
+
         public IEnumerator DoEffect(EffectTrigger effectTrigger) {
             if (!effectDictionary.TryGetValue(effectTrigger, out var value))
                 yield break;
@@ -113,11 +124,13 @@ namespace CardBattles.CardScripts {
             yield return StartCoroutine(
                 EffectManager.effectDictionary[effectTargetValue.effectName](targets, effectTargetValue.value));
         }
+
         public IEnumerator ChangeSortingOrderTemporarily(int num) {
             canvas.sortingOrder += num;
             yield return new WaitForSeconds(2f);
             canvas.sortingOrder -= num;
         }
+
         private List<GameObject> GetTargets(TargetType targetType) {
             return BoardManager.Instance.GetTargets(targetType, this);
         }

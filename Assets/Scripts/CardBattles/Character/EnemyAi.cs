@@ -272,7 +272,7 @@ namespace CardBattles.Character {
         }
 
         private bool DeckIsEmpty() {
-            return !character.deck.cards.Any();
+            return !character.deck.HasCards;
         }
     }
 }

@@ -17,13 +17,13 @@ namespace CardBattles.Character {
         [SerializeField] private List<CardSetData> cardSetDatas = new List<CardSetData>();
 
         private void OnEnable() {
-            var x = IsPlayers ? CardGamesLoader.Instance.loadPlayerCards : CardGamesLoader.Instance.loadEnemyCards;
-            x.AddListener(SetCardSetData);
+            var loadCards = IsPlayers ? CardGamesLoader.Instance.loadPlayerCards : CardGamesLoader.Instance.loadEnemyCards;
+            loadCards.AddListener(SetCardSetData);
         }
 
         private void OnDisable() {
-            var x = IsPlayers ? CardGamesLoader.Instance.loadPlayerCards : CardGamesLoader.Instance.loadEnemyCards;
-            x.RemoveListener(SetCardSetData);
+            var loadCards = IsPlayers ? CardGamesLoader.Instance.loadPlayerCards : CardGamesLoader.Instance.loadEnemyCards;
+            loadCards.RemoveListener(SetCardSetData);
         }
 
 
@@ -31,8 +31,9 @@ namespace CardBattles.Character {
         private CardSetDictionary cardSets =
             new CardSetDictionary();
 
-        public List<Card> cards = new List<Card>();
+        private List<Card> cards = new List<Card>();
 
+        
 
         public void SetCardSetData(List<CardSetData> loadedCardSetDatas) {
             cardSetDatas = loadedCardSetDatas;
@@ -47,7 +48,17 @@ namespace CardBattles.Character {
             CreateCardSetsFromData();
             CreateCardFromDeck();
         }
+        
+        
+        public bool HasCards => cards.Any();
 
+        public Card PopTopCard() {
+            if (!HasCards) return null;
+            var card = cards[0];
+            cards.Remove(card);
+            return card;
+        }
+        
         private void CreateCardSetsFromData() {
             int i = 0;
             foreach (var cardSetData in cardSetDatas) {
@@ -99,6 +110,7 @@ namespace CardBattles.Character {
             cards.AddRange(shuffledList);
         }
 
+        
         public void NoMoreCards() {
             //TODO ADD SOME ANIMATION
             Debug.Log("No more cards honey");

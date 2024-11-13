@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CardBattles.Character;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
@@ -81,9 +82,7 @@ namespace CardBattles.Managers {
             var x = targets.First();
             if (!x.TryGetComponent(typeof(PlayerEnemyMonoBehaviour), out var playerEnemyMonoBehaviour))
                 yield break;
-            var isPlayers = ((PlayerEnemyMonoBehaviour)playerEnemyMonoBehaviour).IsPlayers;
-            
-
+            CharacterManager.DrawACard((PlayerEnemyMonoBehaviour)playerEnemyMonoBehaviour,0);
             yield return null;
         }
     }

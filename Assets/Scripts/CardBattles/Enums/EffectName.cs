@@ -5,6 +5,7 @@ namespace CardBattles.Enums {
         Heal,
         BuffHp,
         DrawACard,
-        DealOrHeal
+        DealOrHeal,
+        Reshuffle,
     }
 }
