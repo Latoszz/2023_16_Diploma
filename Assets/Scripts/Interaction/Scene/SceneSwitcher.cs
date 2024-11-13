@@ -3,8 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour {
     public static SceneSwitcher Instance = null;
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject cameraPivot;
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -13,7 +11,7 @@ public class SceneSwitcher : MonoBehaviour {
         else {
             Instance = this;
         }
-        DontDestroyOnLoad(gameObject); 
+        //DontDestroyOnLoad(gameObject); 
     }
 
     public void LoadScene(string sceneName) {
