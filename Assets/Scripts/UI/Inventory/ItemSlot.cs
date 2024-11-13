@@ -18,6 +18,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     private InventoryController inventoryController;
     private string parentName;
     private Item item;
+    private GameObject itemObject;
     private bool isOccupied = false;
 
     private void Awake() {
@@ -28,9 +29,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     public void AddItem(Item item) {
         this.item = item;
         isOccupied = true;
-        CreateItemObject();
+        itemObject = CreateItemObject();
     }
-    private void CreateItemObject() {
+    private GameObject CreateItemObject() {
         GameObject itemObject = new GameObject();
         itemObject.transform.SetParent(transform);
         
@@ -48,6 +49,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
 
         itemObject.AddComponent<DraggableItem>().SetItemData(item);
         itemObject.AddComponent<LayoutElement>();
+        return itemObject;
     }
 
     public bool IsOccupied() {
@@ -117,8 +119,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
         item = newItem;
     }
 
-    private void ClearItem() {
+    public void ClearItem() {
         item = null;
+        Destroy(itemObject);
     }
 
     public string GetParentName() {

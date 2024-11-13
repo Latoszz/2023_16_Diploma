@@ -78,7 +78,7 @@ namespace SaveSystem {
             foreach (ISavable savableObject in savableObjects) {
                 savableObject.LoadSaveData(saveFile);
             }
-        QuestManager.Instance.LoadQuests(saveFile);
+            QuestManager.Instance.LoadQuests(saveFile);
             Debug.Log("Game loaded");
         }
         

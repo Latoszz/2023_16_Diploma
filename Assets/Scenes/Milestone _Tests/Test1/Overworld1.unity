@@ -6522,11 +6522,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191711282}
   m_CullTransparentMesh: 1
---- !u!1 &196341080 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7740766411109819619, guid: 6abf4ad12690afb4f8d3d4aab986a985, type: 3}
-  m_PrefabInstance: {fileID: 4598182359749373839}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &204500813
 GameObject:
   m_ObjectHideFlags: 0
@@ -134090,8 +134085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f5bf0ec4ab9344ea7f86c54931c83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1352021020}
-  cameraPivot: {fileID: 196341080}
 --- !u!4 &1955889537
 Transform:
   m_ObjectHideFlags: 0
@@ -134339,6 +134332,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4102326752318149805, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1989324606}
+    - targetCorrespondingSourceObject: {fileID: 4102326752318149805, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1989324607}
   m_SourcePrefab: {fileID: 100100000, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
 --- !u!4 &1989324597 stripped
 Transform:
@@ -134371,6 +134367,19 @@ MonoBehaviour:
   questInfo: {fileID: 11400000, guid: 1bb66266a9ac46c47b720aeddd45825d, type: 2}
   startPoint: 1
   finishPoint: 1
+--- !u!114 &1989324607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550863196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 370eb732131744309f2d9ca266326b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: WateringCan
 --- !u!1 &1992272101
 GameObject:
   m_ObjectHideFlags: 0

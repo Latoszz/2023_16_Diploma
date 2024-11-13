@@ -70,6 +70,23 @@ public class InventoryController : MonoBehaviour {
         }
     }
 
+    public void RemoveItem(string itemId) {
+        foreach (ItemSlot itemSlot in itemSlots) {
+            string id = ((CollectibleItem)itemSlot.GetItem()).GetItemData().itemID;
+            if (id != itemId) 
+                continue;
+            RemoveItemFromSlot(itemSlot);
+            return;
+        }
+    }
+
+    private void RemoveItemFromSlot(ItemSlot itemSlot) {
+        itemSlot.ClearItem();
+        itemSlot.SetIsOccupied(false);
+        Debug.Log("Item removed");
+    }
+    
+    
     public void DeselectAllSlots() {
         DeselectSlots(itemSlots);
         DeselectSlots(cardSetSlots);
