@@ -24,7 +24,6 @@ public class SceneTriggerClick : MonoBehaviour, IPointerClickHandler {
     public void YesClicked() {
         popupPanel.gameObject.SetActive(false);
         InputManager.Instance.EnableInput();
-        SceneSwitcher.Instance.UnloadScene(SceneManager.GetActiveScene().name);
         SceneSwitcher.Instance.LoadScene(loadName);
     }
 

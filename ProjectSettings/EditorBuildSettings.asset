@@ -8,14 +8,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 0ca1db45a6557ce47b846358bd8b408b
-  - enabled: 0
-    path: Assets/Scenes/Irys playspace.unity
-    guid: c85c7edea3557ec489103e21449e6762
   - enabled: 1
-    path: Assets/Scenes/CardBattleScene.unity
-    guid: 4d600143119613d42915187cc29ba103
+    path: Assets/Scenes/Milestone _Tests/Test1/Overworld1.unity
+    guid: e6150d5002183da46a0ffdbb22c89a03
   - enabled: 1
     path: Assets/Scenes/Ola- scenes/Room under the statue.unity
     guid: ceb058d89191b284496bf8ba8db05f11
+  - enabled: 1
+    path: Assets/Scenes/CardBattleScene.unity
+    guid: 4d600143119613d42915187cc29ba103
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: e4f053f5fb376ed43b9a3a2d6753ab50, type: 2}
