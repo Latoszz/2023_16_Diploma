@@ -81,7 +81,7 @@ public class InventoryController : MonoBehaviour {
     }
 
     private void RemoveItemFromSlot(ItemSlot itemSlot) {
-        itemSlot.ClearItem();
+        itemSlot.RemoveItem();
         itemSlot.SetIsOccupied(false);
         Debug.Log("Item removed");
     }

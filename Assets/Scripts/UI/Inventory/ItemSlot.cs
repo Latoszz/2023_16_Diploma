@@ -8,6 +8,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     [SerializeField] private GameObject itemList;
     [SerializeField] private GameObject deckList;
     [SerializeField] private GameObject cardSetList;
+    [SerializeField] private GameObject itemObjectPrefab;
 
     [SerializeField] private string itemSlotID;
     [ContextMenu("Generate guid for id")]
@@ -29,27 +30,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     public void AddItem(Item item) {
         this.item = item;
         isOccupied = true;
-        itemObject = CreateItemObject();
+        CreateItemObject();
     }
-    private GameObject CreateItemObject() {
-        GameObject itemObject = new GameObject();
+    private void CreateItemObject() {
+        itemObject = Instantiate(itemObjectPrefab, transform);
         itemObject.transform.SetParent(transform);
-        
-        RectTransform itemRectTransform = itemObject.AddComponent<RectTransform>();
-        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 0, 0);
-        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, 0);
-        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, 0);
-        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0, 0);
-        itemRectTransform.anchorMin = new Vector2(0, 0);
-        itemRectTransform.anchorMax = new Vector2(1, 1);
-        itemRectTransform.localScale = new Vector3(1, 1, 1);
-        
-        Image objectImage = itemObject.AddComponent<Image>();
-        objectImage.sprite = item.GetSprite();
-
-        itemObject.AddComponent<DraggableItem>().SetItemData(item);
-        itemObject.AddComponent<LayoutElement>();
-        return itemObject;
+        itemObject.GetComponent<Image>().sprite = item.GetSprite();
+        itemObject.GetComponent<DraggableItem>().SetItemData(item);
     }
 
     public bool IsOccupied() {
@@ -118,8 +105,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     private void SetItem(Item newItem) {
         item = newItem;
     }
+    
+    private void ClearItem() {
+        item = null;
+    }
 
-    public void ClearItem() {
+    public void RemoveItem() {
         item = null;
         Destroy(itemObject);
     }
