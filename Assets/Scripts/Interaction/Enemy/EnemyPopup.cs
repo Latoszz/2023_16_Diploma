@@ -1,16 +1,12 @@
 using SaveSystem;
 using UI.Inventory;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class EnemyPopup : MonoBehaviour {
     [SerializeField] private GameObject enemyPopup;
     [SerializeField] private GameObject popupPanel;
     [SerializeField] private GameObject deckPopup;
     [SerializeField] private string BattleSceneName = "CardBattleScene";
-
-    public EnemySM Enemy;
-    public bool IsOpen => enemyPopup.activeSelf;
 
     public static EnemyPopup Instance;
 
@@ -47,7 +43,6 @@ public class EnemyPopup : MonoBehaviour {
     }
 
     private void Close() {
-        Enemy = null;
         enemyPopup.SetActive(false);
         InputManager.Instance.EnableInput();
     }

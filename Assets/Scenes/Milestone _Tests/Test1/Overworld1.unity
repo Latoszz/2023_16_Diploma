@@ -6140,7 +6140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 162444204}
   m_Layer: 0
-  m_Name: Enamies
+  m_Name: Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111695,7 +111695,6 @@ MonoBehaviour:
   popupPanel: {fileID: 481629393}
   deckPopup: {fileID: 1034718008}
   BattleSceneName: CardBattleScene
-  Enemy: {fileID: 0}
 --- !u!4 &1647093809
 Transform:
   m_ObjectHideFlags: 0
@@ -133829,6 +133828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1893222052}
   - component: {fileID: 1893222051}
+  - component: {fileID: 1893222053}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -133863,6 +133863,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1893222053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893222050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b7b80a67304491b82d911d191f3013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1896441997
 GameObject:
   m_ObjectHideFlags: 0
@@ -145044,6 +145056,18 @@ PrefabInstance:
       propertyPath: battleDatasWithFlags.m_keys.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 7b024eca781a9454fb1ce6449094f59f, type: 2}
+    - target: {fileID: 6383907233649725971, guid: 109683baadc88a74c87898bf1102216a, type: 3}
+      propertyPath: battleDatasWithFlags.m_keys.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f9af16bbb1a93764a8bc7e6591b607e1, type: 2}
+    - target: {fileID: 6383907233649725971, guid: 109683baadc88a74c87898bf1102216a, type: 3}
+      propertyPath: battleDatasWithFlags.m_keys.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c7437b885368cb94a967145a9178c28e, type: 2}
+    - target: {fileID: 6383907233649725971, guid: 109683baadc88a74c87898bf1102216a, type: 3}
+      propertyPath: battleDatasWithFlags.m_keys.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: c7437b885368cb94a967145a9178c28e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

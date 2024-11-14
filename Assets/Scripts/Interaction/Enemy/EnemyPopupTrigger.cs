@@ -8,7 +8,7 @@ public class EnemyPopupTrigger : MonoBehaviour, IPointerClickHandler {
     public void OnPointerClick(PointerEventData eventData) {
         if (PauseManager.Instance.IsOpen)
             return;
-        EnemySM enemy = gameObject.GetComponent<EnemySM>();
+        Enemy enemy = gameObject.GetComponent<Enemy>();
         if (npc.TalkedTo()) {
             enemy.ChangeState(EnemyState.Undefeated);
         }
@@ -16,7 +16,7 @@ public class EnemyPopupTrigger : MonoBehaviour, IPointerClickHandler {
         if (enemy.GetState() == EnemyState.Undefeated) {
             enemyPanel.SetActive(true);
             enemyPanel.transform.GetChild(0).gameObject.SetActive(true);
-            EnemyPopup.Instance.Enemy = enemy;
+            EnemyStateManager.Instance.SetCurrentEnemy(enemy);
             InputManager.Instance.DisableInput();
         }
     }

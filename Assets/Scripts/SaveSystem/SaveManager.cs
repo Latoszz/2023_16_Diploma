@@ -98,6 +98,11 @@ namespace SaveSystem {
             saveFile.Save();
         }
 
+        public void ChangeEnemyData(string enemyId, EnemyState enemyState) {
+            saveFile.AddOrUpdateData(enemyId, enemyState);
+            saveFile.Save();
+        }
+
         private void OnApplicationQuit() {
             SaveGame();
         }

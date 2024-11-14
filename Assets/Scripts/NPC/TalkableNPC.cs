@@ -4,7 +4,6 @@ using Audio;
 using Interaction;
 using ScriptableObjects.Dialogue;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace NPC {
     public class TalkableNPC : NPC, ITalkable {
@@ -16,7 +15,7 @@ namespace NPC {
         [SerializeField] private float detectionDistance = 8;
 
         private GameObject player;
-        private bool talkedTo = false;
+        private bool talkedTo; 
 
         [SerializeField] private string npcID;
 
@@ -27,6 +26,12 @@ namespace NPC {
 
         private void Awake() {
             player = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        private void Start() {
+            if (!talkedTo) {
+                questIndicator.ShowQuestIcon();
+            }
         }
         
         public override void Interact() {
@@ -52,6 +57,10 @@ namespace NPC {
         }
         public bool TalkedTo() {
             return talkedTo;
+        }
+
+        public void SetTalkedTo(bool val) {
+            talkedTo = val;
         }
     }
 }
