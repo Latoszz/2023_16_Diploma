@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using NaughtyAttributes;
 using UnityEditor;
@@ -38,14 +39,15 @@ namespace CardBattles.CardGamesManager {
         public void LoadCardBattleData() {
             var i = 0;
             var path = "Assets/Scripts/CardBattles/Scriptable objects/CardBattle";
-            var assets = AssetDatabase.LoadAllAssetsAtPath(path);
+            string[] files = Directory.GetFiles(path, "*.asset", SearchOption.TopDirectoryOnly);
 
-            foreach (var asset in assets) {
+            foreach (var file in files) {
+                var asset = AssetDatabase.LoadAssetAtPath<BattleData>(file);
                 if (asset is not BattleData cardBattle) continue;
-                if (battleDatasWithFlags.ContainsKey((BattleData)asset)) continue;
+                if (battleDatasWithFlags.ContainsKey(asset)) continue;
                 i++;
                 Debug.Log($"Added {asset.name}, to list of battles");
-                battleDatasWithFlags.Add((BattleData)asset, false);
+                battleDatasWithFlags.Add(asset, BattleState.NotPlayed);
             }
             Debug.Log($"Added {i}, new battles");
 
