@@ -3,7 +3,6 @@ using DG.Tweening;
 using Events;
 using QuestSystem;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class InfoPopup : MonoBehaviour {

@@ -134347,6 +134347,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1153992186}
     m_Modifications:
+    - target: {fileID: 1162660410416267700, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1505736317, guid: 0d4406e70712e9f49b4d08395ea94319, type: 3}
+    - target: {fileID: 1162660410416267700, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1866286916044464732, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.130407
@@ -134394,6 +134402,10 @@ PrefabInstance:
     - target: {fileID: 4102326752318149805, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
       propertyPath: m_Name
       value: Bella
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805022827392238008, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5668120488568606045, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
       propertyPath: npcID
@@ -134487,6 +134499,22 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[9]
       value: 
       objectReference: {fileID: 2135548576}
+    - target: {fileID: 8143151786052698131, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143151786052698131, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143151786052698131, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143151786052698131, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 24689725306089748, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
     m_RemovedGameObjects: []
