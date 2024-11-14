@@ -25,7 +25,6 @@ public class EnemyPopup : MonoBehaviour {
     public void YesClicked() {
         popupPanel.SetActive(false);
         if (CheckDeck(3)) {
-            EnemyStateManager.Instance.SetCurrentEnemy(Enemy);
             Close();
             InventoryDeckManager.Instance.UpdateDeck();
             SaveManager.Instance.SaveGame();
