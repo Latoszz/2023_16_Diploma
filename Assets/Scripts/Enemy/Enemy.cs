@@ -1,6 +1,7 @@
 using System;
+using System.Collections.Generic;
 using CardBattles.CardGamesManager;
-using Events;
+using Interaction.Objects;
 using SaveSystem;
 using UnityEngine;
 
@@ -12,6 +13,9 @@ public class Enemy : MonoBehaviour {
     }
 
     [SerializeField] private BattleData battleData;
+    [SerializeField] private List<Obstacle> obstacles;
+    
+    [Header("Visuals")]
     [SerializeField] private Material undefeatedMaterial;
     [SerializeField] private Material defeatedMaterial;
 
@@ -27,6 +31,9 @@ public class Enemy : MonoBehaviour {
         this.state = state;
         if (state == EnemyState.Defeated) {
             SaveManager.Instance.ChangeEnemyData(enemyID, state);
+            foreach (Obstacle obstacle in obstacles) {
+                SaveManager.Instance.ChangeObstacleData(obstacle.GetID(), false);
+            }
         }
     }
     

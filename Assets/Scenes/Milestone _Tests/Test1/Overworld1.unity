@@ -6683,6 +6683,14 @@ PrefabInstance:
       propertyPath: enemyPopup
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6837198127075061765, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
+      propertyPath: obstacles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837198127075061765, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
+      propertyPath: obstacles.Array.data[0]
+      value: 
+      objectReference: {fileID: 9130541}
     - target: {fileID: 9158143557127376718, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
       propertyPath: nameText
       value: 
