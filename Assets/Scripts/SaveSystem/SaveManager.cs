@@ -1,13 +1,16 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Esper.ESave;
+using NaughtyAttributes;
 using QuestSystem;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace SaveSystem {
     public class SaveManager: MonoBehaviour {
-        private SaveFileSetup saveFileSetup;
+        [SerializeField] private SaveFileSetup saveFileSetup;
         private SaveFile saveFile;
         private List<ISavable> savableObjects;
 
@@ -28,8 +31,7 @@ namespace SaveSystem {
             if (scene.name != "Overworld1" && scene.name != "Main Menu") {
                 return;
             }
-            Debug.Log("Scene " + scene.name);
-            saveFileSetup = GetComponent<SaveFileSetup>();
+            Debug.Log($"Scene {scene.name}");
             saveFile = saveFileSetup.GetSaveFile();
             savableObjects = FindAllSavableObjects();
             LoadGame();
@@ -106,5 +108,34 @@ namespace SaveSystem {
         private void OnApplicationQuit() {
             SaveGame();
         }
+        
+#if UNITY_EDITOR
+        [Button]
+        public void OpenSaveFile() {
+            string path = GetFilePath();
+            EditorUtility.RevealInFinder(path);
+        }
+        
+        [Button]
+        public void DeleteSaveFile() {
+            string path = GetFilePath();
+            FileUtil.DeleteFileOrDirectory(path);
+            AssetDatabase.Refresh();
+            Debug.Log($"Save file deleted at path: {path}");
+        }
+
+        private string GetFilePath() {
+            string mainPath = saveFileSetup.saveFileData.saveLocation switch {
+                SaveFileSetupData.SaveLocation.PersistentDataPath => Application.persistentDataPath,
+                SaveFileSetupData.SaveLocation.DataPath => Application.dataPath,
+                _ => ""
+            };
+            string filePath = saveFileSetup.saveFileData.filePath;
+            string fileName = saveFileSetup.saveFileData.fileName;
+            string fileExtension = saveFileSetup.saveFileData.fileType.ToString().ToLower();
+            string path = Path.Combine(mainPath, filePath, fileName + "." + fileExtension);
+            return path;
+        }
+#endif
     }
 }

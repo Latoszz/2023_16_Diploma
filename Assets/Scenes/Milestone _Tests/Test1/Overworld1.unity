@@ -105757,6 +105757,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549790353}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1550665380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 756406078947868008, guid: 206f990e23f70504cac5135718e4bb32, type: 3}
+  m_PrefabInstance: {fileID: 6723989374039271843}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b4b220e9db2634389147b7a07bb0ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1550863196 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4102326752318149805, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
@@ -151627,6 +151638,10 @@ PrefabInstance:
       propertyPath: saveFileData.saveLocation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 766539385762879683, guid: 206f990e23f70504cac5135718e4bb32, type: 3}
+      propertyPath: saveFileSetup
+      value: 
+      objectReference: {fileID: 1550665380}
     - target: {fileID: 766539385762879683, guid: 206f990e23f70504cac5135718e4bb32, type: 3}
       propertyPath: tmp.m_PersistentCalls.m_Calls.Array.size
       value: 1
