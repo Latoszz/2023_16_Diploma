@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Audio;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
@@ -241,7 +240,7 @@ namespace CardBattles.CardScripts.Additional {
         public IEnumerator Die() {
             yield return new WaitForSeconds(0.4f);
             EffectVisualsManager.Instance.Explosion(transform.position, 3);
-            
+
             yield return null;
         }
 
@@ -250,7 +249,7 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         public IEnumerator Play(Card card) {
-            var cardDisplay= card.GetComponent<CardDisplay>();
+            var cardDisplay = card.GetComponent<CardDisplay>();
             cardDisplay.ChangeCardVisible(true);
             switch (card) {
                 case Spell:
@@ -267,7 +266,8 @@ namespace CardBattles.CardScripts.Additional {
 
         private IEnumerator MoveToMiddle(Card card) {
             StartCoroutine(card.ChangeSortingOrderTemporarily(15));
-            var cor = card.transform.DOMove(Vector3.zero, 0.5f).SetEase(Ease.InOutCubic).SetLink(card.gameObject,LinkBehaviour.KillOnDestroy);
+            var cor = card.transform.DOMove(Vector3.zero, 0.5f).SetEase(Ease.InOutCubic)
+                .SetLink(card.gameObject, LinkBehaviour.KillOnDestroy);
             yield return cor.WaitForCompletion();
         }
 
@@ -299,47 +299,49 @@ namespace CardBattles.CardScripts.Additional {
             yield return new WaitForSeconds(cardFadeOutDuration);
         }
 
-        [SerializeField, Foldout("SpellShowcase"),Label("Position")]
+        [SerializeField, Foldout("SpellShowcase"), Label("Position")]
         private Vector3 spellShowcasePosition;
 
-        [SerializeField, Foldout("SpellShowcase"),Label("Start Scale")]
+        [SerializeField, Foldout("SpellShowcase"), Label("Start Scale")]
         private float startScaleSpellShowcase;
 
-        [SerializeField, Foldout("SpellShowcase"),Label("Max Scale")]
+        [SerializeField, Foldout("SpellShowcase"), Label("Max Scale")]
         private float maxScaleSpellShowcase;
 
-        [SerializeField, Foldout("SpellShowcase"),Label("Grow Time")]
+        [SerializeField, Foldout("SpellShowcase"), Label("Grow Time")]
         private float growTimeSpellShowcase;
 
-        [SerializeField, Foldout("SpellShowcase"),Label("Stay ForTime")]
+        [SerializeField, Foldout("SpellShowcase"), Label("Stay ForTime")]
         private float stayForTimeSpellShowcase;
 
-        [SerializeField, Foldout("SpellShowcase"),Label("Shrink Time")]
+        [SerializeField, Foldout("SpellShowcase"), Label("Shrink Time")]
         private float shrinkTimeSpellShowcase;
 
-        private IEnumerator SpellShowcase(GameObject spellGameObject) 
-        {
-            
-            var x = Instantiate(spellGameObject, spellShowcasePosition, Quaternion.identity).transform;
-           
+        private static bool isShowingCard = false;
+
+
+        private IEnumerator SpellShowcase(GameObject spellGameObject) {
+            var x = Instantiate(spellGameObject, new Vector3(4000, 0, 0), Quaternion.identity).transform;
+
+            yield return new WaitUntil(() => !isShowingCard);
+            isShowingCard = true;
+            x.position = spellShowcasePosition;
+            x.GetComponent<CanvasGroup>().alpha = 1;
             x.localScale = Vector3.one * startScaleSpellShowcase;
 
             var sequence = DOTween.Sequence().SetLink(x.gameObject, LinkBehaviour.KillOnDestroy);
 
-            // Growth animation
             sequence.Append(x.DOScale(maxScaleSpellShowcase, growTimeSpellShowcase).SetEase(Ease.OutElastic));
 
-            // Stay at max scale for a duration
             sequence.AppendInterval(stayForTimeSpellShowcase);
 
-            // Rotation animation, Shrink and fade out
             sequence.Append(x.DORotate(new Vector3(0, 360, 0), shrinkTimeSpellShowcase, RotateMode.FastBeyond360)
                 .SetEase(Ease.InCubic));
-            
+
             sequence.Join(x.DOScale(0, shrinkTimeSpellShowcase).SetEase(Ease.OutCubic));
             sequence.Join(x.GetComponent<CanvasGroup>().DOFade(0, shrinkTimeSpellShowcase));
             var canvas = x.GetComponent<Canvas>();
-            
+
             canvas.overrideSorting = true;
             canvas.sortingOrder = 100;
             canvas.sortingLayerName = "Above all";
@@ -348,11 +350,14 @@ namespace CardBattles.CardScripts.Additional {
             sequence.OnComplete(() => Destroy(x.gameObject));
 
             sequence.Play();
-            
+
             yield return sequence.WaitForCompletion();
+
+            isShowingCard = false;
         }
 
         [SerializeField] private float onPlayEffectDelay = 0.16f;
+
         public IEnumerator OnPlayEffectDelay() {
             yield return new WaitForSeconds(onPlayEffectDelay);
         }

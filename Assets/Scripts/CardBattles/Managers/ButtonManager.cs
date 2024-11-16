@@ -13,8 +13,7 @@ namespace CardBattles.Managers {
         private bool buttonsEnabled;
         private bool buttonCooldown = false;
 
-
-        //[SerializeField] private Sprite spriteOn;
+        
         [SerializeField] private Sprite spriteOff;
         
         [SerializeField]
@@ -104,7 +103,7 @@ namespace CardBattles.Managers {
         }
 
         [SerializeField] private float spriteOffDuration = 0.5f;
-        [SerializeField] private float textMoveDownAmount = 3f;
+        [SerializeField] public float textMoveDownAmount = 3f;
 
         private IEnumerator PressButtonVisualCoroutine(Button button, bool isEndTurnButton = false) {
             StartCoroutine(ButtonSound());
@@ -120,10 +119,11 @@ namespace CardBattles.Managers {
             ButtonVisual(button, true);
         }
 
+        
         // ReSharper disable Unity.PerformanceAnalysis
         private void ButtonVisual(Button button, bool buttonUp) {
             button.image.overrideSprite = buttonUp ? null : spriteOff;
-            var rectTransform = button.GetComponent<ButtonTextVal>().text.GetComponent<RectTransform>();
+            var rectTransform = button.GetComponent<ButtonTextVal>().rectTransformText;
             rectTransform.position +=
                 buttonUp ? new Vector3(0, textMoveDownAmount, 0) : new Vector3(0, -textMoveDownAmount, 0);
         }
