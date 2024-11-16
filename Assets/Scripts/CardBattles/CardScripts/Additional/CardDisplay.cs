@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using CardBattles.CardScripts.CardDatas;
+using CardBattles.Enums;
 using DG.Tweening;
 using NaughtyAttributes;
 using TMPro;
@@ -8,16 +11,16 @@ using UnityEngine.UI;
 
 namespace CardBattles.CardScripts.Additional {
     public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
-        [Foldout("Card scale"), SerializeField]
+        [Foldout("Card scale")]
         public static float scaleInDeck = 0.8f;
 
-        [Foldout("Card scale"), SerializeField]
+        [Foldout("Card scale")]
         public static float scaleInHand = 0.9f;
 
-        [Foldout("Card scale"), SerializeField]
+        [Foldout("Card scale")]
         public static float scaleOnBoard = 1f;
 
-        [Foldout("Card scale"), SerializeField]
+        [Foldout("Card scale")]
         public static float scaleOnHover = 1.1f;
 
         [InfoBox("All the other scales are static, TODO make them visible here, to edit them edit code  ")]
@@ -30,16 +33,17 @@ namespace CardBattles.CardScripts.Additional {
         private Image backOfCard;
 
         [Space, Header("Elements")] [Foldout("Objects")] [SerializeField]
-        private TextMeshProUGUI cardName;
+        private Text cardName;
 
         [Foldout("Objects")] [SerializeField]
         private TextMeshProUGUI description;
 
+        private string descriptionData;
         [Foldout("Objects")] [SerializeField]
-        private TextMeshProUGUI attack;
+        private Text attack;
 
         [Foldout("Objects")] [SerializeField]
-        private TextMeshProUGUI health;
+        private Text health;
 
         [Foldout("Objects")] [SerializeField]
         private Image cardImage;
@@ -66,8 +70,8 @@ namespace CardBattles.CardScripts.Additional {
         public void SetCardDisplayData(CardData cardData) {
             cardImage.sprite = cardData.sprite;
             cardName.text = cardData.name;
-            description.text = cardData.description;
-
+            descriptionData = cardData.description;
+            UpdateDescription(cardData.properties);
             cardSetSymbol.sprite = cardData.cardSet.cardSetIcon;
             cardSetSymbolBox.color = cardData.cardSet.setColor;
 
@@ -79,6 +83,23 @@ namespace CardBattles.CardScripts.Additional {
                     SetSpellDisplayData(spellData);
                     break;
             }
+        }
+
+        public void UpdateDescription(List<AdditionalProperty> properties, string newDescription = null)
+        {
+            var descriptionText = newDescription ?? descriptionData;
+                
+            if (properties != null && properties.Count > 0) {
+                descriptionText += "\n</i>";
+                for (int i = 0; i < properties.Count; i++) {
+                    if (i != 0)
+                        descriptionText += ", ";
+                    descriptionText += properties[i];
+                }
+                descriptionText += "</i>";
+            }
+
+            description.text = descriptionText;
         }
 
         private void SetMinionDisplayData(MinionData minionData) {
@@ -122,7 +143,7 @@ namespace CardBattles.CardScripts.Additional {
         private float growDuration = 0.2f;
         [SerializeField, Foldout("UpdateStat")]
         private float shrinkDuration = 0.3f;
-        private void UpdateStat(TextMeshProUGUI textComponent, int newValue) {
+        private void UpdateStat(Text textComponent, int newValue) {
             if (textComponent.text != newValue.ToString()) {
                 Vector3 originalScale = textComponent.transform.localScale;
 

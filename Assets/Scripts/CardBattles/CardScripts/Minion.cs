@@ -82,7 +82,7 @@ namespace CardBattles.CardScripts {
         [SerializeField] private string takeDamageSound = "Damage.Card";
         public void TakeDamage(int amount, bool isPoisonous = false) {
 
-            if (properties.Contains(AdditionalProperty.Durable))
+            if (Properties.Contains(AdditionalProperty.Durable))
                 amount = (amount + 1) / 2; //divide/2 round up
             
             amount = amount > 0 ? amount : 0;
@@ -98,7 +98,7 @@ namespace CardBattles.CardScripts {
             if (!isPoisonous) return;
             
             poisonTrigger?.Invoke();
-            if (properties.Contains(AdditionalProperty.ImmuneToPoison)) {
+            if (Properties.Contains(AdditionalProperty.ImmuneToPoison)) {
                 immuneToPoisonTrigger?.Invoke();
             }
             else
@@ -107,7 +107,7 @@ namespace CardBattles.CardScripts {
         
         [SerializeField] private UnityEvent unhealableProc;
         public void Heal(int amount) {
-            if (properties.Contains(AdditionalProperty.Unhealable)) {
+            if (Properties.Contains(AdditionalProperty.Unhealable)) {
                 unhealableProc?.Invoke();
                 return;
             }
@@ -135,13 +135,13 @@ namespace CardBattles.CardScripts {
         [SerializeField] private UnityEvent stopsSleeping;
         public void AttackTarget(IDamageable target) {
             
-            if (properties.Contains(AdditionalProperty.Sleepy)) {
-                properties.Remove(AdditionalProperty.Sleepy);
+            if (Properties.Contains(AdditionalProperty.Sleepy)) {
+                Properties.Remove(AdditionalProperty.Sleepy);
                 stopsSleeping?.Invoke();
                 return;
             }
 
-            if(properties.Contains(AdditionalProperty.Lazy))
+            if(Properties.Contains(AdditionalProperty.Lazy))
                 if (Random.value < 0.5f) {
                     transform.DOShakePosition(0.5f,20f,20);
                     return;

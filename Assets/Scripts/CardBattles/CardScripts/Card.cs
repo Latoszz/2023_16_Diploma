@@ -37,9 +37,17 @@ namespace CardBattles.CardScripts {
 
         [BoxGroup("Card"), ResizableTextArea]
         public string flavourText;
-
         [BoxGroup("Data"), Space]
-        public List<AdditionalProperty> properties;
+        protected List<AdditionalProperty> properties;
+
+        public List<AdditionalProperty> Properties {
+            get { return properties; }
+            set {
+                cardDisplay.UpdateDescription(value);
+                properties = value;
+                
+            }
+        }
 
         [NonSerialized] public string cardSetName;
 
@@ -68,11 +76,11 @@ namespace CardBattles.CardScripts {
         }
 
         public virtual int GetCost() {
-            if (properties.Contains(AdditionalProperty.FreeToPlay)) {
+            if (Properties.Contains(AdditionalProperty.FreeToPlay)) {
                 return 0;
             }
 
-            if (properties.Contains(AdditionalProperty.Costly)) {
+            if (Properties.Contains(AdditionalProperty.Costly)) {
                 return 2;
             }
 

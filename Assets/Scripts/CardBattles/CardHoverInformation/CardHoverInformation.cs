@@ -84,8 +84,8 @@ namespace CardBattles.CardHoverInformation {
         private void CreateBoxes() {
             var card = currentCard;
             var firstPosition = card.transform.position + firstOffset;
-            for (var i = 0; i < card.properties.Count; i++) {
-                var property = card.properties[i];
+            for (var i = 0; i < card.Properties.Count; i++) {
+                var property = card.Properties[i];
                 var propertyBox = Instantiate(propertyBoxPrefab, propertiesContainer, false);
                 propertyBox.transform.position = firstPosition + Vector3.down * (i * ( yOffsetBetween + propertyBox.GetComponent<RectTransform>().sizeDelta[1]/2));
                 var description = CreateDescription(property);

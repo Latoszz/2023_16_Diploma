@@ -46,7 +46,9 @@ namespace CardBattles.CardScripts.Additional {
 
         private IEnumerator PlayerDrawAnimationCoroutine(Vector3 finalPosition) {
             var sequence = DOTween.Sequence().SetLink(gameObject, LinkBehaviour.KillOnDestroy);
-
+            var canvasGroup = GetComponent<CanvasGroup>();
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
             sequence
                 .Append(transform
                     .DOMove(showPosition, timeToShow)
@@ -65,6 +67,8 @@ namespace CardBattles.CardScripts.Additional {
 
             sequence.Play();
             yield return sequence.WaitForCompletion();
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true;
         }
 
         private IEnumerator EnemyDrawAnimationCoroutine(Vector3 finalPosition) {
@@ -144,7 +148,7 @@ namespace CardBattles.CardScripts.Additional {
         public IEnumerator AttackAnimation(IAttacker attacker, IDamageable damageable) {
             bool poisonous = false;
             if (attacker is Minion minion) {
-                if (minion.properties.Contains(AdditionalProperty.Poisonous)) {
+                if (minion.Properties.Contains(AdditionalProperty.Poisonous)) {
                     poisonous = true;
                 }
             }
