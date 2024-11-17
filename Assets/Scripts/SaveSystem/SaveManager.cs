@@ -32,7 +32,11 @@ namespace SaveSystem {
             if (scene.name != "Overworld1" && scene.name != "Main Menu") {
                 return;
             }
-            Debug.Log($"Scene {scene.name}");
+            Debug.LogWarning($"Scene {scene.name}");
+            LoadSaveFile();
+        }
+        
+        public void LoadSaveFile() {
             saveFile = saveFileSetup.GetSaveFile();
             savableObjects = FindAllSavableObjects();
             LoadGame();
@@ -43,7 +47,6 @@ namespace SaveSystem {
                 Destroy(this.gameObject);
                 return;
             }
-
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
@@ -114,7 +117,15 @@ namespace SaveSystem {
             SaveGame();
         }
         
-#if UNITY_EDITOR
+        private void DeleteSaveFile() {
+            saveFile.EmptyFile();
+            string path = GetFilePath();
+            File.Delete(path);
+            Debug.LogWarning($"Save file deleted at path: {path}");
+        }
+        
+        
+        #if UNITY_EDITOR
         [Button]
         public void OpenSaveFile() {
             string path = GetFilePath();
@@ -122,12 +133,13 @@ namespace SaveSystem {
         }
         
         [Button]
-        public void DeleteSaveFile() {
+        public void DeleteSaveFileEditor() {
             string path = GetFilePath();
             FileUtil.DeleteFileOrDirectory(path);
             AssetDatabase.Refresh();
             Debug.Log($"Save file deleted at path: {path}");
         }
+        #endif
 
         private string GetFilePath() {
             string mainPath = saveFileSetup.saveFileData.saveLocation switch {
@@ -141,6 +153,5 @@ namespace SaveSystem {
             string path = Path.Combine(mainPath, filePath, fileName + "." + fileExtension);
             return path;
         }
-#endif
     }
 }

@@ -1,5 +1,7 @@
+using SaveSystem;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
     [SerializeField] private GameObject pauseView;
@@ -69,7 +71,8 @@ public class PauseManager : MonoBehaviour {
 
     public void Exit() {
         Close();
-        SceneSwitcher.Instance.LoadScene("Main Menu");
+        SaveManager.Instance.SaveGame();
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void BackClicked() {

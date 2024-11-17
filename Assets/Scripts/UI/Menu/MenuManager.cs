@@ -26,10 +26,12 @@ public class MenuManager : MonoBehaviour {
     #region  Main View
     public void StartClicked(string sceneName) {
         SaveManager.Instance.NewGame();
+        //SaveManager.Instance.LoadSaveFile();
         SceneManager.LoadScene(sceneName);
     }
 
     public void ContinueClicked(string sceneName) {
+        SaveManager.Instance.LoadSaveFile();
         SceneManager.LoadScene(sceneName);
     }
 

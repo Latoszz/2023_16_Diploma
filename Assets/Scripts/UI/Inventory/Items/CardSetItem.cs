@@ -7,8 +7,10 @@ public class CardSetItem : Item {
     private bool unlocked;
 
     private void Awake() {
-        if(cardSetData != null)
+        if (cardSetData != null) {
             sprite = cardSetData.cardSetIcon;
+            itemName = cardSetData.name;
+        }
     }
 
     public CardSetData GetCardSetData() {
