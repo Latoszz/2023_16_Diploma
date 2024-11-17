@@ -28,10 +28,10 @@ public class ManageGame : MonoBehaviour {
     }
 
     private void Start() {
-        /*
-        if (SaveManager.Instance.HasSaveData())
+        
+        if (SaveManager.Instance.HasInventoryData())
             return;
-        */
+        
         foreach (CardSetItem cardSet in cardSets) {
             InventoryController.Instance.AddItem(cardSet);
         }

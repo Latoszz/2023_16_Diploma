@@ -90,7 +90,6 @@ namespace QuestSystem {
             Quest quest = GetQuestById(id);
             quest.InstantiateCurrentQuestStep(this.transform);
             ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS);
-            Debug.LogWarning($"Started quest {quest.info.displayName}");
         }
         
         private void AdvanceQuest(string id) {
@@ -102,14 +101,12 @@ namespace QuestSystem {
             else {
                 ChangeQuestState(quest.info.id, QuestState.CAN_FINISH);
             }
-            Debug.LogWarning($"Advanced quest {quest.info.displayName}");
         }
         
         private void FinishQuest(string id) {
             Quest quest = GetQuestById(id);
             ClaimRewards(quest);
             ChangeQuestState(quest.info.id, QuestState.FINISHED);
-            Debug.LogWarning($"Finished quest {quest.info.displayName}");
         }
 
         private void ClaimRewards(Quest quest) {

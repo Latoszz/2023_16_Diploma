@@ -15,6 +15,7 @@ namespace SaveSystem {
         private List<ISavable> savableObjects;
 
         private const string InitialSaveDataID = "Initial save data";
+        private const string InventorySaveDataID = "Inventory items";
 
         public static SaveManager Instance;
 
@@ -93,6 +94,10 @@ namespace SaveSystem {
 
         public bool HasSaveData() {
             return saveFile.HasData(InitialSaveDataID);
+        }
+
+        public bool HasInventoryData() {
+            return saveFile.HasData(InventorySaveDataID);
         }
 
         public void ChangeObstacleData(string dataId, bool value) {
