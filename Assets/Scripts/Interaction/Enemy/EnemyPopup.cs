@@ -1,3 +1,4 @@
+using CardBattles.CardGamesManager;
 using SaveSystem;
 using UI.Inventory;
 using UnityEngine;
@@ -6,7 +7,6 @@ public class EnemyPopup : MonoBehaviour {
     [SerializeField] private GameObject enemyPopup;
     [SerializeField] private GameObject popupPanel;
     [SerializeField] private GameObject deckPopup;
-    [SerializeField] private string BattleSceneName = "CardBattleScene";
 
     public static EnemyPopup Instance;
 
@@ -24,7 +24,7 @@ public class EnemyPopup : MonoBehaviour {
             Close();
             InventoryDeckManager.Instance.UpdateDeck();
             SaveManager.Instance.SaveGame();
-            SceneSwitcher.Instance.LoadScene(BattleSceneName);
+            StartCoroutine(CardGamesLoader.Instance.BeginBattle(EnemyStateManager.Instance.GetCurrentEnemy().GetBattleData()));
         }
         else {
             deckPopup.SetActive(true);

@@ -48,7 +48,7 @@ namespace SaveSystem {
         }
 
         public void NewGame() {
-            saveFile.EmptyFile();
+            DeleteSaveFile();
             saveFile.AddOrUpdateData(InitialSaveDataID, 0);
             saveFile.Save();
         }
