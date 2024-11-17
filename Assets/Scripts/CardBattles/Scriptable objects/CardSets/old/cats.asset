@@ -17,7 +17,7 @@ MonoBehaviour:
   sprite: {fileID: 1805895790, guid: 91ece539279118a438c900dfb08582ed, type: 3}
   description: 
   flavourText: 
-  properties: 
+  properties: 06000000
   effectDictionary:
     m_keys: 
     m_values: []
@@ -44,8 +44,8 @@ MonoBehaviour:
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 5
-  maxHealth: 4
+  attack: 4
+  maxHealth: 3
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
-  m_Name: cats
+  m_Name: Cats
   m_EditorClassIdentifier: 
   displayName: Cats
   cards:
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Feeding time
-  sprite: {fileID: -572797459, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  sprite: {fileID: 21300000, guid: 44f6d55a7cbd0c24bb49ded98c55c283, type: 3}
   description: Heal your minions by 3 HP
   flavourText: 
   properties: 
@@ -105,15 +105,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Big cat
-  sprite: {fileID: 1771446180, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
   description: 
   flavourText: He has a tendency to eat his siblings :(
-  properties: 
+  properties: 03000000
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 4
-  maxHealth: 2
+  attack: 1
+  maxHealth: 5
 --- !u!114 &7135807820275663687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Catnip Tea
   sprite: {fileID: 634790958, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: start of turn, give your minions +2 HP
+  description: 'Start of turn: give your minions +2 HP'
   flavourText: Its totally not wine
   properties: 00000000
   effectDictionary:

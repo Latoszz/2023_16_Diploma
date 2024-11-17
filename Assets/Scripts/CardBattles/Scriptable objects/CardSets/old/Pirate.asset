@@ -41,7 +41,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Card Chest
   sprite: {fileID: 21300000, guid: e7133e865ea165b4e8f8fd61afbfe353, type: 3}
-  description: 
+  description: 'On death: draw 1 card'
   flavourText: 
   properties: 
   effectDictionary:
@@ -73,7 +73,7 @@ MonoBehaviour:
   - {fileID: 8442043844084663693}
   - {fileID: 5898933018996567869}
   setColor: {r: 0, g: 0, b: 1, a: 1}
-  cardSetIcon: {fileID: -7015575556501243847, guid: 29b7ffb6267a313468f6dfd24439c307, type: 3}
+  cardSetIcon: {fileID: 2009050300, guid: bb669253fa2c0b44a9564f0b02c7dc8d, type: 3}
 --- !u!114 &2903827800999297573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Pirateno1
-  sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
+  sprite: {fileID: 21300000, guid: fa957eb2686cec7488735fadbd2c7f86, type: 3}
   description: 
   flavourText: 
   properties: 
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Mambo No. 5
-  sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
+  sprite: {fileID: 21300000, guid: e8158072827b21b458eb6c9233b03414, type: 3}
   description: 
   flavourText: 
   properties: 
@@ -159,9 +159,9 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Nas'hrah
   sprite: {fileID: 21300000, guid: 256656f16306ad5449a5ec19ead726fd, type: 3}
-  description: Does nothing
+  description: Cards from cardset +4 Attack
   flavourText: 
-  properties: 
+  properties: 07000000
   effectDictionary:
     m_keys: 00000000
     m_values:

@@ -22,7 +22,7 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   attack: 4
-  maxHealth: 6
+  maxHealth: 1
 --- !u!114 &-2130145402710088523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,12 +40,12 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
   description: 
   flavourText: 
-  properties: 00000000
+  properties: 0300000007000000
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 3
-  maxHealth: 2
+  attack: 7
+  maxHealth: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
   description: 
   flavourText: 
-  properties: 
+  properties: 0100000005000000
   effectDictionary:
     m_keys: 
     m_values: []
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Love
-  sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
+  sprite: {fileID: -1269290179, guid: e55e53ba52f3d0d44b8fba9d6615287e, type: 3}
   description: 
   flavourText: 
   properties: 

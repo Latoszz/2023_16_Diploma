@@ -33,7 +33,10 @@ namespace CardBattles.Character {
 
         private List<Card> cards = new List<Card>();
 
-        
+        public void AddCard(CardData cardData) {
+            var card = CardManager.Instance.CreateCard(cardData,this);
+            cards = cards.Prepend(card).ToList();
+        }
 
         public void SetCardSetData(List<CardSetData> loadedCardSetDatas) {
             cardSetDatas = loadedCardSetDatas;
