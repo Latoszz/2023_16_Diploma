@@ -95,7 +95,7 @@ MonoBehaviour:
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 8
+  attack: 5
   maxHealth: 2
 --- !u!114 &5898933018996567869
 MonoBehaviour:

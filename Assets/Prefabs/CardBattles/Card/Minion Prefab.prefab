@@ -34,6 +34,22 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 17.9
       objectReference: {fileID: 0}
+    - target: {fileID: 3611386204555009781, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 115.8249
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611386204555009781, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 39.1919
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611386204555009781, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.2946
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611386204555009781, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 23.7004
+      objectReference: {fileID: 0}
     - target: {fileID: 5025883907406862930, guid: 94025caa85302494cb82257a5b22e434, type: 3}
       propertyPath: m_text
       value: MINION PREFAB
@@ -174,6 +190,7 @@ MonoBehaviour:
   cardName: 
   description: 
   flavourText: 
+  properties: 
   effectDictionary:
     m_keys: 
     m_values: []

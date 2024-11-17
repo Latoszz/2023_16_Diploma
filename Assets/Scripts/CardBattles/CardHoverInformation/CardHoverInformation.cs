@@ -87,11 +87,12 @@ namespace CardBattles.CardHoverInformation {
             for (var i = 0; i < card.Properties.Count; i++) {
                 var property = card.Properties[i];
                 var propertyBox = Instantiate(propertyBoxPrefab, propertiesContainer, false);
-                propertyBox.transform.position = firstPosition + Vector3.down * (i * ( yOffsetBetween + propertyBox.GetComponent<RectTransform>().sizeDelta[1]/2));
+                propertyBox.transform.position = firstPosition + Vector3.down * (i * ( yOffsetBetween + propertyBox.GetComponent<RectTransform>().sizeDelta[1]));
                 var description = CreateDescription(property);
 
                 var texts = propertyBox.GetComponentsInChildren<Text>();
                 texts[0].text = description[0];
+                
                 texts[1].text = description[1];
                 
                 

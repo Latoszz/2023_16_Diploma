@@ -38,6 +38,7 @@ namespace CardBattles.Character {
             }
         }
 
+        
         private static UnityEvent<Card, ICardPlayTarget> onCardPlayed = new UnityEvent<Card, ICardPlayTarget>();
         private static UnityEvent<PlayerEnemyMonoBehaviour,IHasCost> onDrawCard = new UnityEvent<PlayerEnemyMonoBehaviour,IHasCost>();
 
@@ -74,7 +75,7 @@ namespace CardBattles.Character {
                 return;
             if (!IsYourTurn)
                 return;
-            if (!manaManager.CanUseMana(card)) 
+            if (!manaManager.CanUseMana(card,true)) 
                 return;
     
 
@@ -99,7 +100,6 @@ namespace CardBattles.Character {
             hand.Cards.Remove(card);
             card.cardDragging.droppedOnSlot = true;
             StartCoroutine(card.Play());
-
             hand.UpdateCardPositions();
         }
 

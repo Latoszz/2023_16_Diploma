@@ -224,7 +224,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -300
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6303471890624492483, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -257,4 +258,7 @@ MonoBehaviour:
     - 6
     - 4
     - 2
-  showInnerDialogue: 0
+  addDelayAfterThinking: 0
+  weights:
+    m_keys: 
+    m_values: []

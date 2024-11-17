@@ -132,6 +132,7 @@ namespace CardBattles.Character {
                     break;
                 case EnemyAiAction.PlaySpell:
                     yield return PlayASpell();
+                    yield return new WaitForSeconds(0.3f);
                     break;
                 case EnemyAiAction.Pass:
                     yield break;

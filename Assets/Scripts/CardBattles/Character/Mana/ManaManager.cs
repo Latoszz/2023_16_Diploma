@@ -1,14 +1,16 @@
 using System;
 using Audio;
+using CardBattles.CardScripts;
 using CardBattles.Character.Mana.Additional;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 using Object = UnityEngine.Object;
 
 namespace CardBattles.Character.Mana {
-    public class ManaManager : MonoBehaviour {
+    public class ManaManager : PlayerEnemyMonoBehaviour {
         private ManaDisplay manaDisplay;
 
         //TODO change
@@ -16,9 +18,7 @@ namespace CardBattles.Character.Mana {
         [SerializeField] public int maxMana = 2;
 
         [Min(0)] private int currentMana;
-
-        private bool isPlayers;
-
+        
         public int CurrentMana {
             get {
                 manaDisplay.CurrentMana = currentMana;
@@ -34,17 +34,19 @@ namespace CardBattles.Character.Mana {
         [SerializeField] private AudioClip refreshMana;
 
         private void Awake() {
-            isPlayers = CompareTag("Player");
             manaDisplay = GetComponentInChildren<ManaDisplay>();
             manaDisplay.UpdateMaxMana(maxMana);
             CurrentMana = maxMana;
         }
 
-        public bool CanUseMana(IHasCost cost) {
-            return CurrentMana >= cost.GetCost();
+        public bool CanUseMana(IHasCost cost,bool display = false) {
+            var output = CurrentMana >= cost.GetCost();
+            if (display && !output)
+                ShowLackOfMana();
+            return output;
         }
-        public bool CanUseMana(int cost) {
-            return CurrentMana >= cost;
+        public bool CanUseMana(int cost,bool display = false) {
+            return CanUseMana(new HasCost(cost),display);
         }
 
         public void UseMana(IHasCost cost) {
@@ -77,10 +79,13 @@ namespace CardBattles.Character.Mana {
         public void RefreshMana() {
             CurrentMana = maxMana;
         }
-
+        public static UnityEvent noManaLeft =
+            new UnityEvent();
         private void ShowLackOfMana() {
-            if (isPlayers)
-                StartCoroutine(manaDisplay.ShowLackOfMana());
+            if (!IsPlayers) return;
+            
+            StartCoroutine(manaDisplay.ShowLackOfMana());
+            noManaLeft?.Invoke();
         }
     }
 }

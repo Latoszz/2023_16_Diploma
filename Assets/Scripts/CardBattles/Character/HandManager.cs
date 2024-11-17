@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Audio;
 using CardBattles.CardScripts;
 using NaughtyAttributes;
@@ -91,6 +92,9 @@ namespace CardBattles.Character {
                 card.IsDrawn();
             }
             isDrawing = false;
+            yield return new WaitForSecondsRealtime(0.05f);
+            UpdateCardPositions();
+
         }
 
         private IEnumerator DrawCoroutine(Card card, Vector3 finalPosition) {
@@ -121,6 +125,14 @@ namespace CardBattles.Character {
             var newHandPositions = CalculateCardPositions(Cards.Count + additionalCards);
             for (int i = 0; i < Cards.Count; i++) {
                 StartCoroutine(Cards[i].Move(newHandPositions[i]));
+                UpdateSortingOrder(additionalCards);
+            }
+        }
+
+        private void UpdateSortingOrder(int val = 0) {
+            for (int i = 0; i < Cards.Count; i++) {
+                Cards[i].canvas.sortingOrder = Cards.Count() + val + 5  - i;
+
             }
         }
 

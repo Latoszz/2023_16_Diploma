@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 2756966147138138962}
   - component: {fileID: 3213556471657214980}
   - component: {fileID: 1304091546832479286}
+  - component: {fileID: 6303471890624492483}
   m_Layer: 5
   m_Name: Character Prefab
   m_TagString: Untagged
@@ -262,6 +263,20 @@ MonoBehaviour:
   hero: {fileID: 6368447993570103243}
   boardSide: {fileID: 1363167129428915371}
   manaManager: {fileID: 515543031216963993}
+--- !u!114 &6303471890624492483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577691811338400432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd2761b8e8d954a42acaf6cab10e0261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineCanvasGroup: {fileID: 0}
+  outlineDuration: 0.33
 --- !u!1 &1797842050393473140
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +523,7 @@ MonoBehaviour:
   hitAnimationDuration: 0
   hitAnimationShakeStrength: 0
   hitAnimationKnockbackStrength: 0
+  takeDamageSound: Damage.Hero
 --- !u!223 &7062501365206036219
 Canvas:
   m_ObjectHideFlags: 0
@@ -816,7 +832,8 @@ MonoBehaviour:
   cardSetDatas:
   - {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
   - {fileID: 11400000, guid: 93a68ce33da350a4c95448a9156b6763, type: 2}
-  cards: []
+  cardSets:
+    m_keys: []
 --- !u!223 &8087347571029791455
 Canvas:
   m_ObjectHideFlags: 0

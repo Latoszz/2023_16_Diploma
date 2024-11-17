@@ -17,12 +17,11 @@ namespace CardBattles.CardScripts {
     [SuppressMessage("ReSharper", "UnusedMember.Local")]
     public abstract class Card : PlayerEnemyMonoBehaviour, IHasCost {
         [NonSerialized] private EffectManager.EffectDelegate effectDelegate;
-        [NonSerialized] protected Canvas canvas;
+        [NonSerialized] public Canvas canvas;
 
         [NonSerialized] protected CardDisplay cardDisplay;
         [NonSerialized] protected CardAnimation cardAnimation;
         [NonSerialized] public CardDragging cardDragging;
-
         public bool FrontVisible {
             get {
                 if (this.cardDisplay is null) return false;
@@ -37,7 +36,7 @@ namespace CardBattles.CardScripts {
 
         [BoxGroup("Card"), ResizableTextArea]
         public string flavourText;
-        [BoxGroup("Data"), Space]
+        [BoxGroup("Data"), Space,SerializeField]
         protected List<AdditionalProperty> properties;
 
         public List<AdditionalProperty> Properties {
@@ -133,8 +132,10 @@ namespace CardBattles.CardScripts {
                 EffectManager.effectDictionary[effectTargetValue.effectName](targets, effectTargetValue.value));
         }
 
-        public IEnumerator ChangeSortingOrderTemporarily(int num) {
+        public IEnumerator ChangeSortingOrderTemporarily(int num,bool val = true) {
             canvas.sortingOrder += num;
+            if (!val) yield break;
+            
             yield return new WaitForSeconds(2f);
             canvas.sortingOrder -= num;
         }

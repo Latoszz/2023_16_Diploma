@@ -37,6 +37,11 @@ namespace CardBattles.CardScripts.Additional {
         [Foldout("Draw"), Range(0, 1), SerializeField]
         private float enemyDraw = 0.5f;
 
+        private Card card;
+        private void Awake() {
+            card = GetComponent<Card>();
+        }
+
         public IEnumerator DrawAnimation(Vector3 finalPosition) {
             var drawAnimation = StartCoroutine(IsPlayers
                 ? PlayerDrawAnimationCoroutine(finalPosition)
@@ -46,6 +51,7 @@ namespace CardBattles.CardScripts.Additional {
 
         private IEnumerator PlayerDrawAnimationCoroutine(Vector3 finalPosition) {
             var sequence = DOTween.Sequence().SetLink(gameObject, LinkBehaviour.KillOnDestroy);
+            StartCoroutine(card.ChangeSortingOrderTemporarily(30, false));
             var canvasGroup = GetComponent<CanvasGroup>();
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
@@ -67,6 +73,8 @@ namespace CardBattles.CardScripts.Additional {
 
             sequence.Play();
             yield return sequence.WaitForCompletion();
+            StartCoroutine(card.ChangeSortingOrderTemporarily(-30, false));
+
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
         }
@@ -327,7 +335,10 @@ namespace CardBattles.CardScripts.Additional {
             
 
             x.position = spellShowcasePosition;
-            x.GetComponent<CanvasGroup>().alpha = 1;
+            var canvasGroup = x.GetComponent<CanvasGroup>();
+            canvasGroup.alpha = 1;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
             x.localScale = Vector3.one * startScaleSpellShowcase;
 
             var sequence = DOTween.Sequence().SetLink(x.gameObject, LinkBehaviour.KillOnDestroy);

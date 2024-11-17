@@ -47,7 +47,7 @@ MonoBehaviour:
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 4
+  attack: 8
   maxHealth: 1
 --- !u!114 &-2504094293402209270
 MonoBehaviour:
@@ -64,14 +64,14 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Healing mushroom
   sprite: {fileID: -608562150, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: Heal our minions by 5 HP
+  description: Heal your minions by 5 HP
   flavourText: 
   properties: 00000000
   effectDictionary:
     m_keys: 00000000
     m_values:
     - effectName: 2
-      targetType: 8
+      targetType: 2
       value: 5
 --- !u!114 &11400000
 MonoBehaviour:

@@ -60,9 +60,11 @@ namespace CardBattles.CardScripts.Additional {
         [Foldout("Objects")] [SerializeField]
         private CanvasGroup minionOnlyElements;
 
+        private Card card;
         public bool frontVisible;
 
         private void Awake() {
+            card = GetComponent<Card>();
             frontOfCard.enabled = !frontVisible;
             backOfCard.enabled = !frontVisible;
         }
@@ -90,6 +92,7 @@ namespace CardBattles.CardScripts.Additional {
             var descriptionText = newDescription ?? descriptionData;
                 
             if (properties != null && properties.Count > 0) {
+                descriptionText += '\n';
                 for (int i = 0; i < properties.Count; i++) {
                     if (i != 0)
                         descriptionText += ", ";
@@ -162,7 +165,7 @@ namespace CardBattles.CardScripts.Additional {
             if (!frontVisible || eventData.pointerDrag is not null) {
                 return;
             }
-
+            StartCoroutine(card.ChangeSortingOrderTemporarily(10, false));
             transform.DOScale(scaleOnHover,
                 scaleOnHoverTime).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
         }
@@ -171,7 +174,7 @@ namespace CardBattles.CardScripts.Additional {
             if (!frontVisible || eventData.pointerDrag is not null) {
                 return;
             }
-
+            StartCoroutine(card.ChangeSortingOrderTemporarily(-10, false));
             transform.DOScale(Vector3.one * currentScale, scaleOnHoverTime).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
         }
 
