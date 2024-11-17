@@ -24,7 +24,7 @@ public class EnemyPopup : MonoBehaviour {
             Close();
             InventoryDeckManager.Instance.UpdateDeck();
             SaveManager.Instance.SaveGame();
-            StartCoroutine(CardGamesLoader.Instance.BeginBattle(EnemyStateManager.Instance.GetCurrentEnemy().GetBattleData()));
+            CardGamesLoader.Instance.BeginBattle(EnemyStateManager.Instance.GetCurrentEnemy().GetBattleData());
         }
         else {
             deckPopup.SetActive(true);

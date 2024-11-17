@@ -47,11 +47,15 @@ namespace CardBattles.CardGamesManager {
         [SerializeField] private BattleData debugBattleData;
         [Button]
         public void BeginBattleDebug() {
-            StartCoroutine(BeginBattle(debugBattleData));
+            StartCoroutine(BeginBattleCoroutine(debugBattleData));
         }
 
-        public IEnumerator BeginBattle(BattleData battleData/*, List<CardSetData> playerCardSetDatas = null*/) {
-           var  playerCardSetDatas = InventoryDeckManager.Instance.GetDeck();
+        public void BeginBattle(BattleData battleData) {
+            StartCoroutine(BeginBattleCoroutine(battleData));
+        }
+
+        public IEnumerator BeginBattleCoroutine(BattleData battleData, List<CardSetData> playerCardSetDatas = null) {
+            playerCardSetDatas ??= InventoryDeckManager.Instance.GetDeck();
             
             currentBattleData = battleData;
             yield return StartCoroutine(
