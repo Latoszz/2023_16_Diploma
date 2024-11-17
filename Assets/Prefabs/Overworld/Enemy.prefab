@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 9158143557127376718}
   - component: {fileID: 6837198127075061765}
   - component: {fileID: 755335890215761283}
+  - component: {fileID: 5034567490811476436}
+  - component: {fileID: 527338070198095699}
+  - component: {fileID: 8672124428321900414}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Enemy
@@ -31,7 +34,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6454280357590413841}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 26.76, y: 0, z: -65.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -164,8 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7085383748f8dbb40a551a277f7101ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: 66561b19a76fbe24788d1342d7a0b198, type: 2}
-  enemyPopup: {fileID: 0}
+  enemyID: 8087dc39-9b33-43d6-92e4-0f0af731d11b
+  battleData: {fileID: 11400000, guid: b891bc713e17f3449873ecb595062fe1, type: 2}
+  obstacles:
+  - {fileID: 0}
   undefeatedMaterial: {fileID: 2100000, guid: cefd3f4c819e7be4dae58ab529761ed7, type: 2}
   defeatedMaterial: {fileID: 2100000, guid: 7d55af4c91526b34cb074df79891f15f, type: 2}
 --- !u!114 &755335890215761283
@@ -180,8 +185,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41327384dc2ae1e438942c8596440b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionDistance: 8
   waitTimeSeconds: 3
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  isEnemy: 1
+--- !u!114 &5034567490811476436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6454280357590413841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4a83a1827fbb142805003b5cead684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPanel: {fileID: 0}
+  npc: {fileID: 0}
+--- !u!114 &527338070198095699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6454280357590413841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &8672124428321900414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6454280357590413841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9081f2cea4a704791eb03716e7faa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionDistance: 5
 --- !u!1001 &562013650088372403
 PrefabInstance:
   m_ObjectHideFlags: 0

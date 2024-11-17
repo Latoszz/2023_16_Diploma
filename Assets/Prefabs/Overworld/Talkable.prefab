@@ -477,6 +477,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questImage: {fileID: 4805022827392238008}
+  floatHeight: 0.5
+  floatDuration: 1
 --- !u!1 &4102326752318149805
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,11 +492,12 @@ GameObject:
   - component: {fileID: 3784982900796619243}
   - component: {fileID: 5643313293655561001}
   - component: {fileID: 233825455363076398}
-  - component: {fileID: 24689725306089748}
   - component: {fileID: 6055244695569306137}
   - component: {fileID: 5668120488568606045}
   - component: {fileID: 4125723566832919634}
   - component: {fileID: 2092748667491556618}
+  - component: {fileID: 2511184543126673672}
+  - component: {fileID: 3386466119558523853}
   m_Layer: 9
   m_Name: Talkable
   m_TagString: Untagged
@@ -615,24 +618,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &24689725306089748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4102326752318149805}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a228c981b4cb4620808cc35ed9745fe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToWait: 0.5
-  messageToShow: NPC Name
-  nameWindow: {fileID: 0}
-  nameText: {fileID: 0}
-  detectionRadius: 3
-  player: {fileID: 0}
 --- !u!114 &6055244695569306137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,6 +635,13 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isEnemy: 0
 --- !u!114 &5668120488568606045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,13 +655,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-  - {fileID: 11400000, guid: f69258118e95d9946a4e0c0e9790a48a, type: 2}
-  - {fileID: 11400000, guid: 5a932338a7aeb5647babaff55ed7b8ee, type: 2}
+  - {fileID: 11400000, guid: 5bd4a0cdea063774a8f88b9bc19ab422, type: 2}
+  - {fileID: 11400000, guid: c132dbdaa9cf9054884c0c90e2726f99, type: 2}
   dialogueController: {fileID: 0}
   questIndicator: {fileID: 8075553825124513236}
   audioConfig: {fileID: 11400000, guid: 7505a4fde64315b438f41b7f29033911, type: 2}
   detectionDistance: 8
-  ID: 
+  npcID: 64b0fe65-628e-4959-866c-2bfb4eb7cff5
 --- !u!114 &4125723566832919634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,10 +689,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
+  outlineWidth: 5
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &2511184543126673672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4102326752318149805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ec7274d6824f7ebfb37640a23facf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questInfo: {fileID: 11400000, guid: 1bb66266a9ac46c47b720aeddd45825d, type: 2}
+  startPoint: 1
+  finishPoint: 1
+--- !u!114 &3386466119558523853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4102326752318149805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 370eb732131744309f2d9ca266326b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: WateringCan
 --- !u!1 &4805022827392238008
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +786,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 58e7409e68d79bc43bdc0233c88032a1, type: 3}
+  m_Sprite: {fileID: -1505736317, guid: 0d4406e70712e9f49b4d08395ea94319, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
