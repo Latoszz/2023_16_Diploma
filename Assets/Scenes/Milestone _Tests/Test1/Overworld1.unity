@@ -91712,6 +91712,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5034567490811476436, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
+      propertyPath: npc
+      value: 
+      objectReference: {fileID: 1653682334}
+    - target: {fileID: 5034567490811476436, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
       propertyPath: enemyPanel
       value: 
       objectReference: {fileID: 850978713}
@@ -112875,6 +112879,10 @@ PrefabInstance:
     - target: {fileID: 2511184543126673672, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
       propertyPath: questInfo
       value: 
+      objectReference: {fileID: 11400000, guid: 58bf0f735024742428d2915de4dee924, type: 2}
+    - target: {fileID: 2511184543126673672, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+      propertyPath: startPoint
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3386466119558523853, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
       propertyPath: itemId
@@ -113002,6 +113010,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 24689725306089748, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+    - {fileID: 3386466119558523853, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -113011,6 +113020,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1866286916044464732, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
   m_PrefabInstance: {fileID: 1653682332}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1653682334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5668120488568606045, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+  m_PrefabInstance: {fileID: 1653682332}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58aaf8febef4bc99caa1d80b82926d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1660337782
 GameObject:
   m_ObjectHideFlags: 0
@@ -130717,11 +130737,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4102326752318149805, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1989324601}
   m_SourcePrefab: {fileID: 100100000, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
 --- !u!4 &1989324597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1866286916044464732, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+  m_PrefabInstance: {fileID: 1989324596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1989324598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4102326752318149805, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
   m_PrefabInstance: {fileID: 1989324596}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1989324600 stripped
@@ -130729,12 +130757,27 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5668120488568606045, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
   m_PrefabInstance: {fileID: 1989324596}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1989324598}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e58aaf8febef4bc99caa1d80b82926d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1989324601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989324598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ec7274d6824f7ebfb37640a23facf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questInfo: {fileID: 11400000, guid: 58bf0f735024742428d2915de4dee924, type: 2}
+  startPoint: 1
+  finishPoint: 0
 --- !u!1 &1992272101
 GameObject:
   m_ObjectHideFlags: 0
@@ -141110,7 +141153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2079290132
 Transform:
   m_ObjectHideFlags: 0
@@ -141347,7 +141390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5254029167935941323, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -6.23
       objectReference: {fileID: 0}
     - target: {fileID: 5254029167935941323, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
       propertyPath: m_LocalRotation.w

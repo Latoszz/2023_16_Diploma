@@ -47,5 +47,9 @@ namespace QuestSystem {
         }
 
         protected abstract void SetQuestStepState(string state);
+
+        protected string GetQuestId() {
+            return questId;
+        }
     }
 }

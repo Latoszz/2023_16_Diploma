@@ -83,7 +83,6 @@ public class InventoryController : MonoBehaviour {
     private void RemoveItemFromSlot(ItemSlot itemSlot) {
         itemSlot.RemoveItem();
         itemSlot.SetIsOccupied(false);
-        Debug.Log("Item removed");
     }
     
     

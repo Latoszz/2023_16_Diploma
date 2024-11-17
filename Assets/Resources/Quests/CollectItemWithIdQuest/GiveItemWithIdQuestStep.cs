@@ -18,10 +18,9 @@ public class GiveItemWithIdQuestStep: QuestStep {
 
     private void ItemGiven(string itemId) {
         if (itemId == itemToGiveId) {
-            Debug.Log("Item given quest");
             InventoryController.Instance.RemoveItem(itemId);
             UpdateState();
-            FinishQuestStep(); 
+            FinishQuestStep();
         }
     }
 

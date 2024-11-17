@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Audio;
+using Events;
 using Interaction;
 using ScriptableObjects.Dialogue;
 using UnityEngine;
@@ -15,7 +16,8 @@ namespace NPC {
         [SerializeField] private float detectionDistance = 8;
 
         private GameObject player;
-        private bool talkedTo; 
+        private bool talkedTo;
+        private string npcName;
 
         [SerializeField] private string npcID;
 
@@ -26,6 +28,7 @@ namespace NPC {
 
         private void Awake() {
             player = GameObject.FindGameObjectWithTag("Player");
+            npcName = dialogue[0].NameText;
         }
 
         private void Start() {
@@ -38,6 +41,7 @@ namespace NPC {
             if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
                 Talk(dialogue[0]);
                 talkedTo = true;
+                GameEventsManager.Instance.NPCEvents.TalkedToNPC(npcName);
             }
         }
         

@@ -78,7 +78,7 @@ namespace QuestSystem {
         private bool CheckRequirementsMet(Quest quest) {
             bool meetsRequirements = true;
             foreach (QuestInfoSO questPrerequisite in quest.info.questPrerequisites) {
-                if (GetQuestById(questPrerequisite.id).state != QuestState.FINISHED) {
+                if (GetQuestById(questPrerequisite.id).state != QuestState.CAN_FINISH) { //TODO WAS checking if FINISHED
                     meetsRequirements = false;
                     break;
                 }
@@ -90,6 +90,7 @@ namespace QuestSystem {
             Quest quest = GetQuestById(id);
             quest.InstantiateCurrentQuestStep(this.transform);
             ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS);
+            Debug.LogWarning($"Started quest {quest.info.displayName}");
         }
         
         private void AdvanceQuest(string id) {
@@ -101,12 +102,14 @@ namespace QuestSystem {
             else {
                 ChangeQuestState(quest.info.id, QuestState.CAN_FINISH);
             }
+            Debug.LogWarning($"Advanced quest {quest.info.displayName}");
         }
         
         private void FinishQuest(string id) {
             Quest quest = GetQuestById(id);
             ClaimRewards(quest);
             ChangeQuestState(quest.info.id, QuestState.FINISHED);
+            Debug.LogWarning($"Finished quest {quest.info.displayName}");
         }
 
         private void ClaimRewards(Quest quest) {
@@ -118,6 +121,10 @@ namespace QuestSystem {
             Quest quest = GetQuestById(id);
             quest.StoreQuestStepState(questStepState, stepIndex);
             ChangeQuestState(id, quest.state);
+        }
+
+        public void ForceQuestFinish(string id) {
+            FinishQuest(id);
         }
         
         private Dictionary<string, Quest> CreateQuestsDict() {

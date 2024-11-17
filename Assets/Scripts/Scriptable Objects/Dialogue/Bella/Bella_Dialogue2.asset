@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b2264e34dc4b458371e9125b11bb94, type: 3}
   m_Name: Bella_Dialogue2
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
+  icon: {fileID: 834666072, guid: 771bd3dde9b61fa4d9c47cacb637c5d4, type: 3}
   nameText: Bella
   sentences:
   - Thank you for finding my watering can!
@@ -20,3 +20,8 @@ MonoBehaviour:
     know how I could repay you.
   - Oh I know, please take this flower tea. Talia loves it, so I'm sure you'll like
     it too.
+  - Changing the subject, how do you like our village?
+  - Oh, you haven't seen the rest yet, in that case I have a favor to ask of you.
+  - Could you take these vegetables to Kiryl? With all this fog, I haven't taken
+    anything to the tavern for him lately.
+  - It's best if you go to Talia to find out, she lives much closer to him.

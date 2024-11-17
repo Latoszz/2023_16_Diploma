@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 043ae4447d464171b505fcf412ad7c87, type: 3}
-  m_Name: CollectWateringCanQuest
+  m_Name: TalkToTaliaQuest
   m_EditorClassIdentifier: 
-  id: CollectWateringCan
-  displayName: Help the flowers!
-  questDescription: Can you find something to help Bella's flowers grow?
-  questPrerequisites: []
+  id: Talk to Talia
+  displayName: Ask for directions
+  questDescription: Ask Talia where you can find Kiryl
+  questPrerequisites:
+  - {fileID: 11400000, guid: 1bb66266a9ac46c47b720aeddd45825d, type: 2}
   questSteps:
-  - {fileID: 2240715771090674663, guid: 9eeed74e4ad4a04478ef98a33acd044a, type: 3}
+  - {fileID: 1315466099756988798, guid: 5f5f9b8693f358d4896845634b8b397d, type: 3}
   questRewards: []

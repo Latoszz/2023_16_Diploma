@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b2264e34dc4b458371e9125b11bb94, type: 3}
   m_Name: Talia 1
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  nameText: 
-  sentences: []
+  icon: {fileID: -1715136379, guid: 771bd3dde9b61fa4d9c47cacb637c5d4, type: 3}
+  nameText: Talia
+  sentences:
+  - 'Kiryl........
+
+    Kiryl..............'
+  - Ah yes, this way!
+  - You have to go along the road, from here to the left.

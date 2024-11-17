@@ -22,8 +22,9 @@ public class GiveItem: MonoBehaviour, IPointerClickHandler {
 
     public void OnPointerClick(PointerEventData eventData) {
         if (hasItem) {
-            Debug.Log("Item given");
             GameEventsManager.Instance.ItemEvents.ItemWithIdGiven(itemId);
+            InventoryController.Instance.RemoveItem(itemId);
+            hasItem = false;
         }
     }
 }
