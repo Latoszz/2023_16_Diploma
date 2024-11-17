@@ -57,12 +57,16 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
 
     private void ReadCardData() {
-        string displayText = cardData.cardName + "\nDescription: ";
-        displayText += "description text";
+        string displayText = cardData.cardName + "";
+        //displayText += "description text";
         
         if (cardData is MinionData) {
             displayText += "\nPower: " + ((MinionData)cardData).attack;
             displayText += "\nHealth: " + ((MinionData)cardData).maxHealth;
+        }
+
+        if (cardData is SpellData) {
+            displayText += "\nSpell";
         }
         
         descriptionText.text = displayText;
