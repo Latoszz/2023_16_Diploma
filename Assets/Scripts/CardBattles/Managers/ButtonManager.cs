@@ -4,7 +4,6 @@ using Audio;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace CardBattles.Managers {
@@ -14,7 +13,6 @@ namespace CardBattles.Managers {
         private bool buttonCooldown = false;
 
         
-        [SerializeField] private Sprite spriteOff;
         
         [SerializeField]
         private List<Button> buttons = new List<Button>();
@@ -122,10 +120,13 @@ namespace CardBattles.Managers {
         
         // ReSharper disable Unity.PerformanceAnalysis
         private void ButtonVisual(Button button, bool buttonUp) {
-            button.image.overrideSprite = buttonUp ? null : spriteOff;
+            
+            var x = button.GetComponent<ButtonTextVal>();
+            x.OverrideButtonSprite(buttonUp);
+            /*button.image.overrideSprite = buttonUp ? null : spriteOff;
             var rectTransform = button.GetComponent<ButtonTextVal>().rectTransformText;
             rectTransform.position +=
-                buttonUp ? new Vector3(0, textMoveDownAmount, 0) : new Vector3(0, -textMoveDownAmount, 0);
+                buttonUp ? new Vector3(0, textMoveDownAmount, 0) : new Vector3(0, -textMoveDownAmount, 0);*/
         }
 
         [SerializeField] private string buttonClickSoundString;

@@ -11,31 +11,31 @@ namespace CardBattles.Enums {
     }
 
     public enum AdditionalProperty {
-        [PropertyDescription("This card can be played for free.")]
-        FreeToPlay,
+        [PropertyDescription("Costs 0 AP to play")]
+        Free_To_Play,
 
-        [PropertyDescription("50% chance that the card will not attack.")]
+        [PropertyDescription("50% chance to not attack")]
         Lazy,
 
-        [PropertyDescription("This card deals poison damage.")]
+        [PropertyDescription("Kills cards with 1 hit")]
         Poisonous,
 
-        [PropertyDescription("This card cannot be affected by poison.")]
-        ImmuneToPoison,
+        [PropertyDescription("Not affected by Poisonous")]
+        Immune_To_Poison,
    
-        [PropertyDescription("This card restores it's health when dealing damage.")]
+        [PropertyDescription("Restores health when dealing damage")]
         Vampiric,
 
         [PropertyDescription("Doesn't attack on turn played")]
         Sleepy,
 
-        [PropertyDescription("This card cannot be healed.")]
+        [PropertyDescription("Cannot be healed")]
         Unhealable,
 
-        [PropertyDescription("This card costs 2 AP to play.")]
+        [PropertyDescription("Costs 2 AP to play")]
         Costly,
 
-        [PropertyDescription("Takes half damage (rounded up).")]
+        [PropertyDescription("Takes half damage (rounded up)")]
         Durable
 
     }

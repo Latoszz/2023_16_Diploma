@@ -36,7 +36,7 @@ namespace CardBattles.CardScripts.Additional {
         private Text cardName;
 
         [Foldout("Objects")] [SerializeField]
-        private TextMeshProUGUI description;
+        private Text description;
 
         private string descriptionData;
         [Foldout("Objects")] [SerializeField]
@@ -69,7 +69,7 @@ namespace CardBattles.CardScripts.Additional {
 
         public void SetCardDisplayData(CardData cardData) {
             cardImage.sprite = cardData.sprite;
-            cardName.text = cardData.name;
+            cardName.text = cardData.name.ToUpper();
             descriptionData = cardData.description;
             UpdateDescription(cardData.properties);
             cardSetSymbol.sprite = cardData.cardSet.cardSetIcon;
@@ -90,13 +90,11 @@ namespace CardBattles.CardScripts.Additional {
             var descriptionText = newDescription ?? descriptionData;
                 
             if (properties != null && properties.Count > 0) {
-                descriptionText += "\n</i>";
                 for (int i = 0; i < properties.Count; i++) {
                     if (i != 0)
                         descriptionText += ", ";
                     descriptionText += properties[i];
                 }
-                descriptionText += "</i>";
             }
 
             description.text = descriptionText;

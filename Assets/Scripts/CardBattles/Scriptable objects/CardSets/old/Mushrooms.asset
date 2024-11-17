@@ -15,7 +15,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Sleepy mushroom
   sprite: {fileID: -531863168, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: At the end of turn, give adjecent minion +2 attack
+  description: End of turn, give adjecent minions +2 AT
   flavourText: 
   properties: 
   effectDictionary:
@@ -109,7 +109,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Poisonous Mushroom
   sprite: {fileID: -509220665, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: Kills all cards with one hit
+  description: 
   flavourText: 
   properties: 02000000
   effectDictionary:

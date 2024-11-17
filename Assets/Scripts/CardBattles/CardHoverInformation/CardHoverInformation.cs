@@ -102,7 +102,7 @@ namespace CardBattles.CardHoverInformation {
         
         private List<string> CreateDescription(AdditionalProperty property) {
             var output = new List<string> {
-                property.ToString(),
+                property.ToString().Replace("_"," "),
                 AdditionalPropertyHelper.GetDescription(property)
             };
             return output;

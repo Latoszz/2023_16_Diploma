@@ -38,7 +38,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Orange cat
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  description: Has a 50% chance to not attack
+  description: 
   flavourText: 
   properties: 0100000003000000
   effectDictionary:
@@ -82,7 +82,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Feeding time
   sprite: {fileID: -572797459, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: Heal our minions by 3hp
+  description: Heal your minions by 3hp
   flavourText: 
   properties: 
   effectDictionary:
@@ -106,7 +106,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Big cat
   sprite: {fileID: 1771446180, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: Kitty
+  description: 
   flavourText: He has a tendency to eat his siblings :(
   properties: 
   effectDictionary:
@@ -129,7 +129,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Catnip Tea
   sprite: {fileID: 634790958, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: At the start of turn buff give your other minion +2 health
+  description: start of turn, give your minions +2 HP
   flavourText: Its totally not wine
   properties: 00000000
   effectDictionary:

@@ -98,7 +98,7 @@ namespace CardBattles.CardScripts {
             if (!isPoisonous) return;
             
             poisonTrigger?.Invoke();
-            if (Properties.Contains(AdditionalProperty.ImmuneToPoison)) {
+            if (Properties.Contains(AdditionalProperty.Immune_To_Poison)) {
                 immuneToPoisonTrigger?.Invoke();
             }
             else

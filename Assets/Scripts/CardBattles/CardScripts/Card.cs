@@ -76,7 +76,7 @@ namespace CardBattles.CardScripts {
         }
 
         public virtual int GetCost() {
-            if (Properties.Contains(AdditionalProperty.FreeToPlay)) {
+            if (Properties.Contains(AdditionalProperty.Free_To_Play)) {
                 return 0;
             }
 

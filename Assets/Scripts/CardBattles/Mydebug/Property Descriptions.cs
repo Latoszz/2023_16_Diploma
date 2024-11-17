@@ -15,7 +15,7 @@ namespace CardBattles.Mydebug {
             var enumValues = Enum.GetValues(typeof(AdditionalProperty)).Cast<AdditionalProperty>().ToList();
             info = "";
             foreach (var value in enumValues) {
-                info += value+".\n";
+                info += value+"\n";
                 info += AdditionalPropertyHelper.GetDescription(value)+"\n\n";
             }
             if(!String.IsNullOrWhiteSpace(info))
