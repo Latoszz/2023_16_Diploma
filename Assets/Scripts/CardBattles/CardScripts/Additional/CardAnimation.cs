@@ -320,15 +320,12 @@ namespace CardBattles.CardScripts.Additional {
 
         [SerializeField, Foldout("SpellShowcase"), Label("Shrink Time")]
         private float shrinkTimeSpellShowcase;
-
-        private static bool isShowingCard = false;
-
-
+        
+    
         private IEnumerator SpellShowcase(GameObject spellGameObject) {
-            var x = Instantiate(spellGameObject, new Vector3(4000, 0, 0), Quaternion.identity).transform;
+            var x = Instantiate(spellGameObject, new Vector3(4000, 0, 0), Quaternion.identity,BoardManager.Instance.transform).transform;
+            
 
-            yield return new WaitUntil(() => !isShowingCard);
-            isShowingCard = true;
             x.position = spellShowcasePosition;
             x.GetComponent<CanvasGroup>().alpha = 1;
             x.localScale = Vector3.one * startScaleSpellShowcase;
@@ -357,7 +354,6 @@ namespace CardBattles.CardScripts.Additional {
 
             yield return sequence.WaitForCompletion();
 
-            isShowingCard = false;
         }
 
         [SerializeField] private float onPlayEffectDelay = 0.16f;

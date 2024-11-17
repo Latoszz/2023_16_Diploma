@@ -366,7 +366,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ff7042d8ea16c8043960c1b1eed3a6e7, type: 2}
+    m_Font: {fileID: 12800000, guid: adefcb89f0415d54180e50e9b107a778, type: 2}
     m_FontSize: 0
     m_FontStyle: 0
     m_BestFit: 0
@@ -1303,15 +1303,15 @@ RectTransform:
   m_GameObject: {fileID: 7129834780842957257}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2492583842736791316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.2458, y: 14.986702}
-  m_SizeDelta: {x: 83.0424, y: 26.4368}
+  m_AnchoredPosition: {x: -0.7383, y: 21.925299}
+  m_SizeDelta: {x: 111.3869, y: 36.2333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &984703156877598432
 CanvasRenderer:
@@ -1342,9 +1342,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: adefcb89f0415d54180e50e9b107a778, type: 2}
-    m_FontSize: 0
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    m_FontSize: 11
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -1353,10 +1353,8 @@ MonoBehaviour:
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
-    m_LineSpacing: 0.5
-  m_Text: 'AAAAAAAAAAAAaa AAAA AA
-
-    1'
+    m_LineSpacing: 0.8
+  m_Text: Abecadlo
 --- !u!1 &7537957259448819114
 GameObject:
   m_ObjectHideFlags: 0

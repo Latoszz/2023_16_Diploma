@@ -82,7 +82,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Feeding time
   sprite: {fileID: -572797459, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: Heal your minions by 3hp
+  description: Heal your minions by 3 HP
   flavourText: 
   properties: 
   effectDictionary:

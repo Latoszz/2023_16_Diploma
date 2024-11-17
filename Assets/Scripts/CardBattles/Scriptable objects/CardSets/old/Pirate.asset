@@ -22,7 +22,7 @@ MonoBehaviour:
     m_keys: 01000000
     m_values:
     - effectName: 2
-      targetType: 6
+      targetType: 7
       value: 5
   attack: 4
   maxHealth: 3
@@ -48,7 +48,7 @@ MonoBehaviour:
     m_keys: 01000000
     m_values:
     - effectName: 4
-      targetType: 11
+      targetType: 13
       value: 1
   attack: 3
   maxHealth: 2
@@ -154,10 +154,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
-  m_Name: Estranged family member
+  m_Name: Nas'hrah
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Estranged family member
+  cardName: Nas'hrah
   sprite: {fileID: 21300000, guid: 256656f16306ad5449a5ec19ead726fd, type: 3}
   description: Does nothing
   flavourText: 

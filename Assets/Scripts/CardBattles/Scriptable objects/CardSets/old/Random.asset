@@ -80,7 +80,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Stakes
   sprite: {fileID: 21300000, guid: a1923e447de4dc04ba5ac2fa803ddb39, type: 3}
-  description: ' are high (kill minions in one hit)'
+  description: are high
   flavourText: 
   properties: 02000000
   effectDictionary:

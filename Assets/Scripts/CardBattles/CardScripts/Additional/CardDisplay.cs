@@ -93,7 +93,7 @@ namespace CardBattles.CardScripts.Additional {
                 for (int i = 0; i < properties.Count; i++) {
                     if (i != 0)
                         descriptionText += ", ";
-                    descriptionText += properties[i];
+                    descriptionText += properties[i].ToString().Replace("_", " ");
                 }
             }
 
