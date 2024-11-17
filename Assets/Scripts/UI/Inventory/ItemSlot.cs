@@ -8,6 +8,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     [SerializeField] private GameObject itemList;
     [SerializeField] private GameObject deckList;
     [SerializeField] private GameObject cardSetList;
+    [SerializeField] private GameObject itemObjectPrefab;
 
     [SerializeField] private string itemSlotID;
     [ContextMenu("Generate guid for id")]
@@ -15,13 +16,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
         itemSlotID = Guid.NewGuid().ToString();
     }
 
+    private InventoryController inventoryController;
     private string parentName;
     private Item item;
+    private GameObject itemObject;
     private bool isOccupied = false;
-    private bool isActive;
 
     private void Awake() {
         parentName = transform.parent.name;
+        inventoryController = InventoryController.Instance;
     }
     
     public void AddItem(Item item) {
@@ -30,23 +33,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
         CreateItemObject();
     }
     private void CreateItemObject() {
-        GameObject itemObject = new GameObject();
+        itemObject = Instantiate(itemObjectPrefab, transform);
         itemObject.transform.SetParent(transform);
-        
-        RectTransform itemRectTransform = itemObject.AddComponent<RectTransform>();
-        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 0, 0);
-        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, 0);
-        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, 0);
-        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0, 0);
-        itemRectTransform.anchorMin = new Vector2(0, 0);
-        itemRectTransform.anchorMax = new Vector2(1, 1);
-        itemRectTransform.localScale = new Vector3(1, 1, 1);
-        
-        Image objectImage = itemObject.AddComponent<Image>();
-        objectImage.sprite = item.GetSprite();
-
-        itemObject.AddComponent<DraggableItem>().SetItemData(item);
-        itemObject.AddComponent<LayoutElement>();
+        itemObject.GetComponent<Image>().sprite = item.GetSprite();
+        itemObject.GetComponent<DraggableItem>().SetItemData(item);
     }
 
     public bool IsOccupied() {
@@ -62,15 +52,25 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        if (eventData.button == PointerEventData.InputButton.Left)
-            SelectSlot();
+        if (eventData.button != PointerEventData.InputButton.Left) 
+            return;
+        
+        if (selectedShader.activeSelf) {
+            inventoryController.DeselectAllSlots();
+            if (item is CardSetItem)
+                inventoryController.HideCardSetDetails();
+            return;
+        }
+        SelectSlot();
     }
 
     private void SelectSlot() {
-        InventoryController.Instance.DeselectAllSlots();
+        inventoryController.DeselectAllSlots();
         selectedShader.SetActive(true);
         if (item is CardSetItem cardSet) {
-            InventoryController.Instance.ShowCardSetDetails(cardSet.GetCardSetData());
+            if (inventoryController.IsCardSetDetailsOpen())
+                inventoryController.HideCardSetDetails();
+            inventoryController.ShowCardSetDetails(cardSet.GetCardSetData());
         }
     }
 
@@ -105,9 +105,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     private void SetItem(Item newItem) {
         item = newItem;
     }
-
+    
     private void ClearItem() {
         item = null;
+    }
+
+    public void RemoveItem() {
+        item = null;
+        Destroy(itemObject);
     }
 
     public string GetParentName() {

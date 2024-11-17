@@ -23,7 +23,9 @@ namespace SaveSystem.SaveData {
                     saveFile.DeleteData(id);
                 
                 int j = npc.dialogue.Count();
+                bool talkedTo = npc.TalkedTo();
                 saveFile.AddOrUpdateData(id, j);
+                saveFile.AddOrUpdateData(id + "_talkedTo", talkedTo);
             }
         }
 
@@ -38,6 +40,9 @@ namespace SaveSystem.SaveData {
                     npc.dialogue.Remove(npc.dialogue[0]);
                     j--;
                 }
+
+                bool talkedTo = saveFile.GetData<bool>(npc.GetID() + "_talkedTo");
+                npc.SetTalkedTo(talkedTo);
             }
         }
     }

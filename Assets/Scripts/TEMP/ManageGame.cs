@@ -10,7 +10,7 @@ public class ManageGame : MonoBehaviour {
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject npc;
     [SerializeField] private GameObject npc2;
-    [SerializeField] private EnemySM enemy;
+    [SerializeField] private Enemy enemy;
     [SerializeField] private GameObject wall;
     [SerializeField] private ParticleSystem removablePS;
     [SerializeField] private List<CardSetItem> cardSets;

@@ -73,6 +73,7 @@ namespace CardBattles.CardGamesManager {
              * który słucha i cos robi od razu jak zmieni się stan       
              */
             currentBattleData = null;
+            EnemyStateManager.Instance.ChangeEnemyState(val? EnemyState.Defeated : EnemyState.Undefeated);
             StartCoroutine(SceneLoader.Instance.LoadSceneAsync(SceneName.Overworld));
         }
     }

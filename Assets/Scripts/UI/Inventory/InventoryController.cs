@@ -8,7 +8,6 @@ using UnityEngine.Rendering.PostProcessing;
 public class InventoryController : MonoBehaviour {
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private ManageCardSetDetails manageCardSetDetails;
-    [SerializeField] private InputAction rightClickAction;
 
     [SerializeField] private List<ItemSlot> itemSlots;
     [SerializeField] private List<ItemSlot> cardSetSlots;
@@ -17,6 +16,7 @@ public class InventoryController : MonoBehaviour {
     private PostProcessVolume postProcessVolume;
 
     private bool isOpen;
+    private bool isCardSetDetailsOpen;
     
     public static InventoryController Instance = null; 
 
@@ -32,18 +32,8 @@ public class InventoryController : MonoBehaviour {
             inventoryUI = GameObject.FindWithTag("Inventory UI");
         postProcessVolume = GameObject.FindWithTag("MainCamera").GetComponent<PostProcessVolume>();
     }
-
-    private void OnEnable() {
-        rightClickAction.Enable();
-        rightClickAction.performed += ShowInventory;
-    }
-
-    private void OnDisable() {
-        rightClickAction.performed -= ShowInventory;
-        rightClickAction.Disable();
-    }
-
-    public void ShowInventory(InputAction.CallbackContext context) {
+    
+    public void ShowInventory() {
         if (PauseManager.Instance.IsOpen)
             return;
         inventoryUI.SetActive(true);
@@ -54,8 +44,6 @@ public class InventoryController : MonoBehaviour {
     }
 
     public void HideInventory() {
-        if (PauseManager.Instance.IsOpen)
-            return;
         postProcessVolume.enabled = false;
         manageCardSetDetails.Hide();
         DeselectAllSlots();
@@ -82,6 +70,23 @@ public class InventoryController : MonoBehaviour {
         }
     }
 
+    public void RemoveItem(string itemId) {
+        foreach (ItemSlot itemSlot in itemSlots) {
+            string id = ((CollectibleItem)itemSlot.GetItem()).GetItemData().itemID;
+            if (id != itemId) 
+                continue;
+            RemoveItemFromSlot(itemSlot);
+            return;
+        }
+    }
+
+    private void RemoveItemFromSlot(ItemSlot itemSlot) {
+        itemSlot.RemoveItem();
+        itemSlot.SetIsOccupied(false);
+        Debug.Log("Item removed");
+    }
+    
+    
     public void DeselectAllSlots() {
         DeselectSlots(itemSlots);
         DeselectSlots(cardSetSlots);
@@ -95,8 +100,17 @@ public class InventoryController : MonoBehaviour {
     }
 
     public void ShowCardSetDetails(CardSetData cardSetData) {
-        if (!manageCardSetDetails.IsOpen)
+        if (!isCardSetDetailsOpen) {
             manageCardSetDetails.ReadCardSet(cardSetData);
+            isCardSetDetailsOpen = true;
+        }
+    }
+    
+    public void HideCardSetDetails() {
+        if (isCardSetDetailsOpen) {
+            manageCardSetDetails.Hide();
+            isCardSetDetailsOpen = false;
+        }
     }
 
     public List<ItemSlot> GetDeckSlots() {
@@ -134,5 +148,9 @@ public class InventoryController : MonoBehaviour {
 
     public bool IsOpen() {
         return isOpen;
+    }
+
+    public bool IsCardSetDetailsOpen() {
+        return isCardSetDetailsOpen;
     }
 }

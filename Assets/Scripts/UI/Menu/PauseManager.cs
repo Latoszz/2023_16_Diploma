@@ -5,6 +5,7 @@ public class PauseManager : MonoBehaviour {
     [SerializeField] private GameObject pauseView;
     [SerializeField] private GameObject optionsView;
     [SerializeField] private GameObject audioVideoPanel;
+    [SerializeField] private GameObject infoPanel;
     
     private PostProcessVolume postProcessVolume;
     
@@ -25,20 +26,26 @@ public class PauseManager : MonoBehaviour {
     }
 
     public void Open() {
+        if (InventoryController.Instance.IsOpen())
+            return;
         pauseView.SetActive(true);
         optionsView.SetActive(false);
+        infoPanel.SetActive(false);
         postProcessVolume.enabled = true;
         IsOpen = true;
         HUDController.Instance.HideHUD();
+        InputManager.Instance.DisableInput();
         Time.timeScale = 0;
     }
 
     public void Close() {
         pauseView.SetActive(false);
         optionsView.SetActive(false);
+        infoPanel.SetActive(false);
         postProcessVolume.enabled = false;
         IsOpen = false;
         HUDController.Instance.ShowHUD();
+        InputManager.Instance.EnableInput();
         Time.timeScale = 1;
     }
 
@@ -57,6 +64,10 @@ public class PauseManager : MonoBehaviour {
     }
 
     public void ExitClicked() {
+        infoPanel.SetActive(true);
+    }
+
+    public void Exit() {
         Close();
         SceneSwitcher.Instance.LoadScene("Main Menu");
     }

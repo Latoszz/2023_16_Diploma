@@ -5,10 +5,16 @@ using UnityEngine.InputSystem;
 
 public class MouseInputManager : MonoBehaviour {
     [SerializeField] private InputAction mouseClickAction;
+    [SerializeField] private InputAction mouseHoldAction;
+    [SerializeField] private InputAction rightClickAction;
     [SerializeField] private ParticleSystem clickEffect;
     [SerializeField] private GameObject player;
     private Camera mainCamera;
     private NavMeshAgent navMeshAgent;
+    [SerializeField] private float stopDistance = 0.5f;
+    [SerializeField] private float normalSpeed = 7f;
+    [SerializeField] private float maxSpeed = 10f;
+    [SerializeField] private float slowDownRadius = 3f;
     private bool pointerOverUI;
     
     private Vector3 targetPosition;
@@ -25,24 +31,47 @@ public class MouseInputManager : MonoBehaviour {
         groundLayer = LayerMask.NameToLayer("Ground");
         targetPosition = transform.position;
     }
-
-    private void OnEnable() {
-        mouseClickAction.Enable();
-        mouseClickAction.performed += MovePlayer;
-    }
-
-    private void OnDisable() {
-        mouseClickAction.performed -= MovePlayer;
-        mouseClickAction.Disable();
-    }
     
-    private void MovePlayer(InputAction.CallbackContext context) {
+    void Update() {
         if (!mouseClickEnabled)
             return;
         if (pointerOverUI) {
             return;
         }
-        SetTargetPoint();
+        
+        if (mouseHoldAction.ReadValue<float>() > 0) {
+            MoveTowardsCursor();
+        }
+        
+        // Speed control
+        if (navMeshAgent.hasPath) {
+            float distance = Vector3.Distance(transform.position, navMeshAgent.destination);
+
+            if (distance > slowDownRadius) {
+                navMeshAgent.speed = maxSpeed;
+            }
+            else {
+                navMeshAgent.speed = Mathf.Lerp(normalSpeed, maxSpeed, distance / slowDownRadius);
+            }
+        }
+    }
+
+    private void OnEnable() {
+        mouseClickAction.Enable();
+        mouseHoldAction.Enable();
+        rightClickAction.Enable();
+        rightClickAction.performed += ToggleInventory;
+        mouseClickAction.performed += OnClick;
+        mouseHoldAction.performed += OnHold;
+    }
+
+    private void OnDisable() {
+        mouseClickAction.performed -= OnClick;
+        mouseHoldAction.performed -= OnHold;
+        rightClickAction.performed -= ToggleInventory;
+        rightClickAction.Disable();
+        mouseClickAction.Disable();
+        mouseHoldAction.Disable();
     }
     
     // Call this when the pointer enters a UI element
@@ -55,12 +84,22 @@ public class MouseInputManager : MonoBehaviour {
         pointerOverUI = false;
     }
     
+    private void OnClick(InputAction.CallbackContext context) {
+        if (!mouseClickEnabled)
+            return;
+        if (pointerOverUI) {
+            return;
+        }
+        SetTargetPoint();
+    }
+    
     private void SetTargetPoint() {
         Vector3 mousePos = Mouse.current.position.ReadValue();
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0) {
             targetPosition = hit.point;
-            Instantiate(clickEffect, hit.point += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
+            navMeshAgent.isStopped = false;
+            Instantiate(clickEffect, hit.point + new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
             Walk(targetPosition);
             StopAllCoroutines();
             StartCoroutine(Wait());
@@ -86,6 +125,39 @@ public class MouseInputManager : MonoBehaviour {
             yield return null;
         } 
         animator.SetBool(IsMoving, false);
+    }
+
+    private void OnHold(InputAction.CallbackContext context) {
+        if (!mouseClickEnabled)
+            return;
+        if (pointerOverUI) {
+            return;
+        }
+        MoveTowardsCursor();
+    }
+    
+    private void MoveTowardsCursor() {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0) {
+            var hitPoint = hit.point;
+            if (Vector3.Distance(navMeshAgent.transform.position, hitPoint) > stopDistance) {
+                navMeshAgent.isStopped = false;
+                navMeshAgent.SetDestination(hitPoint);
+            }
+        }
+    }
+    
+    private void ToggleInventory(InputAction.CallbackContext context) {
+        if (PauseManager.Instance.IsOpen)
+            return;
+
+        InventoryController inventoryController = InventoryController.Instance;
+        if (inventoryController.IsOpen()) {
+            inventoryController.HideInventory();
+        }
+        else {
+            inventoryController.ShowInventory();
+        }
     }
 
     public void EnableMouseControls() {

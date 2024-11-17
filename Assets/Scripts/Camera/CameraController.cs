@@ -78,7 +78,7 @@ public class CameraController : MonoBehaviour {
     }
 
     private IEnumerator Out(float zoom, float rotationUnits) {
-        while (ZoomOut(zoom) && RotateRight(rotationUnits)) {
+        while (ZoomOut(initialZoom) && RotateRight(rotationUnits)) {
             yield return null;
         }
     }

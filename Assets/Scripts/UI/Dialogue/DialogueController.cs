@@ -101,7 +101,7 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
         sentences.Clear();
         HideDialogue();
         HUDController.Instance.ShowHUD();
-        CameraController.Instance.SootheOut(7f, rotationUnits);
+        CameraController.Instance.SootheOut(8f, rotationUnits);
     }
     
     private void ShowDialogue() {

@@ -10,6 +10,7 @@ namespace Events {
         public QuestEvents QuestEvents;
         public ItemEvents ItemEvents;
         public ObstacleEvents ObstacleEvents;
+        public EnemyEvents EnemyEvents;
 
         private void Awake() {
             if (Instance != null && Instance != this) {
@@ -22,6 +23,7 @@ namespace Events {
             QuestEvents = new QuestEvents();
             ItemEvents = new ItemEvents();
             ObstacleEvents = new ObstacleEvents();
+            EnemyEvents = new EnemyEvents();
         }
     }
 }

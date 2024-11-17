@@ -18,7 +18,7 @@ public class HUDController : MonoBehaviour {
     }
 
     public void OpenInventory() {
-        InventoryController.Instance.ShowInventory(new InputAction.CallbackContext());
+        InventoryController.Instance.ShowInventory();
     }
 
     public void HideHUD() {

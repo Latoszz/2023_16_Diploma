@@ -6,7 +6,7 @@
             "id": "c90ee69f-e076-4838-baa8-71bfa4536e74",
             "actions": [
                 {
-                    "name": "Open Inventory",
+                    "name": "Inventory",
                     "type": "Button",
                     "id": "0ca1c273-fc31-4b10-8458-d2bb6ad202bd",
                     "expectedControlType": "Button",
@@ -24,13 +24,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "d3f23f85-1176-4059-beac-ef6ea01b5d79",
-                    "expectedControlType": "Vector2",
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "df186b9d-9a39-407c-a8f2-e176c67d8f1c",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -41,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Open Inventory",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -57,196 +57,13 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Movement",
-                    "id": "d9db27ef-0289-4f0e-b1f1-31d37f884663",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "59e6ee7a-1f94-4dfc-9d1d-dd6a106c6877",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "ebeedfd2-cd9a-4483-b21f-042c22fcdddd",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "565cc556-2186-4cae-ad5e-af886aaf3a81",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "18effd6a-8e69-4ef4-b4dc-ac43d6673bb7",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Movement",
-                    "id": "74e1639b-55e7-447e-b0a7-e83314ee7a8a",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "b014f1b2-0c13-4bef-a8a8-81ddcb3c4951",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "78eb0052-b9b2-454b-aede-451e3f19cac3",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "89984ca2-c4a8-4f5c-8972-cf3ebe3896a7",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "492abc60-e685-4e94-8226-934d60e863d4",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "ObjectClick Map",
-            "id": "8ff5693c-36d6-4cbb-9ad7-0b925c2e64e2",
-            "actions": [
-                {
-                    "name": "Object Click",
-                    "type": "Button",
-                    "id": "0dce766f-8e6c-44b1-9df1-35759dd0cffd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
                     "name": "",
-                    "id": "36a78761-4279-4486-8c63-4de22fb61c42",
-                    "path": "<Mouse>/leftButton",
+                    "id": "cb546e32-192f-4e3a-9d50-08735107d728",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Object Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "EnemyClick Map",
-            "id": "84a4960f-ff0e-4f94-8922-301553cfcddf",
-            "actions": [
-                {
-                    "name": "Enemy Click",
-                    "type": "Button",
-                    "id": "0218e505-4489-4691-8e84-9dfda91e7a7a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "885d7099-bb90-4d92-92bb-d8109228cd19",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Enemy Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "NPC Click Map",
-            "id": "bfc35c1c-6fb1-4ff5-8ca3-56b8e378775c",
-            "actions": [
-                {
-                    "name": "NPC Click",
-                    "type": "Button",
-                    "id": "3ad6c01c-e434-4fe6-9d7a-205bf6d86c04",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "85a37979-0e85-4446-8305-b5403e4e67f9",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NPC Click",
+                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

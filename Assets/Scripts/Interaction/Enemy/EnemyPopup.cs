@@ -1,16 +1,12 @@
+using CardBattles.CardGamesManager;
 using SaveSystem;
 using UI.Inventory;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class EnemyPopup : MonoBehaviour {
     [SerializeField] private GameObject enemyPopup;
     [SerializeField] private GameObject popupPanel;
     [SerializeField] private GameObject deckPopup;
-    [SerializeField] private string BattleSceneName = "CardBattleScene";
-
-    public EnemySM Enemy;
-    public bool IsOpen => enemyPopup.activeSelf;
 
     public static EnemyPopup Instance;
 
@@ -25,11 +21,10 @@ public class EnemyPopup : MonoBehaviour {
     public void YesClicked() {
         popupPanel.SetActive(false);
         if (CheckDeck(3)) {
-            EnemyStateManager.Instance.SetCurrentEnemy(Enemy);
             Close();
             InventoryDeckManager.Instance.UpdateDeck();
             SaveManager.Instance.SaveGame();
-            SceneSwitcher.Instance.LoadScene(BattleSceneName);
+            StartCoroutine(CardGamesLoader.Instance.BeginBattle(EnemyStateManager.Instance.GetCurrentEnemy().GetBattleData()));
         }
         else {
             deckPopup.SetActive(true);
@@ -44,11 +39,10 @@ public class EnemyPopup : MonoBehaviour {
     public void ClosePopup() {
         deckPopup.SetActive(false);
         Close();
-        InventoryController.Instance.ShowInventory(new InputAction.CallbackContext());
+        InventoryController.Instance.ShowInventory();
     }
 
     private void Close() {
-        Enemy = null;
         enemyPopup.SetActive(false);
         InputManager.Instance.EnableInput();
     }

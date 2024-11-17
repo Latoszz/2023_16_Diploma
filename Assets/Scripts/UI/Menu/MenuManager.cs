@@ -13,7 +13,6 @@ public class MenuManager : MonoBehaviour {
     [SerializeField] private Button continueButton;
 
     [SerializeField] private GameObject audioVideoPanel;
-    [SerializeField] private GameObject controlsPanel;
     
     private void Awake() {
         BackClicked();
@@ -38,12 +37,10 @@ public class MenuManager : MonoBehaviour {
         mainView.SetActive(false);
         optionsView.SetActive(true);
         audioVideoPanel.SetActive(true);
-        controlsPanel.SetActive(false);
     }
 
     public void ControlsClicked() {
         audioVideoPanel.SetActive(false);
-        controlsPanel.SetActive(true);
     }
 
     public void CreditsClicked() {

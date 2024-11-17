@@ -15,6 +15,7 @@ public class DraggableItem: MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     }
     
     public void OnBeginDrag(PointerEventData eventData) {
+        InventoryController.Instance.DeselectAllSlots();
         parentAfterDrag = transform.parent;
         transform.SetParent(GameObject.Find("Inventory UI").transform);
         itemLayoutElement.ignoreLayout = true;
