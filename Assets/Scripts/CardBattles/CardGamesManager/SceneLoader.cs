@@ -16,8 +16,8 @@ namespace CardBattles.CardGamesManager {
         private AsyncOperation operation;
 
 
-        [SerializeField] private string battleSceneName = "CardBattleScene";
-        [SerializeField] private string overworldSceneName = "Overworld1";
+        [SerializeField] public string battleSceneName = "CardBattleScene";
+        [SerializeField] public string overworldSceneName = "Overworld1";
 
         private void Awake() {
             if (Instance != null && Instance != this) {

@@ -37,23 +37,21 @@ namespace CardBattles.CardGamesManager {
 
             DontDestroyOnLoad(this);
         }
-
+    
         public void ForceBeginBattleDebug() {
             //currentBattleData = new BattleData();
             //InventoryDeckManager.Instance.GetDeck();
             SceneLoader.Instance.ForceLoad(SceneName.CardBattle);
             BattleDataHolder.Instance.DebugGetFirstBattleData();
         }
-
+        [SerializeField] private BattleData debugBattleData;
+        [Button]
         public void BeginBattleDebug() {
-            //currentBattleData = new BattleData();
-            StartCoroutine(SceneLoader.Instance.LoadSceneAsync(SceneName.CardBattle));
-            //InventoryDeckManager.Instance.GetDeck();
-            BattleDataHolder.Instance.DebugGetFirstBattleData();
+            StartCoroutine(BeginBattle(debugBattleData));
         }
 
-        public IEnumerator BeginBattle(BattleData battleData, List<CardSetData> playerCardSetDatas = null) {
-            playerCardSetDatas ??= InventoryDeckManager.Instance.GetDeck();
+        public IEnumerator BeginBattle(BattleData battleData/*, List<CardSetData> playerCardSetDatas = null*/) {
+           var  playerCardSetDatas = InventoryDeckManager.Instance.GetDeck();
             
             currentBattleData = battleData;
             yield return StartCoroutine(
