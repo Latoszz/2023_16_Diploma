@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1502357540403813271
+--- !u!114 &-4788296099092171580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Sproutling
+  m_Name: Spider
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Sproutling
+  cardName: Spider
   sprite: {fileID: 0}
   description: 
   flavourText: 
-  properties: 
+  properties: 02000000
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 2
-  maxHealth: 4
+  attack: 1
+  maxHealth: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,17 +33,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
-  m_Name: Nature's Guardian
+  m_Name: Basic Companions
   m_EditorClassIdentifier: 
-  displayName: Starting set 1
+  displayName: No Display Name
   cards:
-  - {fileID: -1502357540403813271}
-  - {fileID: 1598928627476223177}
-  - {fileID: 6576024184287744945}
-  - {fileID: 850165210332599635}
+  - {fileID: 2372559019292260079}
+  - {fileID: 1597232316267468199}
+  - {fileID: -4788296099092171580}
+  - {fileID: 9213248145029018052}
+  - {fileID: 5364797506579706072}
   setColor: {r: 1, g: 1, b: 1, a: 1}
   cardSetIcon: {fileID: 0}
---- !u!114 &850165210332599635
+--- !u!114 &1597232316267468199
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,46 +54,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Healing vine
+  m_Name: Pigeon
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Healing vine
+  cardName: Pigeon
   sprite: {fileID: 0}
   description: 
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 01000000
-    m_values:
-    - effectName: 2
-      targetType: 7
-      value: 5
-  attack: 0
-  maxHealth: 1
---- !u!114 &1598928627476223177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Seedling
-  m_EditorClassIdentifier: 
-  cardSet: {fileID: 11400000}
-  cardName: Seedling
-  sprite: {fileID: 0}
-  description: 
-  flavourText: 
-  properties: 08000000
-  effectDictionary:
     m_keys: 
     m_values: []
   attack: 0
-  maxHealth: 5
---- !u!114 &6576024184287744945
+  maxHealth: 1
+--- !u!114 &2372559019292260079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,19 +77,63 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Willow wisp
+  m_Name: Rotund cat
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Willow wisp
+  cardName: Rotund cat
   sprite: {fileID: 0}
-  description: +1 HP tol cards from this set
+  description: 
+  flavourText: 
+  properties: 01000000
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 2
+  maxHealth: 5
+--- !u!114 &5364797506579706072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Throw a rock
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Throw a rock
+  sprite: {fileID: 21300000, guid: 75aa9650738ed6f4d855f5fdf69b9ac0, type: 3}
+  description: Deal 5 to opponent
   flavourText: 
   properties: 
   effectDictionary:
     m_keys: 00000000
     m_values:
-    - effectName: 3
-      targetType: 11
-      value: 0
-  attack: 0
+    - effectName: 1
+      targetType: 8
+      value: 5
+--- !u!114 &9213248145029018052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Crow
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Crow
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 5
   maxHealth: 1
