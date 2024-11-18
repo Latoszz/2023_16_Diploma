@@ -20,8 +20,10 @@ public class PlayerDataHandling : MonoBehaviour, ISavable {
     public void LoadSaveData(SaveFile saveFile) {
         if (saveFile.HasData(PlayerSaveID)) {
             navMeshAgent.ResetPath();
+            navMeshAgent.enabled = false;
             SavableTransform savableTransform = saveFile.GetTransform(PlayerSaveID);
             transform.CopyTransformValues(savableTransform);
+            navMeshAgent.enabled = true;
         }
     }
 }
