@@ -78,14 +78,11 @@ namespace State_machine.MovingSM {
         }
     
         public void OnPointerClick(PointerEventData eventData) {
-            Debug.Log($"Moving SM clicked");
             if (isEnemy && enemy.GetState() == EnemyState.Locked)
                 return;
 
-            if (Vector3.Distance(player.transform.position, navMeshAgent.transform.position) < detectionDistance) {
-                Debug.Log($"Moving SM switch to dialogue");
+            if (Vector3.Distance(player.transform.position, navMeshAgent.transform.position) < detectionDistance)
                 IsDialogue = true;
-            }
         }
     }
 }
