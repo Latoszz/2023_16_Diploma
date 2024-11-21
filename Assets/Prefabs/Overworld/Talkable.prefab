@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebde2af75fd970a4ab336affacbe7e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questImage: {fileID: 4805022827392238008}
+  icon: {fileID: 4805022827392238008}
   floatHeight: 0.5
   floatDuration: 1
 --- !u!1 &4102326752318149805
@@ -642,6 +642,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   isEnemy: 0
+  faceWaypoint: {fileID: 0}
 --- !u!114 &5668120488568606045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,8 +658,7 @@ MonoBehaviour:
   dialogue:
   - {fileID: 11400000, guid: 5bd4a0cdea063774a8f88b9bc19ab422, type: 2}
   - {fileID: 11400000, guid: c132dbdaa9cf9054884c0c90e2726f99, type: 2}
-  dialogueController: {fileID: 0}
-  questIndicator: {fileID: 8075553825124513236}
+  indicator: {fileID: 8075553825124513236}
   audioConfig: {fileID: 11400000, guid: 7505a4fde64315b438f41b7f29033911, type: 2}
   detectionDistance: 8
   npcID: 64b0fe65-628e-4959-866c-2bfb4eb7cff5
@@ -786,7 +786,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1505736317, guid: 0d4406e70712e9f49b4d08395ea94319, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf6b887d51e8b43438f94f6d367527c8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
