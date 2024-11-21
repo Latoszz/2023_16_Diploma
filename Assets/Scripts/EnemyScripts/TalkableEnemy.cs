@@ -34,6 +34,14 @@ namespace EnemyScripts {
             enemyName = dialogue[0].NameText;
         }
 
+        private void Start() {
+            if (state == EnemyState.Defeated) {
+                if (dialogue.Count > 1) {
+                    SetUpNextDialogue();
+                }
+            }
+        }
+
         private void OnEnable() {
             GameEventsManager.Instance.NPCEvents.OnTalkedToNPC += Unlock;
             GameEventsManager.Instance.DialogueEvents.OnDialogueEnded += ShowPanel;
@@ -82,16 +90,11 @@ namespace EnemyScripts {
                 foreach (Obstacle obstacle in obstacles) {
                     SaveManager.Instance.ChangeObstacleData(obstacle.GetID(), false);
                 }
-                //TODO make enemy stay in place
-                if (dialogue.Count > 1) {
-                    SetUpNextDialogue();
-                }
             }
         }
 
-        public void SetUpNextDialogue() {
+        private void SetUpNextDialogue() {
             dialogue.Remove(dialogue[0]);
-            battleIndicator.ShowIcon();
         }
     }
 }

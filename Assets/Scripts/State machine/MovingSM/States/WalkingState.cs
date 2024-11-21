@@ -1,11 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace State_machine.MovingSM.States {
     public class WalkingState : PatrolState {
-        private NavMeshAgent navMeshAgent;
-        private Transform[] waypoints;
-        private int currentWaypointIndex;
         private Vector3 currentWaypoint;
         public WalkingState(MovingSM stateMachine) : base("Walking", stateMachine) {
         
@@ -13,9 +11,6 @@ namespace State_machine.MovingSM.States {
 
         public override void Enter() {
             base.Enter();
-            navMeshAgent = movingSM.GetNavMeshAgent();
-            waypoints = movingSM.GetWaypoints();
-            currentWaypointIndex = movingSM.GetCurrentWaypointIndex();
         }
 
         public override void UpdateLogic() {
@@ -36,7 +31,7 @@ namespace State_machine.MovingSM.States {
         }
     
         private void SetWaypoint() {
-            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Count;
             movingSM.SetCurrentWaypointIndex(currentWaypointIndex);
         }
 

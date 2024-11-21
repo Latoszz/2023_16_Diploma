@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using EnemyScripts;
 using State_machine.MovingSM.States;
 using UnityEngine;
@@ -18,8 +19,12 @@ namespace State_machine.MovingSM {
         public DialogueState dialogueState;
     
         [SerializeField] private float waitTimeSeconds;
-        [SerializeField] private Transform[] waypoints;
+        [SerializeField] private List<Transform> waypoints;
+        
+        [Header("Enemy")]
         [SerializeField] private bool isEnemy;
+        public bool IsEnemy => isEnemy;
+        [SerializeField] private Transform faceWaypoint;
     
         private NavMeshAgent navMeshAgent;
         private GameObject player;
@@ -65,7 +70,7 @@ namespace State_machine.MovingSM {
             return waitTimeSeconds;
         }
 
-        public Transform[] GetWaypoints() {
+        public List<Transform> GetWaypoints() {
             return waypoints;
         }
 
@@ -76,6 +81,15 @@ namespace State_machine.MovingSM {
         public void SetWaiting(bool value) {
             waiting = value;
         }
+
+        public Enemy GetEnemy() {
+            return enemy;
+        }
+        
+        public Transform GetFaceWaypoint() {
+            return faceWaypoint;
+        }
+        
     
         public void OnPointerClick(PointerEventData eventData) {
             if (isEnemy && enemy.GetState() == EnemyState.Locked)

@@ -44,7 +44,9 @@ namespace State_machine.MovingSM.States {
             RotateTowards(player, npc);
         }
 
-        private void RotateTowards(Transform source, Transform target) {
+        public void RotateTowards(Transform source, Transform target) {
+            navMeshAgent ??= movingSM.GetNavMeshAgent();
+            
             Vector3 lookPos = (target.position - source.position).normalized;
             lookPos.y = 0;
             Quaternion lookRotation = Quaternion.LookRotation(lookPos);
