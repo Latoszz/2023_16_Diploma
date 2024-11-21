@@ -35,6 +35,10 @@ namespace NPCScripts {
         private void Start() {
             if (!talkedTo) {
                 indicator.ShowIcon();
+                indicator.HideName();
+            }
+            else {
+                indicator.ShowName();
             }
         }
         
