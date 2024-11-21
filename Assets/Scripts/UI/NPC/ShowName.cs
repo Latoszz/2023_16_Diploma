@@ -1,70 +1,30 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-#pragma warning disable CS0414 // Field is assigned but its value is never used
 
 namespace UI.NPC {
-    public class ShowName: MonoBehaviour {
-        [SerializeField] private float timeToWait = 0.5f;
+    public class ShowName: MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
         [SerializeField] private string messageToShow;
         [SerializeField] private RectTransform nameWindow;
         [SerializeField] private TextMeshProUGUI nameText;
         [SerializeField] private float detectionRadius = 3f;
-        [SerializeField] private GameObject player;
-    
-        private Camera mainCamera;
-        private bool playerNear = false;
-        private float hoverTimer = 0f;
+
+        private GameObject player;
 
         private void Awake() {
-            mainCamera = Camera.main;
-            if (player == null)
-                player = GameObject.FindGameObjectWithTag("Player");
-            //HideMessage();
+            player = GameObject.FindGameObjectWithTag("Player");
         }
-
-        private void Update() {
-            /*
-        CheckPlayerNear();
-        if (playerNear && IsMouseOver()) {
-            hoverTimer += Time.deltaTime;
-            if (hoverTimer >= timeToWait) {
-                MoveTextNearCursor();
+        
+        public void OnPointerEnter(PointerEventData eventData) {
+            if (Vector3.Distance(player.transform.position, transform.position) < detectionRadius) {
                 ShowMessage();
             }
         }
-        else {
-            hoverTimer = 0f;
-            HideMessage();
-        }
-        */
-        }
-
-        private void CheckPlayerNear() {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         
-            if (distanceToPlayer <= detectionRadius) {
-                playerNear = true;
-            }
-            else {
-                playerNear = false;
-            }
-        }
-
-        private bool IsMouseOver() {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out var hit) && hit.collider.gameObject == gameObject) {
-                return true;
-            }
-            return false;
-        }
-    
-        private void MoveTextNearCursor() {
-            Vector3 mousePosition = Mouse.current.position.ReadValue();
-            nameWindow.sizeDelta = new Vector2(nameText.preferredWidth > 100 ? 100 : nameText.preferredWidth, nameText.preferredHeight);
-            nameWindow.transform.position = new Vector2(mousePosition.x + nameWindow.sizeDelta.x/2, mousePosition.y);
+        public void OnPointerExit(PointerEventData eventData) {
+            HideMessage();
         }
     
         private void ShowMessage() {
