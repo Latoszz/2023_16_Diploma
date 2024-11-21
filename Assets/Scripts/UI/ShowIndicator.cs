@@ -1,9 +1,9 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace UI.NPC {
-    public class ShowQuestIndicator : MonoBehaviour {
-        [SerializeField] private GameObject questImage;
+namespace UI {
+    public class ShowIndicator : MonoBehaviour {
+        [SerializeField] private GameObject icon;
         [SerializeField] private float floatHeight = 0.5f;
         [SerializeField] private float floatDuration = 1f;
 
@@ -19,17 +19,17 @@ namespace UI.NPC {
         }
 
         private void Float() {
-            floatingTween = questImage.transform.DOMoveY(transform.position.y + floatHeight, floatDuration)
+            floatingTween = icon.transform.DOMoveY(transform.position.y + floatHeight, floatDuration)
                 .SetEase(Ease.InOutSine)
                 .SetLoops(-1, LoopType.Yoyo);
         }
 
-        public void ShowQuestIcon() {
-            questImage.SetActive(true);
+        public void ShowIcon() {
+            icon.SetActive(true);
         }
     
-        public void HideQuestIcon() {
-            questImage.SetActive(false);
+        public void HideIcon() {
+            icon.SetActive(false);
         }
     }
 }

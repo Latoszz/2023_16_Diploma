@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using Audio;
 using Events;
 using Interfaces;
+using UI;
 using UI.Dialogue;
-using UI.NPC;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace NPCScripts {
     public class TalkableNPC : NPC, ITalkable {
         public List<DialogueText> dialogue;
-        [SerializeField] private DialogueController dialogueController;
-        [SerializeField] private ShowQuestIndicator questIndicator;
+        [FormerlySerializedAs("questIndicator")] [SerializeField] private ShowIndicator indicator;
         [SerializeField] private DialogueAudioConfig audioConfig;
         [Range(0, 10)] 
         [SerializeField] private float detectionDistance = 8;
@@ -34,7 +34,7 @@ namespace NPCScripts {
 
         private void Start() {
             if (!talkedTo) {
-                questIndicator.ShowQuestIcon();
+                indicator.ShowIcon();
             }
         }
         
@@ -47,14 +47,14 @@ namespace NPCScripts {
         }
         
         public void Talk(DialogueText dialogueText) {
-            dialogueController.DisplaySentence(dialogueText);
-            dialogueController.SetCurrentAudioConfig(audioConfig);
-            questIndicator.HideQuestIcon();
+            DialogueController.Instance.DisplaySentence(dialogueText);
+            DialogueController.Instance.SetCurrentAudioConfig(audioConfig);
+            indicator.HideIcon();
         }
 
         public void SetUpNextDialogue() {
             dialogue.Remove(dialogue[0]);
-            questIndicator.ShowQuestIcon();
+            indicator.ShowIcon();
         }
 
         public string GetID() {
@@ -66,6 +66,10 @@ namespace NPCScripts {
 
         public void SetTalkedTo(bool val) {
             talkedTo = val;
+        }
+
+        public string GetName() {
+            return npcName;
         }
     }
 }

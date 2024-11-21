@@ -1,3 +1,4 @@
+using System;
 using EnemyScripts;
 using InputScripts;
 using NPCScripts;
@@ -6,16 +7,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Interaction.EnemyInteractions {
+    [Obsolete]
     public class EnemyPopupTrigger : MonoBehaviour, IPointerClickHandler {
         [SerializeField] private GameObject enemyPanel;
         [SerializeField] private TalkableNPC npc;
         public void OnPointerClick(PointerEventData eventData) {
+            
             if (PauseManager.Instance.IsOpen)
                 return;
             Enemy enemy = gameObject.GetComponent<Enemy>();
             if (npc.TalkedTo()) {
                 enemy.ChangeState(EnemyState.Undefeated);
             }
+            
         
             if (enemy.GetState() == EnemyState.Undefeated) {
                 enemyPanel.SetActive(true);

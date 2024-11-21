@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Audio;
 using CameraScripts;
+using Events;
 using InputScripts;
 using TMPro;
 using UI.HUD;
@@ -41,6 +42,8 @@ namespace UI.Dialogue {
         private bool conversationEnded;
         private bool dialogueClosed;
         public bool DialogueClosed => dialogueClosed;
+
+        private string speakerName;
 
         public static DialogueController Instance;
 
@@ -103,6 +106,7 @@ namespace UI.Dialogue {
             conversationEnded = false;
             sentences.Clear();
             HideDialogue();
+            GameEventsManager.Instance.DialogueEvents.DialogueEnded(speakerName);
             HUDController.Instance.ShowHUD();
             CameraController.Instance.SootheOut(8f, rotationUnits);
         }
@@ -124,6 +128,7 @@ namespace UI.Dialogue {
         private void SetDialogue(DialogueText dialogue) {
             icon.sprite = dialogue.Icon;
             nameText.text = dialogue.NameText;
+            speakerName = nameText.text;
             foreach (string sentence in dialogue.Sentences) {
                 sentences.Enqueue(sentence);
             }

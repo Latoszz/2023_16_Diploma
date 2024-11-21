@@ -7,28 +7,18 @@ using UnityEngine;
 
 namespace EnemyScripts {
     public class Enemy : MonoBehaviour {
-        [SerializeField] private string enemyID;
+        [SerializeField] protected string enemyID;
         [ContextMenu("Generate guid for id")]
-        private void GenerateGuid() {
+        protected void GenerateGuid() {
             enemyID = Guid.NewGuid().ToString();
         }
 
-        [SerializeField] private BattleData battleData;
-        [SerializeField] private List<Obstacle> obstacles;
-    
-        [Header("Visuals")]
-        [SerializeField] private Material undefeatedMaterial;
-        [SerializeField] private Material defeatedMaterial;
+        [SerializeField] protected BattleData battleData;
+        [SerializeField] protected List<Obstacle> obstacles;
 
-        private EnemyState state = EnemyState.Locked;
-
-        private void Start() {
-            if (state == EnemyState.Defeated) {
-                this.gameObject.SetActive(false);
-            }
-        }
+        protected EnemyState state = EnemyState.Locked;
     
-        public void ChangeState(EnemyState state) {
+        public virtual void ChangeState(EnemyState state) {
             this.state = state;
             if (state == EnemyState.Defeated) {
                 SaveManager.Instance.ChangeEnemyData(enemyID, state);

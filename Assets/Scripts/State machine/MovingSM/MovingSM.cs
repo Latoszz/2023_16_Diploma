@@ -1,3 +1,4 @@
+using EnemyScripts;
 using State_machine.MovingSM.States;
 using UnityEngine;
 using UnityEngine.AI;
@@ -18,9 +19,11 @@ namespace State_machine.MovingSM {
     
         [SerializeField] private float waitTimeSeconds;
         [SerializeField] private Transform[] waypoints;
+        [SerializeField] private bool isEnemy;
     
         private NavMeshAgent navMeshAgent;
         private GameObject player;
+        private Enemy enemy;
         private int currentWaypointIndex;
         private bool waiting = false;
         public bool IsDialogue { get; set; } = false;
@@ -28,6 +31,9 @@ namespace State_machine.MovingSM {
         private void Awake() {
             navMeshAgent = GetComponent<NavMeshAgent>();
             player = GameObject.FindGameObjectWithTag("Player");
+
+            if (isEnemy)
+                enemy = GetComponent<Enemy>();
         
             idleState = new IdleState(this);
             walkingState = new WalkingState(this);
@@ -72,8 +78,14 @@ namespace State_machine.MovingSM {
         }
     
         public void OnPointerClick(PointerEventData eventData) {
-            if(Vector3.Distance(player.transform.position, navMeshAgent.transform.position) < detectionDistance)
+            Debug.Log($"Moving SM clicked");
+            if (isEnemy && enemy.GetState() == EnemyState.Locked)
+                return;
+
+            if (Vector3.Distance(player.transform.position, navMeshAgent.transform.position) < detectionDistance) {
+                Debug.Log($"Moving SM switch to dialogue");
                 IsDialogue = true;
+            }
         }
     }
 }
