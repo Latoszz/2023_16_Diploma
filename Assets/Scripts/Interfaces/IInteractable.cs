@@ -1,4 +1,4 @@
-namespace Interaction {
+namespace Interfaces {
     public interface IInteractable {
         public void Interact();
     }

@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
-  m_Name: Cats
+  m_Name: cats
   m_EditorClassIdentifier: 
   displayName: Cats
   cards:

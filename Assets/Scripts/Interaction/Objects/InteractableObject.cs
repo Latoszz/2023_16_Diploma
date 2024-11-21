@@ -1,11 +1,13 @@
-using Interaction;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class InteractableObject : MonoBehaviour, IInteractable, IPointerClickHandler{
-    public abstract void Interact();
+namespace Interaction.Objects {
+    public abstract class InteractableObject : MonoBehaviour, IInteractable, IPointerClickHandler{
+        public abstract void Interact();
     
-    public void OnPointerClick(PointerEventData eventData) {
-        Interact();
+        public void OnPointerClick(PointerEventData eventData) {
+            Interact();
+        }
     }
 }

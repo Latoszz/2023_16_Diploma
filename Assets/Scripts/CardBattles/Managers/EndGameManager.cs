@@ -3,6 +3,7 @@ using System.Collections;
 using Audio;
 using CardBattles.CardGamesManager;
 using DG.Tweening;
+using EnemyScripts;
 using Events;
 using NaughtyAttributes;
 using UnityEngine;

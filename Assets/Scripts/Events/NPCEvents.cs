@@ -1,5 +1,4 @@
 using System;
-using NPC;
 
 namespace Events {
     public class NPCEvents {

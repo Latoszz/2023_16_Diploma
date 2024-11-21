@@ -1,4 +1,5 @@
 using System;
+using EnemyScripts;
 
 namespace Events {
     public class EnemyEvents {

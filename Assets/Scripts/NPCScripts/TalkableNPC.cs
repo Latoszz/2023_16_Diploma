@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using Audio;
 using Events;
-using Interaction;
-using ScriptableObjects.Dialogue;
+using Interfaces;
+using UI.Dialogue;
+using UI.NPC;
 using UnityEngine;
 
-namespace NPC {
+namespace NPCScripts {
     public class TalkableNPC : NPC, ITalkable {
         public List<DialogueText> dialogue;
         [SerializeField] private DialogueController dialogueController;

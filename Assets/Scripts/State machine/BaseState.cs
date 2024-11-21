@@ -1,25 +1,27 @@
-public class BaseState {
-    private string name;
-    protected StateMachine stateMachine;
+namespace State_machine {
+    public class BaseState {
+        private string name;
+        protected StateMachine stateMachine;
 
-    public BaseState(string name, StateMachine stateMachine) {
-        this.name = name;
-        this.stateMachine = stateMachine;
-    }
+        public BaseState(string name, StateMachine stateMachine) {
+            this.name = name;
+            this.stateMachine = stateMachine;
+        }
 
-    public virtual void Enter() {
-    }
+        public virtual void Enter() {
+        }
 
-    public virtual void UpdateLogic() {
-    }
+        public virtual void UpdateLogic() {
+        }
 
-    public virtual void UpdatePhysics() {
-    }
+        public virtual void UpdatePhysics() {
+        }
 
-    public virtual void Exit() {
-    }
+        public virtual void Exit() {
+        }
 
-    public string GetName() {
-        return name;
+        public string GetName() {
+            return name;
+        }
     }
 }

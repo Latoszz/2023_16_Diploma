@@ -1,6 +1,7 @@
 using System;
 using Events;
 using QuestSystem;
+using UI.Inventory;
 using UnityEngine;
 
 

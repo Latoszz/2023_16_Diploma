@@ -3,7 +3,7 @@ using Events;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Items {
+namespace UI.Inventory.Items {
     public class CollectibleCardSetItem: CardSetItem, ICollectible, IPointerClickHandler {
         [SerializeField] private string itemID;
         [ContextMenu("Generate guid for id")]

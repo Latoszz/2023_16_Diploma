@@ -1,9 +1,8 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class SceneTriggerTwoClicks : MonoBehaviour {
-    /*
+namespace Interaction.Scene {
+    public class SceneTriggerTwoClicks : MonoBehaviour {
+        /*
     
     [SerializeField] private string loadName;
     [SerializeField] private string unloadName;
@@ -59,4 +58,5 @@ public class SceneTriggerTwoClicks : MonoBehaviour {
         }
     }
     */
+    }
 }

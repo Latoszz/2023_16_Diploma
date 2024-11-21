@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Esper.ESave;
 using Interaction.Objects;
-using Items;
+using UI.Inventory.Items;
 using UnityEngine;
 
 namespace SaveSystem.SaveData {

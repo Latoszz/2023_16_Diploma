@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using CardBattles.CardScripts.CardDatas;
 using Esper.ESave;
-using Items;
+using UI.Inventory;
+using UI.Inventory.Items;
 using UnityEngine;
 
 namespace SaveSystem.SaveData {

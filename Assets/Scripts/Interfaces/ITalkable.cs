@@ -1,6 +1,6 @@
-using ScriptableObjects.Dialogue;
+using UI.Dialogue;
 
-namespace Interaction {
+namespace Interfaces {
     public interface ITalkable {
         public void Talk(DialogueText dialogueText);
     }

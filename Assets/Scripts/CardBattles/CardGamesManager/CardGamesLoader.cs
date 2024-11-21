@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using CardBattles.CardScripts.CardDatas;
+using EnemyScripts;
 using NaughtyAttributes;
 using UI.Inventory;
 using UnityEngine;

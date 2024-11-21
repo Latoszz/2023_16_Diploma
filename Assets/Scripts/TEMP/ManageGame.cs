@@ -1,5 +1,9 @@
 using System.Collections.Generic;
+using EnemyScripts;
 using SaveSystem;
+using UI.Inventory;
+using UI.Inventory.Items;
+using UI.Menu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

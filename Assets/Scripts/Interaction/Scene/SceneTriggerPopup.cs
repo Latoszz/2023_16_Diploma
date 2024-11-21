@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class SceneTriggerPopup : MonoBehaviour {
-    /*
+namespace Interaction.Scene {
+    public class SceneTriggerPopup : MonoBehaviour {
+        /*
     [SerializeField] private string loadName;
     [SerializeField] private string unloadName;
     [SerializeField] private RectTransform popupPanel;
@@ -28,4 +29,5 @@ public class SceneTriggerPopup : MonoBehaviour {
         player.GetComponent<PlayerController>().enabled = true;
     }
     */
+    }
 }

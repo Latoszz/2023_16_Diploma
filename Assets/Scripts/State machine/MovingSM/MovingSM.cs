@@ -1,79 +1,79 @@
+using State_machine.MovingSM.States;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-public class MovingSM : StateMachine, IPointerClickHandler {
-    [SerializeField] private float detectionDistance = 8;
+namespace State_machine.MovingSM {
+    public class MovingSM : StateMachine, IPointerClickHandler {
+        [SerializeField] private float detectionDistance = 8;
     
-    [HideInInspector]
-    public IdleState idleState;
-    [HideInInspector]
-    public WalkingState walkingState;
-    [HideInInspector]
-    public WaitingState waitingState;
-    [HideInInspector]
-    public DialogueState dialogueState;
+        [HideInInspector]
+        public IdleState idleState;
+        [HideInInspector]
+        public WalkingState walkingState;
+        [HideInInspector]
+        public WaitingState waitingState;
+        [HideInInspector]
+        public DialogueState dialogueState;
     
-    [SerializeField] private float waitTimeSeconds;
-    [SerializeField] private Transform[] waypoints;
-    [SerializeField] private bool isEnemy;
+        [SerializeField] private float waitTimeSeconds;
+        [SerializeField] private Transform[] waypoints;
     
-    private NavMeshAgent navMeshAgent;
-    private GameObject player;
-    private int currentWaypointIndex;
-    private bool waiting = false;
-    public bool IsDialogue { get; set; } = false;
+        private NavMeshAgent navMeshAgent;
+        private GameObject player;
+        private int currentWaypointIndex;
+        private bool waiting = false;
+        public bool IsDialogue { get; set; } = false;
 
-    private void Awake() {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        private void Awake() {
+            navMeshAgent = GetComponent<NavMeshAgent>();
+            player = GameObject.FindGameObjectWithTag("Player");
         
-        idleState = new IdleState(this);
-        walkingState = new WalkingState(this);
-        waitingState = new WaitingState(this);
-        dialogueState = new DialogueState(this);
-    }
+            idleState = new IdleState(this);
+            walkingState = new WalkingState(this);
+            waitingState = new WaitingState(this);
+            dialogueState = new DialogueState(this);
+        }
 
-    protected override BaseState GetInitialState() {
-        return idleState;
-    }
+        protected override BaseState GetInitialState() {
+            return idleState;
+        }
 
-    public int GetCurrentWaypointIndex() {
-        return currentWaypointIndex;
-    }
+        public int GetCurrentWaypointIndex() {
+            return currentWaypointIndex;
+        }
 
-    public void SetCurrentWaypointIndex(int value) {
-        currentWaypointIndex = value;
-    }
+        public void SetCurrentWaypointIndex(int value) {
+            currentWaypointIndex = value;
+        }
 
-    public NavMeshAgent GetNavMeshAgent() {
-        return navMeshAgent;
-    }
+        public NavMeshAgent GetNavMeshAgent() {
+            return navMeshAgent;
+        }
 
-    public GameObject GetPlayer() {
-        return player;
-    }
+        public GameObject GetPlayer() {
+            return player;
+        }
 
-    public float GetWaitTime() {
-        return waitTimeSeconds;
-    }
+        public float GetWaitTime() {
+            return waitTimeSeconds;
+        }
 
-    public Transform[] GetWaypoints() {
-        return waypoints;
-    }
+        public Transform[] GetWaypoints() {
+            return waypoints;
+        }
 
-    public bool IsWaiting() {
-        return waiting;
-    }
+        public bool IsWaiting() {
+            return waiting;
+        }
 
-    public void SetWaiting(bool value) {
-        waiting = value;
-    }
+        public void SetWaiting(bool value) {
+            waiting = value;
+        }
     
-    public void OnPointerClick(PointerEventData eventData) {
-        if (isEnemy)
-            return;
-        if(Vector3.Distance(player.transform.position, navMeshAgent.transform.position) < detectionDistance)
-            IsDialogue = true;
+        public void OnPointerClick(PointerEventData eventData) {
+            if(Vector3.Distance(player.transform.position, navMeshAgent.transform.position) < detectionDistance)
+                IsDialogue = true;
+        }
     }
 }

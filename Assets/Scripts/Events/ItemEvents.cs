@@ -1,6 +1,6 @@
 using System;
 
-namespace Items {
+namespace Events {
     public class ItemEvents {
         public event Action OnItemCollected;
         public event Action<string> OnItemWithIdCollected;

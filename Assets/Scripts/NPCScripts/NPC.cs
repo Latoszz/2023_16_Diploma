@@ -1,8 +1,8 @@
-using Interaction;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace NPC {
+namespace NPCScripts {
     public abstract class NPC : MonoBehaviour, IInteractable, IPointerClickHandler {
         
         public void OnPointerClick(PointerEventData eventData) {
