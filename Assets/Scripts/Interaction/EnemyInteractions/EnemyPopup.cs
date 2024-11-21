@@ -23,7 +23,7 @@ namespace Interaction.EnemyInteractions {
     
         public void YesClicked() {
             popupPanel.SetActive(false);
-            if (CheckDeck(3)) {
+            if (CheckDeck()) {
                 Close();
                 InventoryDeckManager.Instance.UpdateDeck();
                 SaveManager.Instance.SaveGame();
@@ -37,12 +37,14 @@ namespace Interaction.EnemyInteractions {
         public void NoClicked() {
             popupPanel.SetActive(false);
             Close();
+            InventoryController.Instance.SetBattle(false);
         }
 
         public void ClosePopup() {
             deckPopup.SetActive(false);
             Close();
             InventoryController.Instance.ShowInventory();
+            InventoryController.Instance.SetBattle(true);
         }
 
         private void Close() {
@@ -50,13 +52,13 @@ namespace Interaction.EnemyInteractions {
             InputManager.Instance.EnableInput();
         }
 
-        private bool CheckDeck(int count) {
+        private bool CheckDeck() {
             int occupiedCount = 0;
             foreach (ItemSlot slot in InventoryController.Instance.GetDeckSlots()) {
                 if (slot.IsOccupied())
                     occupiedCount++;
             }
-            return occupiedCount == count;
+            return occupiedCount == InventoryController.Instance.GetDeckSlots().Count;
         }
     }
 }

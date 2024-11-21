@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using CardBattles.CardGamesManager;
 using CardBattles.CardScripts.CardDatas;
+using EnemyScripts;
 using InputScripts;
+using SaveSystem;
 using UI.HUD;
 using UI.Inventory.Items;
 using UI.Menu;
@@ -15,11 +18,14 @@ namespace UI.Inventory {
         [SerializeField] private List<ItemSlot> itemSlots;
         [SerializeField] private List<ItemSlot> cardSetSlots;
         [SerializeField] private List<ItemSlot> deckSlots;
+
+        [SerializeField] private GameObject battleButton;
     
         private PostProcessVolume postProcessVolume;
 
         private bool isOpen;
         private bool isCardSetDetailsOpen;
+        private bool checkForBattle;
     
         public static InventoryController Instance = null; 
 
@@ -30,10 +36,19 @@ namespace UI.Inventory {
             else if (Instance != this) {
                 Destroy(gameObject);
             }          
-            //DontDestroyOnLoad(gameObject); 
+            
             if (inventoryUI == null)
                 inventoryUI = GameObject.FindWithTag("Inventory UI");
             postProcessVolume = GameObject.FindWithTag("MainCamera").GetComponent<PostProcessVolume>();
+        }
+
+        private void Update() {
+            if (!isOpen)
+                return;
+
+            if (checkForBattle) {
+                ManageBattleButton(CheckDeck());
+            }
         }
     
         public void ShowInventory() {
@@ -113,6 +128,29 @@ namespace UI.Inventory {
                 manageCardSetDetails.Hide();
                 isCardSetDetailsOpen = false;
             }
+        }
+
+        public void SetBattle(bool value) {
+            checkForBattle = value;
+        }
+
+        private void ManageBattleButton(bool value) {
+            battleButton.SetActive(value);
+        }
+        
+        private bool CheckDeck() {
+            int occupiedCount = 0;
+            foreach (ItemSlot slot in deckSlots) {
+                if (slot.IsOccupied())
+                    occupiedCount++;
+            }
+            return occupiedCount == deckSlots.Count;
+        }
+
+        public void BeginBattle() {
+            InventoryDeckManager.Instance.UpdateDeck();
+            SaveManager.Instance.SaveGame();
+            CardGamesLoader.Instance.BeginBattle(EnemyStateManager.Instance.GetCurrentEnemy().GetBattleData());
         }
 
         public List<ItemSlot> GetDeckSlots() {
