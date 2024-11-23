@@ -24,7 +24,7 @@ namespace UI.Inventory {
                 }
             }
         
-            GameObject newItem = Instantiate(cardItemPrefab, transform);
+            GameObject newItem = Instantiate(cardItemPrefab, transform, false);
             pool.Add(newItem);
             return newItem;
         }

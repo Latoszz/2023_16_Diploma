@@ -7,7 +7,6 @@ namespace UI.Inventory {
     public class ManageCardSetDetails : MonoBehaviour {
         [SerializeField] private TMP_Text nameText;
         [SerializeField] private GameObject cardListSpace;
-        [SerializeField] private GameObject cardSetDetailPrefab;
         [SerializeField] private CardItemPool cardItemPool;
 
         private List<GameObject> cards = new List<GameObject>();
@@ -34,7 +33,7 @@ namespace UI.Inventory {
     
         private void SetUpObjects(CardData cardData) {
             GameObject displayObject = cardItemPool.GetCardItem();
-            displayObject.transform.SetParent(cardListSpace.transform, true);
+            displayObject.transform.SetParent(cardListSpace.transform, false);
             displayObject.GetComponent<CardDetail>().SetUpCardDetails(cardData);
             displayObject.GetComponent<ShowCardDetails>().SetUpData(cardData);
             cards.Add(displayObject);

@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWait: 0.5
+  minSize: 300
   descriptionWindow: {fileID: 4420133595110403426}
   descriptionText: {fileID: 4537412799245469344}
 --- !u!1 &6345725608644050369

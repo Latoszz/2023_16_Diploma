@@ -10,7 +10,6 @@ namespace UI.Menu {
     public class PauseManager : MonoBehaviour {
         [SerializeField] private GameObject pauseView;
         [SerializeField] private GameObject optionsView;
-        [SerializeField] private GameObject audioVideoPanel;
         [SerializeField] private GameObject infoPanel;
     
         private PostProcessVolume postProcessVolume;
@@ -26,7 +25,7 @@ namespace UI.Menu {
             else {
                 Instance = this;
             }
-            //DontDestroyOnLoad(this);
+            
             pauseView.SetActive(false);
             postProcessVolume = GameObject.FindWithTag("MainCamera").GetComponent<PostProcessVolume>();
         }
@@ -66,7 +65,6 @@ namespace UI.Menu {
         public void OptionsClicked() {
             pauseView.SetActive(false);
             optionsView.SetActive(true);
-            audioVideoPanel.SetActive(true);
         }
 
         public void ExitClicked() {
