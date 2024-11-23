@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 namespace UI.Inventory {
     public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
         [SerializeField] private float timeToWait = 0.5f;
-        [SerializeField] private int windowWidthScale = 7;
         [SerializeField] private RectTransform descriptionWindow;
         [SerializeField] private TMP_Text descriptionText;
     
@@ -18,11 +17,9 @@ namespace UI.Inventory {
 
         private bool isMouseOver;
         private Transform initialParent;
-        private float windowSize;
     
         private void Awake() {
             initialParent = transform.parent;
-            windowSize = Screen.width / windowWidthScale;
         }
     
         private void Update() {
@@ -55,8 +52,6 @@ namespace UI.Inventory {
     
         private void MoveTextNearCursor() {
             Vector3 mousePosition = Mouse.current.position.ReadValue();
-            //descriptionWindow.sizeDelta = new Vector2(descriptionText.preferredWidth < windowSize ?
-            //    windowSize : descriptionText.preferredWidth, descriptionText.preferredHeight + 20);
             descriptionWindow.transform.position = new Vector2(mousePosition.x + 20, mousePosition.y + descriptionWindow.sizeDelta.y/2);
         }
 
