@@ -17,8 +17,21 @@ namespace UI.Infos {
         [SerializeField] private GameObject questInfoPrefab;
 
         private Dictionary<string, GameObject> listOfQuests;
+        private bool isOpen;
+        public bool IsOpen => isOpen;
 
+        public static QuestListPanel Instance;
+        
+        
         private void Awake() {
+            if (Instance != null && Instance != this) {
+                Destroy(gameObject);
+            } else {
+                Instance = this;
+            }
+        }
+
+        private void Start() {
             var loadedQuests = QuestManager.Instance.GetQuestList();   
             listOfQuests = new Dictionary<string, GameObject>();
             if (loadedQuests != null) {
@@ -40,24 +53,41 @@ namespace UI.Infos {
         }
 
         private void AddQuestToList(string questId) {
+            Debug.Log($"Added quest {questId} to list");
             QuestInfoSO questInfo = questManager.GetQuestById(questId).info;
-            GameObject displayObject = Instantiate(questInfoPrefab, questList.transform, true);
+            GameObject displayObject = Instantiate(questInfoPrefab, questList.transform, false);
             displayObject.transform.GetChild(0).GetComponent<TMP_Text>().text = questInfo.displayName;
             displayObject.transform.GetChild(1).GetComponent<TMP_Text>().text = questInfo.questDescription;
             listOfQuests.TryAdd(questId, displayObject);
         }
 
         private void RemoveQuest(string questId) {
+            Debug.Log($"Removed quest {questId} from list");
             Destroy(listOfQuests[questId]);
             listOfQuests.Remove(questId);
         }
     
-        public void PanelFadeIn() {
+        private void PanelFadeIn() {
+            isOpen = true;
             questPanel.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
         }
 
-        public void PanelFadeOut() {
+        private void PanelFadeOut() {
             questPanel.DOAnchorPos(new Vector2(500f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+            isOpen = false;
+        }
+
+        public void OpenClosePanel() {
+            if (isOpen) {
+                PanelFadeOut();
+            }
+            else {
+                PanelFadeIn();
+            }
+        }
+
+        public void Close() {
+            PanelFadeOut();
         }
     }
 }
