@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace InputScripts {
     [DefaultExecutionOrder(-100)] // so that the input manager loads before keyboard and mouse managers 
@@ -6,6 +8,14 @@ namespace InputScripts {
         public static InputManager Instance = null;
 
         [SerializeField] private MouseInputManager mouseInputManager;
+        
+        private void OnEnable() {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable() {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
 
         private void Awake() {
             if (Instance != null && Instance != this) {
@@ -17,6 +27,13 @@ namespace InputScripts {
             //DontDestroyOnLoad(this);
         }
 
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+            // Reset the input system
+            Mouse.current?.MakeCurrent();
+            InputSystem.ResetHaptics();
+            InputSystem.Update(); 
+        }
+        
         public void EnableInput() {
             mouseInputManager.EnableMouseControls();
         }
