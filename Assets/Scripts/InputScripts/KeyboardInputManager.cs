@@ -1,3 +1,4 @@
+using UI.Infos;
 using UI.Inventory;
 using UI.Menu;
 using UnityEngine;
@@ -38,7 +39,7 @@ namespace InputScripts {
             if (!context.performed) 
                 return;
         
-            if(InventoryController.Instance.IsOpen())
+            if(InventoryController.Instance.IsOpen() || QuestListPanel.Instance.IsOpen)
                 return;
         
             if (PauseManager.Instance.IsOpen) {
@@ -54,14 +55,24 @@ namespace InputScripts {
         public void OnEscape(InputAction.CallbackContext context) {
             if (!context.performed) 
                 return;
-
+            
             InventoryController inventoryController = InventoryController.Instance;
-            if (!inventoryController.IsOpen()) 
+            QuestListPanel questListPanel = QuestListPanel.Instance;
+            
+            if (!inventoryController.IsOpen() && !questListPanel.IsOpen) 
                 return;
         
             if (inventoryController.IsCardSetDetailsOpen()) {
                 inventoryController.HideCardSetDetails();
             }
+
+            if (questListPanel.IsOpen) {
+                QuestListPanel.Instance.Close();
+            }
+        }
+
+        public void OnQuest(InputAction.CallbackContext context) {
+            QuestListPanel.Instance.OpenClosePanel();
         }
     }
 }

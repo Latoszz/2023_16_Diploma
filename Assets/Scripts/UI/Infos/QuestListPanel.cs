@@ -17,8 +17,7 @@ namespace UI.Infos {
         [SerializeField] private GameObject questInfoPrefab;
 
         private Dictionary<string, GameObject> listOfQuests;
-        private bool isOpen;
-        public bool IsOpen => isOpen;
+        public bool IsOpen { get; private set; }
 
         public static QuestListPanel Instance;
         
@@ -53,7 +52,6 @@ namespace UI.Infos {
         }
 
         private void AddQuestToList(string questId) {
-            Debug.Log($"Added quest {questId} to list");
             QuestInfoSO questInfo = questManager.GetQuestById(questId).info;
             GameObject displayObject = Instantiate(questInfoPrefab, questList.transform, false);
             displayObject.transform.GetChild(0).GetComponent<TMP_Text>().text = questInfo.displayName;
@@ -62,23 +60,22 @@ namespace UI.Infos {
         }
 
         private void RemoveQuest(string questId) {
-            Debug.Log($"Removed quest {questId} from list");
             Destroy(listOfQuests[questId]);
             listOfQuests.Remove(questId);
         }
     
         private void PanelFadeIn() {
-            isOpen = true;
+            IsOpen = true;
             questPanel.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
         }
 
         private void PanelFadeOut() {
             questPanel.DOAnchorPos(new Vector2(500f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
-            isOpen = false;
+            IsOpen = false;
         }
 
         public void OpenClosePanel() {
-            if (isOpen) {
+            if (IsOpen) {
                 PanelFadeOut();
             }
             else {
