@@ -27,18 +27,26 @@ namespace EnemyScripts {
         [SerializeField] private TalkableNPC npcToUnlock;
 
         private GameObject player;
-        private string enemyName;
         
         private void Awake() {
             player = GameObject.FindGameObjectWithTag("Player");
-            enemyName = dialogue[0].NameText;
         }
 
         private void Start() {
-            if (state == EnemyState.Defeated) {
-                if (dialogue.Count > 1) {
-                    SetUpNextDialogue();
+            switch (state) {
+                case EnemyState.Defeated: {
+                    if (dialogue.Count > 1) {
+                        SetUpNextDialogue();
+                    }
+                    battleIndicator.HideIcon();
+                    break;
                 }
+                case EnemyState.Undefeated:
+                    battleIndicator.ShowIcon();
+                    break;
+                default:
+                    battleIndicator.HideIcon();
+                    break;
             }
         }
 
@@ -69,28 +77,17 @@ namespace EnemyScripts {
         }
         
         public void Talk(DialogueText dialogueText) {
+            DialogueController.Instance.SetSpeakerID(enemyID);
             DialogueController.Instance.DisplaySentence(dialogueText);
             DialogueController.Instance.SetCurrentAudioConfig(audioConfig);
-            battleIndicator.HideIcon();
         }
 
-        private void ShowPanel(string speakerName) {
-            if (speakerName.Equals(enemyName)) {
-                enemyPanel.SetActive(true);
-                enemyPanel.transform.GetChild(0).gameObject.SetActive(true);
-                EnemyStateManager.Instance.SetCurrentEnemy(this);
-                InputManager.Instance.DisableInput();
-            }
-        }
-
-        public override void ChangeState(EnemyState state) {
-            this.state = state;
-            if (state == EnemyState.Defeated) {
-                SaveManager.Instance.ChangeEnemyData(enemyID, state);
-                foreach (Obstacle obstacle in obstacles) {
-                    SaveManager.Instance.ChangeObstacleData(obstacle.GetID(), false);
-                }
-            }
+        private void ShowPanel(string speakerID) {
+            if (!speakerID.Equals(enemyID)) return;
+            enemyPanel.SetActive(true);
+            enemyPanel.transform.GetChild(0).gameObject.SetActive(true);
+            EnemyStateManager.Instance.SetCurrentEnemy(this);
+            InputManager.Instance.DisableInput();
         }
 
         private void SetUpNextDialogue() {

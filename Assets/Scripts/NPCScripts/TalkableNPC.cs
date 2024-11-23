@@ -51,6 +51,7 @@ namespace NPCScripts {
         }
         
         public void Talk(DialogueText dialogueText) {
+            DialogueController.Instance.SetSpeakerID(npcID);
             DialogueController.Instance.DisplaySentence(dialogueText);
             DialogueController.Instance.SetCurrentAudioConfig(audioConfig);
             indicator.HideIcon();

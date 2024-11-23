@@ -33,7 +33,7 @@ namespace SaveSystem {
             if (scene.name != "Overworld1" && scene.name != "Main Menu") {
                 return;
             }
-            Debug.LogWarning($"Scene {scene.name}");
+            Debug.Log($"Scene {scene.name}");
             LoadSaveFile();
         }
         

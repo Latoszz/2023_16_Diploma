@@ -39,9 +39,10 @@ namespace State_machine.MovingSM {
             player = GameObject.FindGameObjectWithTag("Player");
             playerNavMeshAgent = player.GetComponent<NavMeshAgent>();
 
-            if (isEnemy)
+            if (isEnemy) {
                 enemy = GetComponent<Enemy>();
-        
+            }
+
             idleState = new IdleState(this);
             walkingState = new WalkingState(this);
             waitingState = new WaitingState(this);

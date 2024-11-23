@@ -43,7 +43,7 @@ namespace UI.Dialogue {
         private bool dialogueClosed;
         public bool DialogueClosed => dialogueClosed;
 
-        private string speakerName;
+        private string speakerID;
 
         public static DialogueController Instance;
 
@@ -106,7 +106,7 @@ namespace UI.Dialogue {
             conversationEnded = false;
             sentences.Clear();
             HideDialogue();
-            GameEventsManager.Instance.DialogueEvents.DialogueEnded(speakerName);
+            GameEventsManager.Instance.DialogueEvents.DialogueEnded(speakerID);
             HUDController.Instance.ShowHUD();
             CameraController.Instance.SootheOut(8f, rotationUnits);
         }
@@ -128,10 +128,13 @@ namespace UI.Dialogue {
         private void SetDialogue(DialogueText dialogue) {
             icon.sprite = dialogue.Icon;
             nameText.text = dialogue.NameText;
-            speakerName = nameText.text;
             foreach (string sentence in dialogue.Sentences) {
                 sentences.Enqueue(sentence);
             }
+        }
+
+        public void SetSpeakerID(string id) {
+            speakerID = id;
         }
     
         private IEnumerator TypeSentence() {

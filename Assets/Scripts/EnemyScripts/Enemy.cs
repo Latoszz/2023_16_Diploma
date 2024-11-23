@@ -18,10 +18,10 @@ namespace EnemyScripts {
 
         protected EnemyState state = EnemyState.Locked;
     
-        public virtual void ChangeState(EnemyState state) {
+        public void ChangeState(EnemyState state) {
             this.state = state;
+            SaveManager.Instance.ChangeEnemyData(enemyID, state);
             if (state == EnemyState.Defeated) {
-                SaveManager.Instance.ChangeEnemyData(enemyID, state);
                 foreach (Obstacle obstacle in obstacles) {
                     SaveManager.Instance.ChangeObstacleData(obstacle.GetID(), false);
                 }
