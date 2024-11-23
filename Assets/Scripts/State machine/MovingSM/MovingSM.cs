@@ -27,6 +27,7 @@ namespace State_machine.MovingSM {
         [SerializeField] private Transform faceWaypoint;
     
         private NavMeshAgent navMeshAgent;
+        private NavMeshAgent playerNavMeshAgent;
         private GameObject player;
         private Enemy enemy;
         private int currentWaypointIndex;
@@ -36,6 +37,7 @@ namespace State_machine.MovingSM {
         private void Awake() {
             navMeshAgent = GetComponent<NavMeshAgent>();
             player = GameObject.FindGameObjectWithTag("Player");
+            playerNavMeshAgent = player.GetComponent<NavMeshAgent>();
 
             if (isEnemy)
                 enemy = GetComponent<Enemy>();
@@ -60,6 +62,10 @@ namespace State_machine.MovingSM {
 
         public NavMeshAgent GetNavMeshAgent() {
             return navMeshAgent;
+        }
+        
+        public NavMeshAgent GetPlayerNavMeshAgent() {
+            return playerNavMeshAgent;
         }
 
         public GameObject GetPlayer() {

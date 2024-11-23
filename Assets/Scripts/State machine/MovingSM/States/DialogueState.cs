@@ -6,6 +6,7 @@ namespace State_machine.MovingSM.States {
     public class DialogueState : BaseState {
         private MovingSM movingSM;
         private NavMeshAgent navMeshAgent;
+        private NavMeshAgent playerNavMeshAgent;
     
         public DialogueState(MovingSM stateMachine) : base("Dialogue", stateMachine) {
             movingSM = stateMachine;
@@ -16,6 +17,9 @@ namespace State_machine.MovingSM.States {
             navMeshAgent = movingSM.GetNavMeshAgent();
             navMeshAgent.isStopped = true;
             navMeshAgent.updateRotation = false;
+
+            playerNavMeshAgent = movingSM.GetPlayerNavMeshAgent();
+            playerNavMeshAgent.ResetPath();  
         }
 
         public override void UpdateLogic() {
@@ -23,6 +27,8 @@ namespace State_machine.MovingSM.States {
         
             if (DialogueController.Instance.DialogueClosed) {
                 movingSM.IsDialogue = false;
+                navMeshAgent.isStopped = false;
+                navMeshAgent.updateRotation = true;
                 movingSM.ChangeState(movingSM.idleState);
             }
         }
