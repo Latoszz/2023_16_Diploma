@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b5b1b089b4b2f846a1f3f30275b4a23
+guid: de51de27ba387c946a2c14d7c3d9c756
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -108,18 +108,40 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Big_UI_inbetween_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 90
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a9f666c0b965c5459ec8e94aa63cfac
+      internalID: 794589910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Big_UI_inbetween_0: 794589910
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

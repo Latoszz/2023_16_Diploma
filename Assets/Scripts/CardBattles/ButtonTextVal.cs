@@ -21,7 +21,7 @@ namespace CardBattles {
         private void Awake() {
             textPositions = new List<Vector3>();
             rectTransformText = text.GetComponent<RectTransform>();
-            var textPosition = rectTransformText.position;
+            var textPosition = rectTransformText.localPosition;
             textPositions.Add(textPosition);
             textPositions.Add(textPosition + Vector3.down * textMoveDownAmount/2f);
             textPositions.Add(textPosition + Vector3.down * textMoveDownAmount);
@@ -35,15 +35,15 @@ namespace CardBattles {
 
         private void UpdateTextHeight() {
             if (isOverriden) {
-                rectTransformText.position = textPositions[2];
+                rectTransformText.localPosition = textPositions[2];
                 return;
             }
 
             if (button.image.sprite == imageInBetween) {
-                rectTransformText.position = textPositions[1];
+                rectTransformText.localPosition = textPositions[1];
             }
             else {
-                rectTransformText.position = textPositions[0];
+                rectTransformText.localPosition = textPositions[0];
             }
 
         }
