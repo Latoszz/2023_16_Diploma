@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-#pragma warning disable CS0414 // Field is assigned but its value is never used
 
 namespace UI.Menu {
     public class SettingsManager : MonoBehaviour, ISavable {
@@ -16,7 +15,6 @@ namespace UI.Menu {
         [SerializeField] private Slider sfxSlider;
         [SerializeField] private AudioMixer musicMixer;
         [SerializeField] private AudioMixer sfxMixer;
-        [SerializeField] private GameObject audioVideoPanel;
 
         private float currentMusicVolume = 0.5f;
         private float currentSFXVolume = 0.5f;
@@ -25,12 +23,22 @@ namespace UI.Menu {
         private int currentResolutionIndex;
         private bool isFullscreen = true;
 
-        private bool isResolutionLoaded = false;
+        //private bool isResolutionLoaded = false;
 
         private const string MusicVolumeSaveID = "MusicVolume";
         private const string SFXVolumeSaveID = "SFXVolume";
         private const string ResolutionSaveID = "ResolutionId";
         private const string FullscreenSaveID = "FullscreenId";
+
+        public static SettingsManager Instance;
+        
+        private void Awake() {
+            if (Instance != null) {
+                Destroy(this.gameObject);
+                return;
+            }
+            Instance = this;
+        }
     
         void Start() {
             SetUpResolutions();
@@ -99,20 +107,19 @@ namespace UI.Menu {
         }
 
         public void LoadSaveData(SaveFile saveFile) {
-            if (saveFile.HasData(MusicVolumeSaveID)) {
-                SetMusicVolume(saveFile.GetData<float>(MusicVolumeSaveID));
-                musicSlider.value = currentMusicVolume;
-                SetSFXVolume(saveFile.GetData<float>(SFXVolumeSaveID));
-                sfxSlider.value = currentSFXVolume;
+            if (!saveFile.HasData(MusicVolumeSaveID)) return;
+            SetMusicVolume(saveFile.GetData<float>(MusicVolumeSaveID));
+            musicSlider.value = currentMusicVolume;
+            SetSFXVolume(saveFile.GetData<float>(SFXVolumeSaveID));
+            sfxSlider.value = currentSFXVolume;
         
-                currentResolutionIndex = saveFile.GetData<int>(ResolutionSaveID);
-                isResolutionLoaded = true;
-                SetUpResolutions();
-                ChangeResolution(currentResolutionIndex);
+            currentResolutionIndex = saveFile.GetData<int>(ResolutionSaveID);
+            //isResolutionLoaded = true;
+            SetUpResolutions();
+            ChangeResolution(currentResolutionIndex);
         
-                fullscreenToggle.isOn = saveFile.GetData<bool>(FullscreenSaveID);
-                SetFullscreen();
-            }
+            fullscreenToggle.isOn = saveFile.GetData<bool>(FullscreenSaveID);
+            SetFullscreen();
         }
     }
 }

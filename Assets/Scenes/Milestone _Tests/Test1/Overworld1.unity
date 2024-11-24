@@ -32894,14 +32894,14 @@ PrefabInstance:
     - target: {fileID: 2320950313341366471, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 329134586}
     - target: {fileID: 2320950313341366471, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Open
+      value: BackClicked
       objectReference: {fileID: 0}
     - target: {fileID: 2320950313341366471, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PauseManager, Assembly-CSharp
+      value: UI.Menu.PauseManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4288218129066737762, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
       propertyPath: m_AnchorMax.y
@@ -33014,14 +33014,14 @@ PrefabInstance:
     - target: {fileID: 5896853515252383105, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 329134586}
     - target: {fileID: 5896853515252383105, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Exit
       objectReference: {fileID: 0}
     - target: {fileID: 5896853515252383105, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PauseManager, Assembly-CSharp
+      value: UI.Menu.PauseManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5967577987419870602, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
       propertyPath: m_AnchorMax.y
@@ -33288,7 +33288,6 @@ MonoBehaviour:
   sfxSlider: {fileID: 766809547}
   musicMixer: {fileID: 24100000, guid: 385decd12b6358346b631e41ff548c0e, type: 2}
   sfxMixer: {fileID: 24100000, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
-  audioVideoPanel: {fileID: 317901946}
 --- !u!114 &498566001
 MonoBehaviour:
   m_ObjectHideFlags: 0

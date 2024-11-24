@@ -80,6 +80,7 @@ namespace UI.Menu {
         public void BackClicked() {
             pauseView.SetActive(true);
             optionsView.SetActive(false);
+            infoPanel.SetActive(false);
         }
     }
 }

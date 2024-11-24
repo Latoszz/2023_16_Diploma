@@ -5,6 +5,7 @@ using EnemyScripts;
 using Esper.ESave;
 using NaughtyAttributes;
 using QuestSystem;
+using UI.Menu;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -55,6 +56,7 @@ namespace SaveSystem {
         public void NewGame() {
             DeleteSaveFile();
             saveFile.AddOrUpdateData(InitialSaveDataID, 0);
+            SettingsManager.Instance.PopulateSaveData(saveFile);
             saveFile.Save();
         }
 
