@@ -141850,43 +141850,43 @@ PrefabInstance:
       objectReference: {fileID: 1731360054}
     - target: {fileID: 4355799159001187228, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4355799159001187228, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4355799159001187228, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 540
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4355799159001187228, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4355799159001187228, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6621848233320543089, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6621848233320543089, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6621848233320543089, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 540
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6621848233320543089, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6621848233320543089, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -218.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7729261692373241768, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -141902,7 +141902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7808127754876397771, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
