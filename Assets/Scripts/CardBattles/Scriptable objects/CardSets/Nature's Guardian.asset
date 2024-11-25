@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Sproutling
+  m_Name: Seedling
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Sproutling
+  cardName: Seedling
   sprite: {fileID: 0}
-  description: 
+  description: 'Start of next turn: turn into 3/3 sapling'
   flavourText: 
-  properties: 
+  properties: 05000000
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 2
-  maxHealth: 4
+  attack: 0
+  maxHealth: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,6 +41,7 @@ MonoBehaviour:
   - {fileID: 1598928627476223177}
   - {fileID: 6576024184287744945}
   - {fileID: 850165210332599635}
+  - {fileID: 7489900861407034460}
   setColor: {r: 1, g: 1, b: 1, a: 1}
   cardSetIcon: {fileID: 0}
 --- !u!114 &850165210332599635
@@ -79,19 +80,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Seedling
+  m_Name: Thorny vine
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Seedling
+  cardName: Thorny vine
   sprite: {fileID: 0}
   description: 
   flavourText: 
-  properties: 08000000
+  properties: 0800000009000000
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 0
-  maxHealth: 5
+  attack: 1
+  maxHealth: 4
 --- !u!114 &6576024184287744945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,3 +119,26 @@ MonoBehaviour:
       value: 0
   attack: 0
   maxHealth: 1
+--- !u!114 &7489900861407034460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Sapling
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Sapling
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 2
+  maxHealth: 3

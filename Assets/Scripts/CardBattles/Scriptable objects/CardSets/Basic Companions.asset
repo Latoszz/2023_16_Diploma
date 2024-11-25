@@ -23,6 +23,29 @@ MonoBehaviour:
     m_values: []
   attack: 1
   maxHealth: 2
+--- !u!114 &-4486318246560240726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Wolf pup
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Wolf pup
+  sprite: {fileID: 0}
+  description: 'On Death: Summon 1/1 Wolf spirit [nf]'
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 2
+  maxHealth: 3
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,6 +65,9 @@ MonoBehaviour:
   - {fileID: -4788296099092171580}
   - {fileID: 9213248145029018052}
   - {fileID: 5364797506579706072}
+  - {fileID: -4486318246560240726}
+  - {fileID: 7329401131658345760}
+  - {fileID: 7549058886613418407}
   setColor: {r: 1, g: 1, b: 1, a: 1}
   cardSetIcon: {fileID: 0}
 --- !u!114 &1597232316267468199
@@ -54,19 +80,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Pigeon
+  m_Name: Eager rabbit
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Pigeon
+  cardName: Eager rabbit
   sprite: {fileID: 0}
-  description: 
+  description: 'Start of turn: +2 attack'
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 0
+      targetType: 4
+      value: 2
   attack: 0
-  maxHealth: 1
+  maxHealth: 4
 --- !u!114 &2372559019292260079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +143,50 @@ MonoBehaviour:
     - effectName: 1
       targetType: 8
       value: 5
+--- !u!114 &7329401131658345760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Queen ant
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Queen ant
+  sprite: {fileID: 0}
+  description: 'On play: Add 2 1/1 ants to hand [nf]'
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 2
+--- !u!114 &7549058886613418407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Healing herb
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Healing herb
+  sprite: {fileID: 0}
+  description: 'All allies: heal 1'
+  flavourText: 
+  properties: 00000000
+  effectDictionary:
+    m_keys: 
+    m_values: []
 --- !u!114 &9213248145029018052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,5 +208,5 @@ MonoBehaviour:
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 5
+  attack: 4
   maxHealth: 1

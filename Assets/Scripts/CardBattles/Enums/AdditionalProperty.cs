@@ -36,8 +36,10 @@ namespace CardBattles.Enums {
         Costly,
 
         [PropertyDescription("Takes half damage (rounded up)")]
-        Durable
-
+        Durable,
+        
+        [PropertyDescription("Deal damage when attacked")]
+        Spiky
     }
 
     public static class AdditionalPropertyHelper {
