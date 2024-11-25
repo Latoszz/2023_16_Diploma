@@ -69,6 +69,10 @@ namespace UI.Inventory {
             isOpen = false;
             HUDController.Instance.ShowHUD();
             InputManager.Instance.EnableInput();
+            if (checkForBattle) {
+                checkForBattle = false;
+                battleButton.SetActive(false);
+            }
         }
 
         public void AddItem(Item item) {
