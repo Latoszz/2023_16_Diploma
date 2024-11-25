@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI {
@@ -18,6 +17,11 @@ namespace UI {
         private bool isOverriden = false;
         
         [SerializeField] public float textMoveDownAmount = 3f;
+
+        private void OnDisable() {
+            button.image.sprite = imageOn;
+            UpdateTextHeight();
+        }
         
         private void Awake() {
             imagePositions = new List<Vector3>();

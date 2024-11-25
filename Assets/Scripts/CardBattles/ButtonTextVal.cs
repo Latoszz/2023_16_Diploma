@@ -73,5 +73,10 @@ namespace CardBattles {
             UpdateTextHeight();
             StopAllCoroutines();
         }
+
+        public void ResetPosition() {
+            button.image.sprite = imageOn;
+            UpdateTextHeight();
+        }
     }
 }
