@@ -98,7 +98,7 @@ namespace CardBattles {
         }
 
         public void ResetPosition() {
-            button.image.sprite = imageOn;
+            button.image.sprite = spriteOn;
             UpdateTextHeight();
         }
     }
