@@ -1,26 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace CardBattles {
+    
     public class ButtonTextVal : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
-        [SerializeField] private Sprite imageOn;
-        [SerializeField] private Sprite imageInBetween;
+        
+        
+        [BoxGroup("Sprite")]
+        [SerializeField] private Sprite spriteOn;
+        [BoxGroup("Sprite")]
+        [SerializeField] private Sprite spriteInBetween;
+        [BoxGroup("Sprite")]
         [SerializeField] private Sprite spriteOff;
-        [SerializeField] public Button button;
-        [SerializeField] public Text text;
-        private bool hoveringOver = false;
+        private Button button;
+        private Text text;
+        
+        [HideInInspector]
         public RectTransform rectTransformText;
+        
+        
+        
         private List<Vector3> textPositions = new List<Vector3>();
         private bool isOverriden = false;
-        
+        private bool hoveringOver = false;
         [SerializeField] public float textMoveDownAmount = 3f;
-        
+
         private void Awake() {
-            textPositions = new List<Vector3>();
+            SetComponents();
+            SetTextPositions();
+        }
+
+        private void SetComponents() {
+            button = GetComponent<Button>();
+            text = GetComponentInChildren<Text>();
             rectTransformText = text.GetComponent<RectTransform>();
+
+        }
+        private void SetTextPositions() {
+            textPositions = new List<Vector3>();
             var textPosition = rectTransformText.localPosition;
             textPositions.Add(textPosition);
             textPositions.Add(textPosition + Vector3.down * textMoveDownAmount/2f);
@@ -39,13 +61,12 @@ namespace CardBattles {
                 return;
             }
 
-            if (button.image.sprite == imageInBetween) {
+            if (button.image.sprite == spriteInBetween) {
                 rectTransformText.localPosition = textPositions[1];
             }
             else {
                 rectTransformText.localPosition = textPositions[0];
             }
-
         }
         
         public void OverrideButtonSprite( bool turnOn) {
@@ -57,19 +78,21 @@ namespace CardBattles {
             while (hoveringOver) {
                 
                 if (hoveringOver && button.IsInteractable() && button.isActiveAndEnabled){
-                    button.image.sprite = imageInBetween;
+                    button.image.sprite = spriteInBetween;
                 }
                 else {
-                    button.image.sprite = imageOn;
+                    button.image.sprite = spriteOn;
                 }
                 UpdateTextHeight();
                 yield return new WaitForSeconds(0.1f);
             }
         }
 
+        
+            
         public void OnPointerExit(PointerEventData eventData) {
             hoveringOver = false;
-            button.image.sprite = imageOn;
+            button.image.sprite = spriteOn;
             UpdateTextHeight();
             StopAllCoroutines();
         }

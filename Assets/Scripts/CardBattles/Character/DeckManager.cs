@@ -8,6 +8,7 @@ using CardBattles.CardScripts.CardDatas;
 using CardBattles.Interfaces.InterfaceObjects;
 using CardBattles.Managers;
 using NaughtyAttributes;
+using TMPro;
 using UI.Inventory;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -78,6 +79,8 @@ namespace CardBattles.Character {
                     continue;
                 }
 
+                
+                
                 foreach (var cardData in cardSetData.cards) {
                     if (cardData == null) {
                         Debug.LogError("cardData is null in cardSetData: " + cardSetData.displayName);
