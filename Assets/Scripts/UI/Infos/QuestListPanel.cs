@@ -9,6 +9,11 @@ namespace UI.Infos {
     public class QuestListPanel : MonoBehaviour {
         [Header("Time")] 
         [SerializeField] private float fadeTime = 1f;
+        
+        [Header("Audio")] 
+        [SerializeField] private AudioClip openSound;
+        [SerializeField] private AudioClip closeSound;
+        private AudioSource audioSource;
 
         [Header("Setup")] 
         [SerializeField] private RectTransform questPanel;
@@ -28,6 +33,7 @@ namespace UI.Infos {
             } else {
                 Instance = this;
             }
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void Start() {
@@ -67,11 +73,15 @@ namespace UI.Infos {
         private void PanelFadeIn() {
             IsOpen = true;
             questPanel.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+            audioSource.clip = openSound;
+            audioSource.Play();
         }
 
         private void PanelFadeOut() {
             questPanel.DOAnchorPos(new Vector2(500f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
             IsOpen = false;
+            audioSource.clip = closeSound;
+            audioSource.Play();
         }
 
         public void OpenClosePanel() {

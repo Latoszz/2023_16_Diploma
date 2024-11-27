@@ -1,10 +1,10 @@
 using InputScripts;
-using SaveSystem;
 using UI.HUD;
 using UI.Inventory;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
+using SaveManager = SaveSystem.SaveManager;
 
 namespace UI.Menu {
     public class PauseManager : MonoBehaviour {
@@ -59,7 +59,7 @@ namespace UI.Menu {
         }
 
         public void SaveClicked() {
-            //TODO save
+            SaveManager.Instance.SaveGame();
         }
 
         public void OptionsClicked() {

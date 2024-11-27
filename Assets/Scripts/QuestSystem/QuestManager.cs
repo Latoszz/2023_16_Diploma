@@ -78,7 +78,7 @@ namespace QuestSystem {
         private bool CheckRequirementsMet(Quest quest) {
             bool meetsRequirements = true;
             foreach (QuestInfoSO questPrerequisite in quest.info.questPrerequisites) {
-                if (GetQuestById(questPrerequisite.id).state != QuestState.CAN_FINISH) { //TODO WAS checking if FINISHED
+                if (GetQuestById(questPrerequisite.id).state != QuestState.CAN_FINISH) { //WAS checking if FINISHED, might change it back
                     meetsRequirements = false;
                     break;
                 }

@@ -11,12 +11,18 @@ namespace UI.Infos {
         [Header("Time")] 
         [SerializeField] private int secondsToDisappearInt = 5;
         [SerializeField] private float fadeTime = 1f;
+
+        [Header("Audio")] 
+        [SerializeField] private AudioClip openSound;
+        [SerializeField] private AudioClip closeSound;
     
         [Header("Setup")]
         [SerializeField] private RectTransform infoPopupPanel;
         [SerializeField] private TMP_Text infoTitle;
         [SerializeField] private TMP_Text infoDescription;
         [SerializeField] private QuestManager questManager;
+
+        private AudioSource audioSource;
     
         private void OnEnable() {
             GameEventsManager.Instance.QuestEvents.OnStartQuest += ShowInfo;
@@ -24,6 +30,10 @@ namespace UI.Infos {
     
         private void OnDisable() {
             GameEventsManager.Instance.QuestEvents.OnStartQuest -= ShowInfo;
+        }
+
+        private void Awake() {
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void ShowInfo(string questId) {
@@ -41,9 +51,13 @@ namespace UI.Infos {
     
         private void PanelFadeIn() {
             infoPopupPanel.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+            audioSource.clip = openSound;
+            audioSource.Play();
         }
 
         private void PanelFadeOut() {
+            audioSource.clip = closeSound;
+            audioSource.Play();
             infoPopupPanel.DOAnchorPos(new Vector2(600f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
         }
 
