@@ -58907,6 +58907,8 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: f83b07278439a5140bf64fda3bc02de8, type: 2}
   npc: {fileID: 1989324600}
   itemID: 614cb452-6437-4488-ae86-0e5afd03451e
+  collectSound: {fileID: 8300000, guid: e64f25c0e6831d4d3b155172925dd2dc, type: 3}
+  audioMixer: {fileID: 24100000, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
 --- !u!114 &962742778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87658,9 +87660,9 @@ AudioSource:
   m_GameObject: {fileID: 1306891293}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -128366,9 +128368,9 @@ AudioSource:
   m_GameObject: {fileID: 1971671620}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -145997,6 +145999,10 @@ PrefabInstance:
     - target: {fileID: 5213656274881269062, guid: d8ecb0afcbfbc0948ae0cdbe91fc3ed8, type: 3}
       propertyPath: m_Name
       value: Obstacle 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213656274881269062, guid: d8ecb0afcbfbc0948ae0cdbe91fc3ed8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

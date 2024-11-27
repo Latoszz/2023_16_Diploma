@@ -2,6 +2,7 @@ using System;
 using Events;
 using NPCScripts;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 
 namespace UI.Inventory.Items {
@@ -13,9 +14,12 @@ namespace UI.Inventory.Items {
         private void GenerateGuid() {
             itemID = Guid.NewGuid().ToString();
         }
+
+        [Header("Sound")]
+        [SerializeField] private AudioClip collectSound;
+        [SerializeField] private AudioMixer audioMixer;
     
         private bool collected  = false;
-
         public CollectibleItemData GetItemData() {
             return itemData;
         }
@@ -30,8 +34,18 @@ namespace UI.Inventory.Items {
             gameObject.SetActive(false);
             GameEventsManager.Instance.ItemEvents.ItemWithIdCollected(itemName);
         }
+        
+        private float GetMasterVolume(){
+            float value;
+            bool result =  audioMixer.GetFloat("SFXVolume", out value);
+            if(result){
+                return Mathf.Pow(10, value/20);
+            }
+            return 0f;
+        }
 
         public void OnPointerClick(PointerEventData eventData) {
+            AudioSource.PlayClipAtPoint(collectSound, Camera.main.transform.position, GetMasterVolume());
             Collect();
             if(npc != null)
                 npc.SetUpNextDialogue();

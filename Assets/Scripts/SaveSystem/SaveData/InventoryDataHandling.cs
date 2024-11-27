@@ -110,6 +110,7 @@ namespace SaveSystem.SaveData {
                     item.SetSprite(Resources.Load(saveFile.GetData<string>(id + "_sprite")) as Sprite);
                     
                     itemSlot.AddItem(item);
+                    Destroy(itemObject);
                 }
             }
             
