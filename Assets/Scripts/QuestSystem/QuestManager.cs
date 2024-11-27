@@ -20,6 +20,8 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 using System.Collections.Generic;
 using Esper.ESave;
 using Events;
+using UI.Inventory;
+using UI.Inventory.Items;
 using UnityEngine;
 
 namespace QuestSystem {
@@ -110,8 +112,10 @@ namespace QuestSystem {
         }
 
         private void ClaimRewards(Quest quest) {
-            //TODO implement rewards
-            Debug.Log("Good job!");
+            Item[] rewards = quest.info.questRewards;
+            foreach (Item reward in rewards) {
+                InventoryController.Instance.AddItem(reward);
+            }
         }
 
         private void QuestStepStateChange(string id, int stepIndex, QuestStepState questStepState) {
