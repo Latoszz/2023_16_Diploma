@@ -61,6 +61,8 @@ namespace EnemyScripts {
         }
 
         private void Unlock(string npcName) {
+            if (state == EnemyState.Defeated)
+                return;
             if (npcName == npcToUnlock.GetName()) {
                 battleIndicator.ShowIcon();
                 ChangeState(EnemyState.Undefeated);

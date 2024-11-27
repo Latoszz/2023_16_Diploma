@@ -11,6 +11,8 @@ namespace UI.Menu {
         [SerializeField] private GameObject pauseView;
         [SerializeField] private GameObject optionsView;
         [SerializeField] private GameObject infoPanel;
+        [SerializeField] private GameObject infoPopup;
+        [SerializeField] private GameObject questPanel;
     
         private PostProcessVolume postProcessVolume;
     
@@ -36,6 +38,8 @@ namespace UI.Menu {
             pauseView.SetActive(true);
             optionsView.SetActive(false);
             infoPanel.SetActive(false);
+            infoPopup.SetActive(false);
+            questPanel.SetActive(false);
             postProcessVolume.enabled = true;
             IsOpen = true;
             HUDController.Instance.HideHUD();
@@ -47,6 +51,8 @@ namespace UI.Menu {
             pauseView.SetActive(false);
             optionsView.SetActive(false);
             infoPanel.SetActive(false);
+            infoPopup.SetActive(true);
+            questPanel.SetActive(true);
             postProcessVolume.enabled = false;
             IsOpen = false;
             HUDController.Instance.ShowHUD();

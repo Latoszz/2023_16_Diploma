@@ -55,7 +55,7 @@ namespace UI.Dialogue {
                 Destroy(gameObject);
             }
 
-            audioSource = this.gameObject.AddComponent<AudioSource>();
+            audioSource = this.gameObject.GetComponent<AudioSource>();
             currentAudioConfig = defaultAudioConfig;
         }
 
