@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e64dd5cde17bfe94b923db0d6dc857a9
+guid: c0a77f26ba1dff847b37b0cf338421fa
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,33 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Belt
-    second: {fileID: 2100000, guid: 7b83d14e86896dd4d81f6f4fb877ec49, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Clothes
-    second: {fileID: 2100000, guid: d1d3633fa6ec91143b73a6fa49b8b29d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Face
     second: {fileID: 2100000, guid: ce0bed9630404ad4795ff5cbdd4ddffc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Gold
-    second: {fileID: 2100000, guid: 8a6c58d51772b1845a0f1d82cdf874ae, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hair
-    second: {fileID: 2100000, guid: d3ec25705a416cf40a4ffaef86f1c18e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hat
-    second: {fileID: 2100000, guid: 5fb2997b2e595bf4bbbaa2817758a3d8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
