@@ -1,5 +1,6 @@
 using System;
 using CardBattles.Interfaces;
+using CardBattles.Managers.GameSettings;
 using UnityEngine;
 
 namespace CardBattles.Character.Hero {
@@ -22,7 +23,13 @@ namespace CardBattles.Character.Hero {
         public Action<int> currentHealthAction;
         public Action takeDamageAction;
 
-        
+
+        private void Start() {
+            if (GameStats.Config.overrideHeroMaxHp)
+                MaxHealth = GameStats.Config.overrideHeroMaxHpValue;
+        }
+
+
         [SerializeField]
         
         public int currentHealth;
@@ -38,7 +45,6 @@ namespace CardBattles.Character.Hero {
                 }
             }
         }
-
         public bool HasFullHp => CurrentHealth == MaxHealth;
 
         

@@ -28,7 +28,7 @@ namespace CardBattles.CardScripts {
                 return this.cardDisplay.frontVisible;
             }
         }
-
+        
         [BoxGroup("Card")] public string cardName;
 
         [BoxGroup("Card"), ResizableTextArea]

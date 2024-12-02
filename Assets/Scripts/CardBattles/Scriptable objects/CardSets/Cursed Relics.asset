@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
   m_Name: Cursed Relics
   m_EditorClassIdentifier: 
-  displayName: No Display Name
+  displayName: Cursed Relics
   cards:
   - {fileID: -2753077057874354751}
   - {fileID: -7737477806745641505}

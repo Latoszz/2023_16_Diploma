@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
   m_Name: Basic Companions
   m_EditorClassIdentifier: 
-  displayName: No Display Name
+  displayName: Basic Companions
   cards:
   - {fileID: 2372559019292260079}
   - {fileID: 1597232316267468199}

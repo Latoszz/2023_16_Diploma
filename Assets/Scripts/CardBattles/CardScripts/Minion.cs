@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Audio;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
+using CardBattles.Managers.GameSettings;
 using DG.Tweening;
 using NaughtyAttributes;
 using Unity.Mathematics;
@@ -67,6 +69,9 @@ namespace CardBattles.CardScripts {
                 MaxHealth = minionData.maxHealth;
                 CurrentHealth = MaxHealth;
                 cardDisplay.SetCardDisplayData(minionData);
+                if(GameStats.Config.cardsExtraSleep)
+                    Properties.Add(AdditionalProperty.JustPlayed);
+
             }
 
             dataChanged.AddListener(cardDisplay.UpdateData);
@@ -134,9 +139,16 @@ namespace CardBattles.CardScripts {
 
         [SerializeField] private UnityEvent stopsSleeping;
         public void AttackTarget(IDamageable target) {
+
+            if (Properties.Contains(AdditionalProperty.JustPlayed)) {
+                Properties.Remove(AdditionalProperty.JustPlayed);
+                transform.DOShakePosition(0.5f,20f,20);
+                return;
+            }
             
             if (Properties.Contains(AdditionalProperty.Sleepy)) {
                 Properties.Remove(AdditionalProperty.Sleepy);
+                transform.DOShakePosition(0.5f,20f,20);
                 stopsSleeping?.Invoke();
                 return;
             }

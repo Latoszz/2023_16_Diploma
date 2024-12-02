@@ -10,6 +10,7 @@ namespace CardBattles.CardScripts.CardDatas {
     public class CardSetData :ScriptableObject {
         [SerializeField]
         public string displayName = "No Display Name";
+        
         [HideInInspector]public List<CardData> cards = new List<CardData>();
         [SerializeField]
         public Color setColor = Color.white;

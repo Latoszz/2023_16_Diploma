@@ -6,9 +6,15 @@ namespace Editor.CardBattles {
     [CustomEditor(typeof(CardSetData))]
     public class CardSetDataInspector : UnityEditor.Editor {
         public override void OnInspectorGUI() {
-            base.OnInspectorGUI(); 
+            base.OnInspectorGUI();
 
             var cardSet = (CardSetData)target;
+
+            if (GUILayout.Button("Overwrite Display Name")) {
+                OverwriteDisplayName(cardSet);
+            }
+
+            EditorGUILayout.Space(10);
 
             if (GUILayout.Button("Add New Minion")) {
                 CreateAndAddMinionCard(cardSet);
@@ -17,6 +23,7 @@ namespace Editor.CardBattles {
             if (GUILayout.Button("Add New Spell")) {
                 CreateAndAddSpellCard(cardSet);
             }
+            
 
             EditorGUILayout.LabelField("Minion Cards", EditorStyles.boldLabel);
             for (int i = cardSet.cards.Count - 1; i >= 0; i--) {
@@ -52,10 +59,12 @@ namespace Editor.CardBattles {
             }
         }
 
-
+        private void OverwriteDisplayName(CardSetData cardSet) {
+            cardSet.displayName = cardSet.name;
+        }
         private void CreateAndAddMinionCard(CardSetData cardSet) {
             int cardCount = Random.Range(1000, 10000);
-            string baseName = cardSet.name; 
+            string baseName = cardSet.name;
             string newCardName = $"{baseName}_Minion_{cardCount}";
 
 
@@ -66,9 +75,9 @@ namespace Editor.CardBattles {
             AssetDatabase.SaveAssets();
         }
 
-        private void CreateAndAddSpellCard(CardSetData cardSet) { 
+        private void CreateAndAddSpellCard(CardSetData cardSet) {
             var cardCount = Random.Range(1000, 10000);
-            var baseName = cardSet.displayName; 
+            var baseName = cardSet.displayName;
             var newCardName = $"{baseName}_Spell_{cardCount}";
 
 

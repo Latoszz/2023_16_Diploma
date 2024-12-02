@@ -35,7 +35,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
   m_Name: Nature's Guardian
   m_EditorClassIdentifier: 
-  displayName: Starting set 1
+  displayName: Nature's Guardian
   cards:
   - {fileID: -1502357540403813271}
   - {fileID: 1598928627476223177}
