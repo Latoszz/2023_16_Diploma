@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Audio;
 using InputScripts;
 using TMPro;
@@ -7,6 +9,7 @@ using UI.Dialogue;
 using UI.HUD;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 namespace Tutorial {
     public class TutorialDialogue: MonoBehaviour, IPointerClickHandler {
@@ -22,8 +25,7 @@ namespace Tutorial {
         private AudioSource audioSource;
 
         [SerializeField] private List<DialogueText> tutorialTexts;
-
-        private const string HTML_ALPHA = "<color=#00000000>";
+        
 
         private Queue<string> sentences = new Queue<string>();
         private string sentence;
@@ -116,24 +118,20 @@ namespace Tutorial {
     
         private IEnumerator TypeSentence() {
             isTyping = true;
-            dialogueText.text = "";
-            string originalText = sentence;
-            string displayedText = "";
-            int alphaIndex = 0;
-        
-            foreach (char letter in sentence) {
-                if (dialogueText.text != "") {
-                    PlayDialogueSound(alphaIndex, originalText[alphaIndex]);
-                }
-
-                alphaIndex++;
-                dialogueText.text = originalText;
-                displayedText = dialogueText.text.Insert(alphaIndex, HTML_ALPHA);
-                dialogueText.text = displayedText;
+            string extractedSentence = ExtractText(sentence);
+            
+            for (int i = 0; i < sentence.Length; i++) {
+                if(i < extractedSentence.Length)
+                    PlayDialogueSound(i, sentence[i]);
+                dialogueText.maxVisibleCharacters = i;
                 yield return new WaitForSeconds(1/typingSpeed);
             }
             audioSource.Stop();
             isTyping = false;
+        }
+
+        private string ExtractText(string originalSentence) {
+            return Regex.Replace(originalSentence, "<.*?>", String.Empty);
         }
 
         private void ShowAllText() {

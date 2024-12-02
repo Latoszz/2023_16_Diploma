@@ -33208,8 +33208,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Click here
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 19ef378f4cf35b64981a4655ed2d7d87, type: 2}
-  m_sharedMaterial: {fileID: 3700108273748071392, guid: 19ef378f4cf35b64981a4655ed2d7d87, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -65233,7 +65233,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -65374,7 +65374,6 @@ MonoBehaviour:
   defaultAudioConfig: {fileID: 11400000, guid: 09d9c3a66ff1a2749ab6a03097f34d97, type: 2}
   makePredictable: 1
   tutorialTexts:
-  - {fileID: 11400000, guid: a4661f344ebad1642b4ecc9565a38180, type: 2}
   - {fileID: 11400000, guid: 5d443eb77b7e24c4186ed3e578b4bed8, type: 2}
 --- !u!1 &1115368078
 GameObject:
@@ -78072,7 +78071,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -129681,7 +129680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.446106, y: -5.9413986}
+  m_AnchoredPosition: {x: 2.446167, y: -5.9414062}
   m_SizeDelta: {x: -22.8118, y: -40.7706}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2006297904

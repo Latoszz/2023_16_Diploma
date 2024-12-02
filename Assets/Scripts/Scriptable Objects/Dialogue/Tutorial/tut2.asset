@@ -15,4 +15,4 @@ MonoBehaviour:
   icon: {fileID: 0}
   nameText: Tutorial
   sentences:
-  - You can also clik and hold <color=purple>left mouse button</color> to move
+  - You can also click and hold <color=purple>left mouse button</color> to move

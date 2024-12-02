@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Audio;
 using CameraScripts;
 using Events;
@@ -9,6 +11,7 @@ using UI.HUD;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace UI.Dialogue {
     public class DialogueController : MonoBehaviour, IPointerClickHandler {
@@ -30,8 +33,6 @@ namespace UI.Dialogue {
         [SerializeField] private bool makePredictable;
         private DialogueAudioConfig currentAudioConfig;
         private AudioSource audioSource;
-
-        private const string HTML_ALPHA = "<color=#00000000>";
 
         private Queue<string> sentences = new Queue<string>();
         private string sentence;
@@ -139,25 +140,20 @@ namespace UI.Dialogue {
     
         private IEnumerator TypeSentence() {
             isTyping = true;
-            dialogueText.text = "";
-            string originalText = sentence;
-            string displayedText = "";
-            int alphaIndex = 0;
-        
-            foreach (char letter in sentence) {
-                if (dialogueText.text != "") {
-                    PlayDialogueSound(alphaIndex, originalText[alphaIndex]);
-                }
-
-                alphaIndex++;
-                dialogueText.text = originalText;
-                displayedText = dialogueText.text.Insert(alphaIndex, HTML_ALPHA);
-                dialogueText.text = displayedText;
+            string extractedSentence = ExtractText(sentence);
+            
+            for (int i = 0; i < sentence.Length; i++) {
+                if(i < extractedSentence.Length)
+                    PlayDialogueSound(i, sentence[i]);
+                dialogueText.maxVisibleCharacters = i;
                 yield return new WaitForSeconds(1/typingSpeed);
             }
             audioSource.Stop();
-            nextIcon.SetActive(true);
             isTyping = false;
+        }
+        
+        private string ExtractText(string originalSentence) {
+            return Regex.Replace(originalSentence, "<.*?>", String.Empty);
         }
 
         private void ShowAllText() {
