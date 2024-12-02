@@ -26,7 +26,15 @@ namespace InputScripts {
         [SerializeField] private Animator animator;
         private static readonly int IsMoving = Animator.StringToHash("isMoving");
 
+        public static MouseInputManager Instance;
+
         private void Awake() {
+            if (Instance != null && Instance != this) {
+                Destroy(gameObject);
+            } else {
+                Instance = this;
+            }
+            
             mainCamera = Camera.main;
             if (player == null)
                 player = GameObject.FindGameObjectWithTag("Player");
@@ -169,6 +177,14 @@ namespace InputScripts {
     
         public void DisableMouseControls() {
             mouseClickEnabled = false;
+        }
+
+        public void ForceSetTargetPoint(Vector3 targetPoint) {
+            navMeshAgent.isStopped = false;
+            Instantiate(clickEffect, targetPoint + new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
+            Walk(targetPoint);
+            StopAllCoroutines();
+            StartCoroutine(Wait());
         }
     }
 }
