@@ -153,7 +153,9 @@ namespace InputScripts {
                 var hitPoint = hit.point;
                 if (Vector3.Distance(navMeshAgent.transform.position, hitPoint) > stopDistance) {
                     navMeshAgent.isStopped = false;
-                    navMeshAgent.SetDestination(hitPoint);
+                    Walk(hitPoint);
+                    StopAllCoroutines();
+                    StartCoroutine(Wait());
                 }
             }
         }
