@@ -22770,8 +22770,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40accdd7615c447bac9f743828cfbfae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsToDisappearInt: 7
-  fadeTime: 1
+  secondsToDisappearInt: 5
+  fadeTime: 1.5
   openSound: {fileID: 8300000, guid: 180aa8f8f65b77745a2409e96d474f11, type: 3}
   closeSound: {fileID: 8300000, guid: 64489d92d9e950e498fee1563b0ccc97, type: 3}
   infoPopupPanel: {fileID: 347046030}
@@ -140933,7 +140933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5213656274881269062, guid: d8ecb0afcbfbc0948ae0cdbe91fc3ed8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
