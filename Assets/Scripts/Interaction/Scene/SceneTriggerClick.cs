@@ -14,7 +14,7 @@ namespace Interaction.Scene {
         [SerializeField] private GameObject objectToCollect;
 
         private GameObject player;
-        private bool badEnding = true;
+        private bool goodEnding = false;
 
         private void OnEnable() {
             GameEventsManager.Instance.ItemEvents.OnItemWithIdCollected += ChangeEnding;
@@ -31,7 +31,7 @@ namespace Interaction.Scene {
         private void ChangeEnding(string itemName) {
             if (objectToCollect is null) return;
             if (itemName.Equals(objectToCollect.name)) {
-                badEnding = false;
+                goodEnding = true;
             }
         }
     

@@ -7,6 +7,8 @@ namespace Events {
 
         public event Action<string> OnItemWithIdGiven;
         
+        public event Action<string> OnItemReward;
+        
         
         public void ItemCollected() {
             OnItemCollected?.Invoke();
@@ -18,6 +20,10 @@ namespace Events {
 
         public void ItemWithIdGiven(string itemId) {
             OnItemWithIdGiven?.Invoke(itemId);
+        }
+        
+        public void ItemReward(string itemName) {
+            OnItemReward?.Invoke(itemName);
         }
     }
 }

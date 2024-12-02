@@ -1,16 +1,13 @@
 using System.Collections;
 using DG.Tweening;
-using Events;
-using QuestSystem;
 using TMPro;
-using UI.Dialogue;
 using UnityEngine;
 
 namespace UI.Infos {
     public class InfoPopup : MonoBehaviour {
         [Header("Time")] 
-        [SerializeField] private int secondsToDisappearInt = 5;
-        [SerializeField] private float fadeTime = 1f;
+        [SerializeField] protected int secondsToDisappearInt = 5;
+        [SerializeField] protected float fadeTime = 1f;
 
         [Header("Audio")] 
         [SerializeField] private AudioClip openSound;
@@ -18,52 +15,30 @@ namespace UI.Infos {
     
         [Header("Setup")]
         [SerializeField] private RectTransform infoPopupPanel;
-        [SerializeField] private TMP_Text infoTitle;
-        [SerializeField] private TMP_Text infoDescription;
-        [SerializeField] private QuestManager questManager;
+        [SerializeField] protected TMP_Text infoTitle;
+        [SerializeField] protected TMP_Text infoDescription;
 
         private AudioSource audioSource;
-    
-        private void OnEnable() {
-            GameEventsManager.Instance.QuestEvents.OnStartQuest += ShowInfo;
-        }
-    
-        private void OnDisable() {
-            GameEventsManager.Instance.QuestEvents.OnStartQuest -= ShowInfo;
-        }
 
         private void Awake() {
             audioSource = GetComponent<AudioSource>();
         }
-
-        private void ShowInfo(string questId) {
-            StartCoroutine(ShowInfoCoroutine(questId));
-        }
-
-        private IEnumerator ShowInfoCoroutine(string questId) {
-            yield return new WaitUntil((() => DialogueController.Instance.DialogueClosed));
-            QuestInfoSO questInfo = questManager.GetQuestById(questId).info;
-            infoTitle.text = questInfo.displayName;
-            infoDescription.text = questInfo.questDescription;
-            PanelFadeIn();
-            StartCoroutine(DisappearAfterSecondsInt(secondsToDisappearInt));
-        }
     
-        private void PanelFadeIn() {
-            infoPopupPanel.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+        protected void PanelFadeIn(float x, float y) {
+            infoPopupPanel.DOAnchorPos(new Vector2(x, y), fadeTime, false).SetEase(Ease.InOutQuint);
             audioSource.clip = openSound;
             audioSource.Play();
         }
 
-        private void PanelFadeOut() {
+        private void PanelFadeOut(float x, float y) {
             audioSource.clip = closeSound;
             audioSource.Play();
-            infoPopupPanel.DOAnchorPos(new Vector2(600f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+            infoPopupPanel.DOAnchorPos(new Vector2(x, y), fadeTime, false).SetEase(Ease.InOutQuint);
         }
 
-        private IEnumerator DisappearAfterSecondsInt(int seconds) {
+        protected IEnumerator DisappearAfterSecondsInt(int seconds, float x, float y) {
             yield return new WaitForSeconds(seconds);
-            PanelFadeOut();
+            PanelFadeOut(x, y);
         }
     }
 }

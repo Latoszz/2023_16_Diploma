@@ -115,6 +115,7 @@ namespace QuestSystem {
             Item[] rewards = quest.info.questRewards;
             foreach (Item reward in rewards) {
                 InventoryController.Instance.AddItem(reward);
+                GameEventsManager.Instance.ItemEvents.ItemReward(reward.GetName());
             }
         }
 
