@@ -3,18 +3,19 @@ using UnityEditor;
 using NaughtyAttributes;
 using System.Collections.Generic;
 using CardBattles.CardScripts.CardDatas;
+using UnityEngine.Serialization;
 
 [ExecuteInEditMode]
 public class CardSetLoaderEditor : MonoBehaviour
 {
-    [SerializeField, ResizableTextArea] private string folderPath = ""; 
+    [SerializeField, ResizableTextArea,ReadOnly] private string newCardSetPath = "Assets/Scripts/CardBattles/Scriptable objects/CardSets/new"; 
     [SerializeField, ResizableTextArea,ReadOnly]  private  string defaultPath = "Assets/Scripts/CardBattles/Scriptable objects/CardSets"; 
     [SerializeField, ReadOnly] public List<CardSetData> cardSetDatas = new List<CardSetData>();
 
     [Button]
     private void LoadFromGivenPath()
     {
-        LoadCardSets(folderPath);
+        LoadCardSets(newCardSetPath);
     }
 
     [Button]
@@ -35,7 +36,7 @@ public class CardSetLoaderEditor : MonoBehaviour
             return;
         }
 
-        // Get all asset GUIDs in the folderPath and its subfolders
+        // Get all asset GUIDs in the newCardSetPath and its subfolders
         string[] guids = AssetDatabase.FindAssets("t:CardSetData", new[] { path });
 
         foreach (string guid in guids)

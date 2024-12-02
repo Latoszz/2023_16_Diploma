@@ -51,9 +51,23 @@ namespace CardBattles.Managers {
             return newParticleParent;
         }
 
+        
+        public IEnumerator ExecuteVisualEffect(EffectName effect, Component target) {
+            if (visual.TryGetValue(effect, out EffectAnimationDelegate effectAnimation)) {
+                yield return StartCoroutine(effectAnimation(target)); 
+            } else {
+                yield return StartCoroutine(DefaultVisualEffect(effect.ToString()));
+            }
+        }
+
+        private IEnumerator DefaultVisualEffect(string effectNameString = "no effect") {
+            Debug.Log($"Default visual effect for {effectNameString}");
+            yield return null;
+        }
+        
         [SerializeField] private ParticleParent healVFX;
         [SerializeField] private float healAnimationDuration = 1f;
-
+        
         // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator HealVisual(Component target) {
             ParticleFactory(healVFX, target.transform.position, healAnimationDuration);

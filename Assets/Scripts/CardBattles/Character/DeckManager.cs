@@ -7,6 +7,7 @@ using CardBattles.CardScripts;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Interfaces.InterfaceObjects;
 using CardBattles.Managers;
+using CardBattles.Managers.GameSettings;
 using NaughtyAttributes;
 using TMPro;
 using UI.Inventory;
@@ -64,6 +65,8 @@ namespace CardBattles.Character {
         }
         
         private void CreateCardSetsFromData() {
+            cardSets = new CardSetDictionary();
+
             int i = 0;
             foreach (var cardSetData in cardSetDatas) {
                 i++;
@@ -119,6 +122,8 @@ namespace CardBattles.Character {
         
         public void NoMoreCards() {
             //TODO ADD SOME ANIMATION
+            if(GameStats.Config.resetDeckWhenEmpty)
+                InitializeDeck();
             Debug.Log("No more cards honey");
         }
 

@@ -14,8 +14,12 @@ namespace CardBattles.Managers.GameSettings {
         public bool overrideHeroMaxHp = false;
         public int overrideHeroMaxHpValue = 15;
 
-        
-    
-    
+        [Header("Deck")]
+        public bool resetDeckWhenEmpty = false;
+
+        [SerializeField] [ResizableTextArea, ReadOnly]
+        private string textureGuideLines = "Card textures should be 32 x 32\nicons should be 8 x8";
+
+
     }
 }

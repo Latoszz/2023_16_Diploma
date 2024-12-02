@@ -7,5 +7,7 @@ namespace CardBattles.Enums {
         DrawACard,
         DealOrHeal,
         Reshuffle,
+        HealAndBuff,
+        BuffAttackAndHp
     }
 }

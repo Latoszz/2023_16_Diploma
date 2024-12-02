@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ea499648da40e584689e84fd6b694e, type: 3}
   m_Name: GameBalanceConfig
   m_EditorClassIdentifier: 
-  cardsExtraSleep: 0
-  overrideHeroMaxHp: 0
-  heroMaxHpOverride: 100
-  overrideEnemyMaxHp: 0
-  enemyMaxHpOverride: 50
+  cardsExtraSleep: 1
+  overrideHeroMaxHp: 1
+  overrideHeroMaxHpValue: 15
+  resetDeckWhenEmpty: 1

@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-347275093847828111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Gnome
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Gnome
+  sprite: {fileID: 21300000, guid: 1253127864275624ca8e25d9739a99fc, type: 3}
+  description: All your future gnomes have +1/+1
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 0
+  maxHealth: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
+  m_Name: Gnomes
+  m_EditorClassIdentifier: 
+  displayName: Gnomes
+  cards:
+  - {fileID: 5249637621036081358}
+  - {fileID: -347275093847828111}
+  - {fileID: 9115377537791207913}
+  - {fileID: 730963594703328656}
+  - {fileID: 4476286123173374945}
+  setColor: {r: 1, g: 1, b: 1, a: 1}
+  cardSetIcon: {fileID: 0}
+--- !u!114 &730963594703328656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Gnome
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Gnome
+  sprite: {fileID: 21300000, guid: 1253127864275624ca8e25d9739a99fc, type: 3}
+  description: All your future gnomes have +1/+1
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 0
+  maxHealth: 1
+--- !u!114 &4476286123173374945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Gnome
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Gnome
+  sprite: {fileID: 21300000, guid: 1253127864275624ca8e25d9739a99fc, type: 3}
+  description: All your future gnomes have +1/+1
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 0
+      targetType: 12
+      value: 1
+  attack: 0
+  maxHealth: 1
+--- !u!114 &5249637621036081358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Gnome
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Gnome
+  sprite: {fileID: 21300000, guid: 1253127864275624ca8e25d9739a99fc, type: 3}
+  description: All your future gnomes have +1/+1
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 0
+  maxHealth: 1
+--- !u!114 &9115377537791207913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Gnome
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Gnome
+  sprite: {fileID: 21300000, guid: 1253127864275624ca8e25d9739a99fc, type: 3}
+  description: All your future gnomes have +1/+1
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 0
+  maxHealth: 1
