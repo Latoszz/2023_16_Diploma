@@ -21,8 +21,11 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 8
+      targetType: 12
+      value: 1
   attack: 1
   maxHealth: 2
 --- !u!114 &-5301120358090834856
@@ -46,8 +49,11 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 8
+      targetType: 12
+      value: 1
   attack: 1
   maxHealth: 2
 --- !u!114 &-5156866404584886619
@@ -71,8 +77,11 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 8
+      targetType: 12
+      value: 1
   attack: 1
   maxHealth: 2
 --- !u!114 &-4794889932741355117
@@ -96,8 +105,11 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 8
+      targetType: 12
+      value: 1
   attack: 1
   maxHealth: 2
 --- !u!114 &-3668480926523985950
@@ -121,8 +133,11 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 8
+      targetType: 12
+      value: 1
   attack: 1
   maxHealth: 2
 --- !u!114 &11400000
@@ -169,8 +184,11 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 8
+      targetType: 12
+      value: 1
   attack: 1
   maxHealth: 2
 --- !u!114 &5732363471585406768
@@ -194,7 +212,10 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 8
+      targetType: 12
+      value: 1
   attack: 1
   maxHealth: 2

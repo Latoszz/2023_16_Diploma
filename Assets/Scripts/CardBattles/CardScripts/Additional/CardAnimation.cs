@@ -271,6 +271,9 @@ namespace CardBattles.CardScripts.Additional {
                     StartCoroutine(SpellShowcase(card.gameObject));
                     yield return StartCoroutine(FadeOut(card.gameObject));
                     break;
+                case Minion:
+                    StartCoroutine(card.DoEffect(EffectTrigger.OnPlay));
+                    break;
             }
 
             yield return null;
