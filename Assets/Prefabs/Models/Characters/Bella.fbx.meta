@@ -12,8 +12,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Furr
+    second: {fileID: 2100000, guid: 8bcc6042c9a859f4db5a4c815c7762d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoes
+    second: {fileID: 2100000, guid: c24bbf3d4d10a8446bfdfb56dfa3556b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Skin
-    second: {fileID: 2100000, guid: dce8d84466ebf7c40adc328065fc2584, type: 2}
+    second: {fileID: 2100000, guid: 8bcc6042c9a859f4db5a4c815c7762d1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -42,7 +52,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
