@@ -7,7 +7,8 @@ namespace State_machine.MovingSM.States {
         private MovingSM movingSM;
         private NavMeshAgent navMeshAgent;
         private NavMeshAgent playerNavMeshAgent;
-    
+        private static readonly int IsMoving = Animator.StringToHash("isMoving");
+
         public DialogueState(MovingSM stateMachine) : base("Dialogue", stateMachine) {
             movingSM = stateMachine;
         }
@@ -19,7 +20,9 @@ namespace State_machine.MovingSM.States {
             navMeshAgent.updateRotation = false;
 
             playerNavMeshAgent = movingSM.GetPlayerNavMeshAgent();
-            playerNavMeshAgent.ResetPath();  
+            playerNavMeshAgent.ResetPath();
+            if(movingSM.GetAnimator() is not null) // TODO delete this when all NPCs and enemies have animators
+                movingSM.GetAnimator().SetBool(IsMoving, false);
         }
 
         public override void UpdateLogic() {

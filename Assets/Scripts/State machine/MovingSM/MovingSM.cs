@@ -20,6 +20,7 @@ namespace State_machine.MovingSM {
     
         [SerializeField] private float waitTimeSeconds;
         [SerializeField] private List<Transform> waypoints;
+        [SerializeField] private Animator animator;
         
         [Header("Enemy")]
         [SerializeField] private bool isEnemy;
@@ -63,6 +64,10 @@ namespace State_machine.MovingSM {
 
         public NavMeshAgent GetNavMeshAgent() {
             return navMeshAgent;
+        }
+
+        public Animator GetAnimator() {
+            return animator ? animator : null;
         }
         
         public NavMeshAgent GetPlayerNavMeshAgent() {
