@@ -142,7 +142,7 @@ namespace UI.Dialogue {
             isTyping = true;
             string extractedSentence = ExtractText(sentence);
             
-            for (int i = 0; i < sentence.Length; i++) {
+            for (int i = 0; i <= sentence.Length; i++) {
                 if(i < extractedSentence.Length)
                     PlayDialogueSound(i, sentence[i]);
                 dialogueText.maxVisibleCharacters = i;
@@ -150,6 +150,7 @@ namespace UI.Dialogue {
             }
             audioSource.Stop();
             isTyping = false;
+            nextIcon.SetActive(true);
         }
         
         private string ExtractText(string originalSentence) {
@@ -158,7 +159,7 @@ namespace UI.Dialogue {
 
         private void ShowAllText() {
             StopAllCoroutines();
-            dialogueText.text = sentence;
+            dialogueText.maxVisibleCharacters = sentence.Length;
             audioSource.Stop();
             nextIcon.SetActive(true);
             isTyping = false;
