@@ -12,6 +12,7 @@ namespace Events {
         public EnemyEvents EnemyEvents;
         public NPCEvents NPCEvents;
         public DialogueEvents DialogueEvents;
+        public TutorialEvents TutorialEvents;
 
         private void Awake() {
             if (Instance != null && Instance != this) {
@@ -27,6 +28,7 @@ namespace Events {
             EnemyEvents = new EnemyEvents();
             NPCEvents = new NPCEvents();
             DialogueEvents = new DialogueEvents();
+            TutorialEvents = new TutorialEvents();
         }
     }
 }

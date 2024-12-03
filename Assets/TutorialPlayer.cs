@@ -1,5 +1,6 @@
 using System.Collections;
 using InputScripts;
+using Tutorial;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -15,10 +16,8 @@ public class TutorialPlayer : MonoBehaviour, IPointerClickHandler {
     private void Start() {
         InputManager.Instance.DisableInput();
     }
-
-
+    
     public void OnPointerClick(PointerEventData eventData) {
-        Debug.Log($"Click");
         animator.SetTrigger(StandUp);
         StartCoroutine(WaitForAnimationToFinish());
     }
@@ -27,5 +26,6 @@ public class TutorialPlayer : MonoBehaviour, IPointerClickHandler {
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0));
         animator.SetTrigger(StandUp);
         InputManager.Instance.EnableInput();
+        TutorialDialogue.Instance.DisplayNextSentence();
     }
 }

@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Audio;
-using InputScripts;
+using Events;
 using TMPro;
 using UI.Dialogue;
 using UI.HUD;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Tutorial {
@@ -16,6 +17,7 @@ namespace Tutorial {
         [Header("References")] 
         [SerializeField] private GameObject dialoguePanel;
         [SerializeField] private TMP_Text dialogueText;
+        private Image image;
     
         [SerializeField] private float typingSpeed;
 
@@ -30,6 +32,7 @@ namespace Tutorial {
         private Queue<string> sentences = new Queue<string>();
         private string sentence;
         private DialogueText dialogue;
+        private int currentTextIndex;
     
         private bool wasSkipped;
         private bool isTyping;
@@ -48,13 +51,22 @@ namespace Tutorial {
             }
 
             audioSource = this.gameObject.GetComponent<AudioSource>();
+            image = this.gameObject.GetComponent<Image>();
         }
 
         private void Start() {
+            currentTextIndex = -1;
             DisplaySentence(tutorialTexts[0]);
         }
+
+        public void DisplayNextSentence() {
+            if (currentTextIndex == 1) {
+                GameEventsManager.Instance.TutorialEvents.ActivateClickPoint();
+            }
+            DisplaySentence(tutorialTexts[currentTextIndex]);
+        }
     
-        public void DisplaySentence(DialogueText dialogue) {
+        private void DisplaySentence(DialogueText dialogue) {
             this.dialogue = dialogue;
             dialogueClosed = false;
         
@@ -71,6 +83,7 @@ namespace Tutorial {
             if (!isTyping) {
                 sentence = sentences.Dequeue();
                 dialogueText.text = sentence;
+                currentTextIndex++;
                 ShowDialogue();
             }
             else {
@@ -98,14 +111,14 @@ namespace Tutorial {
         }
     
         private void ShowDialogue() {
+            image.enabled = true;
             isTyping = false;
-            InputManager.Instance.DisableInput();
             StopAllCoroutines();
             StartCoroutine(TypeSentence());
         }
     
         public void HideDialogue() {
-            InputManager.Instance.EnableInput();
+            image.enabled = false;
             dialogueClosed = true;
             dialoguePanel.SetActive(false);
         }
@@ -120,7 +133,7 @@ namespace Tutorial {
             isTyping = true;
             string extractedSentence = ExtractText(sentence);
             
-            for (int i = 0; i < sentence.Length; i++) {
+            for (int i = 0; i <= sentence.Length; i++) {
                 if(i < extractedSentence.Length)
                     PlayDialogueSound(i, sentence[i]);
                 dialogueText.maxVisibleCharacters = i;
@@ -136,7 +149,7 @@ namespace Tutorial {
 
         private void ShowAllText() {
             StopAllCoroutines();
-            dialogueText.text = sentence;
+            dialogueText.maxVisibleCharacters = sentence.Length;
             audioSource.Stop();
             isTyping = false;
         }

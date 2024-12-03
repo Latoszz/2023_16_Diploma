@@ -15,4 +15,5 @@ MonoBehaviour:
   icon: {fileID: 0}
   nameText: Tutorial
   sentences:
-  - Click on the ground to move
+  - What is this place?
+  - Maybe try to stand up
