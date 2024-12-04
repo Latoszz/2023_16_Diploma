@@ -41,7 +41,7 @@ namespace UI.Dialogue {
         private bool wasSkipped;
         private bool isTyping;
         private bool conversationEnded;
-        private bool dialogueClosed;
+        private bool dialogueClosed = true;
         public bool DialogueClosed => dialogueClosed;
 
         private string speakerID;
