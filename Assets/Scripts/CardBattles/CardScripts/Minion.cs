@@ -18,6 +18,8 @@ namespace CardBattles.CardScripts {
         [SerializeField] private float dyingDuration = 0.5f;
         [SerializeField] public UnityEvent<int, int, int> dataChanged;
 
+        public int baseAttack;
+        public int baseMaxHealth;
         [Space(20), Header("Minion")] [HorizontalLine(1f)] [BoxGroup("Data")] [SerializeField]
         private int attack;
 
@@ -66,7 +68,9 @@ namespace CardBattles.CardScripts {
             }
             else {
                 Attack = minionData.attack;
+                baseAttack = minionData.attack;
                 MaxHealth = minionData.maxHealth;
+                baseMaxHealth = minionData.maxHealth;
                 CurrentHealth = MaxHealth;
                 cardDisplay.SetCardDisplayData(minionData);
                 if(GameStats.Config.cardsExtraSleep)
@@ -152,7 +156,10 @@ namespace CardBattles.CardScripts {
                 stopsSleeping?.Invoke();
                 return;
             }
-
+            
+            if(Attack <=0 )
+                return;
+            
             if(Properties.Contains(AdditionalProperty.Lazy))
                 if (Random.value < 0.5f) {
                     transform.DOShakePosition(0.5f,20f,20);

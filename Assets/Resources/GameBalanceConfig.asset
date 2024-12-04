@@ -19,5 +19,5 @@ MonoBehaviour:
   textureGuideLines: 'Card textures should be 32 x 32
 
     icons should be 8 x8'
-  isTutorial: 0
+  isTutorial: 1
   tutorialData: {fileID: 11400000, guid: 86880d6d6735cee42852dfb59aad0be2, type: 2}

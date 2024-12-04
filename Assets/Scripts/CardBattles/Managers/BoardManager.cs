@@ -60,8 +60,8 @@ namespace CardBattles.Managers {
             for (int i = 0; i < 4; i++) {
                 if (attackers[i] is null)
                     continue;
-                if (attackers[i].GetAttack() <= 0)
-                    continue;
+                
+
                 if (attackers[i] is Minion minion) {
                     StartCoroutine(minion.ChangeSortingOrderTemporarily(10 + i));
                 }

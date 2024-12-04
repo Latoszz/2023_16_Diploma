@@ -140,7 +140,7 @@ namespace CardBattles.Character {
                     break;
                 case EnemyAiAction.PlaySpell:
                     yield return PlayASpell();
-                    yield return new WaitForSeconds(0.3f);
+                    yield return new WaitForSeconds(0.6f);
                     break;
                 case EnemyAiAction.Pass:
                     yield break;
@@ -162,8 +162,14 @@ namespace CardBattles.Character {
         
         private EnemyAiAction ChooseActionToDo() {
             if (GameStats.isTutorial && predefinedActions.Any()) {
+                var x = predefinedActions.Peek();
+                if (x == EnemyAiAction.PlayMinion && !MinionArePlayable())
+                    return EnemyAiAction.Pass;
+                if (x == EnemyAiAction.PlaySpell && !SpellsArePlayable())
+                    return EnemyAiAction.Pass;
                 return predefinedActions.Dequeue();
             }
+            
             if(!ModifyProbabilities())
                 return EnemyAiAction.Pass;
 
@@ -256,7 +262,7 @@ namespace CardBattles.Character {
 
 
         //Minion
-        private bool MinionArePlayable() {
+        private bool  MinionArePlayable() {
             if (NoMinionsInHand() || NoEmptyCardSpots()) {
                 weights[EnemyAiAction.PlayMinion] = 0f;
                 return false;
