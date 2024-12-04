@@ -1,0 +1,236 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7331723127863261305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Sturdy Target
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Sturdy Target
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 3
+--- !u!114 &-5326891396822451052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Arm up!
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Arm up!
+  sprite: {fileID: 0}
+  description: Give +5 attack to your minions
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 0
+      targetType: 2
+      value: 5
+--- !u!114 &-4585813879988314058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Target Dummy
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Target Dummy
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 1
+--- !u!114 &-2614851523903088013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Target Dummy
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Target Dummy
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
+  m_Name: Tutorial
+  m_EditorClassIdentifier: 
+  displayName: No Display Name
+  cards:
+  - {fileID: -4585813879988314058}
+  - {fileID: 4451056737236455260}
+  - {fileID: -2614851523903088013}
+  - {fileID: 5077586851206390947}
+  - {fileID: -7331723127863261305}
+  - {fileID: 5529766790507955653}
+  - {fileID: -5326891396822451052}
+  - {fileID: 7391853636338645901}
+  - {fileID: 6200239760422296008}
+  setColor: {r: 1, g: 1, b: 1, a: 1}
+  cardSetIcon: {fileID: 0}
+--- !u!114 &4451056737236455260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Target Dummy
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Target Dummy
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 1
+--- !u!114 &5077586851206390947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Sturdy Target
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Sturdy Target
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 3
+--- !u!114 &5529766790507955653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Sturdy Target
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Sturdy Target
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 3
+--- !u!114 &6200239760422296008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: StrawMan
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: StrawMan
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 0
+  maxHealth: 10
+--- !u!114 &7391853636338645901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Summon strawmen
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Summon strawmen
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 9
+      targetType: 15
+      value: 0

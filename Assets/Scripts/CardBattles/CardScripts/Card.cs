@@ -117,6 +117,9 @@ namespace CardBattles.CardScripts {
 
         public virtual IEnumerator Play() {
             yield return StartCoroutine(cardAnimation.Play(this)); //it has the trigger inside
+            if (isPlacedAt != null)
+                transform.position = isPlacedAt.transform.position;
+
         }
 
 

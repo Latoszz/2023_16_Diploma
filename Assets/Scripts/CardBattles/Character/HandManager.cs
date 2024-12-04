@@ -35,19 +35,19 @@ namespace CardBattles.Character {
         [SerializeField] [Range(100, 1000)] public float distanceMulti = 300f;
 
 
-        public void DestroyCard(Card card) {
-            
-        }
-        public void RemoveCard(Card card) {
-            if(!CardInHandCheck(card))
+
+     
+        
+        public void RemoveCard(Card card, bool shouldBeHere=true) {
+            if(!CardInHandCheck(card,shouldBeHere))
                 return;
             Cards.Remove(card);
             UpdateCardPositions();
         }
 
-        private bool CardInHandCheck(Card card) {
+        private bool CardInHandCheck(Card card, bool shouldBeHere=true) {
             var notInHand = !Cards.Contains(card);
-            if(notInHand)
+            if(notInHand && shouldBeHere)
                 Debug.LogError("Tried to remove or access a card that isnt contained in Cards");
             return !notInHand;
         }

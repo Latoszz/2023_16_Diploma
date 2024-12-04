@@ -8,6 +8,7 @@ namespace CardBattles.Enums {
         DealOrHeal,
         Reshuffle,
         HealAndBuff,
-        BuffAttackAndHp
+        BuffAttackAndHp,
+        SummonStrawmen
     }
 }

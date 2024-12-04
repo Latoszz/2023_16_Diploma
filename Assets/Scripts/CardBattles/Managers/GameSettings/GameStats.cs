@@ -27,6 +27,25 @@ namespace CardBattles.Managers.GameSettings {
 #endif
             }
         }
+        // ReSharper disable InconsistentNaming
+        private static bool _isTutorial = false;
+        public static bool isTutorial {
+            // ReSharper restore InconsistentNaming
+    
+            get {
+                #if UNITY_EDITOR
+                return Config.isTutorial;
+                #else
+                return _isTutorial;
+                #endif
+            }
+            set {
+                _isTutorial = value;
+            }
+        }
+    
+        public static TutorialData CurrentTutorialData => Config.isTutorial ? Config.tutorialData : null;
+
     }
 
     // Wrapper class to return default values in builds
@@ -37,6 +56,8 @@ namespace CardBattles.Managers.GameSettings {
         public  bool cardsExtraSleep => false;
         public  bool overrideHeroMaxHp => false;
         public  int overrideHeroMaxHpValue => 0;
+        public bool isTutorial => false;
+        public TutorialData tutorialData => null;
 #pragma warning restore CS0108, CS0114
 
     }

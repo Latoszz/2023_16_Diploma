@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using CardBattles.CardScripts.CardDatas;
+using CardBattles.Managers.GameSettings;
 using EnemyScripts;
 using NaughtyAttributes;
 using UI.Inventory;
@@ -62,7 +63,8 @@ namespace CardBattles.CardGamesManager {
             yield return StartCoroutine(
                 SceneLoader.Instance.LoadSceneAsync(
                     SceneName.CardBattle));
-            
+
+            GameStats.isTutorial = battleData.isTutorial;
             loadEnemyCards?.Invoke(battleData.GetCardSets);
             loadPlayerCards?.Invoke(playerCardSetDatas);
         }

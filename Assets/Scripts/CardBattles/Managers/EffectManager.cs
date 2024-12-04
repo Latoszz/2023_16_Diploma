@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CardBattles.CardScripts;
+using CardBattles.CardScripts.CardDatas;
 using CardBattles.Character;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
@@ -21,7 +23,8 @@ namespace CardBattles.Managers {
                     { EffectName.DrawACard, DrawACard },
                     { EffectName.DealOrHeal, DealOrHeal },
                     { EffectName.HealAndBuff, HealAndBuff },
-                    { EffectName.BuffAttackAndHp, BuffAttackAndHp }
+                    { EffectName.BuffAttackAndHp, BuffAttackAndHp },
+                    { EffectName.SummonStrawmen, SummonStrawmen}
                 };
 
 
@@ -122,6 +125,26 @@ namespace CardBattles.Managers {
                     ((IAttacker)component).ChangeAttackBy(value);
                     yield return DoVisuals(EffectName.BuffAttackAndHp, component);
                 }
+            }
+        }
+
+
+        //EXPECTS CARDSPOTS AS TARGETS
+        //Value does nothing
+        private static IEnumerator SummonStrawmen(List<GameObject> targets, int value) {
+            var card = CardManager.Instance.LoadCardData("Tutorial", "StrawMan");
+            yield return SummonUnits(targets, value, card);
+        }
+
+        private static IEnumerator SummonUnits(List<GameObject> targets, int value, CardData unit) {
+            if (unit == null)
+                yield return null;
+            foreach (var target in targets) {
+                if (!target.TryGetComponent(typeof(CardSpot), out var component))
+                    continue;
+
+                var card = CardManager.Instance.CreateCard(unit, (CardSpot)component);
+                CharacterManager.SummonACard(card, (CardSpot)component);
             }
         }
     }

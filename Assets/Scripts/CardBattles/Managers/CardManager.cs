@@ -27,5 +27,27 @@ namespace CardBattles.Managers {
         public Card CreateCard(CardData cardData, PlayerEnemyMonoBehaviour parentComponent) {
             return CardFactory.CreateCard(cardData, parentComponent, minionPrefab, spellPrefab);
         }
+        public CardData LoadCardData(string cardSetName, string cardDataName)
+        {
+            var cardSet = Resources.Load<CardSetData>("CardSets/"+cardSetName);
+
+            if (cardSet == null)
+            {
+                Debug.LogError($"CardSet '{cardSetName}' not found in Resources.");
+                return null;
+            }
+
+            foreach (var card in cardSet.cards) 
+            {
+                if (card.name == cardDataName)
+                {
+                    Debug.Log($"Found CardData: {card.name}");
+                    return card;
+                }
+            }
+
+            return null;
+        }
+        
     }
 }

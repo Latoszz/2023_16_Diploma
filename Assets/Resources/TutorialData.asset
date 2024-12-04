@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac0cfcc05f74dec96ac9a7193cff33c, type: 3}
+  m_Name: TutorialData
+  m_EditorClassIdentifier: 
+  playerCards:
+  - {fileID: 600601776932619513, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
+  - {fileID: 6603303908141113648, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
+  - {fileID: 2372559019292260079, guid: f50817ba8aed4054ea1bdf051f2ea93d, type: 2}
+  - {fileID: 4154407072327070877, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
+  - {fileID: 600601776932619513, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
+  enemyCards:
+  - {fileID: -4174980582958703254, guid: 156e66a02aa2a5b4ebee7ac4ace2be87, type: 2}
+  - {fileID: -2581736572099996851, guid: 85dbf340226519847b2db579e9d9a049, type: 2}
+  - {fileID: 628557007898736997, guid: 1083da3e8b781724f87d230d2dfee831, type: 2}
+  - {fileID: 628557007898736997, guid: 1083da3e8b781724f87d230d2dfee831, type: 2}
+  enemyActions: 010000000200000001000000

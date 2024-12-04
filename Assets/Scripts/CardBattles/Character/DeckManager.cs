@@ -46,12 +46,31 @@ namespace CardBattles.Character {
 
         private IEnumerator Start() {
             yield return new WaitUntil(() => cardSetDatas != null);
-            InitializeDeck();
+            InitializeDeck();   
         }
 
         public void InitializeDeck() {
+            if(!GameStats.isTutorial)
+                InitializeDeckDefault();
+            else {
+                InitializeDeckWithPredefinedCards(IsPlayers
+                    ? GameStats.CurrentTutorialData.playerCards
+                    : GameStats.CurrentTutorialData.enemyCards);
+            }
+        }
+
+        private void InitializeDeckDefault() {
             CreateCardSetsFromData();
             CreateCardFromDeck();
+        }
+        
+        
+        public void InitializeDeckWithPredefinedCards(List<CardData> predefinedCards) {
+            cards.Clear();
+            foreach (var cardData in predefinedCards) {
+                var card = CardManager.Instance.CreateCard(cardData, this);
+                cards.Add(card);
+            }
         }
         
         
@@ -109,17 +128,18 @@ namespace CardBattles.Character {
 
         private void CreateCardFromDeck() {
             var cardLists = cardSets.Values.ToList();
+           
             var allCards = new List<Card>();
             foreach (var _ in cardLists) {
                 allCards.AddRange(_);
             }
+           
 
             var shuffledList = allCards.OrderBy(_ => Guid.NewGuid()).ToList(); //randomly shuffles
 
             cards.AddRange(shuffledList);
         }
 
-        
         public void NoMoreCards() {
             //TODO ADD SOME ANIMATION
             if(GameStats.Config.resetDeckWhenEmpty)

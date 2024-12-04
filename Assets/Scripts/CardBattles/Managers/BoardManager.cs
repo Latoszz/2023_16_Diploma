@@ -5,6 +5,7 @@ using CardBattles.CardScripts.temp;
 using CardBattles.Character;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
+using CardBattles.Interfaces.InterfaceObjects;
 using UnityEngine;
 
 namespace CardBattles.Managers {
@@ -126,13 +127,26 @@ namespace CardBattles.Managers {
                     break;
                 case TargetType.None:
                     break;
+                case TargetType.YourCardSpots:
+                    foreach (var cardSpot in Playing(isPlayers).GetEmptyCardSpots()) {
+                        targets.Add(cardSpot.gameObject);
+                    }
+
+                    break;
+                case TargetType.EnemyCardSpots:
+                    foreach (var cardSpot in Waiting(isPlayers).GetEmptyCardSpots()) {
+                        targets.Add(cardSpot.gameObject);
+                    }
+
+                    break;
+                default:
+                    break;
             }
 
             return targets;
         }
 
         private IEnumerable<GameObject> GetOpposingCard(Card card) {
-            
             if (card is not Minion) return new List<GameObject>();
 
 
