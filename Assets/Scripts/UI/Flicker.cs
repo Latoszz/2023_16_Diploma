@@ -17,7 +17,7 @@ namespace UI {
             image.enabled = defaultState;
             StartBlink();
         }
-
+        
         private void StartBlink() {
             if (isBlinking)
                 return;
@@ -30,10 +30,6 @@ namespace UI {
 
         private void ToggleState() {
             image.enabled = !image.enabled;
-        }
-
-        public void DisableOutline() {
-            gameObject.SetActive(false);
         }
     }
 }
