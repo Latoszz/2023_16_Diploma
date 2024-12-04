@@ -64568,6 +64568,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5d443eb77b7e24c4186ed3e578b4bed8, type: 2}
   - {fileID: 11400000, guid: b7fc3d2af80403d489760620f2a91e03, type: 2}
   - {fileID: 11400000, guid: 771239a5fd529be4bae46effd92f7350, type: 2}
+  - {fileID: 11400000, guid: a501651e8e2e0be458ad8ac231de0951, type: 2}
 --- !u!1 &1115368078
 GameObject:
   m_ObjectHideFlags: 0
@@ -64870,7 +64871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1387485020257796976, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1414781170309219880, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -65218,7 +65219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camTransform: {fileID: 0}
-  shakeDuration: 0
+  shakeDuration: 5
   shakeAmount: 0.7
   decreaseFactor: 1
 --- !u!114 &1153836107 stripped
@@ -82963,6 +82964,102 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 704710131487919122, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
   m_PrefabInstance: {fileID: 733145944535868894}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1296467467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1296467468}
+  - component: {fileID: 1296467470}
+  - component: {fileID: 1296467469}
+  - component: {fileID: 1296467471}
+  m_Layer: 8
+  m_Name: ShakeCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1296467468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296467467}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.6, y: 5.8234186, z: -2.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1296467469
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296467467}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1296467470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296467467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2e1ebb76ab4833966a6153cc9e2845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraShake: {fileID: 1133205572}
+  cameraShakeDuration: 5
+--- !u!54 &1296467471
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296467467}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!114 &1300193551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83543,6 +83640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showOutlineScript: {fileID: 1346929607}
+  shakeCamera: {fileID: 1296467467}
   sceneName: Room under the statue
 --- !u!65 &1346929610
 BoxCollider:
@@ -141866,3 +141964,4 @@ SceneRoots:
   - {fileID: 1410691188}
   - {fileID: 796518097}
   - {fileID: 146809315}
+  - {fileID: 1296467468}
