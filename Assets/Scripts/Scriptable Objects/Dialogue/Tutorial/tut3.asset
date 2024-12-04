@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: tut3
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  nameText: 
+  nameText: Tutorial
   sentences:
   - You can also hold <color=purple>left mouse button</color> to move

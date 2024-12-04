@@ -59,7 +59,7 @@ namespace Tutorial {
         }
 
         private void Start() {
-            currentTextIndex = -1;
+            currentTextIndex = 0;
             DisplaySentence(tutorialTexts[0]);
         }
 
@@ -87,7 +87,6 @@ namespace Tutorial {
             if (!isTyping) {
                 sentence = sentences.Dequeue();
                 dialogueText.text = sentence;
-                currentTextIndex++;
                 ShowDialogue();
             }
             else {
@@ -100,6 +99,7 @@ namespace Tutorial {
         }
 
         private void StartConversation(DialogueText dialogue) {
+            currentTextIndex++;
             if (!dialoguePanel.activeSelf) {
                 dialoguePanel.SetActive(true);
             }
