@@ -12,6 +12,10 @@ namespace UI.Inventory.Items {
         }
         
         private bool collected  = false;
+
+        private void Start() {
+            
+        }
         
         public void Collect() {
             InventoryController.Instance.AddItem(this);
