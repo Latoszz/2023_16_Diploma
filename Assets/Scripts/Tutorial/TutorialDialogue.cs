@@ -42,6 +42,7 @@ namespace Tutorial {
         private bool conversationEnded;
         private bool dialogueClosed;
         public bool DialogueClosed => dialogueClosed;
+        public bool IsOpen => dialoguePanel.activeSelf;
 
         public static TutorialDialogue Instance;
 

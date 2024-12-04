@@ -1,4 +1,6 @@
+using System.Collections;
 using Events;
+using InputScripts;
 using UI.Dialogue;
 using UI.Inventory.Items;
 using UnityEngine;
@@ -6,14 +8,8 @@ using UnityEngine.EventSystems;
 
 namespace Tutorial {
     public class TutorialItem : MonoBehaviour, IPointerClickHandler {
-        [SerializeField] private GameObject inventoryButton;
-        [SerializeField] private GameObject inventoryButtonOutline;
         [SerializeField] private DialogueText dialogueText;
-        private Item item;
-
-        private void Awake() {
-            item = GetComponent<CollectibleCardSetItem>();
-        }
+        [SerializeField] private Item item;
 
         private void Update() {
             item.enabled = TutorialDialogue.Instance.CurrentDialogue == dialogueText;
@@ -24,9 +20,10 @@ namespace Tutorial {
                 return;
             }
             TutorialDialogue.Instance.DisplayNextSentence();
+            InputManager.Instance.EnableInventory();
             GameEventsManager.Instance.ItemEvents.ItemReward(item.GetName());
-            inventoryButton.SetActive(true);
-            inventoryButtonOutline.SetActive(true);
+            GameEventsManager.Instance.TutorialEvents.UnlockStatue();
+            GameEventsManager.Instance.TutorialEvents.UnlockInventory();
         }
     }
 }

@@ -13,5 +13,11 @@ namespace Events {
         public void UnlockStatue() {
             OnUnlockStatue?.Invoke();
         }
+        
+        public event Action OnUnlockInventory;
+
+        public void UnlockInventory() {
+            OnUnlockInventory?.Invoke();
+        }
     }
 }
