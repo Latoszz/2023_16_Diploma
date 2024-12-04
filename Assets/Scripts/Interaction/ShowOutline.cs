@@ -14,6 +14,10 @@ namespace Interaction {
             outlineScript.enabled = false;
             player = GameObject.FindGameObjectWithTag("Player");
         }
+
+        private void Start() {
+            //This is left empty on purpose, since only scripts with Start method can be disabled
+        }
     
         public void OnPointerEnter(PointerEventData eventData) {
             if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
