@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Audio;
 using Events;
+using InputScripts;
 using TMPro;
 using UI.Dialogue;
 using UI.HUD;
@@ -32,7 +33,9 @@ namespace Tutorial {
         private Queue<string> sentences = new Queue<string>();
         private string sentence;
         private DialogueText dialogue;
+        public DialogueText CurrentDialogue => dialogue;
         private int currentTextIndex;
+        public int CurrentTextIndex => currentTextIndex;
     
         private bool wasSkipped;
         private bool isTyping;
@@ -111,6 +114,7 @@ namespace Tutorial {
         }
     
         private void ShowDialogue() {
+            InputManager.Instance.DisableInput();
             image.enabled = true;
             isTyping = false;
             StopAllCoroutines();
@@ -118,6 +122,7 @@ namespace Tutorial {
         }
     
         public void HideDialogue() {
+            InputManager.Instance.EnableInput();
             image.enabled = false;
             dialogueClosed = true;
             dialoguePanel.SetActive(false);
