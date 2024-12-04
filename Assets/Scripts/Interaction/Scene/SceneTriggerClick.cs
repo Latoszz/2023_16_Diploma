@@ -38,19 +38,19 @@ namespace Interaction.Scene {
         public void OnPointerClick(PointerEventData eventData) {
             if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
                 popupPanel.SetActive(true);
-                InputManager.Instance.DisableInput();
+                InputManager.Instance.DisableAllInput();
             }
         }
 
         public void YesClicked() {
             popupPanel.gameObject.SetActive(false);
-            InputManager.Instance.EnableInput();
+            InputManager.Instance.EnableAllInput();
             SceneManager.LoadScene(loadName);
         }
 
         public void NoClicked() {
             popupPanel.gameObject.SetActive(false);
-            InputManager.Instance.EnableInput();
+            InputManager.Instance.EnableAllInput();
         }
     
     }

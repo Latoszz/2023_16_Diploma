@@ -15,7 +15,7 @@ namespace Tutorial {
         }
 
         private void Start() {
-            InputManager.Instance.DisableInput();
+            InputManager.Instance.DisableAllInput();
         }
     
         public void OnPointerClick(PointerEventData eventData) {
@@ -33,7 +33,7 @@ namespace Tutorial {
                 yield return null;
             }
             animator.SetTrigger(StandUp);
-            InputManager.Instance.EnableInput();
+            InputManager.Instance.EnableMoveInput();
             TutorialDialogue.Instance.DisplayNextSentence();
         }
     }

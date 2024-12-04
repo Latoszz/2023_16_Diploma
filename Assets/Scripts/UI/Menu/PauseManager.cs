@@ -43,7 +43,7 @@ namespace UI.Menu {
             postProcessVolume.enabled = true;
             IsOpen = true;
             HUDController.Instance.HideHUD();
-            InputManager.Instance.DisableInput();
+            InputManager.Instance.DisableAllInput();
             Time.timeScale = 0;
         }
 
@@ -56,7 +56,7 @@ namespace UI.Menu {
             postProcessVolume.enabled = false;
             IsOpen = false;
             HUDController.Instance.ShowHUD();
-            InputManager.Instance.EnableInput();
+            InputManager.Instance.EnableAllInput();
             Time.timeScale = 1;
         }
 

@@ -89,7 +89,7 @@ namespace EnemyScripts {
             enemyPanel.SetActive(true);
             enemyPanel.transform.GetChild(0).gameObject.SetActive(true);
             EnemyStateManager.Instance.SetCurrentEnemy(this);
-            InputManager.Instance.DisableInput();
+            InputManager.Instance.DisableAllInput();
         }
 
         private void SetUpNextDialogue() {

@@ -114,7 +114,7 @@ namespace Tutorial {
         }
     
         private void ShowDialogue() {
-            InputManager.Instance.DisableInput();
+            InputManager.Instance.DisableAllInput();
             image.enabled = true;
             isTyping = false;
             StopAllCoroutines();
@@ -122,7 +122,7 @@ namespace Tutorial {
         }
     
         public void HideDialogue() {
-            InputManager.Instance.EnableInput();
+            InputManager.Instance.EnableAllInput();
             image.enabled = false;
             dialogueClosed = true;
             dialoguePanel.SetActive(false);

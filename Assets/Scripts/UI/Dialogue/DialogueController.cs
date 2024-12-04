@@ -115,13 +115,13 @@ namespace UI.Dialogue {
         private void ShowDialogue() {
             isTyping = false;
             nextIcon.SetActive(false);
-            InputManager.Instance.DisableInput();
+            InputManager.Instance.DisableAllInput();
             StopAllCoroutines();
             StartCoroutine(TypeSentence());
         }
     
         private void HideDialogue() {
-            InputManager.Instance.EnableInput();
+            InputManager.Instance.EnableAllInput();
             dialogueClosed = true;
             dialoguePanel.SetActive(false);
         }

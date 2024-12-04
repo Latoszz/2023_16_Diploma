@@ -74,5 +74,21 @@ namespace InputScripts {
         public void OnQuest(InputAction.CallbackContext context) {
             QuestListPanel.Instance.OpenClosePanel();
         }
+
+        public void EnableInventory() {
+            playerControls.PlayerActionMap.Inventory.Enable();
+        }
+        
+        public void DisableInventory() {
+            playerControls.PlayerActionMap.Inventory.Disable();
+        }
+        
+        public void EnableQuests() {
+            playerControls.PlayerActionMap.Quest.Enable();
+        }
+        
+        public void DisableQuests() {
+            playerControls.PlayerActionMap.Quest.Disable();
+        }
     }
 }

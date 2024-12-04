@@ -25,7 +25,7 @@ namespace Interaction.EnemyInteractions {
                 enemyPanel.SetActive(true);
                 enemyPanel.transform.GetChild(0).gameObject.SetActive(true);
                 EnemyStateManager.Instance.SetCurrentEnemy(enemy);
-                InputManager.Instance.DisableInput();
+                InputManager.Instance.DisableAllInput();
             }
         }
     }

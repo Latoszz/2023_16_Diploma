@@ -58,7 +58,8 @@ namespace UI.Inventory {
             postProcessVolume.enabled = true;
             isOpen = true;
             HUDController.Instance.HideHUD();
-            InputManager.Instance.DisableInput();
+            InputManager.Instance.DisableMoveInput();
+            InputManager.Instance.DisableQuestPanel();
         }
 
         public void HideInventory() {
@@ -68,7 +69,8 @@ namespace UI.Inventory {
             inventoryUI.SetActive(false);
             isOpen = false;
             HUDController.Instance.ShowHUD();
-            InputManager.Instance.EnableInput();
+            InputManager.Instance.EnableMoveInput();
+            InputManager.Instance.EnableQuestPanel();
             if (checkForBattle) {
                 checkForBattle = false;
                 battleButton.SetActive(false);

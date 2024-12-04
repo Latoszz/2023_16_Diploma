@@ -49,7 +49,7 @@ namespace Interaction.EnemyInteractions {
 
         private void Close() {
             enemyPopup.SetActive(false);
-            InputManager.Instance.EnableInput();
+            InputManager.Instance.EnableAllInput();
         }
 
         private bool CheckDeck() {

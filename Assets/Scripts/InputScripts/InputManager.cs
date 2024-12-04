@@ -1,3 +1,4 @@
+using UI.Infos;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,7 @@ namespace InputScripts {
         public static InputManager Instance = null;
 
         [SerializeField] private MouseInputManager mouseInputManager;
+        [SerializeField] private KeyboardInputManager keyboardInputManager;
         
         private void OnEnable() {
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -34,12 +36,42 @@ namespace InputScripts {
             InputSystem.Update(); 
         }
         
-        public void EnableInput() {
+        public void EnableAllInput() {
+            EnableMoveInput();
+            EnableInventory();
+            EnableQuestPanel();
+        }
+
+        public void DisableAllInput() {
+            DisableMoveInput();
+            DisableInventory();
+            DisableQuestPanel();
+        }
+        
+        public void EnableMoveInput() {
             mouseInputManager.EnableMouseControls();
         }
 
-        public void DisableInput() {
+        public void DisableMoveInput() {
             mouseInputManager.DisableMouseControls();
+        }
+
+        public void EnableInventory() {
+            mouseInputManager.EnableInventory();
+            keyboardInputManager.EnableInventory();
+        }
+
+        public void DisableInventory() {
+            mouseInputManager.DisableInventory();
+            keyboardInputManager.DisableInventory();
+        }
+        
+        public void EnableQuestPanel() {
+            keyboardInputManager.EnableQuests();
+        }
+
+        public void DisableQuestPanel() {
+            keyboardInputManager.DisableQuests();
         }
     }
 }

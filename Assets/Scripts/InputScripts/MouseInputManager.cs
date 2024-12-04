@@ -181,6 +181,14 @@ namespace InputScripts {
             mouseClickEnabled = false;
         }
 
+        public void EnableInventory() {
+            rightClickAction.Enable();
+        }
+        
+        public void DisableInventory() {
+            rightClickAction.Disable();
+        }
+
         public void ForceSetTargetPoint(Vector3 targetPoint) {
             navMeshAgent.isStopped = false;
             Instantiate(clickEffect, targetPoint + new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
