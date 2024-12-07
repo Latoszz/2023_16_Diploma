@@ -1,4 +1,5 @@
 using Events;
+using QuestSystem;
 using UI.HUD;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -8,6 +9,7 @@ namespace Interaction.Objects {
     public class Book: MonoBehaviour, IPointerClickHandler {
         [SerializeField] private GameObject bookNote;
         [SerializeField] private GameObject cardSet;
+        [SerializeField] private QuestInfoSO quest;
         
         [Header("Sound")]
         [SerializeField] private AudioClip collectSound;
@@ -39,6 +41,7 @@ namespace Interaction.Objects {
             if (cardSet is not null) {
                 cardSet.SetActive(true);
                 cardSet = null;
+                GameEventsManager.Instance.QuestEvents.QuestStateChange(QuestManager.Instance.GetQuestById(quest.id));
             }
         }
     }

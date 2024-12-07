@@ -1,13 +1,19 @@
+using UI.Infos;
 using UI.Inventory;
 using UnityEngine;
 
 namespace UI.HUD {
     public class ButtonOutline : MonoBehaviour {
-        [SerializeField] private GameObject outline;
+        [SerializeField] private GameObject inventoryOutline;
+        [SerializeField] private GameObject questOutline;
         
         private void Update() {
             if (InventoryController.Instance.IsOpen()) {
-                outline.SetActive(false);
+                inventoryOutline.SetActive(false);
+            }
+
+            if (QuestListPanel.Instance.IsOpen) {
+                questOutline.SetActive(false);
             }
         }
     }

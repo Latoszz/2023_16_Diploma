@@ -7,6 +7,8 @@ namespace UI {
     public class TutorialUIManager : MonoBehaviour {
         [SerializeField] private GameObject inventoryButton;
         [SerializeField] private GameObject inventoryButtonOutline;
+        [SerializeField] private GameObject questButton;
+        [SerializeField] private GameObject questButtonOutline;
 
         private bool inventoryUnlocked = false;
         public bool InventoryUnlocked => inventoryUnlocked;
@@ -24,10 +26,12 @@ namespace UI {
         
         private void OnEnable() {
             GameEventsManager.Instance.TutorialEvents.OnUnlockInventory += UnlockInventory;
+            GameEventsManager.Instance.TutorialEvents.OnUnlockQuests += UnlockQuests;
         }
 
         private void OnDisable() {
             GameEventsManager.Instance.TutorialEvents.OnUnlockInventory -= UnlockInventory;
+            GameEventsManager.Instance.TutorialEvents.OnUnlockQuests -= UnlockQuests;
         }
 
         private void UnlockInventory() {
@@ -39,6 +43,16 @@ namespace UI {
             inventoryUnlocked = true;
             inventoryButton.SetActive(true);
             inventoryButtonOutline.SetActive(true);
+        }
+        
+        private void UnlockQuests() {
+            StartCoroutine(EnableQuestButton());
+        }
+        
+        private IEnumerator EnableQuestButton() {
+            yield return new WaitUntil(() => !TutorialDialogue.Instance.IsOpen);
+            questButton.SetActive(true);
+            questButtonOutline.SetActive(true);
         }
     }
 }

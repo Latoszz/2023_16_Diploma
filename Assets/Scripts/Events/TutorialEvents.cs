@@ -19,5 +19,11 @@ namespace Events {
         public void UnlockInventory() {
             OnUnlockInventory?.Invoke();
         }
+        
+        public event Action OnUnlockQuests;
+
+        public void UnlockQuests() {
+            OnUnlockQuests?.Invoke();
+        }
     }
 }
