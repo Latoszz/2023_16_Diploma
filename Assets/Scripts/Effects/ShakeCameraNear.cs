@@ -8,20 +8,24 @@ using UnityEngine;
 namespace Effects {
     public class ShakeCameraNear: MonoBehaviour {
         [SerializeField] private CameraShake cameraShake;
-        [SerializeField] private int cameraShakeDuration = 5;
+        [SerializeField] private float cameraShakeDuration = 5;
+
+        private void Start() {
+            cameraShake.shakeDuration = cameraShakeDuration;
+        }
         
         private IEnumerator StartShaking() {
             yield return new WaitUntil(() => !InventoryController.Instance.IsOpen());
-            InputManager.Instance.DisableAllInput();
+            InputManager.Instance.DisableMoveInput();
+            InputManager.Instance.DisableInventory();
             cameraShake.enabled = true;
             TutorialDialogue.Instance.DisplayNextSentence();
             StartCoroutine(ShakeCameraForSeconds(cameraShakeDuration));
         }
 
-        private IEnumerator ShakeCameraForSeconds(int seconds) {
+        private IEnumerator ShakeCameraForSeconds(float seconds) {
             yield return new WaitForSeconds(seconds);
             cameraShake.enabled = false;
-            InputManager.Instance.EnableAllInput();
             gameObject.SetActive(false);
         }
 

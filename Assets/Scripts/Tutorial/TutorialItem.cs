@@ -1,4 +1,3 @@
-using System.Collections;
 using Events;
 using InputScripts;
 using UI.Dialogue;

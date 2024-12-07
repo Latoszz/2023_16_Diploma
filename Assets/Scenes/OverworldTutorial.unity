@@ -65219,7 +65219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camTransform: {fileID: 0}
-  shakeDuration: 5
+  shakeDuration: 3
   shakeAmount: 0.7
   decreaseFactor: 1
 --- !u!114 &1153836107 stripped
@@ -83032,7 +83032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 1133205572}
-  cameraShakeDuration: 5
+  cameraShakeDuration: 3
 --- !u!54 &1296467471
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128617,7 +128617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.446167, y: -5.9414062}
+  m_AnchoredPosition: {x: 2.446045, y: -5.9414062}
   m_SizeDelta: {x: -22.8118, y: -40.7706}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2006297904

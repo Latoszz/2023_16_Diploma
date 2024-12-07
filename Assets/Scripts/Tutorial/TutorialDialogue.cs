@@ -6,6 +6,7 @@ using Audio;
 using Events;
 using InputScripts;
 using TMPro;
+using UI;
 using UI.Dialogue;
 using UI.HUD;
 using UnityEngine;
@@ -35,13 +36,11 @@ namespace Tutorial {
         private DialogueText dialogue;
         public DialogueText CurrentDialogue => dialogue;
         private int currentTextIndex;
-        public int CurrentTextIndex => currentTextIndex;
     
         private bool wasSkipped;
         private bool isTyping;
         private bool conversationEnded;
         private bool dialogueClosed;
-        public bool DialogueClosed => dialogueClosed;
         public bool IsOpen => dialoguePanel.activeSelf;
 
         public static TutorialDialogue Instance;
@@ -115,7 +114,9 @@ namespace Tutorial {
         }
     
         private void ShowDialogue() {
-            InputManager.Instance.DisableAllInput();
+            if(TutorialUIManager.Instance.InventoryUnlocked)
+                InputManager.Instance.DisableInventory();
+            InputManager.Instance.DisableMoveInput();
             image.enabled = true;
             isTyping = false;
             StopAllCoroutines();
@@ -123,7 +124,9 @@ namespace Tutorial {
         }
     
         public void HideDialogue() {
-            InputManager.Instance.EnableAllInput();
+            if(TutorialUIManager.Instance.InventoryUnlocked)
+                InputManager.Instance.EnableInventory();
+            InputManager.Instance.EnableMoveInput();
             image.enabled = false;
             dialogueClosed = true;
             dialoguePanel.SetActive(false);

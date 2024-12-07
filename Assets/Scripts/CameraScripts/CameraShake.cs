@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CameraScripts {
     public class CameraShake : MonoBehaviour {
         [SerializeField] private Transform camTransform;
-        [SerializeField] private float shakeDuration = 0f;
+        [SerializeField] public float shakeDuration = 0f;
         [SerializeField] private float shakeAmount = 0.7f;
         [SerializeField] private float decreaseFactor = 1.0f;
 	
@@ -12,7 +12,7 @@ namespace CameraScripts {
 	
         private void Awake() {
             if (camTransform == null) {
-                camTransform = GetComponent(typeof(Transform)) as Transform;
+                camTransform = GetComponent<Transform>();
             }
         }
 	
