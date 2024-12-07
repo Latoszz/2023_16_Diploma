@@ -11,28 +11,23 @@ namespace Interaction.Scene {
         [Range(0, 10f)]
         [SerializeField] private float detectionDistance;
 
-        [SerializeField] private GameObject objectToCollect;
-
         private GameObject player;
         private bool goodEnding = false;
 
         private void OnEnable() {
-            GameEventsManager.Instance.ItemEvents.OnItemWithIdCollected += ChangeEnding;
+            GameEventsManager.Instance.ItemEvents.OnItemCollected += ChangeEnding;
         }
 
         private void OnDisable() {
-            GameEventsManager.Instance.ItemEvents.OnItemWithIdCollected -= ChangeEnding;
+            GameEventsManager.Instance.ItemEvents.OnItemCollected -= ChangeEnding;
         }
 
         private void Awake() {
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        private void ChangeEnding(string itemName) {
-            if (objectToCollect is null) return;
-            if (itemName.Equals(objectToCollect.name)) {
-                goodEnding = true;
-            }
+        private void ChangeEnding() {
+            goodEnding = true;
         }
     
         public void OnPointerClick(PointerEventData eventData) {
