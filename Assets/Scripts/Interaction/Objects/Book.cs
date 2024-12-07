@@ -1,18 +1,15 @@
 using Events;
-using UI.Inventory.Items;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 
 namespace Interaction.Objects {
-    public class Book: MonoBehaviour, ICollectible, IPointerClickHandler {
+    public class Book: MonoBehaviour, IPointerClickHandler {
+        [SerializeField] private GameObject bookNote;
+        
         [Header("Sound")]
         [SerializeField] private AudioClip collectSound;
         [SerializeField] private AudioMixer audioMixer;
-        public void Collect() {
-            gameObject.SetActive(false);
-            GameEventsManager.Instance.ItemEvents.ItemWithIdCollected(name);
-        }
         
         private float GetMasterVolume(){
             float value;
@@ -24,8 +21,17 @@ namespace Interaction.Objects {
         }
         
         public void OnPointerClick(PointerEventData eventData) {
+            Open();
+        }
+
+        private void Open() {
             AudioSource.PlayClipAtPoint(collectSound, Camera.main.transform.position, GetMasterVolume());
-            Collect();
+            GameEventsManager.Instance.ItemEvents.ItemWithIdCollected(name);
+            bookNote.SetActive(true);
+        }
+
+        public void Close() {
+            bookNote.SetActive(false);
         }
     }
 }
