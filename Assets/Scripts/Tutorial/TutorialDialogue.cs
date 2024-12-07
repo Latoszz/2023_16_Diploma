@@ -40,7 +40,6 @@ namespace Tutorial {
         private bool wasSkipped;
         private bool isTyping;
         private bool conversationEnded;
-        private bool dialogueClosed;
         public bool IsOpen => dialoguePanel.activeSelf;
 
         public static TutorialDialogue Instance;
@@ -71,7 +70,6 @@ namespace Tutorial {
     
         private void DisplaySentence(DialogueText dialogue) {
             this.dialogue = dialogue;
-            dialogueClosed = false;
         
             if (sentences.Count == 0) {
                 if (!conversationEnded) {
@@ -128,7 +126,6 @@ namespace Tutorial {
                 InputManager.Instance.EnableInventory();
             InputManager.Instance.EnableMoveInput();
             image.enabled = false;
-            dialogueClosed = true;
             dialoguePanel.SetActive(false);
         }
     

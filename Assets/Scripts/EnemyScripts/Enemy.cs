@@ -16,9 +16,9 @@ namespace EnemyScripts {
         [SerializeField] protected BattleData battleData;
         [SerializeField] protected List<Obstacle> obstacles;
 
-        protected EnemyState state = EnemyState.Locked;
+        [SerializeField] protected EnemyState state = EnemyState.Locked;
     
-        public void ChangeState(EnemyState state) {
+        public virtual void ChangeState(EnemyState state) {
             this.state = state;
             SaveManager.Instance.ChangeEnemyData(enemyID, state);
             if (state == EnemyState.Defeated) {

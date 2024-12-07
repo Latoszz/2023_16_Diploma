@@ -2,10 +2,8 @@ using System.Collections.Generic;
 using Audio;
 using Events;
 using InputScripts;
-using Interaction.Objects;
 using Interfaces;
 using NPCScripts;
-using SaveSystem;
 using UI;
 using UI.Dialogue;
 using UnityEngine;
@@ -62,6 +60,8 @@ namespace EnemyScripts {
 
         private void Unlock(string npcName) {
             if (state == EnemyState.Defeated)
+                return;
+            if (npcToUnlock is null)
                 return;
             if (npcName == npcToUnlock.GetName()) {
                 battleIndicator.ShowIcon();
