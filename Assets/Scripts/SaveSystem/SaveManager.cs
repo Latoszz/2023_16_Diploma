@@ -31,9 +31,11 @@ namespace SaveSystem {
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
             Debug.Log("Scene loaded");
+            /*
             if (scene.name != "Overworld1" && scene.name != "Main Menu") {
                 return;
             }
+            */
             Debug.Log($"Scene {scene.name}");
             LoadSaveFile();
         }

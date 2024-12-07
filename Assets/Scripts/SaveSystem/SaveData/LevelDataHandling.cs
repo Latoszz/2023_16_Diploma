@@ -65,6 +65,10 @@ namespace SaveSystem.SaveData {
             
             foreach (ICollectible item in allItems) {
                 MonoBehaviour itemMonoBehaviour = (MonoBehaviour)item;
+                
+                if(itemMonoBehaviour.CompareTag("StayDisabledOnAwake"))
+                    return;
+                
                 if (itemMonoBehaviour is CollectibleItem collectibleItem) {
                     bool isCollected = saveFile.GetData<bool>(collectibleItem.GetID());
                     collectibleItem.SetCollected(isCollected);

@@ -1,4 +1,5 @@
 using Events;
+using UI.HUD;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
@@ -6,6 +7,7 @@ using UnityEngine.EventSystems;
 namespace Interaction.Objects {
     public class Book: MonoBehaviour, IPointerClickHandler {
         [SerializeField] private GameObject bookNote;
+        [SerializeField] private GameObject cardSet;
         
         [Header("Sound")]
         [SerializeField] private AudioClip collectSound;
@@ -27,11 +29,17 @@ namespace Interaction.Objects {
         private void Open() {
             AudioSource.PlayClipAtPoint(collectSound, Camera.main.transform.position, GetMasterVolume());
             GameEventsManager.Instance.ItemEvents.ItemWithIdCollected(name);
+            HUDController.Instance.HideHUD();
             bookNote.SetActive(true);
         }
 
         public void Close() {
             bookNote.SetActive(false);
+            HUDController.Instance.ShowHUD();
+            if (cardSet is not null) {
+                cardSet.SetActive(true);
+                cardSet = null;
+            }
         }
     }
 }
