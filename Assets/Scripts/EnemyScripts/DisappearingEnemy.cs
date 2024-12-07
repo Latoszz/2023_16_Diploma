@@ -10,7 +10,7 @@ namespace EnemyScripts {
                 foreach (Obstacle obstacle in obstacles) {
                     SaveManager.Instance.ChangeObstacleData(obstacle.GetID(), false);
                 }
-                this.gameObject.SetActive(false);
+                this.gameObject.SetActive(false);//TODO change to destroy and delete from save file
             }
         }
     }
