@@ -2323,13 +2323,13 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+    m_DisabledColor: {r: 0.61550206, g: 0.48972055, b: 0.6698113, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3947,7 +3947,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Irys \u0141atosz S24435\nKinga Mendyk S25275\nAleksandra Demidziuk S25241"
+  m_text: 'Irys Latosz S24435
+
+    Kinga Mendyk S25275
+
+    Aleksandra Demidziuk
+    S25241'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19ef378f4cf35b64981a4655ed2d7d87, type: 2}
   m_sharedMaterial: {fileID: 3700108273748071392, guid: 19ef378f4cf35b64981a4655ed2d7d87, type: 2}
