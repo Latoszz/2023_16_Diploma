@@ -80,6 +80,8 @@ namespace UI.Inventory {
             if (!isOccupied) {
                 GameObject itemObject = eventData.pointerDrag;
                 DraggableItem draggableItem = itemObject.GetComponent<DraggableItem>();
+                if (draggableItem is null)
+                    return;
 
                 if (parentName == itemList.name && draggableItem.GetItemData() is CardSetItem) {
                     return;
