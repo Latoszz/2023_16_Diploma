@@ -25174,6 +25174,7 @@ GameObject:
   - component: {fileID: 2023891048}
   - component: {fileID: 2023891047}
   - component: {fileID: 2023891046}
+  - component: {fileID: 2023891054}
   - component: {fileID: 2023891045}
   - component: {fileID: 2023891044}
   - component: {fileID: 2023891043}
@@ -25367,6 +25368,22 @@ MonoBehaviour:
   questInfo: {fileID: 11400000, guid: 6854e5f01aca0e3479e52ad9fdf2f5aa, type: 2}
   startPoint: 1
   finishPoint: 0
+--- !u!114 &2023891054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023891041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a97e6238e364307ade8ebfc724cd9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Card Set 2
+  sprite: {fileID: 0}
+  cardSetData: {fileID: 11400000, guid: 90ca613ec69893d4f83c2c0734f5abae, type: 2}
+  itemID: e9eca184-e9e6-4ff5-8d37-d5a5c11e62bd
 --- !u!114 &2041172816
 MonoBehaviour:
   m_ObjectHideFlags: 0
