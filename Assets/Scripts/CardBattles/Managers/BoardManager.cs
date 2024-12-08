@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.temp;
 using CardBattles.Character;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
+using CardBattles.Interfaces.InterfaceObjects;
 using UnityEngine;
 
 namespace CardBattles.Managers {
@@ -59,8 +61,8 @@ namespace CardBattles.Managers {
             for (int i = 0; i < 4; i++) {
                 if (attackers[i] is null)
                     continue;
-                if (attackers[i].GetAttack() <= 0)
-                    continue;
+                
+
                 if (attackers[i] is Minion minion) {
                     StartCoroutine(minion.ChangeSortingOrderTemporarily(10 + i));
                 }
@@ -126,13 +128,31 @@ namespace CardBattles.Managers {
                     break;
                 case TargetType.None:
                     break;
+                case TargetType.YourCardSpots:
+                    foreach (var cardSpot in Playing(isPlayers).GetEmptyCardSpots()) {
+                        targets.Add(cardSpot.gameObject);
+                    }
+
+                    break;
+                case TargetType.EnemyCardSpots:
+                    foreach (var cardSpot in Waiting(isPlayers).GetEmptyCardSpots()) {
+                        targets.Add(cardSpot.gameObject);
+                    }
+
+                    break;
+                case TargetType.ThisCardSetNotBoard:
+                    targets.AddRange(PlayingCharacter(isPlayers).deck.GetOtherCardFromSameCardSet(card));
+                    var x = Playing(isPlayers).GetNoNullCardsObjects();
+                    targets = targets.Except(x).ToList();
+                    break;
+                default:
+                    break;
             }
 
             return targets;
         }
 
         private IEnumerable<GameObject> GetOpposingCard(Card card) {
-            
             if (card is not Minion) return new List<GameObject>();
 
 

@@ -39,7 +39,13 @@ namespace CardBattles.Enums {
         Durable,
         
         [PropertyDescription("Deal damage when attacked")]
-        Spiky
+        Spiky,
+        
+        [PropertyDescription("Testing, auto applied to all")]
+        Just_Played,
+        
+        [PropertyDescription("Will not be added to deck")]
+        Non_Functional
     }
 
     public static class AdditionalPropertyHelper {

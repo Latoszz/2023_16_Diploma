@@ -11,6 +11,9 @@ using CardBattles.Enums;
 public class CardSetDictionary : SerializableDictionary<string, List<Card>> {
 }
 [Serializable]
+public class EnemyTutorialActionDictionary : SerializableDictionary<EnemyAiAction,int> {
+}
+[Serializable]
 public class BattleDataFlagDictionary : SerializableDictionary<BattleData, BattleState>{}
 [Serializable]
 public class TriggerEffectDictionary : SerializableDictionary<EffectTrigger, EffectTargetValue>{}

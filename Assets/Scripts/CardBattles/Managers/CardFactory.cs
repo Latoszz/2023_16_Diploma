@@ -1,7 +1,9 @@
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.Additional;
 using CardBattles.CardScripts.CardDatas;
+using CardBattles.Enums;
 using CardBattles.Interfaces.InterfaceObjects;
+using CardBattles.Managers.GameSettings;
 using UnityEngine;
 
 namespace CardBattles.Managers {
@@ -19,6 +21,9 @@ namespace CardBattles.Managers {
                 case MinionData:
                     cardObject = Object.Instantiate(minionPrefab);
                     cardComponent = cardObject.GetComponent<Minion>();
+                    
+                    
+                    
                     break;
                 case SpellData:
                     cardObject = Object.Instantiate(spellPrefab);

@@ -18,9 +18,6 @@ using UnityEngine.Events;
 
 namespace CardBattles.Character {
     public class CharacterManager : PlayerEnemyMonoBehaviour {
-       
-
-
         [Header("Data")] [SerializeField]
         public HandManager hand;
 
@@ -38,9 +35,12 @@ namespace CardBattles.Character {
             }
         }
 
-        
-        private static UnityEvent<Card, ICardPlayTarget> onCardPlayed = new UnityEvent<Card, ICardPlayTarget>();
-        private static UnityEvent<PlayerEnemyMonoBehaviour,IHasCost> onDrawCard = new UnityEvent<PlayerEnemyMonoBehaviour,IHasCost>();
+
+        private static UnityEvent<Card, ICardPlayTarget, bool> onCardPlayed =
+            new UnityEvent<Card, ICardPlayTarget, bool>();
+
+        private static UnityEvent<PlayerEnemyMonoBehaviour, IHasCost> onDrawCard =
+            new UnityEvent<PlayerEnemyMonoBehaviour, IHasCost>();
 
         private void Awake() {
             onCardPlayed.AddListener(OnCardPlayedHandler);
@@ -50,34 +50,46 @@ namespace CardBattles.Character {
         private void OnDestroy() {
             onCardPlayed.RemoveListener(OnCardPlayedHandler);
             onDrawCard.RemoveListener(OnDrawCardHandler);
+        }
 
+        public static void SummonACard(Card card, ICardPlayTarget target) {
+            onCardPlayed?.Invoke(card, target, true);
         }
 
         public static void PlayACard(Card card, ICardPlayTarget target) {
-            onCardPlayed?.Invoke(card, target);
+            onCardPlayed?.Invoke(card, target, false);
         }
-        public static void DrawACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost ) {
-                onDrawCard?.Invoke(playerEnemyMonoBehaviour,iHasCost);
+
+        public static void DrawACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost) {
+            onDrawCard?.Invoke(playerEnemyMonoBehaviour, iHasCost);
         }
 
         public static void DrawACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, int cost = 1) {
-            onDrawCard?.Invoke(playerEnemyMonoBehaviour,new HasCost(cost));
+            onDrawCard?.Invoke(playerEnemyMonoBehaviour, new HasCost(cost));
         }
-
+        
+        
+        
         private void OnDrawCardHandler(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost) {
-            if(playerEnemyMonoBehaviour.IsPlayers != IsPlayers)
+            if (playerEnemyMonoBehaviour.IsPlayers != IsPlayers)
                 return;
             StartCoroutine(Draw(1, iHasCost));
         }
 
-        private void OnCardPlayedHandler(Card card, ICardPlayTarget target) {
+        private void OnCardPlayedHandler(Card card, ICardPlayTarget target,bool isSummoned = false) {
+            
+            var cost = card.GetCost();
+            if (isSummoned) 
+                cost = 0;
+            
+            var costObject = new HasCost(cost);
+            
             if (card.IsPlayers != IsPlayers)
                 return;
             if (!IsYourTurn)
                 return;
-            if (!manaManager.CanUseMana(card,true)) 
+            if (!manaManager.CanUseMana(costObject, true) )
                 return;
-    
 
 
             bool wasPlayed = false;
@@ -96,11 +108,12 @@ namespace CardBattles.Character {
             if (!wasPlayed)
                 return;
 
-            manaManager.UseMana(card);
-            hand.Cards.Remove(card);
+            manaManager.UseMana(costObject);
+            hand.RemoveCard(card,!isSummoned);
             card.cardDragging.droppedOnSlot = true;
             StartCoroutine(card.Play());
-            hand.UpdateCardPositions();
+            if(!isSummoned)
+                hand.UpdateCardPositions();
         }
 
         private bool PlayMinion(Minion minion, ICardPlayTarget target) {
@@ -126,7 +139,7 @@ namespace CardBattles.Character {
             Debug.LogError("This card cannot be played at given cardSpot");
         }
 
-        public IEnumerator PlayCardCoroutine(Card card,ICardPlayTarget target, float time) { //time defined in EnemyAi
+        public IEnumerator PlayCardCoroutine(Card card, ICardPlayTarget target, float time) { //time defined in EnemyAi
             OnCardPlayedHandler(card, target);
             yield return new WaitForSeconds(time);
         }
@@ -160,6 +173,7 @@ namespace CardBattles.Character {
         public IEnumerator Draw(int amount, IHasCost iHasCost) {
             yield return StartCoroutine(Draw(amount, iHasCost.GetCost()));
         }
+
         public IEnumerator Draw(int amount, int cost = 0) {
             if (amount <= 0) {
                 Debug.LogError("Player just tried to draw 0 or less cards");
@@ -196,20 +210,20 @@ namespace CardBattles.Character {
                 StartCoroutine(card.DoEffect(EffectTrigger.OnStartTurn));
             }
         }
+
         public IEnumerator TurnChangeSoundEffect() {
             yield return new WaitForSeconds(0.4f);
-            var clipName ="TurnStart";
-            var x =AudioCollection.Instance.GetClip(clipName);
+            var clipName = "TurnStart";
+            var x = AudioCollection.Instance.GetClip(clipName);
             AudioManager.Instance.Play(x);
-
         }
+
         public void DrawACard(int cost = 1) {
             StartCoroutine(Draw(1, cost));
         }
-        
+
 
         public IEnumerator EndOfTurn() {
-            
             yield return StartCoroutine(BoardManager.Instance.Attack(IsPlayers));
             foreach (var card in boardSide.GetNoNullCards()) {
                 StartCoroutine(card.DoEffect(EffectTrigger.OnEndTurn));

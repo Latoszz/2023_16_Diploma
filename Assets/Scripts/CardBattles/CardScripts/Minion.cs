@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Audio;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
+using CardBattles.Managers.GameSettings;
 using DG.Tweening;
 using NaughtyAttributes;
 using Unity.Mathematics;
@@ -16,6 +18,8 @@ namespace CardBattles.CardScripts {
         [SerializeField] private float dyingDuration = 0.5f;
         [SerializeField] public UnityEvent<int, int, int> dataChanged;
 
+        public int baseAttack;
+        public int baseMaxHealth;
         [Space(20), Header("Minion")] [HorizontalLine(1f)] [BoxGroup("Data")] [SerializeField]
         private int attack;
 
@@ -64,9 +68,14 @@ namespace CardBattles.CardScripts {
             }
             else {
                 Attack = minionData.attack;
+                baseAttack = minionData.attack;
                 MaxHealth = minionData.maxHealth;
+                baseMaxHealth = minionData.maxHealth;
                 CurrentHealth = MaxHealth;
                 cardDisplay.SetCardDisplayData(minionData);
+                if(GameStats.Config.cardsExtraSleep)
+                    Properties.Add(AdditionalProperty.Just_Played);
+
             }
 
             dataChanged.AddListener(cardDisplay.UpdateData);
@@ -134,13 +143,23 @@ namespace CardBattles.CardScripts {
 
         [SerializeField] private UnityEvent stopsSleeping;
         public void AttackTarget(IDamageable target) {
+
+            if (Properties.Contains(AdditionalProperty.Just_Played)) {
+                Properties.Remove(AdditionalProperty.Just_Played);
+                transform.DOShakePosition(0.5f,20f,20);
+                return;
+            }
             
             if (Properties.Contains(AdditionalProperty.Sleepy)) {
                 Properties.Remove(AdditionalProperty.Sleepy);
+                transform.DOShakePosition(0.5f,20f,20);
                 stopsSleeping?.Invoke();
                 return;
             }
-
+            
+            if(Attack <=0 )
+                return;
+            
             if(Properties.Contains(AdditionalProperty.Lazy))
                 if (Random.value < 0.5f) {
                     transform.DOShakePosition(0.5f,20f,20);

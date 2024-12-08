@@ -5,6 +5,7 @@ using CardBattles.CardScripts;
 using CardBattles.CardScripts.temp;
 using CardBattles.Enums;
 using CardBattles.Managers;
+using CardBattles.Managers.GameSettings;
 using NaughtyAttributes;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -24,6 +25,8 @@ namespace CardBattles.Character {
         private List<Card> CardsInHand => character.hand.Cards.ToList();
         private List<Minion> MinionsInHand => CardsInHand.OfType<Minion>().ToList();
         private List<Spell> SpellsInHand => CardsInHand.OfType<Spell>().ToList();
+
+        private Queue<EnemyAiAction> predefinedActions;
 
         [ShowNativeProperty]
         private int MinionCount {
@@ -60,6 +63,9 @@ namespace CardBattles.Character {
             random = new Random();
             character = GetComponent<CharacterManager>();
             CopyWeightValues();
+            if (GameStats.isTutorial) {
+                predefinedActions = new Queue<EnemyAiAction>(GameStats.Config.tutorialData.enemyActions);
+            }
         }
 
         private void CopyWeightValues() {
@@ -78,8 +84,9 @@ namespace CardBattles.Character {
                 Debug.LogError("this shouldn't happen");
                 yield break;
             }
+            var minionIndex = GameStats.isTutorial ? 0 : random.Next(hand.Count);
 
-            var card = hand[random.Next(hand.Count)];
+            var card = hand[minionIndex];
             while (card is not Minion) {
                 Debug.Log("should not happen");
                 card = hand[random.Next(hand.Count)];
@@ -99,7 +106,8 @@ namespace CardBattles.Character {
                 yield break;
             }
 
-            var card = hand[random.Next(hand.Count)];
+            var spellIndex = GameStats.isTutorial ? 0 : random.Next(hand.Count);
+            var card = hand[spellIndex];
             while (card is not Spell) {
                 Debug.Log("should not happen");
                 card = hand[random.Next(hand.Count)];
@@ -132,7 +140,7 @@ namespace CardBattles.Character {
                     break;
                 case EnemyAiAction.PlaySpell:
                     yield return PlayASpell();
-                    yield return new WaitForSeconds(0.3f);
+                    yield return new WaitForSeconds(0.6f);
                     break;
                 case EnemyAiAction.Pass:
                     yield break;
@@ -153,6 +161,15 @@ namespace CardBattles.Character {
         }
         
         private EnemyAiAction ChooseActionToDo() {
+            if (GameStats.isTutorial && predefinedActions.Any()) {
+                var x = predefinedActions.Peek();
+                if (x == EnemyAiAction.PlayMinion && !MinionArePlayable())
+                    return EnemyAiAction.Pass;
+                if (x == EnemyAiAction.PlaySpell && !SpellsArePlayable())
+                    return EnemyAiAction.Pass;
+                return predefinedActions.Dequeue();
+            }
+            
             if(!ModifyProbabilities())
                 return EnemyAiAction.Pass;
 
@@ -179,7 +196,7 @@ namespace CardBattles.Character {
             }
 
             Debug.Log("This shouldnt happen, check enemyAi");
-            return EnemyAiAction.Draw;
+            return EnemyAiAction.Pass;
         }
 
 
@@ -245,7 +262,7 @@ namespace CardBattles.Character {
 
 
         //Minion
-        private bool MinionArePlayable() {
+        private bool  MinionArePlayable() {
             if (NoMinionsInHand() || NoEmptyCardSpots()) {
                 weights[EnemyAiAction.PlayMinion] = 0f;
                 return false;

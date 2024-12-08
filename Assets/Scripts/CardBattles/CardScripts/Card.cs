@@ -28,7 +28,7 @@ namespace CardBattles.CardScripts {
                 return this.cardDisplay.frontVisible;
             }
         }
-
+        
         [BoxGroup("Card")] public string cardName;
 
         [BoxGroup("Card"), ResizableTextArea]
@@ -69,7 +69,7 @@ namespace CardBattles.CardScripts {
             name = cardName;
             flavourText = cardData.flavourText;
             description = cardData.description;
-            properties = cardData.properties.ToList();
+            properties = cardData.properties.Distinct().ToList();
             cardSetName = cardData.cardSet.name;
             effectDictionary = cardData.EffectDictionary;
         }
@@ -117,6 +117,9 @@ namespace CardBattles.CardScripts {
 
         public virtual IEnumerator Play() {
             yield return StartCoroutine(cardAnimation.Play(this)); //it has the trigger inside
+            if (isPlacedAt != null)
+                transform.position = isPlacedAt.transform.position;
+
         }
 
 

@@ -9,6 +9,8 @@ namespace CardBattles.CardGamesManager {
     public class BattleData : ScriptableObject {
         [SerializeField] private List<CardSetData> enemyCardSets;
         public List<CardSetData> GetCardSets => enemyCardSets;
+
+        [SerializeField] public bool isTutorial = false;
         //we can add special cases here
     }
 }

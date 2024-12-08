@@ -47,6 +47,7 @@ namespace CardBattles {
             textPositions.Add(textPosition);
             textPositions.Add(textPosition + Vector3.down * textMoveDownAmount/2f);
             textPositions.Add(textPosition + Vector3.down * textMoveDownAmount);
+            
         }
 
         public void OnPointerEnter(PointerEventData eventData) {

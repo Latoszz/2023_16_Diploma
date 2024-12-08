@@ -39,6 +39,7 @@ namespace CardBattles.CardScripts.Additional {
         private Text description;
 
         private string descriptionData;
+
         [Foldout("Objects")] [SerializeField]
         private Text attack;
 
@@ -87,10 +88,9 @@ namespace CardBattles.CardScripts.Additional {
             }
         }
 
-        public void UpdateDescription(List<AdditionalProperty> properties, string newDescription = null)
-        {
+        public void UpdateDescription(List<AdditionalProperty> properties, string newDescription = null) {
             var descriptionText = newDescription ?? descriptionData;
-                
+
             if (properties != null && properties.Count > 0) {
                 descriptionText += '\n';
                 for (int i = 0; i < properties.Count; i++) {
@@ -116,7 +116,7 @@ namespace CardBattles.CardScripts.Additional {
             frontOfCard.enabled = !visible;
             backOfCard.enabled = !visible;
             frontVisible = visible;
-            transform.DORotate(new Vector3(0, 0, 0), 0.1f).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+            transform.DORotate(new Vector3(0, 0, 0), 0.1f).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         public void ChangeCardVisible() {
@@ -128,31 +128,47 @@ namespace CardBattles.CardScripts.Additional {
         internal void UpdateData(int newAttack, int newCurrentHealth, int newMaxHealth) {
             UpdateStat(attack, newAttack);
             UpdateStat(health, newCurrentHealth);
-         
 
-            //TODO Make it red when this is true
+            var minion = (Minion)card;
+            
+            
             if (newCurrentHealth != newMaxHealth) {
-                health.color = new Color(0.8f,0.3f,0.4f);
-            } else {
+                health.color = new Color(0.8f, 0.3f, 0.4f);
+            }
+            else if (newMaxHealth > minion.baseMaxHealth) {
+                health.color = Color.green;
+            }
+            else {
                 health.color = Color.white;
+            }
+            
+            if (newAttack < minion.baseAttack) {
+                attack.color = new Color(0.8f, 0.3f, 0.4f);
+            }
+            else if (newAttack > minion.baseAttack) {
+                attack.color = Color.green;
+            }
+            else {
+                attack.color = Color.white;
             }
         }
 
         [SerializeField, Foldout("UpdateStat")]
         private float growScale = 1.5f;
+
         [SerializeField, Foldout("UpdateStat")]
         private float growDuration = 0.2f;
+
         [SerializeField, Foldout("UpdateStat")]
         private float shrinkDuration = 0.3f;
+
         private void UpdateStat(Text textComponent, int newValue) {
             if (textComponent.text != newValue.ToString()) {
                 Vector3 originalScale = textComponent.transform.localScale;
 
-                Sequence scaleSequence = DOTween.Sequence().SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+                Sequence scaleSequence = DOTween.Sequence().SetLink(gameObject, LinkBehaviour.KillOnDestroy);
                 scaleSequence.Append(textComponent.transform.DOScale(originalScale * growScale, growDuration));
-                scaleSequence.AppendCallback(() => {
-                    textComponent.text = newValue.ToString();
-                });
+                scaleSequence.AppendCallback(() => { textComponent.text = newValue.ToString(); });
                 scaleSequence.Append(textComponent.transform.DOScale(originalScale, shrinkDuration));
                 scaleSequence.Play();
             }
@@ -165,17 +181,20 @@ namespace CardBattles.CardScripts.Additional {
             if (!frontVisible || eventData.pointerDrag is not null) {
                 return;
             }
+
             StartCoroutine(card.ChangeSortingOrderTemporarily(10, false));
             transform.DOScale(scaleOnHover,
-                scaleOnHoverTime).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+                scaleOnHoverTime).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         public void OnPointerExit(PointerEventData eventData) {
             if (!frontVisible || eventData.pointerDrag is not null) {
                 return;
             }
+
             StartCoroutine(card.ChangeSortingOrderTemporarily(-10, false));
-            transform.DOScale(Vector3.one * currentScale, scaleOnHoverTime).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+            transform.DOScale(Vector3.one * currentScale, scaleOnHoverTime)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         public void IsPlacedOnBoard(bool isNotNull) {
@@ -193,7 +212,7 @@ namespace CardBattles.CardScripts.Additional {
 
         private void ChangeCurrentScale(float scale) {
             currentScale = scale;
-            transform.DOScale(currentScale, 0.3f).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+            transform.DOScale(currentScale, 0.3f).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
     }
 }

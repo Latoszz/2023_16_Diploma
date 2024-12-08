@@ -20,6 +20,16 @@ namespace CardBattles.Enums {
         
         NoneButGetWhoseIsIt,
         
-        None
+        None,
+        YourCardSpots,
+        EnemyCardSpots,
+        
+        YourRandomCardSpot,
+        
+        OpposingCardSpot,
+        ThisCardSpot,
+        
+        ThisCardSetNotBoard,
+        
     }
 }
