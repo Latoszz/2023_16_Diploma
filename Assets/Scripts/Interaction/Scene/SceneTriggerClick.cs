@@ -1,5 +1,6 @@
 using Events;
 using InputScripts;
+using SaveSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -40,6 +41,8 @@ namespace Interaction.Scene {
         public void YesClicked() {
             popupPanel.gameObject.SetActive(false);
             InputManager.Instance.EnableAllInput();
+            SaveManager.Instance.SaveSettings();
+            SaveManager.Instance.SaveInventory();
             SceneManager.LoadScene(loadName);
         }
 

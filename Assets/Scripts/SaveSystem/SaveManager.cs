@@ -5,6 +5,8 @@ using EnemyScripts;
 using Esper.ESave;
 using NaughtyAttributes;
 using QuestSystem;
+using SaveSystem.SaveData;
+using UI.Inventory;
 using UI.Menu;
 using UnityEditor;
 using UnityEngine;
@@ -13,6 +15,12 @@ using UnityEngine.SceneManagement;
 namespace SaveSystem {
     public class SaveManager: MonoBehaviour {
         [SerializeField] private SaveFileSetup saveFileSetup;
+        [SerializeField] private string MainMenuSceneName = "Main Menu";
+        [SerializeField] private string TutorialSceneName = "TutorialOverworld";
+        [SerializeField] private string RoomSceneName = "Room under the statue";
+        [SerializeField] private string OverworldSceneName = "Overworld1";
+        [SerializeField] private string CardBattleSceneName = "CardBattle";
+        
         private SaveFile saveFile;
         private List<ISavable> savableObjects;
 
@@ -30,13 +38,22 @@ namespace SaveSystem {
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
-            Debug.Log("Scene loaded");
-            /*
-            if (scene.name != "Overworld1" && scene.name != "Main Menu") {
+            if (scene.name == CardBattleSceneName) {
+                //LoadSettings();
                 return;
             }
-            */
-            Debug.Log($"Scene {scene.name}");
+            
+            if (scene.name == TutorialSceneName) {
+                LoadSettings();
+                return;
+            }
+            
+            if (scene.name == RoomSceneName) {
+                LoadInventory();
+                LoadSettings();
+                return;
+            }
+            
             LoadSaveFile();
         }
         
@@ -90,7 +107,6 @@ namespace SaveSystem {
                 savableObject.LoadSaveData(saveFile);
             }
             QuestManager.Instance.LoadQuests(saveFile);
-            Debug.Log("Game loaded");
         }
         
 
@@ -98,6 +114,28 @@ namespace SaveSystem {
             IEnumerable<ISavable> objects = FindObjectsOfType<MonoBehaviour>(true)
                 .OfType<ISavable>();
             return new List<ISavable>(objects);
+        }
+
+        private void LoadSettings() {
+            SettingsManager settingsManager = FindObjectOfType<SettingsManager>(true);
+            settingsManager.LoadSaveData(saveFile);
+        }
+
+        public void SaveSettings() {
+            SettingsManager settingsManager = FindObjectOfType<SettingsManager>(true);
+            settingsManager.PopulateSaveData(saveFile);
+            saveFile.Save();
+        }
+
+        private void LoadInventory() {
+            InventoryDataHandling inventoryDataHandling = FindObjectOfType<InventoryDataHandling>(true);
+            inventoryDataHandling.LoadSaveData(saveFile);
+        }
+
+        public void SaveInventory() {
+            InventoryDataHandling inventoryDataHandling = FindObjectOfType<InventoryDataHandling>(true);
+            inventoryDataHandling.PopulateSaveData(saveFile);
+            saveFile.Save();
         }
 
         public bool HasSaveData() {
@@ -142,7 +180,7 @@ namespace SaveSystem {
             string path = GetFilePath();
             FileUtil.DeleteFileOrDirectory(path);
             AssetDatabase.Refresh();
-            Debug.Log($"Save file deleted at path: {path}");
+            Debug.LogWarning($"Save file deleted at path: {path}");
         }
         #endif
 

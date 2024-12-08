@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveFileData:
-    fileName: GameSave
+    fileName: SaveGame
     saveLocation: 0
     filePath: SaveFiles
     fileType: 0
@@ -67,3 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0df8b9cba9c46ac9aaf321cb2aafb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveFileSetup: {fileID: 756406078947868008}
+  MainMenuSceneName: Main Menu
+  TutorialSceneName: TutorialOverworld
+  RoomSceneName: Room under the statue
+  OverworldSceneName: Overworld1
+  CardBattleSceneName: CardBattle

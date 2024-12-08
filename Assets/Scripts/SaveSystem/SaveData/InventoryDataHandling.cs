@@ -20,6 +20,8 @@ namespace SaveSystem.SaveData {
         private const string CardSetSaveID = "Inventory Card Set";
         private const string DeckSaveID = "Inventory deck";
 
+        public static InventoryDataHandling Instance;
+
         private void Awake() {
             IEnumerable<ItemSlot> objects = FindObjectsOfType<MonoBehaviour>(true)
                 .OfType<ItemSlot>();

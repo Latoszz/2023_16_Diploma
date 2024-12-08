@@ -154,7 +154,6 @@ GameObject:
   m_Component:
   - component: {fileID: 12089622}
   - component: {fileID: 12089627}
-  - component: {fileID: 12089626}
   - component: {fileID: 12089628}
   - component: {fileID: 12089625}
   - component: {fileID: 12089624}
@@ -231,30 +230,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &12089626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12089621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a1bbf37c8bb45b7919688035e8e2054, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyID: abce6136-6ed3-456b-809b-224b1e1f768b
-  battleData: {fileID: 11400000, guid: ea3b9a0737b672844b74bda177040680, type: 2}
-  obstacles:
-  - {fileID: 1754998934}
-  state: 1
-  battleIndicator: {fileID: 724907928}
-  enemyPanel: {fileID: 850978713}
-  dialogue:
-  - {fileID: 11400000, guid: fbd2b87a9e0bc904087b1949844b078b, type: 2}
-  audioConfig: {fileID: 11400000, guid: e1cf6dad43762034bbfed6797c9443a5, type: 2}
-  detectionDistance: 8
-  npcToUnlock: {fileID: 0}
 --- !u!136 &12089627
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -290,10 +265,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3100e5d5bdb9c3e4799104cfba721d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyID: 
-  battleData: {fileID: 0}
-  obstacles: []
-  state: 0
+  enemyID: abce6136-6ed3-456b-809b-224b1e1f768b
+  battleData: {fileID: 11400000, guid: ea3b9a0737b672844b74bda177040680, type: 2}
+  obstacles:
+  - {fileID: 1754998934}
+  state: 1
+  battleIndicator: {fileID: 724907928}
+  enemyPanel: {fileID: 850978713}
+  dialogue:
+  - {fileID: 11400000, guid: fbd2b87a9e0bc904087b1949844b078b, type: 2}
+  audioConfig: {fileID: 11400000, guid: e1cf6dad43762034bbfed6797c9443a5, type: 2}
+  detectionDistance: 8
+  npcToUnlock: {fileID: 0}
 --- !u!82 &12416178 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 4921486865901663390, guid: 702677d9426fe1c4c843f452c7cdbd79, type: 3}
@@ -6400,7 +6383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &162444204
 Transform:
   m_ObjectHideFlags: 0
@@ -41469,7 +41452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &739681580
 Transform:
   m_ObjectHideFlags: 0
@@ -69535,7 +69518,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1156523111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143184,7 +143167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2079290132
 Transform:
   m_ObjectHideFlags: 0
@@ -150912,7 +150895,9 @@ SceneRoots:
   - {fileID: 7141268221703146637}
   - {fileID: 1893222052}
   - {fileID: 990828508}
+  - {fileID: 2101221224}
   - {fileID: 8874856105195882976}
+  - {fileID: 1410691188}
   - {fileID: 662554831}
   - {fileID: 4598182359749373839}
   - {fileID: 711465379}
@@ -150931,5 +150916,3 @@ SceneRoots:
   - {fileID: 1122019480}
   - {fileID: 807472347}
   - {fileID: 1848911667}
-  - {fileID: 2101221224}
-  - {fileID: 1410691188}

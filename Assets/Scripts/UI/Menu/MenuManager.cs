@@ -40,21 +40,17 @@ namespace UI.Menu {
             audioVideoPanel.SetActive(true);
         }
 
-        public void ControlsClicked() {
-            audioVideoPanel.SetActive(false);
-        }
-
         public void CreditsClicked() {
             mainView.SetActive(false);
             creditsView.SetActive(true);
         }
 
         public void ExitClicked() {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
-#else
+        #else
         Application.Quit();
-#endif
+        #endif
         }
         #endregion
 
