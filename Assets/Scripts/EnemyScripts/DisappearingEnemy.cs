@@ -15,7 +15,6 @@ namespace EnemyScripts {
                 foreach (Obstacle obstacle in obstacles) {
                     SaveManager.Instance.ChangeObstacleData(obstacle.GetID(), false);
                 }
-                this.gameObject.SetActive(false);
             }
         }
     }

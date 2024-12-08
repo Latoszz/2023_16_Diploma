@@ -58,6 +58,7 @@ namespace CardBattles.Managers.GameSettings {
         public  int overrideHeroMaxHpValue => 0;
         public bool isTutorial => false;
         public TutorialData tutorialData => null;
+        public bool resetDeckWhenEmpty => false;
 #pragma warning restore CS0108, CS0114
 
     }

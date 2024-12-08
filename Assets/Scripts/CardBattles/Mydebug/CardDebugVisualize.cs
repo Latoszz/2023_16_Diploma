@@ -12,6 +12,7 @@ using UnityEngine.UI;
 
 namespace CardBattles.Mydebug {
     public class CardDebugVisualize : PlayerEnemyMonoBehaviour {
+        #if UNITY_EDITOR
         private CardSetDictionary cardSets =
             new CardSetDictionary();
 
@@ -100,5 +101,6 @@ namespace CardBattles.Mydebug {
                 }
             }
         }
+        #endif
     }
 }

@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 [ExecuteInEditMode]
 public class CardSetLoaderEditor : MonoBehaviour
 {
+    #if UNITY_EDITOR
     [SerializeField, ResizableTextArea,ReadOnly] private string newCardSetPath = "Assets/Scripts/CardBattles/Scriptable objects/CardSets/new"; 
     [SerializeField, ResizableTextArea,ReadOnly]  private  string defaultPath = "Assets/Scripts/CardBattles/Scriptable objects/CardSets"; 
     [SerializeField, ReadOnly] public List<CardSetData> cardSetDatas = new List<CardSetData>();
@@ -52,4 +53,5 @@ public class CardSetLoaderEditor : MonoBehaviour
         Debug.Log($"Loaded {cardSetDatas.Count} CardSetData assets from path: {path}");
         EditorUtility.SetDirty(this);
     }
+    #endif
 }
