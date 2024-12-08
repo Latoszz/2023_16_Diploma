@@ -2165,11 +2165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0c3f135f481904497e3b50f6ca53ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageOn: {fileID: -1005278295, guid: f2f1cf68878ff1a4683521f12c9b458c, type: 3}
-  imageInBetween: {fileID: 1872217001, guid: f2f1cf68878ff1a4683521f12c9b458c, type: 3}
+  spriteOn: {fileID: 0}
+  spriteInBetween: {fileID: 0}
   spriteOff: {fileID: 1849297517, guid: f2f1cf68878ff1a4683521f12c9b458c, type: 3}
-  button: {fileID: 7972302145025868862}
-  text: {fileID: 6074032931570528162}
   rectTransformText: {fileID: 0}
   textMoveDownAmount: 10
 --- !u!1 &9093201358767877488
@@ -5175,10 +5173,6 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 723730316136593192, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1354763890, guid: e46a1a26f6354d04b8529f3664d42cdb, type: 3}
     - target: {fileID: 723730316136593192, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Color.a
       value: 1
