@@ -67,7 +67,9 @@ namespace CardBattles.Character {
         public static void DrawACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, int cost = 1) {
             onDrawCard?.Invoke(playerEnemyMonoBehaviour, new HasCost(cost));
         }
-
+        
+        
+        
         private void OnDrawCardHandler(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost) {
             if (playerEnemyMonoBehaviour.IsPlayers != IsPlayers)
                 return;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.temp;
 using CardBattles.Character;
@@ -138,6 +139,11 @@ namespace CardBattles.Managers {
                         targets.Add(cardSpot.gameObject);
                     }
 
+                    break;
+                case TargetType.ThisCardSetNotBoard:
+                    targets.AddRange(PlayingCharacter(isPlayers).deck.GetOtherCardFromSameCardSet(card));
+                    var x = Playing(isPlayers).GetNoNullCardsObjects();
+                    targets = targets.Except(x).ToList();
                     break;
                 default:
                     break;

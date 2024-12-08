@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Audio;
 using CardBattles.CardScripts;
+using CardBattles.CardScripts.CardDatas;
 using NaughtyAttributes;
 using UnityEngine;
 using Math = System.Math;
@@ -35,8 +36,9 @@ namespace CardBattles.Character {
         [SerializeField] [Range(100, 1000)] public float distanceMulti = 300f;
 
 
-
-     
+        public void SummonToHand(CardData card, int amount) {
+            
+        }
         
         public void RemoveCard(Card card, bool shouldBeHere=true) {
             if(!CardInHandCheck(card,shouldBeHere))

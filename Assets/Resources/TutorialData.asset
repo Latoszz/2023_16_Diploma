@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TutorialData
   m_EditorClassIdentifier: 
   playerCards:
-  - {fileID: 600601776932619513, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
+  - {fileID: -1089272386873160619, guid: f50817ba8aed4054ea1bdf051f2ea93d, type: 2}
   - {fileID: 6603303908141113648, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
   - {fileID: 2372559019292260079, guid: f50817ba8aed4054ea1bdf051f2ea93d, type: 2}
   - {fileID: 4154407072327070877, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}

@@ -17,7 +17,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   description: 'Start of next turn: turn into 3/3 sapling'
   flavourText: 
-  properties: 05000000
+  properties: 0500000000000000
   effectDictionary:
     m_keys: 
     m_values: []
@@ -42,8 +42,8 @@ MonoBehaviour:
   - {fileID: 6576024184287744945}
   - {fileID: 850165210332599635}
   - {fileID: 7489900861407034460}
-  setColor: {r: 1, g: 1, b: 1, a: 1}
-  cardSetIcon: {fileID: 21300000, guid: d54f3f89176aad842a6d3ade4159d5d6, type: 3}
+  setColor: {r: 0.909804, g: 0.9333334, b: 0.6666667, a: 1}
+  cardSetIcon: {fileID: 1470129168, guid: f7c5b48927246fb49a5607f8557faa68, type: 3}
 --- !u!114 &850165210332599635
 MonoBehaviour:
   m_ObjectHideFlags: 0

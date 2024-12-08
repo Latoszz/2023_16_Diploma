@@ -29,5 +29,7 @@ namespace CardBattles.Enums {
         OpposingCardSpot,
         ThisCardSpot,
         
+        ThisCardSetNotBoard,
+        
     }
 }

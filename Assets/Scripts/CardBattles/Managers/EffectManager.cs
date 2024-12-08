@@ -24,7 +24,8 @@ namespace CardBattles.Managers {
                     { EffectName.DealOrHeal, DealOrHeal },
                     { EffectName.HealAndBuff, HealAndBuff },
                     { EffectName.BuffAttackAndHp, BuffAttackAndHp },
-                    { EffectName.SummonStrawmen, SummonStrawmen}
+                    { EffectName.SummonStrawmen, SummonStrawmen},
+                    { EffectName.SummonFoxes, SummonFoxes}
                 };
 
 
@@ -129,8 +130,21 @@ namespace CardBattles.Managers {
         }
 
 
+        
+        private static IEnumerator AddCardToHand(List<GameObject> targets, int value, CardData card){
+            var x = targets.First();
+            if (!x.TryGetComponent(typeof(PlayerEnemyMonoBehaviour), out var playerEnemyMonoBehaviour))
+                yield break;
+            CharacterManager.DrawACard((PlayerEnemyMonoBehaviour)playerEnemyMonoBehaviour, 0);
+        }
+        
         //EXPECTS CARDSPOTS AS TARGETS
-        //Value does nothing
+        //Value determines amount
+        
+        private static IEnumerator SummonFoxes(List<GameObject> targets, int value) {
+            var card = CardManager.Instance.LoadCardData("ToSummon", "Fox");
+            yield return SummonUnits(targets, value, card);
+        }
         private static IEnumerator SummonStrawmen(List<GameObject> targets, int value) {
             var card = CardManager.Instance.LoadCardData("Tutorial", "StrawMan");
             yield return SummonUnits(targets, value, card);
@@ -139,7 +153,11 @@ namespace CardBattles.Managers {
         private static IEnumerator SummonUnits(List<GameObject> targets, int value, CardData unit) {
             if (unit == null)
                 yield return null;
+            var i = 0;
             foreach (var target in targets) {
+                if (i >= value)
+                    break;
+                i++;
                 if (!target.TryGetComponent(typeof(CardSpot), out var component))
                     continue;
 

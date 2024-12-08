@@ -19,8 +19,11 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 8
+      targetType: 20
+      value: 1
   attack: 0
   maxHealth: 1
 --- !u!114 &11400000
@@ -42,8 +45,8 @@ MonoBehaviour:
   - {fileID: 9115377537791207913}
   - {fileID: 730963594703328656}
   - {fileID: 4476286123173374945}
-  setColor: {r: 1, g: 1, b: 1, a: 1}
-  cardSetIcon: {fileID: 0}
+  setColor: {r: 0.05558731, g: 0.206, b: 0.05885717, a: 1}
+  cardSetIcon: {fileID: 21300000, guid: d54f3f89176aad842a6d3ade4159d5d6, type: 3}
 --- !u!114 &730963594703328656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,8 +66,11 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 8
+      targetType: 20
+      value: 1
   attack: 0
   maxHealth: 1
 --- !u!114 &4476286123173374945
@@ -88,8 +94,8 @@ MonoBehaviour:
   effectDictionary:
     m_keys: 00000000
     m_values:
-    - effectName: 0
-      targetType: 12
+    - effectName: 8
+      targetType: 20
       value: 1
   attack: 0
   maxHealth: 1
@@ -112,8 +118,11 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 8
+      targetType: 20
+      value: 1
   attack: 0
   maxHealth: 1
 --- !u!114 &9115377537791207913
@@ -135,7 +144,10 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 8
+      targetType: 20
+      value: 1
   attack: 0
   maxHealth: 1

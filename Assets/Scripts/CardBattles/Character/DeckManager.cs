@@ -5,6 +5,7 @@ using System.Linq;
 using CardBattles.CardGamesManager;
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.CardDatas;
+using CardBattles.Enums;
 using CardBattles.Interfaces.InterfaceObjects;
 using CardBattles.Managers;
 using CardBattles.Managers.GameSettings;
@@ -104,6 +105,8 @@ namespace CardBattles.Character {
                 
                 
                 foreach (var cardData in cardSetData.cards) {
+                    if(cardData.properties.Contains(AdditionalProperty.Non_Functional))
+                        Debug.Log($"{cardSetData.displayName} : {cardData.cardName} is Non_Functional, skipped adding to deck");
                     if (cardData == null) {
                         Debug.LogError("cardData is null in cardSetData: " + cardSetData.displayName);
                         continue;

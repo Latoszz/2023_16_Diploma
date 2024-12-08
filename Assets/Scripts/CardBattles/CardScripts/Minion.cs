@@ -74,7 +74,7 @@ namespace CardBattles.CardScripts {
                 CurrentHealth = MaxHealth;
                 cardDisplay.SetCardDisplayData(minionData);
                 if(GameStats.Config.cardsExtraSleep)
-                    Properties.Add(AdditionalProperty.JustPlayed);
+                    Properties.Add(AdditionalProperty.Just_Played);
 
             }
 
@@ -144,8 +144,8 @@ namespace CardBattles.CardScripts {
         [SerializeField] private UnityEvent stopsSleeping;
         public void AttackTarget(IDamageable target) {
 
-            if (Properties.Contains(AdditionalProperty.JustPlayed)) {
-                Properties.Remove(AdditionalProperty.JustPlayed);
+            if (Properties.Contains(AdditionalProperty.Just_Played)) {
+                Properties.Remove(AdditionalProperty.Just_Played);
                 transform.DOShakePosition(0.5f,20f,20);
                 return;
             }

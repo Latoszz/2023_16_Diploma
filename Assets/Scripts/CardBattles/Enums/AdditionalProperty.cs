@@ -42,7 +42,10 @@ namespace CardBattles.Enums {
         Spiky,
         
         [PropertyDescription("Testing, auto applied to all")]
-        JustPlayed
+        Just_Played,
+        
+        [PropertyDescription("Will not be added to deck")]
+        Non_Functional
     }
 
     public static class AdditionalPropertyHelper {

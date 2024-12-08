@@ -69,7 +69,7 @@ namespace CardBattles.CardScripts {
             name = cardName;
             flavourText = cardData.flavourText;
             description = cardData.description;
-            properties = cardData.properties.ToList();
+            properties = cardData.properties.Distinct().ToList();
             cardSetName = cardData.cardSet.name;
             effectDictionary = cardData.EffectDictionary;
         }

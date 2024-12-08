@@ -86,8 +86,13 @@ namespace CardBattles.CardHoverInformation {
             var firstPosition = card.transform.position + firstOffset;
             for (var i = 0; i < card.Properties.Count; i++) {
                 var property = card.Properties[i];
+                if(property == AdditionalProperty.Just_Played)
+                    continue;
+                
                 var propertyBox = Instantiate(propertyBoxPrefab, propertiesContainer, false);
-                propertyBox.transform.position = firstPosition + Vector3.down * (i * ( yOffsetBetween + propertyBox.GetComponent<RectTransform>().sizeDelta[1]));
+                propertyBox.transform.position = firstPosition + 
+                                                 Vector3.down * (i * 
+                                                                 ( yOffsetBetween + propertyBox.GetComponent<RectTransform>().sizeDelta[1]));
                 var description = CreateDescription(property);
 
                 var texts = propertyBox.GetComponentsInChildren<Text>();

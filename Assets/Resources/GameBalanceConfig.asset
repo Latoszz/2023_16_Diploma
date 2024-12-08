@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardsExtraSleep: 1
   overrideHeroMaxHp: 1
-  overrideHeroMaxHpValue: 15
+  overrideHeroMaxHpValue: 40
   resetDeckWhenEmpty: 1
   textureGuideLines: 'Card textures should be 32 x 32
 

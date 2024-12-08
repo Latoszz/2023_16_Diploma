@@ -62,11 +62,14 @@ MonoBehaviour:
   cardName: Forest animals
   sprite: {fileID: 0}
   description: Summon two 2/2 foxes
-  flavourText: NOT FUNCTIONAL
+  flavourText: 
   properties: 07000000
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 10
+      targetType: 15
+      value: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,9 +158,9 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Queen ant
   sprite: {fileID: 0}
-  description: 'On play: Add 2 1/1 ants to hand [nf]'
-  flavourText: 
-  properties: 
+  description: 'On play: Add 2 1/1 ants to hand '
+  flavourText: NON FUNCTIONATL
+  properties: 000000000b000000
   effectDictionary:
     m_keys: 
     m_values: []

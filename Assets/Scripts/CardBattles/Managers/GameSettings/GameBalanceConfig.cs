@@ -25,7 +25,7 @@ namespace CardBattles.Managers.GameSettings {
         [SerializeField]
         public TutorialData tutorialData;
 
-
+        
         
     }
 }

@@ -17,7 +17,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   description: 
   flavourText: On death will discard a random card from hand
-  properties: 
+  properties: 0b000000
   effectDictionary:
     m_keys: 
     m_values: []
@@ -40,7 +40,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   description: 
   flavourText: will give +1 mana next turn
-  properties: 07000000
+  properties: 070000000b000000
   effectDictionary:
     m_keys: 
     m_values: []
@@ -63,7 +63,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   description: 
   flavourText: Will add durable for 1 turn to your minions
-  properties: 
+  properties: 0b000000
   effectDictionary:
     m_keys: 
     m_values: []

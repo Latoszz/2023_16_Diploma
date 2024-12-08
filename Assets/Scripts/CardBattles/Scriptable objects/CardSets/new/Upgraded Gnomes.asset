@@ -24,7 +24,7 @@ MonoBehaviour:
     m_keys: 00000000
     m_values:
     - effectName: 8
-      targetType: 12
+      targetType: 20
       value: 1
   attack: 1
   maxHealth: 2
@@ -52,7 +52,7 @@ MonoBehaviour:
     m_keys: 00000000
     m_values:
     - effectName: 8
-      targetType: 12
+      targetType: 20
       value: 1
   attack: 1
   maxHealth: 2
@@ -80,7 +80,7 @@ MonoBehaviour:
     m_keys: 00000000
     m_values:
     - effectName: 8
-      targetType: 12
+      targetType: 20
       value: 1
   attack: 1
   maxHealth: 2
@@ -108,7 +108,7 @@ MonoBehaviour:
     m_keys: 00000000
     m_values:
     - effectName: 8
-      targetType: 12
+      targetType: 20
       value: 1
   attack: 1
   maxHealth: 2
@@ -136,7 +136,7 @@ MonoBehaviour:
     m_keys: 00000000
     m_values:
     - effectName: 8
-      targetType: 12
+      targetType: 20
       value: 1
   attack: 1
   maxHealth: 2
@@ -187,7 +187,7 @@ MonoBehaviour:
     m_keys: 00000000
     m_values:
     - effectName: 8
-      targetType: 12
+      targetType: 20
       value: 1
   attack: 1
   maxHealth: 2
@@ -215,7 +215,7 @@ MonoBehaviour:
     m_keys: 00000000
     m_values:
     - effectName: 8
-      targetType: 12
+      targetType: 20
       value: 1
   attack: 1
   maxHealth: 2
