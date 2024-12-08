@@ -935,8 +935,12 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2856170542815235826, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
+      propertyPath: m_Speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856170542815235826, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
       propertyPath: m_Acceleration
-      value: 80
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2856170542815235826, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
       propertyPath: m_AngularSpeed
@@ -6506,6 +6510,14 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1281169490}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: maxSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
+      propertyPath: normalSpeed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6014060924607383652, guid: d3e70f5bdd50cea44a0377fb9d5f1278, type: 3}
       propertyPath: mouseHoldAction.m_Name
       value: Mouse Hold
