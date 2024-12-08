@@ -6,12 +6,12 @@ using Esper.ESave;
 using NaughtyAttributes;
 using QuestSystem;
 using SaveSystem.SaveData;
-using UI.Inventory;
 using UI.Menu;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+#pragma warning disable 0414
 namespace SaveSystem {
     public class SaveManager: MonoBehaviour {
         [SerializeField] private SaveFileSetup saveFileSetup;
@@ -26,6 +26,7 @@ namespace SaveSystem {
 
         private const string InitialSaveDataID = "Initial save data";
         private const string InventorySaveDataID = "Inventory items";
+        private const string TutorialSaveData = "Tutorial";
 
         public static SaveManager Instance;
 
@@ -75,6 +76,7 @@ namespace SaveSystem {
         public void NewGame() {
             DeleteSaveFile();
             saveFile.AddOrUpdateData(InitialSaveDataID, 0);
+            saveFile.AddOrUpdateData(TutorialSaveData, true);
             SettingsManager.Instance.PopulateSaveData(saveFile);
             saveFile.Save();
         }
@@ -96,10 +98,6 @@ namespace SaveSystem {
         public void LoadGame() {
             if (!HasSaveData()) {
                 Debug.Log("Tried loading but no data");
-                #if UNITY_EDITOR
-                saveFile.AddOrUpdateData(InitialSaveDataID, 0);
-                saveFile.Save();
-                #endif
                 return;
             }
             
@@ -138,12 +136,23 @@ namespace SaveSystem {
             saveFile.Save();
         }
 
-        public bool HasSaveData() {
+        private bool HasSaveData() {
             return saveFile.HasData(InitialSaveDataID);
         }
 
         public bool HasInventoryData() {
             return saveFile.HasData(InventorySaveDataID);
+        }
+
+        public bool IsAfterTutorial() {
+            if (!saveFile.HasData(TutorialSaveData))
+                return false;
+            return !saveFile.GetData<bool>(TutorialSaveData);
+        }
+
+        public void ChangeTutorialData(bool value) {
+            saveFile.AddOrUpdateData(TutorialSaveData, value);
+            saveFile.Save();
         }
 
         public void ChangeObstacleData(string dataId, bool value) {

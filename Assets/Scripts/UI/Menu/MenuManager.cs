@@ -19,7 +19,7 @@ namespace UI.Menu {
         }
 
         private void Start() {
-            if(SaveManager.Instance.HasSaveData())
+            if(SaveManager.Instance.IsAfterTutorial())
                 continueButton.interactable = true;
         }
 
