@@ -94934,10 +94934,6 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2071400440854826801, guid: 97903a1a4e3f7c94e9fb7d0eb3615189, type: 3}
-      propertyPath: m_Transition
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2071400440854826801, guid: 97903a1a4e3f7c94e9fb7d0eb3615189, type: 3}
       propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
