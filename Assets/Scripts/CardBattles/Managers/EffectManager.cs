@@ -24,8 +24,9 @@ namespace CardBattles.Managers {
                     { EffectName.DealOrHeal, DealOrHeal },
                     { EffectName.HealAndBuff, HealAndBuff },
                     { EffectName.BuffAttackAndHp, BuffAttackAndHp },
-                    { EffectName.SummonStrawmen, SummonStrawmen},
-                    { EffectName.SummonFoxes, SummonFoxes}
+                    { EffectName.SummonStrawmen, SummonStrawmen },
+                    { EffectName.SummonFoxes, SummonFoxes },
+                    { EffectName.ReplaceWithSapling, ReplaceWithSapling }
                 };
 
 
@@ -130,21 +131,21 @@ namespace CardBattles.Managers {
         }
 
 
-        
-        private static IEnumerator AddCardToHand(List<GameObject> targets, int value, CardData card){
+        private static IEnumerator AddCardToHand(List<GameObject> targets, int value, CardData card) {
             var x = targets.First();
             if (!x.TryGetComponent(typeof(PlayerEnemyMonoBehaviour), out var playerEnemyMonoBehaviour))
                 yield break;
             CharacterManager.DrawACard((PlayerEnemyMonoBehaviour)playerEnemyMonoBehaviour, 0);
         }
-        
+
         //EXPECTS CARDSPOTS AS TARGETS
         //Value determines amount
-        
+
         private static IEnumerator SummonFoxes(List<GameObject> targets, int value) {
             var card = CardManager.Instance.LoadCardData("ToSummon", "Fox");
             yield return SummonUnits(targets, value, card);
         }
+
         private static IEnumerator SummonStrawmen(List<GameObject> targets, int value) {
             var card = CardManager.Instance.LoadCardData("Tutorial", "StrawMan");
             yield return SummonUnits(targets, value, card);
@@ -164,6 +165,38 @@ namespace CardBattles.Managers {
                 var card = CardManager.Instance.CreateCard(unit, (CardSpot)component);
                 CharacterManager.SummonACard(card, (CardSpot)component);
             }
+        }
+
+        private static IEnumerator ReplaceWithSapling(List<GameObject> targets, int value) {
+            var card = CardManager.Instance.LoadCardData("Nature's Guardian", "Sapling");
+            yield return ReplaceWithMinion(targets, value, card);
+        }
+
+        //expects itself as target
+        private static IEnumerator ReplaceWithMinion(List<GameObject> targets, int value, CardData unit) {
+            var target = targets.First();
+            if (!target.TryGetComponent(typeof(Minion), out var component))
+                yield break;
+            var minion = (Minion)component;
+            var cardSpot = minion.isPlacedAt;
+            GameObject[] minionAsArray = { minion.gameObject };
+            yield return Kill(minionAsArray.ToList(), 0);
+            yield return new WaitForSecondsRealtime(2f);
+
+            GameObject[] cardSpotAsArray = { cardSpot!.gameObject };
+            yield return SummonUnits(cardSpotAsArray.ToList(), 1, unit);
+        }
+
+
+        private static IEnumerator Kill(List<GameObject> targets, int value) {
+            foreach (var target in targets) {
+                if (target.TryGetComponent(typeof(IDamageable), out var component)) {
+                    ((IDamageable)component).Die();
+                    //yield return DoVisuals(EffectName.DealDamage, component);
+                }
+            }
+
+            yield return null;
         }
     }
 }

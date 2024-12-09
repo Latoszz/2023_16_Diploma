@@ -38,9 +38,9 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Wolf pup
   sprite: {fileID: 0}
-  description: 'On Death: Summon 1/1 Wolf spirit [nf]'
+  description: 'On Death: Summon 1/1 Wolf spirit'
   flavourText: 
-  properties: 
+  properties: 0b000000
   effectDictionary:
     m_keys: 
     m_values: []
@@ -92,8 +92,8 @@ MonoBehaviour:
   - {fileID: 7329401131658345760}
   - {fileID: 7549058886613418407}
   - {fileID: -1089272386873160619}
-  setColor: {r: 1, g: 1, b: 1, a: 1}
-  cardSetIcon: {fileID: 0}
+  setColor: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
+  cardSetIcon: {fileID: 100458534, guid: 102545c1477f0b4479ffa443125463b8, type: 3}
 --- !u!114 &1597232316267468199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 00000000
+    m_keys: 03000000
     m_values:
     - effectName: 0
       targetType: 4
@@ -159,7 +159,7 @@ MonoBehaviour:
   cardName: Queen ant
   sprite: {fileID: 0}
   description: 'On play: Add 2 1/1 ants to hand '
-  flavourText: NON FUNCTIONATL
+  flavourText: 
   properties: 000000000b000000
   effectDictionary:
     m_keys: 

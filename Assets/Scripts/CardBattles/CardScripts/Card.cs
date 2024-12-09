@@ -54,7 +54,7 @@ namespace CardBattles.CardScripts {
         public TriggerEffectDictionary effectDictionary;
 
         [HorizontalLine(1f)] [CanBeNull]
-        protected CardSpot isPlacedAt;
+        public CardSpot isPlacedAt;
 
         private void Awake() {
             canvas = GetComponent<Canvas>();

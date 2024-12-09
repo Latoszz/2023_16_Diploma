@@ -64,14 +64,22 @@ namespace CardBattles.CardScripts.Additional {
         private Card card;
         public bool frontVisible;
 
+        private Sprite defaultSprite;
         private void Awake() {
             card = GetComponent<Card>();
             frontOfCard.enabled = !frontVisible;
             backOfCard.enabled = !frontVisible;
+            defaultSprite = Resources.Load<Sprite>("Sprites/poorly_drawn_cat");
         }
 
         public void SetCardDisplayData(CardData cardData) {
-            cardImage.sprite = cardData.sprite;
+            //var x = Resources.Load<Sprite>("Sprites/poorly_drawn_cat");
+
+            if (cardData.sprite == null)
+                cardImage.sprite = defaultSprite;
+            else {
+                cardImage.sprite = cardData.sprite;
+            }
             cardName.text = cardData.name.ToUpper();
             descriptionData = cardData.description;
             UpdateDescription(cardData.properties);
