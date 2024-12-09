@@ -124,7 +124,8 @@ namespace Tutorial {
         public void HideDialogue() {
             if(TutorialUIManager.Instance.InventoryUnlocked)
                 InputManager.Instance.EnableInventory();
-            InputManager.Instance.EnableMoveInput();
+            if(currentTextIndex != 1)
+                InputManager.Instance.EnableMoveInput();
             image.enabled = false;
             dialoguePanel.SetActive(false);
         }
