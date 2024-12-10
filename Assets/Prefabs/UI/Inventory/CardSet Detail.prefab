@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 19ef378f4cf35b64981a4655ed2d7d87, type: 2}
-  m_sharedMaterial: {fileID: 3700108273748071392, guid: 19ef378f4cf35b64981a4655ed2d7d87, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -229,7 +229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWait: 0.5
-  minSize: 300
   descriptionWindow: {fileID: 4420133595110403426}
   descriptionText: {fileID: 4537412799245469344}
 --- !u!1 &6345725608644050369
@@ -338,7 +337,7 @@ PrefabInstance:
     - target: {fileID: 3219392622169063251, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 19ef378f4cf35b64981a4655ed2d7d87, type: 2}
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 3219392622169063251, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_fontStyle
       value: 0
@@ -366,7 +365,7 @@ PrefabInstance:
     - target: {fileID: 3219392622169063251, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 3700108273748071392, guid: 19ef378f4cf35b64981a4655ed2d7d87, type: 2}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 3219392622169063251, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_enableAutoSizing
       value: 0
@@ -486,7 +485,7 @@ PrefabInstance:
     - target: {fileID: 8832045608727974014, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2086782545, guid: 1e5ea8ed9eb192f41b410788738709d2, type: 3}
+      objectReference: {fileID: 2086782545, guid: 43036c6fd2d23db42b11d88cb65848c7, type: 3}
     - target: {fileID: 8832045608727974014, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_RaycastTarget
       value: 1

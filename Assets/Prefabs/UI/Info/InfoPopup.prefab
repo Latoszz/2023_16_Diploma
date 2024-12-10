@@ -52,10 +52,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondsToDisappearInt: 5
   fadeTime: 1
+  openSound: {fileID: 0}
+  closeSound: {fileID: 0}
   infoPopupPanel: {fileID: 8172943650027785104}
   infoTitle: {fileID: 4987756769387545645}
   infoDescription: {fileID: 2300221206770171353}
-  questManager: {fileID: 0}
 --- !u!114 &7729261692373241768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +135,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1864335417455288929, guid: 22d6f29e60040e545bb0c1adda94b0b7, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 1864335417455288929, guid: 22d6f29e60040e545bb0c1adda94b0b7, type: 3}
       propertyPath: m_fontColor.b
       value: 0.35686275
       objectReference: {fileID: 0}
@@ -145,6 +150,10 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 0.41960785
       objectReference: {fileID: 0}
+    - target: {fileID: 1864335417455288929, guid: 22d6f29e60040e545bb0c1adda94b0b7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1864335417455288929, guid: 22d6f29e60040e545bb0c1adda94b0b7, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4284173163
@@ -230,6 +239,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4831067674301963157, guid: 22d6f29e60040e545bb0c1adda94b0b7, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4831067674301963157, guid: 22d6f29e60040e545bb0c1adda94b0b7, type: 3}
       propertyPath: m_fontColor.b
       value: 0.35686275
       objectReference: {fileID: 0}
@@ -241,6 +254,10 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 0.41960785
       objectReference: {fileID: 0}
+    - target: {fileID: 4831067674301963157, guid: 22d6f29e60040e545bb0c1adda94b0b7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4831067674301963157, guid: 22d6f29e60040e545bb0c1adda94b0b7, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4284173163
@@ -265,6 +282,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8231355987157189694, guid: 22d6f29e60040e545bb0c1adda94b0b7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2086782545, guid: 43036c6fd2d23db42b11d88cb65848c7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
