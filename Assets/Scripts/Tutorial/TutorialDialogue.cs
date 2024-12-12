@@ -54,6 +54,7 @@ namespace Tutorial {
 
             audioSource = this.gameObject.GetComponent<AudioSource>();
             image = this.gameObject.GetComponent<Image>();
+            image.enabled = false;
         }
 
         private void Start() {
