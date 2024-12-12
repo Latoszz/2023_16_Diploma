@@ -1,3 +1,5 @@
+using InputScripts;
+using UI.Infos;
 using UI.Inventory;
 using UI.Menu;
 using UnityEngine;
@@ -20,7 +22,10 @@ namespace UI.HUD {
         }
 
         public void OpenInventory() {
+            if (QuestListPanel.Instance.IsOpen)
+                QuestListPanel.Instance.OpenClosePanel();
             InventoryController.Instance.ShowInventory();
+            InputManager.Instance.DisablePause();
         }
 
         public void HideHUD() {

@@ -60,6 +60,7 @@ namespace UI.Inventory {
             HUDController.Instance.HideHUD();
             InputManager.Instance.DisableMoveInput();
             InputManager.Instance.DisableQuestPanel();
+            InputManager.Instance.DisablePause();
         }
 
         public void HideInventory() {
@@ -71,6 +72,7 @@ namespace UI.Inventory {
             HUDController.Instance.ShowHUD();
             InputManager.Instance.EnableMoveInput();
             InputManager.Instance.EnableQuestPanel();
+            InputManager.Instance.EnablePause();
             if (checkForBattle) {
                 checkForBattle = false;
                 battleButton.SetActive(false);

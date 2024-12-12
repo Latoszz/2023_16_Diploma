@@ -38,10 +38,10 @@ namespace InputScripts {
         public void OnPause(InputAction.CallbackContext context) {
             if (!context.performed) 
                 return;
-        
-            if(InventoryController.Instance.IsOpen() || QuestListPanel.Instance.IsOpen)
+            if (InventoryController.Instance.IsOpen() || QuestListPanel.Instance.IsOpen) {
                 return;
-        
+            }
+
             if (PauseManager.Instance.IsOpen) {
                 PauseManager.Instance.Close();
                 playerControls.PlayerActionMap.Inventory.Enable();
@@ -55,15 +55,22 @@ namespace InputScripts {
         public void OnEscape(InputAction.CallbackContext context) {
             if (!context.performed) 
                 return;
-            
             InventoryController inventoryController = InventoryController.Instance;
             QuestListPanel questListPanel = QuestListPanel.Instance;
-            
-            if (!inventoryController.IsOpen() && !questListPanel.IsOpen) 
+
+            if (!inventoryController.IsOpen() && !questListPanel.IsOpen) {
                 return;
-        
+            }
+
             if (inventoryController.IsCardSetDetailsOpen()) {
                 inventoryController.HideCardSetDetails();
+                return;
+            }
+            
+            if (inventoryController.IsOpen()) {
+                inventoryController.HideInventory();
+                playerControls.PlayerActionMap.Pause.Enable();
+                return;
             }
 
             if (questListPanel.IsOpen) {
@@ -72,6 +79,8 @@ namespace InputScripts {
         }
 
         public void OnQuest(InputAction.CallbackContext context) {
+            if(!context.performed)
+                return;
             QuestListPanel.Instance.OpenClosePanel();
         }
 
@@ -89,6 +98,14 @@ namespace InputScripts {
         
         public void DisableQuests() {
             playerControls.PlayerActionMap.Quest.Disable();
+        }
+
+        public void EnablePause() {
+            playerControls.PlayerActionMap.Pause.Enable();
+        }
+        
+        public void DisablePause() {
+            playerControls.PlayerActionMap.Pause.Disable();
         }
     }
 }

@@ -167,9 +167,11 @@ namespace InputScripts {
             InventoryController inventoryController = InventoryController.Instance;
             if (inventoryController.IsOpen()) {
                 inventoryController.HideInventory();
+                InputManager.Instance.EnablePause();
             }
             else {
                 inventoryController.ShowInventory();
+                InputManager.Instance.DisablePause();
             }
         }
 

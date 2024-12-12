@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using Events;
+using InputScripts;
 using QuestSystem;
 using TMPro;
 using UnityEngine;
@@ -86,14 +87,18 @@ namespace UI.Infos {
 
         public void OpenClosePanel() {
             if (IsOpen) {
-                PanelFadeOut();
+                Close();
             }
             else {
+                InputManager.Instance.DisableInventory();
+                InputManager.Instance.DisablePause();
                 PanelFadeIn();
             }
         }
 
         public void Close() {
+            InputManager.Instance.EnableInventory();
+            InputManager.Instance.EnablePause();
             PanelFadeOut();
         }
     }
