@@ -94759,6 +94759,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1887956350451696392, guid: 7dd6f76aed78fea44bd9acc76b4cb0bb, type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887956350451696392, guid: 7dd6f76aed78fea44bd9acc76b4cb0bb, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887956350451696392, guid: 7dd6f76aed78fea44bd9acc76b4cb0bb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 329134586}
