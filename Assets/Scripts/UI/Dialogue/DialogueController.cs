@@ -45,6 +45,7 @@ namespace UI.Dialogue {
         public bool DialogueClosed => dialogueClosed;
 
         private string speakerID;
+        private Image image;
 
         public static DialogueController Instance;
 
@@ -58,6 +59,8 @@ namespace UI.Dialogue {
 
             audioSource = this.gameObject.GetComponent<AudioSource>();
             currentAudioConfig = defaultAudioConfig;
+            image = GetComponent<Image>();
+            image.enabled = false;
         }
 
         public void SetCurrentAudioConfig(DialogueAudioConfig audioConfig) {
@@ -115,6 +118,7 @@ namespace UI.Dialogue {
         private void ShowDialogue() {
             isTyping = false;
             nextIcon.SetActive(false);
+            image.enabled = true;
             InputManager.Instance.DisableAllInput();
             StopAllCoroutines();
             StartCoroutine(TypeSentence());
@@ -122,6 +126,7 @@ namespace UI.Dialogue {
     
         private void HideDialogue() {
             InputManager.Instance.EnableAllInput();
+            image.enabled = false;
             dialogueClosed = true;
             dialoguePanel.SetActive(false);
         }
