@@ -10,6 +10,8 @@ namespace UI.Inventory {
         [SerializeField] private float timeToWait = 0.5f;
         [SerializeField] private RectTransform descriptionWindow;
         [SerializeField] private TMP_Text descriptionText;
+        [SerializeField] private float XOffset = 40f;
+        [SerializeField] private float YOffset = 20f;
     
         private float hoverTimer = 0f;
 
@@ -19,7 +21,7 @@ namespace UI.Inventory {
         private Transform initialParent;
     
         private void Awake() {
-            initialParent = transform.parent;
+            initialParent = descriptionWindow.transform.parent;
         }
     
         private void Update() {
@@ -29,7 +31,7 @@ namespace UI.Inventory {
             if (isMouseOver) {
                 hoverTimer += Time.deltaTime;
                 if (hoverTimer >= timeToWait) {
-                    MoveTextNearCursor();
+                    //MoveTextNearCursor();
                     ShowDetails();
                 }
             }
@@ -41,18 +43,20 @@ namespace UI.Inventory {
     
         public void OnPointerEnter(PointerEventData eventData) {
             isMouseOver = true;
-            descriptionWindow.transform.SetParent(transform.parent.transform.parent);
+            descriptionWindow.transform.SetParent(transform.parent.transform.parent.transform.parent);
             descriptionWindow.transform.SetAsLastSibling();
         }
 
         public void OnPointerExit(PointerEventData eventData) {
             isMouseOver = false;
-            descriptionWindow.transform.SetParent(initialParent, false);
+            descriptionWindow.transform.SetParent(initialParent);
         }
     
         private void MoveTextNearCursor() {
             Vector3 mousePosition = Mouse.current.position.ReadValue();
-            descriptionWindow.transform.position = new Vector2(mousePosition.x + 20, mousePosition.y + descriptionWindow.sizeDelta.y/2);
+            descriptionWindow.transform.position = new Vector2(
+                mousePosition.x - descriptionWindow.sizeDelta.x * 3/2 + XOffset,
+                mousePosition.y + descriptionWindow.sizeDelta.y/2 + YOffset);
         }
 
         private void ReadCardData() {
