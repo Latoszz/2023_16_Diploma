@@ -15,9 +15,6 @@ namespace InputScripts {
         private Camera mainCamera;
         private NavMeshAgent navMeshAgent;
         [SerializeField] private float stopDistance = 0.5f;
-        [SerializeField] private float normalSpeed = 7f;
-        [SerializeField] private float maxSpeed = 10f;
-        [SerializeField] private float slowDownRadius = 3f;
         private bool pointerOverUI;
     
         private Vector3 targetPosition;
@@ -52,18 +49,6 @@ namespace InputScripts {
         
             if (mouseHoldAction.ReadValue<float>() > 0) {
                 MoveTowardsCursor();
-            }
-        
-            // Speed control
-            if (navMeshAgent.hasPath) {
-                float distance = Vector3.Distance(transform.position, navMeshAgent.destination);
-
-                if (distance > slowDownRadius) {
-                    navMeshAgent.speed = maxSpeed;
-                }
-                else {
-                    navMeshAgent.speed = Mathf.Lerp(normalSpeed, maxSpeed, distance / slowDownRadius);
-                }
             }
         }
 
