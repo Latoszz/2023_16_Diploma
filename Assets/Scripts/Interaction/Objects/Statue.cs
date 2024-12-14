@@ -27,7 +27,7 @@ namespace Interaction.Objects {
             if (unlockedSteps < stepsToUnlock) {
                 unlockedSteps++;
             }
-            if(stepsToUnlock >= unlockedSteps) {
+            if(unlockedSteps >= stepsToUnlock) {
                 showOutlineScript.enabled = true;
                 shakeCamera.SetActive(true);
                 isActive = true;
