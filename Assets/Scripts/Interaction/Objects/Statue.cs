@@ -11,6 +11,8 @@ namespace Interaction.Objects {
         [SerializeField] private string sceneName;
 
         private bool isActive;
+        private const int stepsToUnlock = 2;
+        private int unlockedSteps = 0;
         
         private void OnEnable() {
             GameEventsManager.Instance.TutorialEvents.OnUnlockStatue += Activate;
@@ -21,9 +23,14 @@ namespace Interaction.Objects {
         }
 
         private void Activate() {
-            showOutlineScript.enabled = true;
-            shakeCamera.SetActive(true);
-            isActive = true;
+            if (unlockedSteps < stepsToUnlock) {
+                unlockedSteps++;
+            }
+            else {
+                showOutlineScript.enabled = true;
+                shakeCamera.SetActive(true);
+                isActive = true;
+            }
         }
 
         public void OnPointerClick(PointerEventData eventData) {

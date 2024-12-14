@@ -19,6 +19,7 @@ namespace Tutorial {
         [Header("References")] 
         [SerializeField] private GameObject dialoguePanel;
         [SerializeField] private TMP_Text dialogueText;
+        private Image image;
     
         [SerializeField] private float typingSpeed;
 
@@ -51,18 +52,13 @@ namespace Tutorial {
                 Destroy(gameObject);
             }
             audioSource = this.gameObject.GetComponent<AudioSource>();
+            image = GetComponent<Image>();
+            image.enabled = false;
         }
 
         private void Start() {
             currentTextIndex = 0;
             DisplaySentence(tutorialTexts[0]);
-        }
-
-        public void DisplayNextSentence() {
-            if (currentTextIndex == 1) {
-                GameEventsManager.Instance.TutorialEvents.ActivateClickPoint();
-            }
-            DisplaySentence(tutorialTexts[currentTextIndex]);
         }
 
         public void DisplaySentence(DialogueText dialogue) {
@@ -109,7 +105,11 @@ namespace Tutorial {
         private void ShowDialogue() {
             if(TutorialUIManager.Instance.InventoryUnlocked)
                 InputManager.Instance.DisableInventory();
-            //InputManager.Instance.DisableMoveInput();
+            if(TutorialUIManager.Instance.QuestsUnocked)
+                InputManager.Instance.DisableQuestPanel();
+            InputManager.Instance.DisableMoveInput();
+            HUDController.Instance.HideHUD();
+            image.enabled = true;
             isTyping = false;
             StopAllCoroutines();
             StartCoroutine(TypeSentence());
@@ -118,7 +118,11 @@ namespace Tutorial {
         public void HideDialogue() {
             if(TutorialUIManager.Instance.InventoryUnlocked)
                 InputManager.Instance.EnableInventory();
-            //InputManager.Instance.EnableMoveInput();
+            if(TutorialUIManager.Instance.QuestsUnocked)
+                InputManager.Instance.EnableQuestPanel();
+            InputManager.Instance.EnableMoveInput();
+            HUDController.Instance.ShowHUD();
+            image.enabled = false;
             dialoguePanel.SetActive(false);
         }
     

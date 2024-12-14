@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   nameText: Tutorial
   sentences:
-  - A <color=purple>card set</color>?
+  - A <color=purple>card set</color>?!
   - 'What is it doing here?
 
     Maybe if I gather enough I could defeat that tree'
