@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TutorialQuest
   m_EditorClassIdentifier: 
   id: TutorialQuest
-  displayName: What's out there?
-  questDescription: Head for the doors and explore!
+  displayName: I have to fight
+  questDescription: Gather enough card sets to defeat the cursed tree
   questPrerequisites: []
   questSteps:
-  - {fileID: 5067838688809364197, guid: d62f7d6ab9ac272479306d8c814aa857, type: 3}
+  - {fileID: 6142204354139688797, guid: 6931cbd9455c17c42a517aa95f794d21, type: 3}
   questRewards: []
