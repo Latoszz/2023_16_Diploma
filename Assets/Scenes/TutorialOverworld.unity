@@ -1139,7 +1139,7 @@ MonoBehaviour:
   messageToShow: ???
   nameWindow: {fileID: 716864117}
   nameText: {fileID: 1071169721}
-  detectionRadius: 8
+  detectionRadius: 5
 --- !u!114 &146809309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,7 +1170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9081f2cea4a704791eb03716e7faa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionDistance: 8
+  detectionDistance: 5
 --- !u!114 &146809311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1187,6 +1187,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   cardSetData: {fileID: 11400000, guid: 93a68ce33da350a4c95448a9156b6763, type: 2}
   itemID: 458448df-bf7c-44f0-98ca-6c58736901cd
+  detectionDistance: 5
 --- !u!65 &146809312
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1288,6 +1289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 146809311}
+  detectionDistance: 5
 --- !u!114 &146809317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1300,6 +1302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f641d4099a549989773b4141c068acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionDistance: 5
 --- !u!114 &146809318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,7 +1316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 11400000, guid: 771239a5fd529be4bae46effd92f7350, type: 2}
-  detectionDistance: 8
+  detectionDistance: 5
 --- !u!114 &146809319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1326,6 +1329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0130befaeb478eb5096f9757fc531f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionDistance: 5
 --- !u!1001 &149358689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78398,7 +78402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9081f2cea4a704791eb03716e7faa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionDistance: 8
+  detectionDistance: 7
 --- !u!114 &1682141277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78438,7 +78442,7 @@ MonoBehaviour:
   dialogue:
   - {fileID: 11400000, guid: fbd2b87a9e0bc904087b1949844b078b, type: 2}
   audioConfig: {fileID: 11400000, guid: e1cf6dad43762034bbfed6797c9443a5, type: 2}
-  detectionDistance: 8
+  detectionDistance: 7
   npcToUnlock: {fileID: 0}
 --- !u!4 &1682141280
 Transform:
@@ -78485,6 +78489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f641d4099a549989773b4141c068acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionDistance: 7
 --- !u!65 &1682141283
 BoxCollider:
   m_ObjectHideFlags: 0

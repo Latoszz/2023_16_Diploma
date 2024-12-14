@@ -42,6 +42,11 @@ namespace UI {
         }
         
         private IEnumerator EnableInventoryButton() {
+            yield return new WaitForSeconds(1);
+            StartCoroutine(EnableInventory());
+        }
+
+        private IEnumerator EnableInventory() {
             yield return new WaitUntil(() => !TutorialDialogue.Instance.IsOpen);
             inventoryUnlocked = true;
             inventoryButton.SetActive(true);

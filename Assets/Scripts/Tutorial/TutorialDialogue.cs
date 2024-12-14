@@ -42,6 +42,8 @@ namespace Tutorial {
         private bool conversationEnded;
         public bool IsOpen => dialoguePanel.activeSelf;
 
+        private TutorialPlayer player;
+
         public static TutorialDialogue Instance;
 
         private void Awake() {
@@ -54,6 +56,7 @@ namespace Tutorial {
             audioSource = this.gameObject.GetComponent<AudioSource>();
             image = GetComponent<Image>();
             image.enabled = false;
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<TutorialPlayer>();
         }
 
         private void Start() {
@@ -120,7 +123,8 @@ namespace Tutorial {
                 InputManager.Instance.EnableInventory();
             if(TutorialUIManager.Instance.QuestsUnocked)
                 InputManager.Instance.EnableQuestPanel();
-            InputManager.Instance.EnableMoveInput();
+            if(player.PlayerUnlocked)
+                InputManager.Instance.EnableMoveInput();
             HUDController.Instance.ShowHUD();
             image.enabled = false;
             dialoguePanel.SetActive(false);

@@ -19,7 +19,6 @@ namespace Effects {
             InputManager.Instance.DisableMoveInput();
             InputManager.Instance.DisableInventory();
             cameraShake.enabled = true;
-            TutorialDialogue.Instance.DisplayNextSentence();
             StartCoroutine(ShakeCameraForSeconds(cameraShakeDuration));
         }
 

@@ -12,6 +12,15 @@ namespace UI.Inventory.Items {
         }
         
         private bool collected  = false;
+        
+        [Range(0, 10)] 
+        [SerializeField] private float detectionDistance = 8;
+
+        private GameObject player;
+
+        private void Awake() {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
 
         private void Start() {
             
@@ -26,6 +35,8 @@ namespace UI.Inventory.Items {
         }
 
         public void OnPointerClick(PointerEventData eventData) {
+            if(Vector3.Distance(player.transform.position, transform.position) > detectionDistance)
+                return;
             Collect();
         }
         
