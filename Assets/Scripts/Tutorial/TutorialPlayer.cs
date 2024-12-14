@@ -34,7 +34,6 @@ namespace Tutorial {
             }
             animator.SetTrigger(StandUp);
             InputManager.Instance.EnableMoveInput();
-            TutorialDialogue.Instance.DisplayNextSentence();
         }
     }
 }

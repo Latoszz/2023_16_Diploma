@@ -19,7 +19,6 @@ namespace Tutorial {
         [Header("References")] 
         [SerializeField] private GameObject dialoguePanel;
         [SerializeField] private TMP_Text dialogueText;
-        private Image image;
     
         [SerializeField] private float typingSpeed;
 
@@ -51,10 +50,7 @@ namespace Tutorial {
             else if (Instance != this) {
                 Destroy(gameObject);
             }
-
             audioSource = this.gameObject.GetComponent<AudioSource>();
-            image = this.gameObject.GetComponent<Image>();
-            image.enabled = false;
         }
 
         private void Start() {
@@ -68,8 +64,8 @@ namespace Tutorial {
             }
             DisplaySentence(tutorialTexts[currentTextIndex]);
         }
-    
-        private void DisplaySentence(DialogueText dialogue) {
+
+        public void DisplaySentence(DialogueText dialogue) {
             this.dialogue = dialogue;
         
             if (sentences.Count == 0) {
@@ -102,21 +98,18 @@ namespace Tutorial {
                 dialoguePanel.SetActive(true);
             }
             SetDialogue(dialogue);
-            HUDController.Instance.HideHUD();
         }
 
         private void EndConversation() {
             conversationEnded = false;
             sentences.Clear();
             HideDialogue();
-            HUDController.Instance.ShowHUD();
         }
     
         private void ShowDialogue() {
             if(TutorialUIManager.Instance.InventoryUnlocked)
                 InputManager.Instance.DisableInventory();
-            InputManager.Instance.DisableMoveInput();
-            image.enabled = true;
+            //InputManager.Instance.DisableMoveInput();
             isTyping = false;
             StopAllCoroutines();
             StartCoroutine(TypeSentence());
@@ -125,9 +118,7 @@ namespace Tutorial {
         public void HideDialogue() {
             if(TutorialUIManager.Instance.InventoryUnlocked)
                 InputManager.Instance.EnableInventory();
-            if(currentTextIndex != 1)
-                InputManager.Instance.EnableMoveInput();
-            image.enabled = false;
+            //InputManager.Instance.EnableMoveInput();
             dialoguePanel.SetActive(false);
         }
     

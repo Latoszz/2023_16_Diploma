@@ -20,8 +20,9 @@ namespace Tutorial {
         }
 
         public void OnPointerClick(PointerEventData eventData) {
+            if (!visual.activeSelf)
+                return;
             MouseInputManager.Instance.ForceSetTargetPoint(transform.position);
-            TutorialDialogue.Instance.DisplayNextSentence();
             visual.SetActive(false);
         }
     }
