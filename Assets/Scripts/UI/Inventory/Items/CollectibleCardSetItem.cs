@@ -21,10 +21,6 @@ namespace UI.Inventory.Items {
         private void Awake() {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-
-        private void Start() {
-            
-        }
         
         public void Collect() {
             InventoryController.Instance.AddItem(this);

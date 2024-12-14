@@ -6,7 +6,7 @@ namespace UI.Inventory.Items {
         [SerializeField] private CardSetData cardSetData;
         private bool unlocked;
 
-        private void Awake() {
+        protected void Start() {
             if (cardSetData != null) {
                 sprite = cardSetData.cardSetIcon;
                 itemName = cardSetData.name;
