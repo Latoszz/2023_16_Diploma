@@ -22,6 +22,7 @@ namespace UI.Inventory.Items {
             collected = true;
             gameObject.SetActive(false);
             GameEventsManager.Instance.ItemEvents.ItemCollected();
+            GameEventsManager.Instance.ItemEvents.ItemWithIdCollected(itemName);
         }
 
         public void OnPointerClick(PointerEventData eventData) {

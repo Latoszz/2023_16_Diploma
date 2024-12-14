@@ -52,6 +52,7 @@ namespace SaveSystem {
             if (scene.name == RoomSceneName) {
                 LoadInventory();
                 LoadSettings();
+                QuestManager.Instance.LoadQuests(saveFile);
                 return;
             }
             
