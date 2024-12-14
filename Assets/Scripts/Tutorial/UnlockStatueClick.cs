@@ -12,11 +12,16 @@ namespace Tutorial {
         private void Awake() {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-        
+
+        private void Start() {
+            
+        }
+
         public void OnPointerClick(PointerEventData eventData) {
             if(Vector3.Distance(player.transform.position, transform.position) > detectionDistance)
                 return;
             GameEventsManager.Instance.TutorialEvents.UnlockStatue();
+            this.enabled = false;
         }
     }
 }
