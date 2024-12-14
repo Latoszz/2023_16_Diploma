@@ -9,6 +9,7 @@ namespace Interaction.Objects {
         [SerializeField] private ShowOutline showOutlineScript;
         [SerializeField] private GameObject shakeCamera;
         [SerializeField] private string sceneName;
+        [SerializeField] private GameObject particleEffect;
 
         private bool isActive;
         private const int stepsToUnlock = 2;
@@ -30,6 +31,7 @@ namespace Interaction.Objects {
                 showOutlineScript.enabled = true;
                 shakeCamera.SetActive(true);
                 isActive = true;
+                particleEffect.SetActive(true);
             }
         }
 
