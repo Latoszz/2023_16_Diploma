@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Audio;
-using Events;
 using InputScripts;
 using TMPro;
 using UI;
@@ -11,6 +10,7 @@ using UI.Dialogue;
 using UI.HUD;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -29,6 +29,8 @@ namespace Tutorial {
         private AudioSource audioSource;
 
         [SerializeField] private List<DialogueText> tutorialTexts;
+
+        [SerializeField] private string tutorialSceneName = "TutorialOverworld";
         
 
         private Queue<string> sentences = new Queue<string>();
@@ -106,11 +108,17 @@ namespace Tutorial {
         }
     
         private void ShowDialogue() {
-            if(TutorialUIManager.Instance.InventoryUnlocked)
-                InputManager.Instance.DisableInventory();
-            if(TutorialUIManager.Instance.QuestsUnocked)
-                InputManager.Instance.DisableQuestPanel();
-            InputManager.Instance.DisableMoveInput();
+            if (SceneManager.GetActiveScene().name == tutorialSceneName) {
+                if (TutorialUIManager.Instance.InventoryUnlocked)
+                    InputManager.Instance.DisableInventory();
+                if (TutorialUIManager.Instance.QuestsUnocked)
+                    InputManager.Instance.DisableQuestPanel();
+                InputManager.Instance.DisableMoveInput();
+            }
+            else {
+                InputManager.Instance.DisableAllInput();
+            }
+
             HUDController.Instance.HideHUD();
             image.enabled = true;
             isTyping = false;
@@ -119,12 +127,18 @@ namespace Tutorial {
         }
     
         public void HideDialogue() {
-            if(TutorialUIManager.Instance.InventoryUnlocked)
-                InputManager.Instance.EnableInventory();
-            if(TutorialUIManager.Instance.QuestsUnocked)
-                InputManager.Instance.EnableQuestPanel();
-            if(player.PlayerUnlocked)
-                InputManager.Instance.EnableMoveInput();
+            if (SceneManager.GetActiveScene().name == tutorialSceneName) {
+                if (TutorialUIManager.Instance.InventoryUnlocked)
+                    InputManager.Instance.EnableInventory();
+                if (TutorialUIManager.Instance.QuestsUnocked)
+                    InputManager.Instance.EnableQuestPanel();
+                if (player.PlayerUnlocked)
+                    InputManager.Instance.EnableMoveInput();
+            }
+            else {
+                InputManager.Instance.EnableAllInput();
+            }
+
             HUDController.Instance.ShowHUD();
             image.enabled = false;
             dialoguePanel.SetActive(false);
