@@ -15,7 +15,8 @@ MonoBehaviour:
   icon: {fileID: 0}
   nameText: Tutorial
   sentences:
-  - You found a <color=purple>card set</color>!
-  - You can check it out in your <color=purple>Inventory</color>
-  - Just press the <color=purple>Inventory Button</color> above or use your <color=purple>right
-    mouse button</color> or press the <color=purple>I button</color> on your keyboard
+  - A <color=purple>card set</color>?
+  - 'What is it doing here?
+
+    Maybe if I gather enough I could defeat that tree'
+  - I'll put it in my <color=purple>Inventory</color>

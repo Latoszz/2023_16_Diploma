@@ -15,4 +15,4 @@ MonoBehaviour:
   icon: {fileID: 0}
   nameText: Tutorial
   sentences:
-  - You can <color=purple>click</color> on the ground to move
+  - <color=purple>Click</color> on the ground to move
