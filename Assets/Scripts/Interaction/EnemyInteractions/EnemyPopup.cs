@@ -10,6 +10,8 @@ namespace Interaction.EnemyInteractions {
         [SerializeField] private GameObject enemyPopup;
         [SerializeField] private GameObject popupPanel;
         [SerializeField] private GameObject deckPopup;
+        [SerializeField] private bool isTutorial;
+        [SerializeField] private GameObject tutorialPanel;
 
         public static EnemyPopup Instance;
 
@@ -30,7 +32,12 @@ namespace Interaction.EnemyInteractions {
                 CardGamesLoader.Instance.BeginBattle(EnemyStateManager.Instance.GetCurrentEnemy().GetBattleData());
             }
             else {
-                deckPopup.SetActive(true);
+                if (isTutorial) {
+                    tutorialPanel.SetActive(true);
+                }
+                else {
+                    deckPopup.SetActive(true); 
+                }
             }
         }
 
@@ -45,6 +52,11 @@ namespace Interaction.EnemyInteractions {
             Close();
             InventoryController.Instance.ShowInventory();
             InventoryController.Instance.SetBattle(true);
+        }
+
+        public void CloseTutorialPanel() {
+            tutorialPanel.SetActive(false);
+            Close();
         }
 
         private void Close() {

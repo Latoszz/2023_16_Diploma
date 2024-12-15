@@ -14,7 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   nameText: Tutorial
-  sentences:
-  - You started a <color=purple>quest</color>!
-  - You can check the list of active quests by pressing the <color=purple>Quest Button</color>
-    above or pressing the <color=purple>Q button</color> on your keyboard
+  sentences: []

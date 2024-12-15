@@ -43,6 +43,7 @@ namespace Interaction.Scene {
             InputManager.Instance.EnableAllInput();
             SaveManager.Instance.SaveSettings();
             SaveManager.Instance.SaveInventory();
+            SaveManager.Instance.SaveQuests();
             SaveManager.Instance.ChangeTutorialData(false);
             SceneManager.LoadScene(loadName);
         }

@@ -72,5 +72,13 @@ namespace InputScripts {
         public void DisableQuestPanel() {
             keyboardInputManager.DisableQuests();
         }
+
+        public void EnablePause() {
+            keyboardInputManager.EnablePause();
+        }
+
+        public void DisablePause() {
+            keyboardInputManager.DisablePause();
+        }
     }
 }

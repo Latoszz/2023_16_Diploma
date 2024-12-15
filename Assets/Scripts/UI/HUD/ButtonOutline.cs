@@ -16,11 +16,6 @@ namespace UI.HUD {
             if (QuestListPanel.Instance.IsOpen) {
                 questOutline.SetActive(false);
             }
-
-            if (TutorialDialogue.Instance.IsOpen) {
-                inventoryOutline.SetActive(false);
-                questOutline.SetActive(false);
-            }
         }
     }
 }

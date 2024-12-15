@@ -9,6 +9,8 @@ namespace Tutorial {
         private static readonly int TutorialStart = Animator.StringToHash("tutorialStart");
         private static readonly int StandUp = Animator.StringToHash("standUp");
         private bool standingUp;
+        private bool playerUnlocked;
+        public bool PlayerUnlocked => playerUnlocked;
 
         private void Awake() {
             animator.SetTrigger(TutorialStart);
@@ -34,7 +36,7 @@ namespace Tutorial {
             }
             animator.SetTrigger(StandUp);
             InputManager.Instance.EnableMoveInput();
-            TutorialDialogue.Instance.DisplayNextSentence();
+            playerUnlocked = true;
         }
     }
 }

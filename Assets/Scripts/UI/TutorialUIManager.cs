@@ -12,6 +12,9 @@ namespace UI {
 
         private bool inventoryUnlocked = false;
         public bool InventoryUnlocked => inventoryUnlocked;
+        
+        private bool questsUnlocked = false;
+        public bool QuestsUnocked => questsUnlocked;
 
         public static TutorialUIManager Instance;
 
@@ -39,6 +42,11 @@ namespace UI {
         }
         
         private IEnumerator EnableInventoryButton() {
+            yield return new WaitForSeconds(1);
+            StartCoroutine(EnableInventory());
+        }
+
+        private IEnumerator EnableInventory() {
             yield return new WaitUntil(() => !TutorialDialogue.Instance.IsOpen);
             inventoryUnlocked = true;
             inventoryButton.SetActive(true);
@@ -51,6 +59,7 @@ namespace UI {
         
         private IEnumerator EnableQuestButton() {
             yield return new WaitUntil(() => !TutorialDialogue.Instance.IsOpen);
+            questsUnlocked = true;
             questButton.SetActive(true);
             questButtonOutline.SetActive(true);
         }

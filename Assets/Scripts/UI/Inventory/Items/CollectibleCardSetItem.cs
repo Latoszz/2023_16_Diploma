@@ -12,9 +12,14 @@ namespace UI.Inventory.Items {
         }
         
         private bool collected  = false;
+        
+        [Range(0, 10)] 
+        [SerializeField] private float detectionDistance = 8;
 
-        private void Start() {
-            
+        private GameObject player;
+
+        private void Awake() {
+            player = GameObject.FindGameObjectWithTag("Player");
         }
         
         public void Collect() {
@@ -22,9 +27,14 @@ namespace UI.Inventory.Items {
             collected = true;
             gameObject.SetActive(false);
             GameEventsManager.Instance.ItemEvents.ItemCollected();
+            GameEventsManager.Instance.ItemEvents.ItemWithIdCollected(itemName);
+            GameEventsManager.Instance.ItemEvents.ItemCollectedItem(this);
+            GameEventsManager.Instance.ItemEvents.ItemReward(itemName);
         }
 
         public void OnPointerClick(PointerEventData eventData) {
+            if(Vector3.Distance(player.transform.position, transform.position) > detectionDistance)
+                return;
             Collect();
         }
         

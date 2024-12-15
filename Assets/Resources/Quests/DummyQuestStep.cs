@@ -8,4 +8,8 @@ public class DummyQuestStep : QuestStep {
     protected override void SetQuestStepState(string state) {
         
     }
+    
+    protected override void InitializeQuestStepState() {
+        
+    }
 }
