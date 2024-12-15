@@ -1,11 +1,9 @@
-using Events;
-using UI.Inventory.Items;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Tutorial {
-    public class TutorialItem : MonoBehaviour, IPointerClickHandler {
-        [SerializeField] private Item item;
+    public class UnlockItem: MonoBehaviour, IPointerClickHandler {
+        [SerializeField] private GameObject item;
         [Range(0, 10)] 
         [SerializeField] private float detectionDistance = 8;
 
@@ -18,7 +16,7 @@ namespace Tutorial {
         public void OnPointerClick(PointerEventData eventData) {
             if(Vector3.Distance(player.transform.position, transform.position) > detectionDistance)
                 return;
-            GameEventsManager.Instance.ItemEvents.ItemReward(item.GetName());
+            item.SetActive(true);
         }
     }
 }
