@@ -17,7 +17,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   description: 'Start of next turn: turn into 3/3 sapling'
   flavourText: 
-  properties: 0500000000000000
+  properties: 05000000000000000b000000
   effectDictionary:
     m_keys: 02000000
     m_values:
@@ -90,7 +90,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   description: 
   flavourText: 
-  properties: 0800000009000000
+  properties: 08000000
   effectDictionary:
     m_keys: 
     m_values: []
