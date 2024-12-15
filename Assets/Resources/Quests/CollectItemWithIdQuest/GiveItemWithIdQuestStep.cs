@@ -34,4 +34,8 @@ public class GiveItemWithIdQuestStep: QuestStep {
         isGiven = Convert.ToBoolean(state);
         UpdateState();
     }
+    
+    protected override void InitializeQuestStepState() {
+        UpdateState();
+    }
 }

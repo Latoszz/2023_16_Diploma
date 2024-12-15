@@ -136,6 +136,16 @@ namespace SaveSystem {
             inventoryDataHandling.PopulateSaveData(saveFile);
             saveFile.Save();
         }
+        
+        private void LoadQuests() {
+            QuestManager questManager = FindObjectOfType<QuestManager>(true);
+            questManager.LoadQuests(saveFile);
+        }
+
+        public void SaveQuests() {
+            QuestManager questManager = FindObjectOfType<QuestManager>(true);
+            questManager.SaveQuests(saveFile);
+        }
 
         private bool HasSaveData() {
             return saveFile.HasData(InitialSaveDataID);

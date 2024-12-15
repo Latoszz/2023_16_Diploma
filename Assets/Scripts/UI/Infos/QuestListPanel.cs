@@ -42,7 +42,7 @@ namespace UI.Infos {
             listOfQuests = new Dictionary<string, GameObject>();
             if (loadedQuests != null) {
                 foreach (Quest quest in loadedQuests.Values) {
-                    if(quest.state is QuestState.IN_PROGRESS)
+                    if(quest.state is QuestState.IN_PROGRESS or QuestState.CAN_FINISH)
                         AddQuestToList(quest.info.id);
                 }
             }

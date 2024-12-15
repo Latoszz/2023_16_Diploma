@@ -14,7 +14,6 @@ public class CollectItemWithIdQuestStep: QuestStep {
     private void OnDisable() {
         GameEventsManager.Instance.ItemEvents.OnItemWithIdCollected -= ItemCollected;
     }
-
     private void ItemCollected(string itemId) {
         if (itemId == itemToCollectId) {
             UpdateState();
@@ -29,6 +28,10 @@ public class CollectItemWithIdQuestStep: QuestStep {
 
     protected override void SetQuestStepState(string state) {
         isCollected = Convert.ToBoolean(state);
+        UpdateState();
+    }
+    
+    protected override void InitializeQuestStepState() {
         UpdateState();
     }
 }

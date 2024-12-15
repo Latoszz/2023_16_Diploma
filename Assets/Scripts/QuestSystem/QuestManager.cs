@@ -18,6 +18,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  ***/
 
 using System.Collections.Generic;
+using System.Linq;
 using Esper.ESave;
 using Events;
 using UI.Inventory;
@@ -155,10 +156,14 @@ namespace QuestSystem {
                 if(saveFile.HasData(id))
                     saveFile.DeleteData(id);
 
-                string questStepStates = JsonUtility.ToJson(quest.GetQuestStepStates());
+                QuestStepState[] questStepStates = quest.GetQuestStepStates();
+                int stepCount = questStepStates.Length;
+                saveFile.AddOrUpdateData(id + "_stepCount", stepCount);
+                for(int i = 0; i < questStepStates.Length; i++) {
+                    saveFile.AddOrUpdateData(id + "_stepStates_" + i, questStepStates[i].state);
+                }
                 saveFile.AddOrUpdateData(id + "_state", quest.state);
                 saveFile.AddOrUpdateData(id + "_stepIndex", quest.GetCurrentQuestStepIndex());
-                saveFile.AddOrUpdateData(id + "_stepStates", questStepStates);
                 saveFile.Save();
             }
         }
@@ -171,8 +176,16 @@ namespace QuestSystem {
                 string id = quest.info.id;
                 QuestState state = saveFile.GetData<QuestState>(id + "_state");
                 int currentQuestStepIndex = saveFile.GetData<int>(id + "_stepIndex");
-                string questStepStates = saveFile.GetData<string>(id + "_stepStates");
+                
+                int stepCount = saveFile.GetData<int>(id + "_stepCount");
+                List<QuestStepState> questStepStatesList = new List<QuestStepState>();
+                for(int i = 0; i < stepCount; i++) {
+                    string stepState = saveFile.GetData<string>(id + "_stepStates_" + i);
+                    questStepStatesList.Add(new QuestStepState(stepState));
+                }
+                QuestStepState[] questStepStates = questStepStatesList.ToArray();
                 quest.SetCurrentQuestStepIndex(currentQuestStepIndex);
+                quest.SetQuestStepStates(questStepStates);
                 ChangeQuestState(id, state);
             }
         }

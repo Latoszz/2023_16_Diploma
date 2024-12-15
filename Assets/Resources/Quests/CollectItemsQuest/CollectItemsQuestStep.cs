@@ -1,3 +1,4 @@
+using System;
 using Events;
 using QuestSystem;
 
@@ -16,14 +17,26 @@ public class CollectItemsQuestStep : QuestStep {
     private void ItemCollected() {
         if (itemsCollected < itemsToComplete) {
             itemsCollected++;
+            UpdateState();
         }
 
         if (itemsCollected >= itemsToComplete) {
+            UpdateState();
             FinishQuestStep();
         }
     }
+    
+    private void UpdateState() {
+        string state = itemsCollected.ToString();
+        ChangeState(state);
+    }
 
     protected override void SetQuestStepState(string state) {
-        
+        itemsCollected = Convert.ToInt32(state);
+        UpdateState();
+    }
+    
+    protected override void InitializeQuestStepState() {
+        UpdateState();
     }
 }

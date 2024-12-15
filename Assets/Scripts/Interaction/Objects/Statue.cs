@@ -1,5 +1,6 @@
 using Events;
 using Interaction.Scene;
+using QuestSystem;
 using SaveSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -40,6 +41,7 @@ namespace Interaction.Objects {
                 return;
             SaveManager.Instance.SaveSettings();
             SaveManager.Instance.SaveInventory();
+            SaveManager.Instance.SaveQuests();
             SceneSwitcher.Instance.LoadScene(sceneName);
         }
     }

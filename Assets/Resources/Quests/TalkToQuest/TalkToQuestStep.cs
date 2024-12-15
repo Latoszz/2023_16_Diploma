@@ -31,4 +31,8 @@ public class TalkToQuestStep : QuestStep {
         talkedTo = Convert.ToBoolean(state);
         UpdateState();
     }
+    
+    protected override void InitializeQuestStepState() {
+        UpdateState();
+    }
 }
