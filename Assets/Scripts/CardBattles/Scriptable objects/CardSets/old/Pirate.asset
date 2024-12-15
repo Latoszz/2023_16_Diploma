@@ -159,7 +159,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Nas'hrah
   sprite: {fileID: 21300000, guid: 256656f16306ad5449a5ec19ead726fd, type: 3}
-  description: Cards from cardset +2 Attack
+  description: Cards from cardset +4 Attack
   flavourText: 
   properties: 07000000
   effectDictionary:
@@ -167,4 +167,4 @@ MonoBehaviour:
     m_values:
     - effectName: 0
       targetType: 11
-      value: 2
+      value: 4

@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWait: 0.5
+  minSize: 300
   descriptionWindow: {fileID: 4420133595110403426}
   descriptionText: {fileID: 4537412799245469344}
 --- !u!1 &6345725608644050369
@@ -485,7 +486,7 @@ PrefabInstance:
     - target: {fileID: 8832045608727974014, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2086782545, guid: 43036c6fd2d23db42b11d88cb65848c7, type: 3}
+      objectReference: {fileID: 2086782545, guid: 1e5ea8ed9eb192f41b410788738709d2, type: 3}
     - target: {fileID: 8832045608727974014, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_RaycastTarget
       value: 1
