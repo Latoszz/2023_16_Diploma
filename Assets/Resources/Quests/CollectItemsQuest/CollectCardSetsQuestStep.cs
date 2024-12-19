@@ -32,7 +32,6 @@ public class CollectCardSetsQuestStep : QuestStep {
     
     private void UpdateState() {
         string state = setsCollected.ToString();
-        Debug.Log($"State: {state}");
         ChangeState(state);
     }
 
