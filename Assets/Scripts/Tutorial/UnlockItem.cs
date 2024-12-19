@@ -1,3 +1,5 @@
+using System.Collections;
+using UI.Dialogue;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,6 +18,11 @@ namespace Tutorial {
         public void OnPointerClick(PointerEventData eventData) {
             if(Vector3.Distance(player.transform.position, transform.position) > detectionDistance)
                 return;
+            StartCoroutine(Unlock());
+        }
+
+        private IEnumerator Unlock() {
+            yield return new WaitUntil(() => DialogueController.Instance.DialogueClosed);
             item.SetActive(true);
         }
     }

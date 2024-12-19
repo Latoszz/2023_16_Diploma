@@ -25,5 +25,11 @@ namespace Events {
         public void UnlockQuests() {
             OnUnlockQuests?.Invoke();
         }
+        
+        public event Action<string> OnButtonClicked;
+
+        public void ButtonClicked(string name) {
+            OnButtonClicked?.Invoke(name);
+        }
     }
 }

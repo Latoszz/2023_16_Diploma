@@ -29179,17 +29179,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &672494494 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3088229340084736145, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
-  m_PrefabInstance: {fileID: 896567920}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &674804771 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2300221206770171353, guid: 6981013535c0bb741b8306755ce106ca, type: 3}
@@ -40613,7 +40602,7 @@ PrefabInstance:
     - target: {fileID: 3493182965802612367, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 672494494}
+      objectReference: {fileID: 0}
     - target: {fileID: 3493182965802612367, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: set_size
@@ -41301,7 +41290,7 @@ PrefabInstance:
     - target: {fileID: 8295542358791338146, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: cardListSpace
       value: 
-      objectReference: {fileID: 1324311868}
+      objectReference: {fileID: 0}
     - target: {fileID: 8322375513985458087, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -55932,6 +55921,7 @@ GameObject:
   - component: {fileID: 1196869489}
   - component: {fileID: 1196869494}
   - component: {fileID: 1196869493}
+  - component: {fileID: 1196869495}
   m_Layer: 5
   m_Name: Show Quests Button
   m_TagString: Untagged
@@ -56114,6 +56104,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1196869495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196869487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3437f392bf2b42cba7242161a4994cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1198913720
 GameObject:
   m_ObjectHideFlags: 0
@@ -61904,11 +61906,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!1 &1324311868 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6578048785040001393, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
-  m_PrefabInstance: {fileID: 896567920}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1335920899 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6839368823078530504, guid: 189f0514728059442b158dbe72cfc5a5, type: 3}
@@ -84232,6 +84229,7 @@ GameObject:
   - component: {fileID: 1733224873}
   - component: {fileID: 1733224878}
   - component: {fileID: 1733224877}
+  - component: {fileID: 1733224879}
   m_Layer: 5
   m_Name: Inventory Button
   m_TagString: Untagged
@@ -84414,6 +84412,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1733224879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733224871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3437f392bf2b42cba7242161a4994cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1744947071
 PrefabInstance:
   m_ObjectHideFlags: 0
