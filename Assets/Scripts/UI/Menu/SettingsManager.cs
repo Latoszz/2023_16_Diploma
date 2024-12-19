@@ -55,12 +55,22 @@ namespace UI.Menu {
     
         public void SetMusicVolume(float volume) {
             currentMusicVolume = volume;
-            musicMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+            if (volume == 0) {
+                musicMixer.SetFloat("MusicVolume",-80);
+            }
+            else {
+                musicMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+            }
         }
     
         public void SetSFXVolume(float volume) {
             currentSFXVolume = volume;
-            sfxMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+            if (volume == 0) {
+                sfxMixer.SetFloat("SFXVolume", -80);
+            }
+            else {
+                sfxMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+            }
         }
 
         private void SetUpResolutions() {
