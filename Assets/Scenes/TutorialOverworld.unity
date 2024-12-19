@@ -28861,6 +28861,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!1 &595993859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2354882154918576180, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+  m_PrefabInstance: {fileID: 896567920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &603805993
 GameObject:
   m_ObjectHideFlags: 0
@@ -41290,7 +41295,7 @@ PrefabInstance:
     - target: {fileID: 8295542358791338146, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: cardListSpace
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 595993859}
     - target: {fileID: 8322375513985458087, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: m_Sprite
       value: 

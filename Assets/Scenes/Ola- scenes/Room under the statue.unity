@@ -7254,6 +7254,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580417171}
   m_CullTransparentMesh: 1
+--- !u!1 &583164455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2354882154918576180, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+  m_PrefabInstance: {fileID: 1290131444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &585810262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16736,7 +16741,7 @@ PrefabInstance:
     - target: {fileID: 8295542358791338146, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: cardListSpace
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 583164455}
     - target: {fileID: 8322375513985458087, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: m_Sprite
       value: 
