@@ -99,6 +99,9 @@ namespace SaveSystem {
         public void LoadGame() {
             if (!HasSaveData()) {
                 Debug.Log("Tried loading but no data");
+                saveFile.AddOrUpdateData(InitialSaveDataID, 0);
+                saveFile.AddOrUpdateData(TutorialSaveData, true);
+                saveFile.Save();
                 return;
             }
             
@@ -173,6 +176,11 @@ namespace SaveSystem {
 
         public void ChangeEnemyData(string enemyId, EnemyState enemyState) {
             saveFile.AddOrUpdateData(enemyId, enemyState);
+            saveFile.Save();
+        }
+
+        public void ChangeNPCData(string npcID, bool value) {
+            saveFile.AddOrUpdateData(npcID + "_helped", value);
             saveFile.Save();
         }
 

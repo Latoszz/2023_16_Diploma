@@ -101757,7 +101757,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e8996c806c49ef83f7ef133d81d08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlay: {fileID: 1871213362}
+  overlay:
+  - {fileID: 1871213362}
 --- !u!114 &2140912824
 MonoBehaviour:
   m_ObjectHideFlags: 0

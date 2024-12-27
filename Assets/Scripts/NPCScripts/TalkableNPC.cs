@@ -18,6 +18,7 @@ namespace NPCScripts {
 
         private GameObject player;
         private bool talkedTo;
+        private bool helped;
         private string npcName;
 
         [SerializeField] private string npcID;
@@ -71,6 +72,15 @@ namespace NPCScripts {
 
         public void SetTalkedTo(bool val) {
             talkedTo = val;
+        }
+
+        public bool Helped() {
+            return helped;
+        }
+
+        public void SetHelped(bool val) {
+            helped = val;
+            gameObject.SetActive(helped);
         }
 
         public string GetName() {

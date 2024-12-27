@@ -6947,8 +6947,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: secret
-  sprite: {fileID: 0}
-  itemData: {fileID: 0}
+  sprite: {fileID: -286293114, guid: 91551ffbe539d454aacec3e0958994d3, type: 3}
+  itemData: {fileID: 11400000, guid: f83b07278439a5140bf64fda3bc02de8, type: 2}
   npc: {fileID: 0}
   itemID: 28c2b67b-4974-4b9e-b331-8b53d7206257
   collectSound: {fileID: 8300000, guid: e64f25c0e6831d4d3b155172925dd2dc, type: 3}
@@ -10712,7 +10712,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e8996c806c49ef83f7ef133d81d08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlay: {fileID: 1286754849}
+  overlay:
+  - {fileID: 1286754849}
 --- !u!114 &900293143
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,8 +24,10 @@ namespace SaveSystem.SaveData {
                 
                 int j = npc.dialogue.Count();
                 bool talkedTo = npc.TalkedTo();
+                bool helped = npc.Helped();
                 saveFile.AddOrUpdateData(id, j);
                 saveFile.AddOrUpdateData(id + "_talkedTo", talkedTo);
+                saveFile.AddOrUpdateData(id + "_helped", helped);
             }
         }
 
@@ -42,7 +44,9 @@ namespace SaveSystem.SaveData {
                 }
 
                 bool talkedTo = saveFile.GetData<bool>(npc.GetID() + "_talkedTo");
+                bool helped = saveFile.GetData<bool>(npc.GetID() + "_helped");
                 npc.SetTalkedTo(talkedTo);
+                npc.SetHelped(helped);
             }
         }
     }
