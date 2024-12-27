@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using InputScripts;
 using UI.Infos;
 using UI.Inventory;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace UI.HUD {
     public class HUDController : MonoBehaviour {
-        [SerializeField] private GameObject overlay;
+        [SerializeField] private List<GameObject> overlay;
         public static HUDController Instance;
 
         private void Awake() {
@@ -29,11 +30,13 @@ namespace UI.HUD {
         }
 
         public void HideHUD() {
-            overlay.SetActive(false);
+            foreach(GameObject o in overlay)
+                o.SetActive(false);
         }
 
         public void ShowHUD() {
-            overlay.SetActive(true);
+            foreach(GameObject o in overlay)
+                o.SetActive(true);
         }
     }
 }
