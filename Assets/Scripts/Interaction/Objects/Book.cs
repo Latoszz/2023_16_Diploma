@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Events;
+using InputScripts;
 using UI.HUD;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -6,8 +8,9 @@ using UnityEngine.EventSystems;
 
 namespace Interaction.Objects {
     public class Book: MonoBehaviour, IPointerClickHandler {
+        [Header("References")]
         [SerializeField] private GameObject bookNote;
-        [SerializeField] private GameObject cardSet;
+        [SerializeField] private List<GameObject> objects;
         [SerializeField] private GameObject particleEffect;
         
         [Header("Sound")]
@@ -31,6 +34,8 @@ namespace Interaction.Objects {
             AudioSource.PlayClipAtPoint(collectSound, Camera.main.transform.position, GetMasterVolume());
             GameEventsManager.Instance.ItemEvents.ItemWithIdCollected(name);
             HUDController.Instance.HideHUD();
+            InputManager.Instance.DisableAllInput();
+            InputManager.Instance.DisablePause();
             bookNote.SetActive(true);
             particleEffect.SetActive(false);
         }
@@ -38,10 +43,12 @@ namespace Interaction.Objects {
         public void Close() {
             bookNote.SetActive(false);
             HUDController.Instance.ShowHUD();
-            if (cardSet is not null) {
-                cardSet.SetActive(true);
-                cardSet = null;
-            }
+            InputManager.Instance.EnableAllInput();
+            InputManager.Instance.EnablePause();
+            if (objects is null) return;
+            foreach(GameObject o in objects)
+                o.SetActive(true);
+            objects = null;
         }
     }
 }
