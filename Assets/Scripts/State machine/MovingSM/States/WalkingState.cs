@@ -28,6 +28,8 @@ namespace State_machine.MovingSM.States {
     
         private void Move() {
             navMeshAgent.SetDestination(currentWaypoint);
+            if(movingSM.GetAnimator() is not null)
+                movingSM.GetAnimator().SetBool(IsMoving, true);
         }
     
         private void SetWaypoint() {
