@@ -38,7 +38,8 @@ namespace State_machine.MovingSM.States {
 
         public override void UpdatePhysics() {
             base.UpdatePhysics();
-            FacePlayer();
+            if(!movingSM.FreezeRotation)
+                FacePlayer();
         }
 
         public override void Exit() {

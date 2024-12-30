@@ -21,6 +21,8 @@ namespace State_machine.MovingSM {
         [SerializeField] private float waitTimeSeconds;
         [SerializeField] private List<Transform> waypoints;
         [SerializeField] private Animator animator;
+        [SerializeField] private bool freezeRotation;
+        public bool FreezeRotation => freezeRotation;
         
         [Header("Enemy")]
         [SerializeField] private bool isEnemy;
@@ -37,6 +39,8 @@ namespace State_machine.MovingSM {
 
         private void Awake() {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            if (freezeRotation)
+                navMeshAgent.updateRotation = false;
             player = GameObject.FindGameObjectWithTag("Player");
             playerNavMeshAgent = player.GetComponent<NavMeshAgent>();
 
