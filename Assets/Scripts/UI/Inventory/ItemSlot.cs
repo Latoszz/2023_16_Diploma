@@ -74,6 +74,11 @@ namespace UI.Inventory {
                     inventoryController.HideCardSetDetails();
                 inventoryController.ShowCardSetDetails(cardSet.GetCardSetData());
             }
+            else if (item is CollectibleItem collectibleItem) {
+                if (collectibleItem.GetItemData().itemID == "Note") {
+                    inventoryController.OpenNotePanel(collectibleItem.GetItemData().text);
+                }
+            }
         }
 
         public void OnDrop(PointerEventData eventData) {

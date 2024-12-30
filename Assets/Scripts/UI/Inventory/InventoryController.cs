@@ -4,6 +4,7 @@ using CardBattles.CardScripts.CardDatas;
 using EnemyScripts;
 using InputScripts;
 using SaveSystem;
+using TMPro;
 using UI.HUD;
 using UI.Inventory.Items;
 using UI.Menu;
@@ -20,6 +21,7 @@ namespace UI.Inventory {
         [SerializeField] private List<ItemSlot> deckSlots;
 
         [SerializeField] private GameObject battleButton;
+        [SerializeField] private GameObject notePanel;
     
         private PostProcessVolume postProcessVolume;
 
@@ -136,6 +138,16 @@ namespace UI.Inventory {
                 manageCardSetDetails.Hide();
                 isCardSetDetailsOpen = false;
             }
+        }
+
+        public void OpenNotePanel(string text) {
+            notePanel.GetComponentInChildren<TMP_Text>().text = text;
+            notePanel.SetActive(true);
+        }
+
+        public void CloseNotePanel() {
+            notePanel.GetComponentInChildren<TMP_Text>().text = "";
+            notePanel.SetActive(false);
         }
 
         public void SetBattle(bool value) {
