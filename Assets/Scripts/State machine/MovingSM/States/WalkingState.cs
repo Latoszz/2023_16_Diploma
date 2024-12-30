@@ -11,6 +11,8 @@ namespace State_machine.MovingSM.States {
 
         public override void Enter() {
             base.Enter();
+            if(movingSM.GetAnimator() is not null)
+                movingSM.GetAnimator().SetBool(IsMoving, true);
         }
 
         public override void UpdateLogic() {
@@ -28,8 +30,6 @@ namespace State_machine.MovingSM.States {
     
         private void Move() {
             navMeshAgent.SetDestination(currentWaypoint);
-            if(movingSM.GetAnimator() is not null)
-                movingSM.GetAnimator().SetBool(IsMoving, true);
         }
     
         private void SetWaypoint() {

@@ -11,6 +11,8 @@ namespace State_machine.MovingSM.States {
 
         public override void Enter() {
             waitTime = movingSM.GetWaitTime();
+            if(movingSM.GetAnimator() is not null)
+                movingSM.GetAnimator().SetBool(IsMoving, false);
         }
 
         public override void UpdateLogic() {
@@ -24,8 +26,6 @@ namespace State_machine.MovingSM.States {
 
         public override void UpdatePhysics() {
             base.UpdatePhysics();
-            if(movingSM.GetAnimator() is not null)
-                movingSM.GetAnimator().SetBool(IsMoving, false);
         }
 
         public override void Exit() {
