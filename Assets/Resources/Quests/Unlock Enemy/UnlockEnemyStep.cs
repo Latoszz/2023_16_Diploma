@@ -14,9 +14,10 @@ public class UnlockEnemyStep : QuestStep {
         foreach (var enemy in enemies) {
             if (enemy.GetID() != enemyToUnlockID) continue;
             enemy.gameObject.SetActive(true);
+            enemy.ChangeState(EnemyState.Undefeated);
+            FinishQuestStep();
             return;
         }
-        FinishQuestStep();
     }
 
 

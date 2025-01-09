@@ -12,7 +12,7 @@ using UnityEngine.EventSystems;
 namespace EnemyScripts {
     public class TalkableEnemy: Enemy, ITalkable, IPointerClickHandler {
         [Header("UI panels")]
-        [SerializeField] private ShowIndicator battleIndicator;
+        [SerializeField] protected ShowIndicator battleIndicator;
         [SerializeField] private GameObject enemyPanel;
         
         [Header("Dialogue")]
@@ -70,11 +70,9 @@ namespace EnemyScripts {
         }
         
         public void OnPointerClick(PointerEventData eventData) {
-            if (state == EnemyState.Locked)
-                return;
-            
             if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
                 Talk(dialogue[0]);
+                GameEventsManager.Instance.NPCEvents.TalkedToNPC(gameObject.name);
             }
         }
         
@@ -86,13 +84,14 @@ namespace EnemyScripts {
 
         private void ShowPanel(string speakerID) {
             if (!speakerID.Equals(enemyID)) return;
+            if (state == EnemyState.Locked) return;
             enemyPanel.SetActive(true);
             enemyPanel.transform.GetChild(0).gameObject.SetActive(true);
             EnemyStateManager.Instance.SetCurrentEnemy(this);
             InputManager.Instance.DisableAllInput();
         }
 
-        private void SetUpNextDialogue() {
+        public void SetUpNextDialogue() {
             dialogue.Remove(dialogue[0]);
         }
     }
