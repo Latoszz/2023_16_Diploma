@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TalkToTaliaQuest
   m_EditorClassIdentifier: 
   id: Talk to Talia
-  displayName: Ask for directions
-  questDescription: Ask Talia where you can find Kiryl
+  displayName: A friend near the lake
+  questDescription: Find Talia
   questPrerequisites:
   - {fileID: 11400000, guid: 1bb66266a9ac46c47b720aeddd45825d, type: 2}
   questSteps:

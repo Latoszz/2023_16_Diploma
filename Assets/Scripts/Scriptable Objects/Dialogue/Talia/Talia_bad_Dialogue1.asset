@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b2264e34dc4b458371e9125b11bb94, type: 3}
+  m_Name: Talia_bad_Dialogue1
+  m_EditorClassIdentifier: 
+  icon: {fileID: -1715136379, guid: 771bd3dde9b61fa4d9c47cacb637c5d4, type: 3}
+  nameText: Talia
+  sentences:
+  - Oh Bella,  I think you forgot about our meeting that was supposed to take place
+    5 days 4 hours and 32 minutes ago.
+  - Can you tell me why you didn't come?
+  - "Unfortunately I don't have time to continue our conversation because I have
+    plans to go fishing now.\r"
+  - Come between 12 and 1 pm, then I have some time to set a date for the meeting.
+    Now bye.
