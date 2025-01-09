@@ -15,7 +15,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: d4a16a24e6048204d8dbeffb163e0302, type: 3}
   nameText: Bella
   sentences:
-  - What, you saw Talia in the fog?
   - What, you saw Talia in the fog? What did she say?
   - ...
   - I know she wasn't aggressive, but she's not my Talia.
