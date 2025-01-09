@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043ae4447d464171b505fcf412ad7c87, type: 3}
+  m_Name: DefeatLilypadQuest
+  m_EditorClassIdentifier: 
+  id: Defeat Lilypad
+  displayName: I can finally swim
+  questDescription: Make the dock accesible again
+  questPrerequisites:
+  - {fileID: 11400000, guid: 580e4649fdbf4444e9defe98b08fe041, type: 2}
+  questSteps:
+  - {fileID: 3370560619447624610, guid: dd8141c18fa4d7644a5274a9cf550381, type: 3}
+  questRewards:
+  - {fileID: 7796312529614616500, guid: 2485a7e23a0d56246b49609f460add7a, type: 3}
