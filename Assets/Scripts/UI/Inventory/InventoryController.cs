@@ -201,8 +201,10 @@ namespace UI.Inventory {
     
         public List<CollectibleItemData> GetItems() {
             List<CollectibleItemData> items = new List<CollectibleItemData>();
-            foreach(ItemSlot slot in itemSlots)
+            foreach (ItemSlot slot in itemSlots) {
+                if (!slot.IsOccupied()) continue;
                 items.Add(((CollectibleItem)slot.GetItem()).GetItemData());
+            }
             return items;
         }
 
