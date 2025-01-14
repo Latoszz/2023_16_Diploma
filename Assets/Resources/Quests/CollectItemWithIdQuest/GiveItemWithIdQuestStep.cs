@@ -1,7 +1,6 @@
 using System;
 using Events;
 using QuestSystem;
-using UI.Inventory;
 using UnityEngine;
 
 
@@ -19,7 +18,6 @@ public class GiveItemWithIdQuestStep: QuestStep {
 
     private void ItemGiven(string itemId) {
         if (itemId == itemToGiveId) {
-            InventoryController.Instance.RemoveItem(itemId);
             UpdateState();
             FinishQuestStep();
         }

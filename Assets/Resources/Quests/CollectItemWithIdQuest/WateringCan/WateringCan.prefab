@@ -257,13 +257,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497ab3d9b7184582b3d70b2e62e075b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: FlowerTea
+  itemName: WateringCan
   sprite: {fileID: -1181158254, guid: 771bd3dde9b61fa4d9c47cacb637c5d4, type: 3}
   itemData: {fileID: 11400000, guid: f83b07278439a5140bf64fda3bc02de8, type: 2}
   npc: {fileID: 0}
   itemID: 0cab21ba-b17d-4e53-bd2d-6a8d3be10367
   collectSound: {fileID: 8300000, guid: e64f25c0e6831d4d3b155172925dd2dc, type: 3}
   audioMixer: {fileID: 24100000, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
+  detectionDistance: 8
 --- !u!114 &615207418399734427
 MonoBehaviour:
   m_ObjectHideFlags: 0

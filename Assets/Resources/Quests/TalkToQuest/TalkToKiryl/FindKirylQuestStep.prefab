@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5879530008450882264
+--- !u!1 &3472872024598319028
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6930875438788158739}
-  - component: {fileID: 7796312529614616500}
+  - component: {fileID: 9062221155998874548}
+  - component: {fileID: 7280665775255608953}
   m_Layer: 0
-  m_Name: Shovel
+  m_Name: FindKirylQuestStep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6930875438788158739
+--- !u!4 &9062221155998874548
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5879530008450882264}
+  m_GameObject: {fileID: 3472872024598319028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 68.78807, y: -36.80437, z: -57.741966}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7796312529614616500
+--- !u!114 &7280665775255608953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5879530008450882264}
+  m_GameObject: {fileID: 3472872024598319028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 497ab3d9b7184582b3d70b2e62e075b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7aa8f146d52e70949af1e081eece28a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Shovel
-  sprite: {fileID: 21300000, guid: 95105389be083da4a83253d9d93df018, type: 3}
-  itemData: {fileID: 11400000, guid: de53c300ae1a192468b791820474a6f3, type: 2}
-  npc: {fileID: 0}
-  itemID: 297b586f-e575-42ab-adea-b9876fc53ee6
-  collectSound: {fileID: 0}
-  audioMixer: {fileID: 0}
-  detectionDistance: 8
+  npcName: 
