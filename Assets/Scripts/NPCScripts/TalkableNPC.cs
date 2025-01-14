@@ -28,6 +28,20 @@ namespace NPCScripts {
             npcID = Guid.NewGuid().ToString();
         }
 
+        private void OnEnable() {
+            GameEventsManager.Instance.DialogueEvents.OnDialogueEnded += NextDialogue;
+        }
+        
+        private void OnDisable() {
+            GameEventsManager.Instance.DialogueEvents.OnDialogueEnded -= NextDialogue;
+        }
+
+        private void NextDialogue(string id) {
+            if (id == npcID && dialogue[0].DisplayOnce) {
+                SetUpNextDialogue();
+            }
+        }
+
         private void Awake() {
             player = GameObject.FindGameObjectWithTag("Player");
             npcName = dialogue[0].NameText;
