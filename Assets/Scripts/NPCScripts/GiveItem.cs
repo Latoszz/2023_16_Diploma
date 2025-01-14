@@ -1,33 +1,27 @@
+using System.Collections.Generic;
 using Events;
 using UI.Inventory;
+using UI.Inventory.Items;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace NPCScripts {
     public class GiveItem: MonoBehaviour, IPointerClickHandler {
         [SerializeField] private string itemId;
-        private bool hasItem;
-    
-        private void OnEnable() {
-            GameEventsManager.Instance.ItemEvents.OnItemWithIdCollected += ItemCollected;
-        }
 
-        private void OnDisable() {
-            GameEventsManager.Instance.ItemEvents.OnItemWithIdCollected -= ItemCollected;
-        }
-
-        private void ItemCollected(string itemId) {
-            if (itemId == this.itemId) {
-                hasItem = true;
+        private bool HasItem() {
+            List<CollectibleItemData> allItems = InventoryController.Instance.GetItems();
+            foreach (var item in allItems) {
+                if (item.itemID == this.itemId)
+                    return true;
             }
+            return false;
         }
 
         public void OnPointerClick(PointerEventData eventData) {
-            if (hasItem) {
-                GameEventsManager.Instance.ItemEvents.ItemWithIdGiven(itemId);
-                InventoryController.Instance.RemoveItem(itemId);
-                hasItem = false;
-            }
+            if (!HasItem()) return;
+            GameEventsManager.Instance.ItemEvents.ItemWithIdGiven(itemId);
+            InventoryController.Instance.RemoveItem(itemId);
         }
     }
 }

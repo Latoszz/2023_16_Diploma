@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4930652231994419364}
-  - component: {fileID: -3026173083712304862}
+  - component: {fileID: -7089424749096872786}
   m_Layer: 0
   m_Name: GiveShovelQuestStep
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3026173083712304862
+--- !u!114 &-7089424749096872786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5478181522218927808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aa8f146d52e70949af1e081eece28a6, type: 3}
+  m_Script: {fileID: 11500000, guid: f3c444252277498a9d27c7f4ba1b4aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcName: Bella
+  itemToGiveId: Shovel

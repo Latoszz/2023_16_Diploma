@@ -10,10 +10,12 @@ public class GiveItemWithIdQuestStep: QuestStep {
     
     private void OnEnable() {
         GameEventsManager.Instance.ItemEvents.OnItemWithIdGiven += ItemGiven;
+        GameEventsManager.Instance.ItemEvents.OnItemReward += ItemGiven;
     }
 
     private void OnDisable() {
         GameEventsManager.Instance.ItemEvents.OnItemWithIdGiven -= ItemGiven;
+        GameEventsManager.Instance.ItemEvents.OnItemReward -= ItemGiven;
     }
 
     private void ItemGiven(string itemId) {

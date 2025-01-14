@@ -21,9 +21,5 @@ public class NPCEnemy : TalkableEnemy {
             }
             SaveManager.Instance.ChangeNPCData(npc.GetID(), true);
         }
-        
-        else if (state == EnemyState.Undefeated) {
-            battleIndicator.ShowIcon();
-        }
     }
 }
