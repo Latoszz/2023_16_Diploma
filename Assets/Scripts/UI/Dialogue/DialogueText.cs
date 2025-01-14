@@ -7,9 +7,11 @@ namespace UI.Dialogue {
         [SerializeField] private string nameText;
         [TextArea(5, 10)]
         [SerializeField] private string[] sentences;
+        [SerializeField] private bool displayOnce;
         
         public Sprite Icon => icon;
         public string NameText => nameText;
         public string[] Sentences => sentences;
+        public bool DisplayOnce => displayOnce;
     }
 }

@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0b2264e34dc4b458371e9125b11bb94, type: 3}
-  m_Name: Talia_Dialogue2
+  m_Name: Talia_Dialogue4
   m_EditorClassIdentifier: 
   icon: {fileID: -1427687404, guid: 771bd3dde9b61fa4d9c47cacb637c5d4, type: 3}
   nameText: Talia
   sentences:
-  - You did it! Thankssssss!
-  - "I wanted to ask you something else. Oh wait, I'll bring something.\r"
-  - Take this!!
-  - ... Oh! Well, I wanted to ask you something. Now I don't remember...
-  - Oh yeah! I wanted to go swimming, so byeeee!
-  displayOnce: 1
+  - 'Kiryl...........,
+
+    Kiryl............ '
+  - 'Ah yeas!!
+
+    You have to go along the road, and then...'
+  - Huh, to Kiryl... turn, I have no idea.
+  - Anyway, now it's time for swimming!
