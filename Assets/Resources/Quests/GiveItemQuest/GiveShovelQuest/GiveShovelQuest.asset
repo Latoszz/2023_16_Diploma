@@ -15,7 +15,8 @@ MonoBehaviour:
   id: GiveShovelQuest
   displayName: Shovel time!
   questDescription: Bring Bella the shovel.
-  questPrerequisites: []
+  questPrerequisites:
+  - {fileID: 11400000, guid: 1571c729cebb7674bb115776501edf71, type: 2}
   questSteps:
   - {fileID: 5478181522218927808, guid: 334b1f0273ff0e64b96d33792053c4ad, type: 3}
   questRewards:
