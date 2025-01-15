@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043ae4447d464171b505fcf412ad7c87, type: 3}
+  m_Name: FindMoneyQuest
+  m_EditorClassIdentifier: 
+  id: FindMoneyQuest
+  displayName: Missing key
+  questDescription: Find money to give to Kiryl
+  questPrerequisites:
+  - {fileID: 11400000, guid: ca26c9f25e947294a9e247cd13b7d153, type: 2}
+  questSteps:
+  - {fileID: 7112935321760107022, guid: 69fdd8d35dbbb64499943e9a2cb059f6, type: 3}
+  questRewards: []
