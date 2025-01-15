@@ -6,12 +6,11 @@ using Interfaces;
 using UI;
 using UI.Dialogue;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace NPCScripts {
     public class TalkableNPC : NPC, ITalkable {
         public List<DialogueText> dialogue;
-        [FormerlySerializedAs("questIndicator")] [SerializeField] private ShowIndicator indicator;
+        [SerializeField] private ShowIndicator indicator;
         [SerializeField] private DialogueAudioConfig audioConfig;
         [Range(0, 10)] 
         [SerializeField] private float detectionDistance = 8;
