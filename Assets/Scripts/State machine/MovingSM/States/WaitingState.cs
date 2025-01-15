@@ -17,8 +17,10 @@ namespace State_machine.MovingSM.States {
 
         public override void UpdateLogic() {
             base.UpdateLogic();
-            if (movingSM.IsWaiting())
+            if (movingSM.IsWaiting() || movingSM.ReachedDestination){
                 Wait();
+                movingSM.ReachedDestination = movingSM.GetWaypoints().Count == 1;
+            }
             else {
                 movingSM.ChangeState(movingSM.walkingState);
             }

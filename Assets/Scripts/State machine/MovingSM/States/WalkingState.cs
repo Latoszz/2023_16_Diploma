@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace State_machine.MovingSM.States {
     public class WalkingState : PatrolState {
@@ -20,6 +18,7 @@ namespace State_machine.MovingSM.States {
             UpdateWaypoint();
             if (Vector3.Distance(navMeshAgent.transform.position, currentWaypoint) < 0.6) {
                 SetWaypoint();
+                movingSM.ReachedDestination = movingSM.GetWaypoints().Count == 1;
                 movingSM.SetWaiting(true);
                 movingSM.ChangeState(movingSM.waitingState);
             }

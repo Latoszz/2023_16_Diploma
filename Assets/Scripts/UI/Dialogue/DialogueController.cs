@@ -110,7 +110,7 @@ namespace UI.Dialogue {
             conversationEnded = false;
             sentences.Clear();
             HideDialogue();
-            GameEventsManager.Instance.DialogueEvents.DialogueEnded(speakerID);
+            GameEventsManager.Instance.DialogueEvents.DialogueEnded(speakerID, dialogue);
             HUDController.Instance.ShowHUD();
             CameraController.Instance.SootheOut(8f, rotationUnits);
         }

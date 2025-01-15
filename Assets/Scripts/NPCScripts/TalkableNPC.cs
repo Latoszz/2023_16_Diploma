@@ -36,7 +36,7 @@ namespace NPCScripts {
             GameEventsManager.Instance.DialogueEvents.OnDialogueEnded -= NextDialogue;
         }
 
-        private void NextDialogue(string id) {
+        private void NextDialogue(string id, DialogueText dialogueText) {
             if (id == npcID && dialogue[0].DisplayOnce) {
                 SetUpNextDialogue();
             }

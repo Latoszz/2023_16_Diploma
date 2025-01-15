@@ -82,7 +82,7 @@ namespace EnemyScripts {
             DialogueController.Instance.SetCurrentAudioConfig(audioConfig);
         }
 
-        private void ShowPanel(string speakerID) {
+        private void ShowPanel(string speakerID, DialogueText dialogueText) {
             if (!speakerID.Equals(enemyID)) return;
             if (state == EnemyState.Locked) return;
             enemyPanel.SetActive(true);

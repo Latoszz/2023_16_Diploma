@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using EnemyScripts;
-using NaughtyAttributes;
 using State_machine.MovingSM.States;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,8 +8,6 @@ using UnityEngine.EventSystems;
 namespace State_machine.MovingSM {
     public class MovingSM : StateMachine, IPointerClickHandler {
         [SerializeField] private float detectionDistance = 8;
-        [Range(0, 10)] [SerializeField] private float followDistance;
-        public float FollowDistance => followDistance;
     
         [HideInInspector]
         public IdleState idleState;
@@ -20,8 +17,6 @@ namespace State_machine.MovingSM {
         public WaitingState waitingState;
         [HideInInspector]
         public DialogueState dialogueState;
-        [HideInInspector]
-        public FollowPlayerState followPlayerState;
     
         [SerializeField] private float waitTimeSeconds;
         [SerializeField] private List<Transform> waypoints;
@@ -40,9 +35,10 @@ namespace State_machine.MovingSM {
         private Enemy enemy;
         private int currentWaypointIndex;
         private bool waiting = false;
-        private bool followsPlayer = false;
-        public bool FollowsPlayer => followsPlayer;
         public bool IsDialogue { get; set; } = false;
+
+        private bool reachedDestination;
+        public bool ReachedDestination { get; set; }
 
         private void Awake() {
             navMeshAgent = GetComponent<NavMeshAgent>();
@@ -59,7 +55,6 @@ namespace State_machine.MovingSM {
             walkingState = new WalkingState(this);
             waitingState = new WaitingState(this);
             dialogueState = new DialogueState(this);
-            followPlayerState = new FollowPlayerState(this);
         }
 
         protected override BaseState GetInitialState() {
@@ -98,6 +93,14 @@ namespace State_machine.MovingSM {
             return waypoints;
         }
 
+        public void SetWaypoints(List<Transform> newWaypoints) {
+            waypoints = newWaypoints;
+        }
+
+        public void ResetWaypointIndex() {
+            currentWaypointIndex = 0;
+        }
+
         public bool IsWaiting() {
             return waiting;
         }
@@ -114,7 +117,6 @@ namespace State_machine.MovingSM {
             return faceWaypoint;
         }
         
-    
         public void OnPointerClick(PointerEventData eventData) {
             if (isEnemy && enemy.GetState() == EnemyState.Locked)
                 return;
@@ -122,27 +124,5 @@ namespace State_machine.MovingSM {
             if (Vector3.Distance(player.transform.position, navMeshAgent.transform.position) < detectionDistance)
                 IsDialogue = true;
         }
-
-        public void FollowPlayer() {
-            followsPlayer = true;
-            ChangeState(followPlayerState);
-        }
-
-        public void StopFollowingPlayer() {
-            followsPlayer = false;
-        }
-        
-        #if UNITY_EDITOR
-        [Button]
-        public void FollowPlayerButton() {
-            followsPlayer = true;
-            ChangeState(followPlayerState);
-        }
-        
-        [Button]
-        public void StopFollowingPlayerButton() {
-            followsPlayer = false;
-        }
-        #endif
     }
 }
