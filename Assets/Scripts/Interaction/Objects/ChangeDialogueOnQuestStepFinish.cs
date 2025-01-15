@@ -9,6 +9,7 @@ namespace Interaction.Objects {
         [SerializeField] private QuestInfoSO quest;
         [SerializeField] private TalkableNPC talkableNpc;
         [SerializeField] private TalkableEnemy talkableEnemy;
+        [SerializeField] private DialogueTrigger dialogueTrigger;
         [SerializeField] private bool unlockEnemy;
 
         private void OnEnable() {
@@ -28,6 +29,9 @@ namespace Interaction.Objects {
                 talkableEnemy.SetUpNextDialogue();
                 if (unlockEnemy)
                     talkableEnemy.ChangeState(EnemyState.Undefeated);
+            }
+            else if (dialogueTrigger is not null) {
+                dialogueTrigger.SetUpNextDialogue();
             }
         }
     }

@@ -48,6 +48,11 @@ namespace Interaction {
             indicator.HideIcon();
         }
 
+        public void SetUpNextDialogue() {
+            dialogue.Remove(dialogue[0]);
+            indicator.ShowIcon();
+        }
+
         public void PopulateSaveData(SaveFile saveFile) {
             saveFile.AddOrUpdateData(DoorDialogueSaveID, talkedTo);
         }
