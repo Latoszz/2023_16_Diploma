@@ -4,6 +4,7 @@ using Events;
 using QuestSystem;
 using SaveSystem;
 using UI;
+using UI.Inventory.Items;
 using UnityEngine;
 
 namespace Interaction {
@@ -22,7 +23,14 @@ namespace Interaction {
         }
 
         private void Start() {
-            objectToActivate.SetActive(activated);
+            CollectibleItem collectibleItem = objectToActivate.GetComponent<CollectibleItem>();
+            if (collectibleItem is not null) {
+                Debug.Log($"{collectibleItem.GetItemData().itemID} {collectibleItem.IsCollected()}");
+                objectToActivate.SetActive(!collectibleItem.IsCollected() && activated);
+            }
+            else {
+                objectToActivate.SetActive(activated);
+            }
         }
 
         private void Activate(string questId) {
@@ -48,8 +56,10 @@ namespace Interaction {
         }
 
         public void LoadSaveData(SaveFile saveFile) {
-            if(saveFile.HasData("ActivatedObject_" + objectToActivate.name))
+            if (saveFile.HasData("ActivatedObject_" + objectToActivate.name)) {
                 activated = saveFile.GetData<bool>("ActivatedObject_" + objectToActivate.name);
+                objectToActivate.SetActive(activated);
+            }
         }
     }
 }

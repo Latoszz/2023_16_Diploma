@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using UI.Infos;
 using UI.Inventory;
 using UI.Inventory.Items;
 using UnityEngine;
@@ -8,6 +10,8 @@ using UnityEngine.EventSystems;
 public class Removable : MonoBehaviour, IPointerClickHandler {
     [SerializeField] private CollectibleItemData itemData;
     [Range(0, 10)] [SerializeField] private int detectionDistance;
+    [SerializeField] private Popup popup;
+    [SerializeField] private string textToDisplay;
 
     private GameObject player;
     private void Awake() {
@@ -18,6 +22,9 @@ public class Removable : MonoBehaviour, IPointerClickHandler {
         if (!(Vector3.Distance(player.transform.position, gameObject.transform.position) <= detectionDistance)) return;
         if (CheckInventory()) {
             gameObject.SetActive(false);
+        }
+        else {
+            popup.OpenPopup(textToDisplay);
         }
     }
 
