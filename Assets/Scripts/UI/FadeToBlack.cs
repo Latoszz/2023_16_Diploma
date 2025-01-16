@@ -11,7 +11,9 @@ namespace UI {
         [SerializeField] private QuestInfoSO questInfoSo;
         [SerializeField] private Image fadeImage;
         [Range(0, 5)] [SerializeField] private float duration = 1f;
-        
+
+        public static FadeToBlack Instance;
+        public bool FadingFinished;
         
         private void OnEnable() {
             GameEventsManager.Instance.QuestEvents.OnStartQuest += FadeScreen;
@@ -21,12 +23,17 @@ namespace UI {
             GameEventsManager.Instance.QuestEvents.OnStartQuest -= FadeScreen;
         }
 
+        private void Awake() {
+            Instance = this;
+        }
+        
         private void Start() {
             fadeImage.color = new Color(0, 0, 0, 0);
         }
 
         private void FadeScreen(string questId) {
             if (questId == questInfoSo.id) {
+                FadingFinished = false;
                 StartCoroutine(FadeCoroutine());
             }
         }
@@ -40,6 +47,7 @@ namespace UI {
             fadeImage.DOFade(1f, duration).OnComplete(() =>
             {
                 fadeImage.DOFade(0f, duration);
+                FadingFinished = true;
             });
         }
     }

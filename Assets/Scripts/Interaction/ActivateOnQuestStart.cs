@@ -1,13 +1,16 @@
+using System.Collections;
 using Esper.ESave;
 using Events;
 using QuestSystem;
 using SaveSystem;
+using UI;
 using UnityEngine;
 
 namespace Interaction {
     public class ActivateOnQuestStart : MonoBehaviour, ISavable {
         [SerializeField] private QuestInfoSO questInfoSo;
         [SerializeField] private GameObject objectToActivate;
+        [SerializeField] private bool waitForFading;
         private bool activated;
         
         private void OnEnable() {
@@ -24,9 +27,20 @@ namespace Interaction {
 
         private void Activate(string questId) {
             if (questId == questInfoSo.id) {
-                objectToActivate.SetActive(true);
-                activated = true;
+                if (waitForFading) {
+                    StartCoroutine(ActivateCoroutine());
+                }
+                else {
+                    objectToActivate.SetActive(true);
+                    activated = true;
+                }
             }
+        }
+
+        private IEnumerator ActivateCoroutine() {
+            yield return new WaitUntil(() => FadeToBlack.Instance.FadingFinished);
+            objectToActivate.SetActive(true);
+            activated = true;
         }
         
         public void PopulateSaveData(SaveFile saveFile) {
