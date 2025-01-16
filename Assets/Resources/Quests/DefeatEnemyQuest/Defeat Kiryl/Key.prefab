@@ -46,9 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Key
   sprite: {fileID: 21300000, guid: 885d2a84ed3772e45a56730001d0ae0d, type: 3}
-  itemData: {fileID: 11400000, guid: a2912944b121e664b917cda9c8ab548c, type: 2}
+  itemData: {fileID: 11400000, guid: ef5cf85bf3a2664468875836851ad0e5, type: 2}
   npc: {fileID: 0}
-  itemID: 97d7a5db-3f2e-4a26-9c20-83af87e881a1
+  itemID: 23a4b415-6dab-4ea2-8980-994ca1487c14
   collectSound: {fileID: 8300000, guid: e64f25c0e6831d4d3b155172925dd2dc, type: 3}
   audioMixer: {fileID: 24100000, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
   detectionDistance: 8

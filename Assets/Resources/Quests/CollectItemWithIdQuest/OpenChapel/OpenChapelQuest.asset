@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: OpenChapelQuest
   m_EditorClassIdentifier: 
   id: OpenChapelQuest
-  displayName: What's inside the chapel?
-  questDescription: Check the chapel for any useful items
+  displayName: What's inside the shrine?
+  questDescription: Check the shrine for any useful items
   questPrerequisites:
   - {fileID: 11400000, guid: 9250971745694724cbed86ae1e22f150, type: 2}
   questSteps:
-  - {fileID: 0}
+  - {fileID: 3273319374616809263, guid: 93920d6d009fbed4bad02e6fd44a5cc0, type: 3}
   questRewards: []
