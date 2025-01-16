@@ -75,7 +75,7 @@ namespace UI.Inventory {
                 inventoryController.ShowCardSetDetails(cardSet.GetCardSetData());
             }
             else if (item is CollectibleItem collectibleItem) {
-                if (collectibleItem.GetItemData().itemID == "Note") {
+                if (collectibleItem.GetItemData().itemID.Contains("Note")) {
                     inventoryController.OpenNotePanel(collectibleItem.GetItemData().text);
                 }
             }
