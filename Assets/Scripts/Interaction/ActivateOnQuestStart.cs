@@ -30,12 +30,12 @@ namespace Interaction {
         }
         
         public void PopulateSaveData(SaveFile saveFile) {
-            saveFile.AddOrUpdateData("DeactivatedObject_" + objectToActivate.name, activated);
+            saveFile.AddOrUpdateData("ActivatedObject_" + objectToActivate.name, activated);
         }
 
         public void LoadSaveData(SaveFile saveFile) {
-            if(saveFile.HasData("DeactivatedObject_" + objectToActivate.name))
-                activated = saveFile.GetData<bool>("DeactivatedObject_" + objectToActivate.name);
+            if(saveFile.HasData("ActivatedObject_" + objectToActivate.name))
+                activated = saveFile.GetData<bool>("ActivatedObject_" + objectToActivate.name);
         }
     }
 }

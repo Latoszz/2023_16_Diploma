@@ -8,8 +8,18 @@ public class NPCEnemy : TalkableEnemy {
     [SerializeField] private TalkableNPC npc;
     
     private void Start() {
-        if(state == EnemyState.Defeated)
-            gameObject.SetActive(false);
+        switch (state) {
+            case EnemyState.Defeated: {
+                gameObject.SetActive(false);
+                break;
+            }
+            case EnemyState.Undefeated:
+                battleIndicator.ShowIcon();
+                break;
+            default:
+                battleIndicator.HideIcon();
+                break;
+        }
     }
         
     public override void ChangeState(EnemyState state) {
