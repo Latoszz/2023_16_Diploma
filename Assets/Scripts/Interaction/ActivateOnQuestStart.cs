@@ -25,7 +25,6 @@ namespace Interaction {
         private void Start() {
             CollectibleItem collectibleItem = objectToActivate.GetComponent<CollectibleItem>();
             if (collectibleItem is not null) {
-                Debug.Log($"{collectibleItem.GetItemData().itemID} {collectibleItem.IsCollected()}");
                 objectToActivate.SetActive(!collectibleItem.IsCollected() && activated);
             }
             else {
