@@ -135,7 +135,7 @@ namespace CardBattles.CardScripts {
         }
 
         public void ChangeSortingOrderTemporarily(int num, bool val = true) {
-            
+            StartCoroutine(ChangeSortingOrderTemporarilyCoroutine(num, val));
         }
         public IEnumerator ChangeSortingOrderTemporarilyCoroutine(int num, bool val = true) {
             canvas.sortingOrder += num;
