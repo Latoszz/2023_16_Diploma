@@ -118,7 +118,7 @@ namespace CardBattles.Character {
             
             if (card.IsPlayers != IsPlayers)
                 return;
-            if (!IsYourTurn)
+            if (!IsYourTurn || isSummoned)
                 return;
             if (!manaManager.CanUseMana(costObject, true) )
                 return;

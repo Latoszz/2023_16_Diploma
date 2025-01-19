@@ -110,7 +110,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Rowdy Rumble
   sprite: {fileID: 0}
-  description: All minions take 2 damage.
+  description: ALL minions take 2 damage.
   flavourText: 
   properties: 
   effectDictionary:

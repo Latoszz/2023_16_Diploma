@@ -139,17 +139,14 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Pirate Skeleton
   sprite: {fileID: 0}
-  description: 'On Death: Summon a 2/1 Skeleton'
+  description: 
   flavourText: 
-  properties: 08000000
+  properties: 09000000
   effectDictionary:
-    m_keys: 00000000
-    m_values:
-    - effectName: 13
-      targetType: 15
-      value: 1
+    m_keys: 
+    m_values: []
   attack: 3
-  maxHealth: 1
+  maxHealth: 2
 --- !u!114 &8442043844084663693
 MonoBehaviour:
   m_ObjectHideFlags: 0
