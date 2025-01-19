@@ -3,7 +3,42 @@ guid: d16111989fbf5a14ca3a38b061645a45
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Face
+    second: {fileID: 2100000, guid: ed937ee9a9815d044aa3fa2c8ae17e16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur
+    second: {fileID: 2100000, guid: a4d1cbfdd1c80b247ac1797067092fd9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Inside ears
+    second: {fileID: 2100000, guid: c8833c2da766e9449b05c684e179a95f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jacket, Pants and Top-hat
+    second: {fileID: 2100000, guid: 86d29504181a7804a8a0e34910564849, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoes
+    second: {fileID: 2100000, guid: 0aae071f7e818804caf427492df894e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin
+    second: {fileID: 2100000, guid: 037a823691d88cd4db20b315d317fe98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skirt
+    second: {fileID: 2100000, guid: bb6a9f949b57ff24f9e6f78584d8126b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -32,7 +67,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
