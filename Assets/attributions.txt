@@ -16,6 +16,7 @@ bookFlip2 by  Kenney Vleugels (Kenney.nl)
 
 ===== 3D MODELS =====
 Witch Character from Ultimate Animated Character Pack by Quaternius
+Low Poly Nature Pack Free by _Alexandr [CC4.0]
 Card Backing by Quaternius via Poly Pizza
 Grass by Quaternius via Poly Pizza
 Water Can by Zoe XR [CC-BY] via Poly Pizza
@@ -35,9 +36,19 @@ Lily pad by Poly by Google [CC-BY] via Poly Pizza
 Dock Wide by Quaternius
 Well by Quaternius
 Shrine by Kay Lousberg
+Cattail by Poly by Google [CC-BY] via Poly Pizza
+Grass by Quaternius
+Flowers by Zsky [CC-BY] via Poly Pizza
+Crops by Quaternius
+Rock by Quaternius
+Rocks by Quaternius
+
 
 ===== TEXTURES =====
 Background 5 by FeonY | Animated Pixel Art Backgrounds
 UI Assets from Sprout Lands by Cup Nooble
+Water 001 by Katsukagi [CC0]
+Water 002 by Katsukagi [CC0]
+Seamless Grass Textures by athile [CC0]
 
 ===== VFX =====

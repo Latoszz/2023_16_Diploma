@@ -20,4 +20,5 @@ MonoBehaviour:
   questSteps:
   - {fileID: 1130640265587361721, guid: b8a23d5af2671b24cbe1925c4f37fed3, type: 3}
   - {fileID: 3472872024598319028, guid: c42eec686ae235146a22ca6f14f5a4f2, type: 3}
-  questRewards: []
+  questRewards:
+  - {fileID: 131859796160556810, guid: f601ec7f043d773449b9d56ef1dbcf00, type: 3}

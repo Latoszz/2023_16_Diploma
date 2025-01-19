@@ -36,8 +36,10 @@ namespace Interaction {
     
         public void OnPointerClick(PointerEventData eventData) {
             if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
-                Talk(dialogue[0]);
-                GameEventsManager.Instance.NPCEvents.TalkedToNPC(name);
+                if (dialogue.Count > 0) {
+                    Talk(dialogue[0]);
+                    GameEventsManager.Instance.NPCEvents.TalkedToNPC(name);
+                }
             }
         }
     
