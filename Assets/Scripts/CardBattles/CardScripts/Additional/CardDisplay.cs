@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using CardBattles.CardScripts.CardDatas;
+using CardBattles.Enums;
 using DG.Tweening;
 using NaughtyAttributes;
 using TMPro;
@@ -8,16 +11,16 @@ using UnityEngine.UI;
 
 namespace CardBattles.CardScripts.Additional {
     public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
-        [Foldout("Card scale"), SerializeField]
+        [Foldout("Card scale")]
         public static float scaleInDeck = 0.8f;
 
-        [Foldout("Card scale"), SerializeField]
+        [Foldout("Card scale")]
         public static float scaleInHand = 0.9f;
 
-        [Foldout("Card scale"), SerializeField]
+        [Foldout("Card scale")]
         public static float scaleOnBoard = 1f;
 
-        [Foldout("Card scale"), SerializeField]
+        [Foldout("Card scale")]
         public static float scaleOnHover = 1.1f;
 
         [InfoBox("All the other scales are static, TODO make them visible here, to edit them edit code  ")]
@@ -30,16 +33,18 @@ namespace CardBattles.CardScripts.Additional {
         private Image backOfCard;
 
         [Space, Header("Elements")] [Foldout("Objects")] [SerializeField]
-        private TextMeshProUGUI cardName;
+        private Text cardName;
 
         [Foldout("Objects")] [SerializeField]
-        private TextMeshProUGUI description;
+        private Text description;
+
+        private string descriptionData;
 
         [Foldout("Objects")] [SerializeField]
-        private TextMeshProUGUI attack;
+        private Text attack;
 
         [Foldout("Objects")] [SerializeField]
-        private TextMeshProUGUI health;
+        private Text health;
 
         [Foldout("Objects")] [SerializeField]
         private Image cardImage;
@@ -56,18 +61,28 @@ namespace CardBattles.CardScripts.Additional {
         [Foldout("Objects")] [SerializeField]
         private CanvasGroup minionOnlyElements;
 
+        private Card card;
         public bool frontVisible;
 
+        private Sprite defaultSprite;
         private void Awake() {
+            card = GetComponent<Card>();
             frontOfCard.enabled = !frontVisible;
             backOfCard.enabled = !frontVisible;
+            defaultSprite = Resources.Load<Sprite>("Sprites/poorly_drawn_cat");
         }
 
         public void SetCardDisplayData(CardData cardData) {
-            cardImage.sprite = cardData.sprite;
-            cardName.text = cardData.name;
-            description.text = cardData.description;
+            //var x = Resources.Load<Sprite>("Sprites/poorly_drawn_cat");
 
+            if (cardData.sprite == null)
+                cardImage.sprite = defaultSprite;
+            else {
+                cardImage.sprite = cardData.sprite;
+            }
+            cardName.text = cardData.name.ToUpper();
+            descriptionData = cardData.description;
+            UpdateDescription(cardData.properties);
             cardSetSymbol.sprite = cardData.cardSet.cardSetIcon;
             cardSetSymbolBox.color = cardData.cardSet.setColor;
 
@@ -79,6 +94,21 @@ namespace CardBattles.CardScripts.Additional {
                     SetSpellDisplayData(spellData);
                     break;
             }
+        }
+
+        public void UpdateDescription(List<AdditionalProperty> properties, string newDescription = null) {
+            var descriptionText = newDescription ?? descriptionData;
+
+            if (properties != null && properties.Count > 0) {
+                descriptionText += '\n';
+                for (int i = 0; i < properties.Count; i++) {
+                    if (i != 0)
+                        descriptionText += ", ";
+                    descriptionText += properties[i].ToString().Replace("_", " ");
+                }
+            }
+
+            description.text = descriptionText;
         }
 
         private void SetMinionDisplayData(MinionData minionData) {
@@ -94,7 +124,7 @@ namespace CardBattles.CardScripts.Additional {
             frontOfCard.enabled = !visible;
             backOfCard.enabled = !visible;
             frontVisible = visible;
-            transform.DORotate(new Vector3(0, 0, 0), 0.1f).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+            transform.DORotate(new Vector3(0, 0, 0), 0.1f).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         public void ChangeCardVisible() {
@@ -106,31 +136,47 @@ namespace CardBattles.CardScripts.Additional {
         internal void UpdateData(int newAttack, int newCurrentHealth, int newMaxHealth) {
             UpdateStat(attack, newAttack);
             UpdateStat(health, newCurrentHealth);
-         
 
-            //TODO Make it red when this is true
+            var minion = (Minion)card;
+            
+            
             if (newCurrentHealth != newMaxHealth) {
-                health.color = new Color(0.8f,0.3f,0.4f);
-            } else {
+                health.color = new Color(0.8f, 0.3f, 0.4f);
+            }
+            else if (newMaxHealth > minion.baseMaxHealth) {
+                health.color = Color.green;
+            }
+            else {
                 health.color = Color.white;
+            }
+            
+            if (newAttack < minion.baseAttack) {
+                attack.color = new Color(0.8f, 0.3f, 0.4f);
+            }
+            else if (newAttack > minion.baseAttack) {
+                attack.color = Color.green;
+            }
+            else {
+                attack.color = Color.white;
             }
         }
 
         [SerializeField, Foldout("UpdateStat")]
         private float growScale = 1.5f;
+
         [SerializeField, Foldout("UpdateStat")]
         private float growDuration = 0.2f;
+
         [SerializeField, Foldout("UpdateStat")]
         private float shrinkDuration = 0.3f;
-        private void UpdateStat(TextMeshProUGUI textComponent, int newValue) {
+
+        private void UpdateStat(Text textComponent, int newValue) {
             if (textComponent.text != newValue.ToString()) {
                 Vector3 originalScale = textComponent.transform.localScale;
 
-                Sequence scaleSequence = DOTween.Sequence().SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+                Sequence scaleSequence = DOTween.Sequence().SetLink(gameObject, LinkBehaviour.KillOnDestroy);
                 scaleSequence.Append(textComponent.transform.DOScale(originalScale * growScale, growDuration));
-                scaleSequence.AppendCallback(() => {
-                    textComponent.text = newValue.ToString();
-                });
+                scaleSequence.AppendCallback(() => { textComponent.text = newValue.ToString(); });
                 scaleSequence.Append(textComponent.transform.DOScale(originalScale, shrinkDuration));
                 scaleSequence.Play();
             }
@@ -144,8 +190,9 @@ namespace CardBattles.CardScripts.Additional {
                 return;
             }
 
+            StartCoroutine(card.ChangeSortingOrderTemporarily(10, false));
             transform.DOScale(scaleOnHover,
-                scaleOnHoverTime).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+                scaleOnHoverTime).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         public void OnPointerExit(PointerEventData eventData) {
@@ -153,7 +200,9 @@ namespace CardBattles.CardScripts.Additional {
                 return;
             }
 
-            transform.DOScale(Vector3.one * currentScale, scaleOnHoverTime).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+            StartCoroutine(card.ChangeSortingOrderTemporarily(-10, false));
+            transform.DOScale(Vector3.one * currentScale, scaleOnHoverTime)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         public void IsPlacedOnBoard(bool isNotNull) {
@@ -171,7 +220,7 @@ namespace CardBattles.CardScripts.Additional {
 
         private void ChangeCurrentScale(float scale) {
             currentScale = scale;
-            transform.DOScale(currentScale, 0.3f).SetLink(gameObject,LinkBehaviour.KillOnDestroy);
+            transform.DOScale(currentScale, 0.3f).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
     }
 }

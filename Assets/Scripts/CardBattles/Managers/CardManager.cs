@@ -8,45 +8,46 @@ namespace CardBattles.Managers {
     public class CardManager : MonoBehaviour {
         public static CardManager Instance;
 
-        public GameObject minionPrefab;
-        public GameObject spellPrefab;
+        [SerializeField]
+        private GameObject minionPrefab;
+        [SerializeField]
+        private GameObject spellPrefab;
 
         private void Awake() {
-            if (Instance is null) {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else {
+            if (Instance != null && Instance != this) {
                 Destroy(gameObject);
             }
+            else {
+                Instance = this;
+            }
+
+            DontDestroyOnLoad(this);
         }
 
         public Card CreateCard(CardData cardData, PlayerEnemyMonoBehaviour parentComponent) {
-            GameObject cardObject;
-            Card cardComponent = null;
+            return CardFactory.CreateCard(cardData, parentComponent, minionPrefab, spellPrefab);
+        }
+        public CardData LoadCardData(string cardSetName, string cardDataName)
+        {
+            var cardSet = Resources.Load<CardSetData>("CardSets/"+cardSetName);
 
-            switch (cardData) {
-                case MinionData:
-                    cardObject = Instantiate(minionPrefab);
-                    cardComponent = cardObject.GetComponent<Minion>();
-                    break;
-                case SpellData:
-                    cardObject = Instantiate(spellPrefab);
-                    cardComponent = cardObject.GetComponent<Spell>();
-                    break;
-            }
-
-            if (cardComponent is null) {
-                Debug.LogError("Failed to create card.");
+            if (cardSet == null)
+            {
+                Debug.LogError($"CardSet '{cardSetName}' not found in Resources.");
                 return null;
             }
 
-            cardComponent.Initialize(cardData, parentComponent.IsPlayers);
-            cardComponent.transform.SetParent(parentComponent.transform);
-            cardComponent.transform.localScale = Vector3.one * CardDisplay.scaleInDeck;
-            cardComponent.transform.localPosition = Vector3.zero;
+            foreach (var card in cardSet.cards) 
+            {
+                if (card.name == cardDataName)
+                {
+                    Debug.Log($"Found CardData: {card.name}");
+                    return card;
+                }
+            }
 
-            return cardComponent;
+            return null;
         }
+        
     }
 }

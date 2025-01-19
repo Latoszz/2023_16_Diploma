@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74566747c2fd4a25ad2a00edbabc302a, type: 3}
+  m_Name: Bella
+  m_EditorClassIdentifier: 
+  id: vowels
+  dialogueAudios:
+  - {fileID: 8300000, guid: 5c2f7b933e9733c4495d637e65dffc52, type: 3}
+  - {fileID: 8300000, guid: e4364f2fb76066b4bb953d1ba3442e8e, type: 3}
+  - {fileID: 8300000, guid: eb922b43c53d4414c8e50378ac99d54c, type: 3}
+  - {fileID: 8300000, guid: b5064001740a4d047856e788f24b3d5c, type: 3}
+  - {fileID: 8300000, guid: 2d48d7352072a2a4786b99febbaa1df0, type: 3}
+  frequencyLevel: 2
+  minPitch: 0.75
+  maxPitch: 1.5
+  stopAudioSource: 1

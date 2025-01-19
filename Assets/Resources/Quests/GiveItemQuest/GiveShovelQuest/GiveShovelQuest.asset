@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043ae4447d464171b505fcf412ad7c87, type: 3}
+  m_Name: GiveShovelQuest
+  m_EditorClassIdentifier: 
+  id: GiveShovelQuest
+  displayName: Shovel time!
+  questDescription: Bring Bella the shovel.
+  questPrerequisites:
+  - {fileID: 11400000, guid: 1571c729cebb7674bb115776501edf71, type: 2}
+  questSteps:
+  - {fileID: 5478181522218927808, guid: 334b1f0273ff0e64b96d33792053c4ad, type: 3}
+  questRewards:
+  - {fileID: 3577403711045408579, guid: 9a779c25fef6b6144afc7b74e29801f0, type: 3}

@@ -5,106 +5,126 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-#pragma warning disable CS0414 // Field is assigned but its value is never used
 
-public class SettingsManager : MonoBehaviour, ISavable {
-    [SerializeField] private TMP_Dropdown resolutionDropdown;
-    [SerializeField] private Toggle fullscreenToggle;
-    [SerializeField] private Slider musicSlider;
-    [SerializeField] private Slider sfxSlider;
-    [SerializeField] private AudioMixer musicMixer;
-    [SerializeField] private AudioMixer sfxMixer;
-    [SerializeField] private GameObject audioVideoPanel;
 
-    private float currentMusicVolume = 0.5f;
-    private float currentSFXVolume = 0.5f;
-    private List<Resolution> resolutions;
-    private static List<string> options;
-    private int currentResolutionIndex;
-    private bool isFullscreen = true;
+namespace UI.Menu {
+    public class SettingsManager : MonoBehaviour, ISavable {
+        [SerializeField] private TMP_Dropdown resolutionDropdown;
+        [SerializeField] private Toggle fullscreenToggle;
+        [SerializeField] private Slider musicSlider;
+        [SerializeField] private Slider sfxSlider;
+        [SerializeField] private AudioMixer musicMixer;
+        [SerializeField] private AudioMixer sfxMixer;
 
-    private bool isResolutionLoaded = false;
+        private float currentMusicVolume = 0.5f;
+        private float currentSFXVolume = 0.5f;
+        private List<Resolution> resolutions;
+        private static List<string> options;
+        private int currentResolutionIndex;
+        private bool isFullscreen = true;
 
-    private const string MusicVolumeSaveID = "MusicVolume";
-    private const string SFXVolumeSaveID = "SFXVolume";
-    private const string ResolutionSaveID = "ResolutionId";
-    private const string FullscreenSaveID = "FullscreenId";
-    
-    void Start() {
-        SetUpResolutions();
-    }
+        //private bool isResolutionLoaded = false;
 
-    public void SetFullscreen() {
-        isFullscreen = fullscreenToggle.isOn;
-        Screen.fullScreenMode = fullscreenToggle.isOn ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
-    }
+        private const string MusicVolumeSaveID = "MusicVolume";
+        private const string SFXVolumeSaveID = "SFXVolume";
+        private const string ResolutionSaveID = "ResolutionId";
+        private const string FullscreenSaveID = "FullscreenId";
 
-    public void SetResolution() {
-        ChangeResolution(resolutionDropdown.value);
-    }
-    
-    public void SetMusicVolume(float volume) {
-        currentMusicVolume = volume;
-        musicMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
-    }
-    
-    public void SetSFXVolume(float volume) {
-        currentSFXVolume = volume;
-        sfxMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-    }
-
-    private void SetUpResolutions() {
-        resolutions = new List<Resolution>();
-        var availableResolutions = Screen.resolutions;
-        options = new List<string>();
+        public static SettingsManager Instance;
         
-        for (int i = 0; i < availableResolutions.Length; i++) {
-            int width = availableResolutions[i].width;
-            int height = availableResolutions[i].height;
-            
-            if(height < 720)
-                continue;
-            resolutions.Add(availableResolutions[i]);
-            string option = width+ " x " + height;
-            options.Add(option);
+        private void Awake() {
+            if (Instance != null) {
+                Destroy(this.gameObject);
+                return;
+            }
+            Instance = this;
+        }
+    
+        void Start() {
+            SetUpResolutions();
+        }
 
-           // if (!isResolutionLoaded) {
+        public void SetFullscreen() {
+            isFullscreen = fullscreenToggle.isOn;
+            Screen.fullScreenMode = fullscreenToggle.isOn ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
+        }
+
+        public void SetResolution() {
+            ChangeResolution(resolutionDropdown.value);
+        }
+    
+        public void SetMusicVolume(float volume) {
+            currentMusicVolume = volume;
+            if (volume == 0) {
+                musicMixer.SetFloat("MusicVolume",-80);
+            }
+            else {
+                musicMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+            }
+        }
+    
+        public void SetSFXVolume(float volume) {
+            currentSFXVolume = volume;
+            if (volume == 0) {
+                sfxMixer.SetFloat("SFXVolume", -80);
+            }
+            else {
+                sfxMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+            }
+        }
+
+        private void SetUpResolutions() {
+            resolutions = new List<Resolution>();
+            var availableResolutions = Screen.resolutions;
+            options = new List<string>();
+        
+            for (int i = 0; i < availableResolutions.Length; i++) {
+                int width = availableResolutions[i].width;
+                int height = availableResolutions[i].height;
+            
+                if(height < 720)
+                    continue;
+                resolutions.Add(availableResolutions[i]);
+                string option = width+ " x " + height;
+                options.Add(option);
+
+                // if (!isResolutionLoaded) {
                 if (availableResolutions[i].width == Screen.width && availableResolutions[i].height == Screen.height) {
                     currentResolutionIndex = i;
                 }
-            //}
+                //}
+            }
+            resolutionDropdown.ClearOptions();
+            resolutionDropdown.AddOptions(options);
+            resolutionDropdown.value = currentResolutionIndex;
+            resolutionDropdown.RefreshShownValue();
         }
-        resolutionDropdown.ClearOptions();
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
-    }
 
-    private void ChangeResolution(int resolutionIndex) {
-        currentResolutionIndex = resolutionIndex;
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
-        Resolution resolution = resolutions[resolutionIndex];
-        if(!resolution.Equals(Screen.currentResolution)) 
-            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }
+        private void ChangeResolution(int resolutionIndex) {
+            currentResolutionIndex = resolutionIndex;
+            resolutionDropdown.value = currentResolutionIndex;
+            resolutionDropdown.RefreshShownValue();
+            Resolution resolution = resolutions[resolutionIndex];
+            if(!resolution.Equals(Screen.currentResolution)) 
+                Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        }
 
-   public void PopulateSaveData(SaveFile saveFile) {
-        saveFile.AddOrUpdateData(MusicVolumeSaveID, currentMusicVolume);
-        saveFile.AddOrUpdateData(SFXVolumeSaveID, currentSFXVolume);
-        saveFile.AddOrUpdateData(ResolutionSaveID, currentResolutionIndex);
-        saveFile.AddOrUpdateData(FullscreenSaveID, isFullscreen);
-    }
+        public void PopulateSaveData(SaveFile saveFile) {
+            saveFile.AddOrUpdateData(MusicVolumeSaveID, currentMusicVolume);
+            saveFile.AddOrUpdateData(SFXVolumeSaveID, currentSFXVolume);
+            saveFile.AddOrUpdateData(ResolutionSaveID, currentResolutionIndex);
+            saveFile.AddOrUpdateData(FullscreenSaveID, isFullscreen);
+        }
 
-    public void LoadSaveData(SaveFile saveFile) {
-        if (saveFile.HasData(MusicVolumeSaveID)) {
+        public void LoadSaveData(SaveFile saveFile) {
+            if (!saveFile.HasData(MusicVolumeSaveID)) return;
             SetMusicVolume(saveFile.GetData<float>(MusicVolumeSaveID));
             musicSlider.value = currentMusicVolume;
             SetSFXVolume(saveFile.GetData<float>(SFXVolumeSaveID));
             sfxSlider.value = currentSFXVolume;
         
             currentResolutionIndex = saveFile.GetData<int>(ResolutionSaveID);
-            isResolutionLoaded = true;
+            //isResolutionLoaded = true;
             SetUpResolutions();
             ChangeResolution(currentResolutionIndex);
         

@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7737477806745641505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Dormant Statue
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Dormant Statue
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 05000000
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 3
+  maxHealth: 3
+--- !u!114 &-2753077057874354751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Necronomicon
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Necronomicon
+  sprite: {fileID: 0}
+  description: 'Start of turn: Summon 2/1 Skeleton'
+  flavourText: 
+  properties: 07000000
+  effectDictionary:
+    m_keys: 02000000
+    m_values:
+    - effectName: 13
+      targetType: 11
+      value: 1
+  attack: 0
+  maxHealth: 3
+--- !u!114 &-2581736572099996851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Eldritch chant
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Eldritch chant
+  sprite: {fileID: 0}
+  description: Randomly deal or heal 2 hp to all Minions
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 5
+      targetType: 0
+      value: 2
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
+  m_Name: Cursed Relics
+  m_EditorClassIdentifier: 
+  displayName: Ancient Relics
+  cards:
+  - {fileID: -2753077057874354751}
+  - {fileID: -7737477806745641505}
+  - {fileID: -2581736572099996851}
+  - {fileID: 543185554282910235}
+  - {fileID: 2765719768023951131}
+  setColor: {r: 0.3773585, g: 0.33606267, b: 0.433, a: 1}
+  cardSetIcon: {fileID: 21300000, guid: 7c9eaaefc237b4547b6719325ae92216, type: 3}
+--- !u!114 &543185554282910235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Spiked chest
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Spiked chest
+  sprite: {fileID: 0}
+  description: 'On death: 2 damage to all minions'
+  flavourText: 
+  properties: 0700000009000000
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 1
+      targetType: 0
+      value: 2
+  attack: 2
+  maxHealth: 3
+--- !u!114 &2765719768023951131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Future riches
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Future riches
+  sprite: {fileID: 0}
+  description: Draw 3 cards
+  flavourText: 
+  properties: 07000000
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 4
+      targetType: 7
+      value: 3

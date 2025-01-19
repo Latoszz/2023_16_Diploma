@@ -5,6 +5,17 @@ namespace CardBattles.Enums {
         Heal,
         BuffHp,
         DrawACard,
-        DealOrHeal
+        DealOrHeal,
+        Reshuffle,
+        HealAndBuff,
+        BuffAttackAndHp,
+        SummonStrawmen,
+        SummonFoxes,
+        ReplaceWithSapling,
+        AddToHandAnts,
+        SummonSkeleton,
+        DealDamageToOneRandom,
+        SummonCrewmate,
+        AddQueenBeeToBottomOfTheDeck
     }
 }

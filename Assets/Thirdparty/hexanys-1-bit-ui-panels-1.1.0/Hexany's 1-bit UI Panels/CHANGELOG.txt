@@ -1,6 +1,0 @@
-1.0.0 - Initial release!
-
-1.1.0 - 3 new panels added!
-  * Funky geometric one - "Assembly"
-  * Bone & Skulls, Nails & Chains - "Bone Breakers"
-  * One inspired by the ancient greek geometric motifs - "Polis Sanctuary"

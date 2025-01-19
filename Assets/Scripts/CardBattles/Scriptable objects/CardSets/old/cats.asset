@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8349169886496739500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Cat Flower
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Cat Flower
+  sprite: {fileID: 1805895790, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  description: 
+  flavourText: 
+  properties: 02000000
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 4
+--- !u!114 &-8147225101921612015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Orange cat
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Orange cat
+  sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
+  description: 
+  flavourText: 
+  properties: 0300000007000000
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 4
+  maxHealth: 4
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
+  m_Name: cats
+  m_EditorClassIdentifier: 
+  displayName: Cats
+  cards:
+  - {fileID: 4154407072327070877}
+  - {fileID: -8349169886496739500}
+  - {fileID: 7135807820275663687}
+  - {fileID: -8147225101921612015}
+  - {fileID: 1641530078219909850}
+  - {fileID: 600601776932619513}
+  - {fileID: 6603303908141113648}
+  setColor: {r: 1, g: 0, b: 0, a: 1}
+  cardSetIcon: {fileID: -3457041556714515654, guid: 29b7ffb6267a313468f6dfd24439c307, type: 3}
+--- !u!114 &600601776932619513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Calico cat
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Calico cat
+  sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
+  description: 
+  flavourText: 
+  properties: 08000000
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 3
+  maxHealth: 2
+--- !u!114 &1641530078219909850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Feeding time
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Feeding time
+  sprite: {fileID: 21300000, guid: 44f6d55a7cbd0c24bb49ded98c55c283, type: 3}
+  description: Heal your minions by 3 HP
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 2
+      targetType: 2
+      value: 3
+--- !u!114 &4154407072327070877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Big cat
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Big cat
+  sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
+  description: 
+  flavourText: He has a tendency to eat his siblings :(
+  properties: 03000000
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 5
+--- !u!114 &6603303908141113648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Cat brown
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Cat brown
+  sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 2
+  maxHealth: 3
+--- !u!114 &7135807820275663687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Catnip Tea
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Catnip Tea
+  sprite: {fileID: 634790958, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  description: 'Start of turn: give your minions +2 HP'
+  flavourText: Its totally not wine
+  properties: 00000000
+  effectDictionary:
+    m_keys: 03000000
+    m_values:
+    - effectName: 3
+      targetType: 2
+      value: 2
+  attack: 1
+  maxHealth: 2

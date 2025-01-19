@@ -32,6 +32,9 @@ namespace QuestSystem {
             if (!string.IsNullOrEmpty(questStepState)) {
                 SetQuestStepState(questStepState);
             }
+            else {
+                InitializeQuestStepState();
+            }
         }
 
         protected void FinishQuestStep() {
@@ -47,5 +50,10 @@ namespace QuestSystem {
         }
 
         protected abstract void SetQuestStepState(string state);
+        protected abstract void InitializeQuestStepState();
+
+        protected string GetQuestId() {
+            return questId;
+        }
     }
 }

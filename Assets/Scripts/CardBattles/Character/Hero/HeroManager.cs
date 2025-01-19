@@ -1,9 +1,11 @@
 using System;
 using CardBattles.Interfaces;
+using CardBattles.Interfaces.InterfaceObjects;
+using CardBattles.Managers.GameSettings;
 using UnityEngine;
 
 namespace CardBattles.Character.Hero {
-    public class Hero : MonoBehaviour,IDamageable {
+    public class Hero : PlayerEnemyMonoBehaviour,IDamageable {
 
         public Action<bool> death;
         
@@ -22,7 +24,13 @@ namespace CardBattles.Character.Hero {
         public Action<int> currentHealthAction;
         public Action takeDamageAction;
 
-        
+
+        private void Start() {
+            if (GameStats.Config.overrideHeroMaxHp)
+                MaxHealth = GameStats.Config.overrideHeroMaxHpValue;
+        }
+
+
         [SerializeField]
         
         public int currentHealth;
@@ -38,7 +46,6 @@ namespace CardBattles.Character.Hero {
                 }
             }
         }
-
         public bool HasFullHp => CurrentHealth == MaxHealth;
 
         
@@ -48,7 +55,7 @@ namespace CardBattles.Character.Hero {
             isPlayers = CompareTag("Player");
         }
 
-        public void TakeDamage(int amount, bool isInstaKill) {
+        public void TakeDamage(int amount, bool isPoisonous) {
             CurrentHealth -= amount;
             takeDamageAction.Invoke();
         }

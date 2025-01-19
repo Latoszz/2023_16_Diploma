@@ -12,15 +12,16 @@ namespace CardBattles.Managers {
         public static EffectVisualsManager Instance;
 
         private void Awake() {
-            if (Instance is null) {
-                Instance = this;
-                InitializeVisualDictionary();
+            if (Instance != null && Instance != this) {
+                Destroy(gameObject);
             }
             else {
-                Destroy(gameObject);
+                InitializeVisualDictionary();
+                Instance = this;
             }
         }
 
+        
         public delegate IEnumerator EffectAnimationDelegate(Component target);
 
         public Dictionary<EffectName, EffectAnimationDelegate> visual;
@@ -36,10 +37,12 @@ namespace CardBattles.Managers {
 
 
         [InfoBox("Assign not prefabs, but pull the prefab into the game, and assign that game object")]
-        [Required]
         [SerializeField]
         private Transform particlesGameObject;
 
+        private GameObject Particleprefab;
+        
+        
         private ParticleParent ParticleFactory(ParticleParent vfx, Vector3 position, float duration = 1f) {
             var newParticleParent = Instantiate(vfx, particlesGameObject, true);
             newParticleParent.transform.position = position;
@@ -48,9 +51,23 @@ namespace CardBattles.Managers {
             return newParticleParent;
         }
 
+        
+        public IEnumerator ExecuteVisualEffect(EffectName effect, Component target) {
+            if (visual.TryGetValue(effect, out EffectAnimationDelegate effectAnimation)) {
+                yield return StartCoroutine(effectAnimation(target)); 
+            } else {
+                yield return StartCoroutine(DefaultVisualEffect(effect.ToString()));
+            }
+        }
+
+        private IEnumerator DefaultVisualEffect(string effectNameString = "no effect") {
+            Debug.Log($"Default visual effect for {effectNameString}");
+            yield return null;
+        }
+        
         [SerializeField] private ParticleParent healVFX;
         [SerializeField] private float healAnimationDuration = 1f;
-
+        
         // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator HealVisual(Component target) {
             ParticleFactory(healVFX, target.transform.position, healAnimationDuration);
@@ -94,13 +111,13 @@ namespace CardBattles.Managers {
             var heroTransform = isItAWin ? EnemyHero : PlayerHero;
             var particle = isItAWin ? winVFX : loseVFX;
 
-            ParticleFactory(particle, heroTransform.position, 30);
+            ParticleFactory(particle, heroTransform.position, 10);
             yield return new WaitForSecondsRealtime(0.4f);
             for (int i = 0; i < 8; i++) {
                 float angle = i * Mathf.PI * 2f / 8;
                 float x = Mathf.Cos(angle) * offset;
                 float y = Mathf.Sin(angle) * offset;
-                ParticleFactory(particle, heroTransform.position + new Vector3(x, y, 0), 30);
+                ParticleFactory(particle, heroTransform.position + new Vector3(x, y, 0), 10);
             }
 
             yield return new WaitForSecondsRealtime(0.2f);

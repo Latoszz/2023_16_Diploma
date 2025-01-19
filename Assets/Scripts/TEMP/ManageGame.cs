@@ -1,5 +1,9 @@
 using System.Collections.Generic;
+using EnemyScripts;
 using SaveSystem;
+using UI.Inventory;
+using UI.Inventory.Items;
+using UI.Menu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +14,7 @@ public class ManageGame : MonoBehaviour {
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject npc;
     [SerializeField] private GameObject npc2;
-    [SerializeField] private EnemySM enemy;
+    [SerializeField] private Enemy enemy;
     [SerializeField] private GameObject wall;
     [SerializeField] private ParticleSystem removablePS;
     [SerializeField] private List<CardSetItem> cardSets;
@@ -28,10 +32,10 @@ public class ManageGame : MonoBehaviour {
     }
 
     private void Start() {
-        /*
-        if (SaveManager.Instance.HasSaveData())
+        
+        if (SaveManager.Instance.HasInventoryData())
             return;
-        */
+        
         foreach (CardSetItem cardSet in cardSets) {
             InventoryController.Instance.AddItem(cardSet);
         }

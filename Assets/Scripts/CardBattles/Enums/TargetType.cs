@@ -5,6 +5,7 @@ namespace CardBattles.Enums {
         YourMinions,
         
         OpposingMinion,
+        ThisMinion,
         AdjacentMinions,
 
         BothHeroes,
@@ -14,8 +15,21 @@ namespace CardBattles.Enums {
         Allies,
         Enemies,
         
-        CardSet,
+        CardSetAll,
+        CardSetNotThis,
         
-        None
+        NoneButGetWhoseIsIt,
+        
+        None,
+        YourCardSpots,
+        EnemyCardSpots,
+        
+        YourRandomCardSpot,
+        
+        OpposingCardSpot,
+        ThisCardSpot,
+        
+        ThisCardSetNotBoard,
+        
     }
 }

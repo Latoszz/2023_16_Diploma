@@ -25,5 +25,7 @@ namespace UI.Inventory {
         public List<CardSetData> GetDeck() {
             return deck;
         }
+
+      
     }
 }

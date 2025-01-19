@@ -10,6 +10,7 @@ TagManager:
   - SnapTarget
   - Inventory UI
   - World Player
+  - StayDisabledOnAwake
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - Obstacle
   - Post Proessing
   - Building
-  - 
+  - Walkable
   - 
   - 
   - 
@@ -59,7 +60,7 @@ TagManager:
   - name: On Ground
     uniqueID: 3897613895
     locked: 0
-  - name: Above all
+  - name: CardSpot
     uniqueID: 1645593349
     locked: 0
   - name: Default
@@ -67,4 +68,7 @@ TagManager:
     locked: 0
   - name: VFX
     uniqueID: 1867790779
+    locked: 0
+  - name: Above all
+    uniqueID: 3518070763
     locked: 0

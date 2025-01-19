@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 120923992413661803, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_Text
+      value: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252389004954453944, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_Text
+      value: MINION
+      objectReference: {fileID: 0}
     - target: {fileID: 1295935989582342870, guid: 94025caa85302494cb82257a5b22e434, type: 3}
       propertyPath: m_text
       value: 'Description
@@ -25,6 +33,50 @@ PrefabInstance:
     - target: {fileID: 2107554566278885536, guid: 94025caa85302494cb82257a5b22e434, type: 3}
       propertyPath: m_fontSize
       value: 17.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611386204555009781, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 115.8249
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611386204555009781, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 39.1919
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611386204555009781, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.2946
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611386204555009781, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 23.7004
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025883907406862930, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_text
+      value: MINION PREFAB
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025883907406862930, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8436402c1347e9345b427c445f776c47, type: 2}
+    - target: {fileID: 5025883907406862930, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_fontStyle
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025883907406862930, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025883907406862930, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8947439716365767178, guid: 8436402c1347e9345b427c445f776c47, type: 2}
+    - target: {fileID: 5025883907406862930, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025883907406862930, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5229332580041227260, guid: 94025caa85302494cb82257a5b22e434, type: 3}
       propertyPath: m_Name
@@ -143,5 +195,21 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   dyingDuration: 0.5
+  dataChanged:
+    m_PersistentCalls:
+      m_Calls: []
   attack: 0
   maxHealth: 0
+  poisonTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  immuneToPoisonTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  takeDamageSound: Damage.Card
+  unhealableProc:
+    m_PersistentCalls:
+      m_Calls: []
+  stopsSleeping:
+    m_PersistentCalls:
+      m_Calls: []

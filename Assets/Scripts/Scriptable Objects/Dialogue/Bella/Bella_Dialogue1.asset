@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b2264e34dc4b458371e9125b11bb94, type: 3}
+  m_Name: Bella_Dialogue1
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: d4a16a24e6048204d8dbeffb163e0302, type: 3}
+  nameText: Bella
+  sentences:
+  - Thank you for saving me from the Fog's influence. I was so awful.
+  - I'd like you to help me with one more thing, although you help me so much already...
+  - Can you help me find my <color=purple>watering can</color>? I think I dropped
+    it when I was coming back from a friend's house.
+  - Oh, you're not from around here?
+  - Hmm, yes I think I've never seen you here before. To get to Talia, you have to
+    follow this path.
+  - 'Oh yes, I thought you asked about this earlier. '
+  - We're a small community here in our village in the forest. There are only five
+    other animals. And guests who usually stay at the tavern, of course.
+  - Okay, now I need to check if everything is OK with my garden. So I have to excuse
+    myself for a moment.
+  - Oh, and don't forget my watering can!

@@ -1,13 +1,15 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TestEventSystem : MonoBehaviour
-{
-    void Update()
+namespace Debugging {
+    public class TestEventSystem : MonoBehaviour
     {
-        if (Input.GetMouseButtonDown(0)) // Left mouse click
+        void Update()
         {
-            Debug.Log("Current selected GameObject: " + EventSystem.current.currentSelectedGameObject);
+            if (Input.GetMouseButtonDown(0)) // Left mouse click
+            {
+                Debug.Log("Current selected GameObject: " + EventSystem.current.currentSelectedGameObject);
+            }
         }
     }
 }

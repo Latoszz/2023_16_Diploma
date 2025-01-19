@@ -5,7 +5,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using CardBattles.CardScripts.Additional;
 using CardBattles.CardScripts.CardDatas;
-using CardBattles.CardScripts.Effects;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
@@ -13,30 +12,50 @@ using CardBattles.Managers;
 using JetBrains.Annotations;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace CardBattles.CardScripts {
     [SuppressMessage("ReSharper", "UnusedMember.Local")]
     public abstract class Card : PlayerEnemyMonoBehaviour, IHasCost {
         [NonSerialized] private EffectManager.EffectDelegate effectDelegate;
-        [NonSerialized] protected Canvas canvas;
+        [NonSerialized] public Canvas canvas;
 
         [NonSerialized] protected CardDisplay cardDisplay;
         [NonSerialized] protected CardAnimation cardAnimation;
         [NonSerialized] public CardDragging cardDragging;
 
-        [BoxGroup("Card")] public string cardName;
-        [BoxGroup("Card"), ResizableTextArea] public string description;
-        [BoxGroup("Card"), ResizableTextArea] public string flavourText;
+        public bool FrontVisible {
+            get {
+                if (this.cardDisplay is null) return false;
+                return this.cardDisplay.frontVisible;
+            }
+        }
 
-        [BoxGroup("Data"), Space] public List<AdditionalProperty> properties;
+        [BoxGroup("Card")] public string cardName;
+
+        [BoxGroup("Card"), ResizableTextArea]
+        public string description;
+
+        [BoxGroup("Card"), ResizableTextArea]
+        public string flavourText;
+
+        [BoxGroup("Data"), Space, SerializeField]
+        protected List<AdditionalProperty> properties;
+
+        public List<AdditionalProperty> Properties {
+            get { return properties; }
+            set {
+                cardDisplay.UpdateDescription(value);
+                properties = value;
+            }
+        }
 
         [NonSerialized] public string cardSetName;
 
         [HorizontalLine(1f)] [BoxGroup("Data")]
         public TriggerEffectDictionary effectDictionary;
 
-        [HorizontalLine(1f)] [CanBeNull] protected CardSpot isPlacedAt;
+        [HorizontalLine(1f)] [CanBeNull]
+        public CardSpot isPlacedAt;
 
         private void Awake() {
             canvas = GetComponent<Canvas>();
@@ -51,17 +70,20 @@ namespace CardBattles.CardScripts {
             name = cardName;
             flavourText = cardData.flavourText;
             description = cardData.description;
-            properties = cardData.properties.ToList();
+            properties = cardData.properties.Distinct().ToList();
             cardSetName = cardData.cardSet.name;
             effectDictionary = cardData.EffectDictionary;
         }
 
         public virtual int GetCost() {
-            
-            if (properties.Contains(AdditionalProperty.FreeToPlay)) {
-                Debug.Log("that was free");
+            if (Properties.Contains(AdditionalProperty.Free_To_Play)) {
                 return 0;
             }
+
+            if (Properties.Contains(AdditionalProperty.Costly)) {
+                return 2;
+            }
+
             return 1;
         }
 
@@ -95,21 +117,37 @@ namespace CardBattles.CardScripts {
         }
 
         public virtual IEnumerator Play() {
-            yield return StartCoroutine(DoEffect(EffectTrigger.OnPlay));
-            yield return StartCoroutine(cardAnimation.Play(this));
+            yield return StartCoroutine(cardAnimation.Play(this)); //it has the trigger inside
+            if (isPlacedAt != null)
+                transform.position = isPlacedAt.transform.position;
         }
+
 
         public IEnumerator DoEffect(EffectTrigger effectTrigger) {
             if (!effectDictionary.TryGetValue(effectTrigger, out var value))
                 yield break;
+
+            if (effectTrigger == EffectTrigger.OnPlay)
+                yield return StartCoroutine(cardAnimation.OnPlayEffectDelay());
             var effectTargetValue = value;
             var targets = GetTargets(effectTargetValue.targetType);
-            yield return StartCoroutine(
-                EffectManager.effectDictionary[effectTargetValue.effectName](targets, effectTargetValue.value));
+            PersistentEffectManager.Instance.DoEffect(targets, effectTargetValue.effectName, effectTargetValue.value);
+        }
+
+        public IEnumerator ChangeSortingOrderTemporarily(int num, bool val = true) {
+            canvas.sortingOrder += num;
+            if (!val) yield break;
+
+            yield return new WaitForSeconds(2f);
+            canvas.sortingOrder -= num;
         }
 
         private List<GameObject> GetTargets(TargetType targetType) {
             return BoardManager.Instance.GetTargets(targetType, this);
+        }
+
+        private void OnDestroy() {
+            StopAllCoroutines();
         }
     }
 }

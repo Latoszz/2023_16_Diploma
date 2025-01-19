@@ -1,5 +1,4 @@
 using QuestSystem;
-using Items;
 using UnityEngine;
 
 namespace Events {
@@ -10,6 +9,10 @@ namespace Events {
         public QuestEvents QuestEvents;
         public ItemEvents ItemEvents;
         public ObstacleEvents ObstacleEvents;
+        public EnemyEvents EnemyEvents;
+        public NPCEvents NPCEvents;
+        public DialogueEvents DialogueEvents;
+        public TutorialEvents TutorialEvents;
 
         private void Awake() {
             if (Instance != null && Instance != this) {
@@ -22,6 +25,10 @@ namespace Events {
             QuestEvents = new QuestEvents();
             ItemEvents = new ItemEvents();
             ObstacleEvents = new ObstacleEvents();
+            EnemyEvents = new EnemyEvents();
+            NPCEvents = new NPCEvents();
+            DialogueEvents = new DialogueEvents();
+            TutorialEvents = new TutorialEvents();
         }
     }
 }

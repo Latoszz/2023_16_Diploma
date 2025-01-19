@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043ae4447d464171b505fcf412ad7c87, type: 3}
+  m_Name: DefeatTaliaQuest
+  m_EditorClassIdentifier: 
+  id: Defeat Talia Quest
+  displayName: Enchanted frog
+  questDescription: Save Talia from the fog's influence
+  questPrerequisites:
+  - {fileID: 11400000, guid: 58bf0f735024742428d2915de4dee924, type: 2}
+  questSteps:
+  - {fileID: 675976718382021897, guid: 4e1f89fe907a1254ab1565600977457f, type: 3}
+  questRewards:
+  - {fileID: 6624179406833268595, guid: 115b40604c667e248af41cb00c1c928c, type: 3}

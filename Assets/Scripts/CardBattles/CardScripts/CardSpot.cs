@@ -74,12 +74,12 @@ namespace CardBattles.CardScripts {
         private void Highlight() {
             highlight?.Invoke(this);
             isActive = true;
-            image.DOColor(highlightColor, 0.1f).SetEase(Ease.InOutQuad);
+            image.DOColor(highlightColor, 0.1f).SetEase(Ease.InOutQuad).SetLink(this.gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         private void StopHighlight() {
             isActive = false;
-            image.DOColor(defaultColor, 0.1f).SetEase(Ease.InOutQuad);
+            image.DOColor(defaultColor, 0.1f).SetEase(Ease.InOutQuad).SetLink(this.gameObject, LinkBehaviour.KillOnDestroy);;
         }
 
         private bool CanHighlight(PointerEventData eventData) {
@@ -97,8 +97,7 @@ namespace CardBattles.CardScripts {
 
         private bool HoldsPlayableMinion(PointerEventData eventData) {
             if (eventData.pointerDrag is not null &&
-                !eventData.pointerDrag.TryGetComponent(typeof(Minion), out var minion)
-               )
+                !eventData.pointerDrag.TryGetComponent(typeof(Minion), out var minion))
                 if (minion is Minion)
                     return false;
             return true;

@@ -1,9 +1,17 @@
-using NPC;
+using NPCScripts;
 using UnityEngine;
 
-public class ChangeDialogueInteract : InteractableObject {
-    [SerializeField] private TalkableNPC npc;
-    public override void Interact() {
-        npc.SetUpNextDialogue();
+namespace Interaction.Objects {
+    public class ChangeDialogueInteract : InteractableObject {
+        [SerializeField] private TalkableNPC npc;
+
+        private void Start() {
+            
+        }
+        
+        public override void Interact() {
+            npc.SetUpNextDialogue();
+            this.enabled = false;
+        }
     }
 }

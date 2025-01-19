@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6294856186598340302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Helpful mushroom
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Helpful mushroom
+  sprite: {fileID: -531863168, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  description: End of turn, give adjecent minions +2 AT
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 02000000
+    m_values:
+    - effectName: 0
+      targetType: 5
+      value: 2
+  attack: 0
+  maxHealth: 1
+--- !u!114 &-4410584988164027419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Sleepy mushroom
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Sleepy mushroom
+  sprite: {fileID: 1496995457, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  description: 
+  flavourText: 
+  properties: 05000000
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 8
+  maxHealth: 1
+--- !u!114 &-2504094293402209270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Healing mushroom
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Healing mushroom
+  sprite: {fileID: -608562150, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  description: Heal your minions by 5 HP
+  flavourText: 
+  properties: 00000000
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 2
+      targetType: 2
+      value: 5
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
+  m_Name: Mushrooms
+  m_EditorClassIdentifier: 
+  displayName: Mushrooms
+  cards:
+  - {fileID: -4410584988164027419}
+  - {fileID: 5882690054721663262}
+  - {fileID: -6294856186598340302}
+  - {fileID: -2504094293402209270}
+  - {fileID: 9157804087918411371}
+  setColor: {r: 0.14955486, g: 0.5471698, b: 0.094980404, a: 1}
+  cardSetIcon: {fileID: -7277625285002365882, guid: 29b7ffb6267a313468f6dfd24439c307, type: 3}
+--- !u!114 &5882690054721663262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Poisonous Mushroom
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Poisonous Mushroom
+  sprite: {fileID: -509220665, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  description: 
+  flavourText: 
+  properties: 02000000
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 6
+--- !u!114 &9157804087918411371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Evil Potion
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Evil Potion
+  sprite: {fileID: -342949846, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  description: Deals 3 damage to all minions
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 1
+      targetType: 0
+      value: 3

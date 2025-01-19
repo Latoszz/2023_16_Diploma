@@ -2,59 +2,53 @@ using System.Collections.Generic;
 using CardBattles.CardScripts.CardDatas;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ManageCardSetDetails : MonoBehaviour {
-    [SerializeField] private TMP_Text nameText;
-    [SerializeField] private GameObject cardListSpace;
-    [SerializeField] private GameObject cardSetDetailPrefab;
-    [SerializeField] private RectTransform descriptionWindow;
-    [SerializeField] private TMP_Text descriptionText;
+namespace UI.Inventory {
+    public class ManageCardSetDetails : MonoBehaviour {
+        [SerializeField] private TMP_Text nameText;
+        [SerializeField] private GameObject cardListSpace;
+        [SerializeField] private CardItemPool cardItemPool;
 
-    private List<CardData> cards = new List<CardData>();
-    private Animator animator;
-    private bool isOpen;
-    public bool IsOpen => isOpen;
+        private List<GameObject> cards = new List<GameObject>();
+        private Animator animator;
 
-    private void Awake() {
-        animator = GetComponent<Animator>();
-        animator.SetBool("isOpen", false);
-    }
-
-    public void ReadCardSet(CardSetData cardSetData) {
-        isOpen = true;
-        nameText.text = cardSetData.displayName;
-
-        foreach (CardData cardData in cardSetData.cards) {
-            cards.Add(cardData);
+        private void Awake() {
+            animator = GetComponent<Animator>();
+            animator.SetBool("isOpen", false);
         }
-        DisplayCards();
-    }
 
-    private void DisplayCards() {
-        foreach (CardData cardData in cards) {
-           SetUpObjects(cardData);
+        public void ReadCardSet(CardSetData cardSetData) {
+            ClearObjects();
+            nameText.text = cardSetData.displayName;
+
+            foreach (CardData cardData in cardSetData.cards) {
+                SetUpObjects(cardData);
+            }
+            DisplayCards();
         }
-        animator.SetBool("isOpen", true);
-    }
+
+        private void DisplayCards() {
+            animator.SetBool("isOpen", true);
+        }
     
-    private void SetUpObjects(CardData cardData) {
-        GameObject displayObject = Instantiate(cardSetDetailPrefab, cardListSpace.transform, true);
-        displayObject.AddComponent<CardDetail>().cardData = cardData;
-        descriptionWindow = displayObject.transform.GetChild(2).GetComponent<RectTransform>();
-        descriptionText = descriptionWindow.gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
-        displayObject.AddComponent<ShowCardDetails>().SetComponents(descriptionWindow, descriptionText);
-        displayObject.transform.GetChild(0).GetComponent<Image>().sprite = cardData.sprite;
-        displayObject.transform.GetChild(1).GetComponent<TMP_Text>().text = cardData.cardName;
-    }
-
-    public void Hide() {
-        animator.SetBool("isOpen", false);
-        foreach (Transform displayObject in cardListSpace.transform) {
-            Destroy(displayObject.gameObject);
+        private void SetUpObjects(CardData cardData) {
+            GameObject displayObject = cardItemPool.GetCardItem();
+            displayObject.transform.SetParent(cardListSpace.transform, false);
+            displayObject.GetComponent<CardDetail>().SetUpCardDetails(cardData);
+            displayObject.GetComponent<ShowCardDetails>().SetUpData(cardData);
+            cards.Add(displayObject);
         }
-        cards.Clear();
-        nameText.text = "";
-        isOpen = false;
+
+        private void ClearObjects() {
+            foreach (GameObject cardObject in cards) {
+                cardItemPool.ReturnCardItem(cardObject);
+            }
+            cards.Clear();
+            nameText.text = "";
+        }
+
+        public void Hide() {
+            animator.SetBool("isOpen", false);
+        }
     }
 }

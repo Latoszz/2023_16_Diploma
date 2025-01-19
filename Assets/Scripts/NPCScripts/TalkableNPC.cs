@@ -1,0 +1,103 @@
+using System;
+using System.Collections.Generic;
+using Audio;
+using Events;
+using Interfaces;
+using UI;
+using UI.Dialogue;
+using UnityEngine;
+
+namespace NPCScripts {
+    public class TalkableNPC : NPC, ITalkable {
+        public List<DialogueText> dialogue;
+        [SerializeField] private ShowIndicator indicator;
+        [SerializeField] private DialogueAudioConfig audioConfig;
+        [Range(0, 10)] 
+        [SerializeField] private float detectionDistance = 8;
+
+        private GameObject player;
+        private bool talkedTo;
+        private bool helped;
+        private string npcName;
+
+        [SerializeField] private string npcID;
+
+        [ContextMenu("Generate guid for id")]
+        private void GenerateGuid() {
+            npcID = Guid.NewGuid().ToString();
+        }
+
+        private void OnEnable() {
+            GameEventsManager.Instance.DialogueEvents.OnDialogueEnded += NextDialogue;
+        }
+        
+        private void OnDisable() {
+            GameEventsManager.Instance.DialogueEvents.OnDialogueEnded -= NextDialogue;
+        }
+
+        private void NextDialogue(string id, DialogueText dialogueText) {
+            if (id == npcID && dialogue[0].DisplayOnce) {
+                SetUpNextDialogue();
+            }
+        }
+
+        private void Awake() {
+            player = GameObject.FindGameObjectWithTag("Player");
+            npcName = dialogue[0].NameText;
+        }
+
+        private void Start() {
+            if (!talkedTo) {
+                indicator.ShowIcon();
+                indicator.HideName();
+            }
+            else {
+                indicator.ShowName();
+            }
+        }
+        
+        public override void Interact() {
+            if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
+                Talk(dialogue[0]);
+                talkedTo = true;
+                GameEventsManager.Instance.NPCEvents.TalkedToNPC(npcName);
+            }
+        }
+        
+        public void Talk(DialogueText dialogueText) {
+            DialogueController.Instance.SetSpeakerID(npcID);
+            DialogueController.Instance.DisplaySentence(dialogueText);
+            DialogueController.Instance.SetCurrentAudioConfig(audioConfig);
+            indicator.HideIcon();
+        }
+
+        public void SetUpNextDialogue() {
+            dialogue.Remove(dialogue[0]);
+            indicator.ShowIcon();
+        }
+
+        public string GetID() {
+            return npcID;
+        }
+        public bool TalkedTo() {
+            return talkedTo;
+        }
+
+        public void SetTalkedTo(bool val) {
+            talkedTo = val;
+        }
+
+        public bool Helped() {
+            return helped;
+        }
+
+        public void SetHelped(bool val) {
+            helped = val;
+            gameObject.SetActive(helped);
+        }
+
+        public string GetName() {
+            return npcName;
+        }
+    }
+}

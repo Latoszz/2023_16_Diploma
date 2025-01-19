@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b2264e34dc4b458371e9125b11bb94, type: 3}
+  m_Name: Talia_Dialogue4
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 5c42e0af10423de4f9c14d8eada57504, type: 3}
+  nameText: Talia
+  sentences:
+  - 'Kiryl...........
+
+    Kiryl............ '
+  - 'Ah yeas!!
+
+    You have to go along the road, and then...'
+  - Huh, to Kiryl... turn, I have no idea.
+  - Anyway, now it's time for swimming!
+  displayOnce: 0

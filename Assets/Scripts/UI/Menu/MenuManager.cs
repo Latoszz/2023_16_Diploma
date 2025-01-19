@@ -1,68 +1,63 @@
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+
 using SaveSystem;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuManager : MonoBehaviour {
-    [SerializeField] private GameObject mainView;
-    [SerializeField] private GameObject optionsView;
-    [SerializeField] private GameObject creditsView;
-    [SerializeField] private Button continueButton;
+namespace UI.Menu {
+    public class MenuManager : MonoBehaviour {
+        [SerializeField] private GameObject mainView;
+        [SerializeField] private GameObject optionsView;
+        [SerializeField] private GameObject creditsView;
+        [SerializeField] private Button continueButton;
 
-    [SerializeField] private GameObject audioVideoPanel;
-    [SerializeField] private GameObject controlsPanel;
+        [SerializeField] private GameObject audioVideoPanel;
     
-    private void Awake() {
-        BackClicked();
-    }
+        private void Awake() {
+            BackClicked();
+        }
 
-    private void Start() {
-        if(SaveManager.Instance.HasSaveData())
-            continueButton.interactable = true;
-    }
+        private void Start() {
+            if(SaveManager.Instance.IsAfterTutorial())
+                continueButton.interactable = true;
+        }
 
-    #region  Main View
-    public void StartClicked(string sceneName) {
-        SaveManager.Instance.NewGame();
-        SceneManager.LoadScene(sceneName);
-    }
+        #region  Main View
+        public void StartClicked(string sceneName) {
+            SaveManager.Instance.NewGame();
+            SceneManager.LoadScene(sceneName);
+        }
 
-    public void ContinueClicked(string sceneName) {
-        SceneManager.LoadScene(sceneName);
-    }
+        public void ContinueClicked(string sceneName) {
+            SaveManager.Instance.LoadSaveFile();
+            SceneManager.LoadScene(sceneName);
+        }
 
-    public void OptionsClicked() {
-        mainView.SetActive(false);
-        optionsView.SetActive(true);
-        audioVideoPanel.SetActive(true);
-        controlsPanel.SetActive(false);
-    }
+        public void OptionsClicked() {
+            mainView.SetActive(false);
+            optionsView.SetActive(true);
+            audioVideoPanel.SetActive(true);
+        }
 
-    public void ControlsClicked() {
-        audioVideoPanel.SetActive(false);
-        controlsPanel.SetActive(true);
-    }
+        public void CreditsClicked() {
+            mainView.SetActive(false);
+            creditsView.SetActive(true);
+        }
 
-    public void CreditsClicked() {
-        mainView.SetActive(false);
-        creditsView.SetActive(true);
-    }
-
-    public void ExitClicked() {
+        public void ExitClicked() {
         #if UNITY_EDITOR
-        EditorApplication.isPlaying = false;
+            EditorApplication.isPlaying = false;
         #else
         Application.Quit();
         #endif
-    }
-    #endregion
+        }
+        #endregion
 
-    public void BackClicked() {
-        mainView.SetActive(true);
-        optionsView.SetActive(false);
-        creditsView.SetActive(false);
+        public void BackClicked() {
+            mainView.SetActive(true);
+            optionsView.SetActive(false);
+            creditsView.SetActive(false);
+        }
     }
 }

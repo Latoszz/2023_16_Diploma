@@ -1,26 +1,38 @@
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AI;
 
-public class PatrolState : BaseState {
-    protected MovingSM movingSM;
-    
-    public PatrolState(string name, MovingSM stateMachine): base(name, stateMachine) {
-        movingSM = stateMachine;
-    }
+namespace State_machine.MovingSM.States {
+    public class PatrolState : BaseState {
+        protected MovingSM movingSM;
+        protected NavMeshAgent navMeshAgent;
+        protected List<Transform> waypoints;
+        protected int currentWaypointIndex;
+        protected static readonly int IsMoving = Animator.StringToHash("isMoving");
 
-    public override void Enter() {
-        base.Enter();
-        NavMeshAgent navMeshAgent = movingSM.GetNavMeshAgent();
-        navMeshAgent.isStopped = false;
-        navMeshAgent.updateRotation = true;
-    }
+        public PatrolState(string name, MovingSM stateMachine): base(name, stateMachine) {
+            movingSM = stateMachine;
+        }
 
-    public override void UpdateLogic() {
-        base.UpdateLogic();
-        if(movingSM.IsDialogue)
-            movingSM.ChangeState(movingSM.dialogueState);
-    }
+        public override void Enter() {
+            base.Enter();
+            navMeshAgent = movingSM.GetNavMeshAgent();
+            navMeshAgent.isStopped = false;
+            navMeshAgent.updateRotation = true;
+            waypoints = movingSM.GetWaypoints();
+            currentWaypointIndex = movingSM.GetCurrentWaypointIndex();
+            //if(movingSM.GetAnimator() is not null) // TODO delete this when all NPCs and enemies have animators
+                //movingSM.GetAnimator().SetBool(IsMoving, true);
+        }
 
-    public override void Exit() {
-        base.Exit();
+        public override void UpdateLogic() {
+            base.UpdateLogic();
+            if(movingSM.IsDialogue)
+                movingSM.ChangeState(movingSM.dialogueState);
+        }
+
+        public override void Exit() {
+            base.Exit();
+        }
     }
 }

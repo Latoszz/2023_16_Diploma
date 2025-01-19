@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Audio;
 using CardBattles.CardScripts;
-using DG.Tweening;
+using CardBattles.CardScripts.CardDatas;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Events;
 using Math = System.Math;
 
 namespace CardBattles.Character {
@@ -18,17 +18,13 @@ namespace CardBattles.Character {
 
         
         //TODO after adding each card, sort the objects in hand so the order matches the order in Cards
-        //it will make all the cards lay on top of each other correctly
+        //it will make all the lay on top of each other correctly
         
         [BoxGroup("Animations")] [SerializeField]
         private float timeBetweenDrawingManyCard = 1.1f;
 
-        private List<Card> cards = new List<Card>();
-
-        public List<Card> Cards {
-            get => cards;
-            set => cards = value;
-        }
+        [ShowNativeProperty]
+        public List<Card> Cards { get; set; } = new List<Card>();
 
         private bool isPlayers;
 
@@ -40,23 +36,33 @@ namespace CardBattles.Character {
         [SerializeField] [Range(100, 1000)] public float distanceMulti = 300f;
 
 
-        public void DestroyCard(Card card) {
+        public void SummonToHand(CardData card, int amount) {
             
         }
-        public void RemoveCard(Card card) {
-            if(!CardInHandCheck(card))
+        
+        public void RemoveCard(Card card, bool shouldBeHere=true) {
+            if(!CardInHandCheck(card,shouldBeHere))
                 return;
             Cards.Remove(card);
             UpdateCardPositions();
         }
 
-        private bool CardInHandCheck(Card card) {
+        private bool CardInHandCheck(Card card, bool shouldBeHere=true) {
             var notInHand = !Cards.Contains(card);
-            if(notInHand)
+            if(notInHand && shouldBeHere)
                 Debug.LogError("Tried to remove or access a card that isnt contained in Cards");
             return !notInHand;
         }
+
+        private bool isDrawing = false;
         public IEnumerator DrawManyCoroutine(List<Card> cardsToDraw) {
+            yield return new WaitUntil(() => !isDrawing);
+
+            yield return StartCoroutine(DrawMany(cardsToDraw));
+        }
+        private IEnumerator DrawMany(List<Card> cardsToDraw) {
+            isDrawing = true;
+
             AddNewCards(cardsToDraw);
 
             var finalPositions = CalculateCardPositions(Cards.Count);
@@ -87,9 +93,13 @@ namespace CardBattles.Character {
             foreach (var card in Cards) {
                 card.IsDrawn();
             }
+            isDrawing = false;
+            yield return new WaitForSecondsRealtime(0.05f);
+            UpdateCardPositions();
+
         }
 
-        private IEnumerator DrawCoroutine(Card card, Vector3 finalposition) {
+        private IEnumerator DrawCoroutine(Card card, Vector3 finalPosition) {
             var drawClip = AudioCollection.Instance.GetClip(drawClipName);
             if (drawClip is not null) {
                 AudioManager.Instance.PlayWithVariation(drawClip);
@@ -97,7 +107,7 @@ namespace CardBattles.Character {
             }
 
             card.ChangeCardVisible(isPlayers);
-            var coroutine = StartCoroutine(card.DrawAnimation(finalposition));
+            var coroutine = StartCoroutine(card.DrawAnimation(finalPosition));
             yield return coroutine;
         }
 
@@ -117,6 +127,14 @@ namespace CardBattles.Character {
             var newHandPositions = CalculateCardPositions(Cards.Count + additionalCards);
             for (int i = 0; i < Cards.Count; i++) {
                 StartCoroutine(Cards[i].Move(newHandPositions[i]));
+                UpdateSortingOrder(additionalCards);
+            }
+        }
+
+        private void UpdateSortingOrder(int val = 0) {
+            for (int i = 0; i < Cards.Count; i++) {
+                Cards[i].canvas.sortingOrder = Cards.Count() + val + 5  - i;
+
             }
         }
 

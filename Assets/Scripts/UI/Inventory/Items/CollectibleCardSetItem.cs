@@ -3,7 +3,7 @@ using Events;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Items {
+namespace UI.Inventory.Items {
     public class CollectibleCardSetItem: CardSetItem, ICollectible, IPointerClickHandler {
         [SerializeField] private string itemID;
         [ContextMenu("Generate guid for id")]
@@ -13,14 +13,28 @@ namespace Items {
         
         private bool collected  = false;
         
+        [Range(0, 10)] 
+        [SerializeField] private float detectionDistance = 8;
+
+        private GameObject player;
+
+        private void Awake() {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+        
         public void Collect() {
             InventoryController.Instance.AddItem(this);
             collected = true;
             gameObject.SetActive(false);
             GameEventsManager.Instance.ItemEvents.ItemCollected();
+            GameEventsManager.Instance.ItemEvents.ItemWithIdCollected(itemName);
+            GameEventsManager.Instance.ItemEvents.ItemCollectedItem(this);
+            GameEventsManager.Instance.ItemEvents.ItemReward(itemName);
         }
 
         public void OnPointerClick(PointerEventData eventData) {
+            if(Vector3.Distance(player.transform.position, transform.position) > detectionDistance)
+                return;
             Collect();
         }
         

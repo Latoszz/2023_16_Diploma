@@ -1,53 +1,44 @@
 using System.Collections;
 using DG.Tweening;
-using Events;
-using QuestSystem;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class InfoPopup : MonoBehaviour {
-    [Header("Time")] 
-    [SerializeField] private int secondsToDisappearInt = 5;
-    [SerializeField] private float fadeTime = 1f;
-    
-    [Header("Setup")]
-    [SerializeField] private RectTransform infoPopupPanel;
-    [SerializeField] private TMP_Text infoTitle;
-    [SerializeField] private TMP_Text infoDescription;
-    [SerializeField] private QuestManager questManager;
-    
-    private void OnEnable() {
-        GameEventsManager.Instance.QuestEvents.OnStartQuest += ShowInfo;
-    }
-    
-    private void OnDisable() {
-        GameEventsManager.Instance.QuestEvents.OnStartQuest -= ShowInfo;
-    }
+namespace UI.Infos {
+    public class InfoPopup : MonoBehaviour {
+        [Header("Time")] 
+        [SerializeField] protected int secondsToDisappearInt = 5;
+        [SerializeField] protected float fadeTime = 1f;
 
-    private void ShowInfo(string questId) {
-        StartCoroutine(ShowInfoCoroutine(questId));
-    }
-
-    private IEnumerator ShowInfoCoroutine(string questId) {
-        yield return new WaitUntil((() => DialogueController.Instance.DialogueClosed));
-        QuestInfoSO questInfo = questManager.GetQuestById(questId).info;
-        infoTitle.text = questInfo.displayName;
-        infoDescription.text = questInfo.questDescription;
-        PanelFadeIn();
-        StartCoroutine(DisappearAfterSecondsInt(secondsToDisappearInt));
-    }
+        [Header("Audio")] 
+        [SerializeField] private AudioClip openSound;
+        [SerializeField] private AudioClip closeSound;
     
-    private void PanelFadeIn() {
-        infoPopupPanel.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
-    }
+        [Header("Setup")]
+        [SerializeField] private RectTransform infoPopupPanel;
+        [SerializeField] protected TMP_Text infoTitle;
+        [SerializeField] protected TMP_Text infoDescription;
 
-    private void PanelFadeOut() {
-        infoPopupPanel.DOAnchorPos(new Vector2(600f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
-    }
+        private AudioSource audioSource;
 
-    private IEnumerator DisappearAfterSecondsInt(int seconds) {
-        yield return new WaitForSeconds(seconds);
-        PanelFadeOut();
+        private void Awake() {
+            audioSource = GetComponent<AudioSource>();
+        }
+    
+        protected void PanelFadeIn(float x, float y) {
+            infoPopupPanel.DOAnchorPos(new Vector2(x, y), fadeTime, false).SetEase(Ease.InOutQuint);
+            audioSource.clip = openSound;
+            audioSource.Play();
+        }
+
+        private void PanelFadeOut(float x, float y) {
+            audioSource.clip = closeSound;
+            audioSource.Play();
+            infoPopupPanel.DOAnchorPos(new Vector2(x, y), fadeTime, false).SetEase(Ease.InOutQuint);
+        }
+
+        protected IEnumerator DisappearAfterSecondsInt(int seconds, float x, float y) {
+            yield return new WaitForSeconds(seconds);
+            PanelFadeOut(x, y);
+        }
     }
 }

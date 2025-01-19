@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ea499648da40e584689e84fd6b694e, type: 3}
+  m_Name: GameBalanceConfig
+  m_EditorClassIdentifier: 
+  cardsExtraSleep: 1
+  overrideHeroMaxHp: 1
+  overrideHeroMaxHpValue: 10
+  resetDeckWhenEmpty: 1
+  textureGuideLines: 'Card textures should be 32 x 32
+
+    icons should be 8 x8'
+  isTutorial: 0
+  tutorialData: {fileID: 11400000, guid: 86880d6d6735cee42852dfb59aad0be2, type: 2}

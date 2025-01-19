@@ -17,6 +17,7 @@ OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHE
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  ***/
 
+using UI.Inventory.Items;
 using UnityEngine;
 
 namespace QuestSystem {
@@ -36,6 +37,6 @@ namespace QuestSystem {
         public GameObject[] questSteps;
 
         [Header("Rewards")] 
-        public GameObject[] questRewards;
+        public Item[] questRewards;
     }
 }

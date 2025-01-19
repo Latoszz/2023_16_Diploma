@@ -8,32 +8,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 0ca1db45a6557ce47b846358bd8b408b
-  - enabled: 0
-    path: Assets/Scenes/beta-release.unity
-    guid: 1d6a1df642597814ab15d064fcb6d3a8
-  - enabled: 0
-    path: Assets/Scenes/Irys playspace.unity
-    guid: c85c7edea3557ec489103e21449e6762
-  - enabled: 0
-    path: Assets/Scenes/Beta 2/beta-release-2.unity
-    guid: 8c58e2117c54f974a89fe11afa031dc1
-  - enabled: 0
-    path: Assets/Scenes/TEST 2/Overworld Test 2.unity
-    guid: 32fa3bda47ce47341b911345ee8ac404
-  - enabled: 0
-    path: Assets/Scenes/TEST 1/TEST1 Overworld.unity
-    guid: 6cf40fddb86f1cc4f879c5ef282ef9bf
-  - enabled: 0
-    path: Assets/Scenes/Overworld Test.unity
-    guid: 427002d2bdd2f1d4190e7f29a251f938
+  - enabled: 1
+    path: Assets/Scenes/TutorialOverworld.unity
+    guid: b06663a7632a26842bc1e1fb7d7acb40
+  - enabled: 1
+    path: Assets/Scenes/Ola- scenes/Room under the statue.unity
+    guid: ceb058d89191b284496bf8ba8db05f11
   - enabled: 1
     path: Assets/Scenes/Milestone _Tests/Test1/Overworld1.unity
     guid: e6150d5002183da46a0ffdbb22c89a03
   - enabled: 1
     path: Assets/Scenes/CardBattleScene.unity
     guid: 4d600143119613d42915187cc29ba103
-  - enabled: 0
-    path: Assets/Scenes/Save Test/OverworldTesting.unity
-    guid: 6bd7c8e566c84a244ba9312b18db7420
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: e4f053f5fb376ed43b9a3a2d6753ab50, type: 2}

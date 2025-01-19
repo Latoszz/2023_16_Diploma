@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.temp;
 using CardBattles.Character;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
+using CardBattles.Interfaces.InterfaceObjects;
 using UnityEngine;
 
 namespace CardBattles.Managers {
@@ -17,6 +19,7 @@ namespace CardBattles.Managers {
         [SerializeField] private CharacterManager enemyCharacter;
         private BoardSide player;
         private BoardSide enemy;
+
 
         private CharacterManager PlayingCharacter(bool isPlayers) => isPlayers ? playerCharacter : enemyCharacter;
         private CharacterManager WaitingCharacter(bool isPlayers) => isPlayers ? enemyCharacter : playerCharacter;
@@ -58,8 +61,8 @@ namespace CardBattles.Managers {
             for (int i = 0; i < 4; i++) {
                 if (attackers[i] is null)
                     continue;
-                if (attackers[i].GetAttack() <= 0)
-                    continue;
+                
+
                 if (attackers[i] is Minion minion) {
                     StartCoroutine(minion.ChangeSortingOrderTemporarily(10 + i));
                 }
@@ -90,6 +93,9 @@ namespace CardBattles.Managers {
                 case TargetType.OpposingMinion:
                     targets.AddRange(GetOpposingCard(card));
                     break;
+                case TargetType.ThisMinion:
+                    targets.Add(card.gameObject);
+                    break;
                 case TargetType.AdjacentMinions:
                     targets.AddRange(Playing(isPlayers).GetAdjecentCards(card));
                     break;
@@ -102,10 +108,12 @@ namespace CardBattles.Managers {
                     break;
                 case TargetType.OpposingHero:
                     targets.Add(Waiting(isPlayers).hero.gameObject);
-
                     break;
-                case TargetType.CardSet:
+                case TargetType.CardSetAll:
                     targets.AddRange(PlayingCharacter(isPlayers).deck.GetCardFromSameCardSet(card));
+                    break;
+                case TargetType.CardSetNotThis:
+                    targets.AddRange(PlayingCharacter(isPlayers).deck.GetOtherCardFromSameCardSet(card));
                     break;
                 case TargetType.Allies:
                     targets.AddRange(Playing(isPlayers).GetNoNullCardsObjects());
@@ -115,7 +123,29 @@ namespace CardBattles.Managers {
                     targets.AddRange(Waiting(isPlayers).GetNoNullCardsObjects());
                     targets.Add(Waiting(isPlayers).hero.gameObject);
                     break;
+                case TargetType.NoneButGetWhoseIsIt:
+                    targets.Add(card.gameObject);
+                    break;
                 case TargetType.None:
+                    break;
+                case TargetType.YourCardSpots:
+                    foreach (var cardSpot in Playing(isPlayers).GetEmptyCardSpots()) {
+                        targets.Add(cardSpot.gameObject);
+                    }
+
+                    break;
+                case TargetType.EnemyCardSpots:
+                    foreach (var cardSpot in Waiting(isPlayers).GetEmptyCardSpots()) {
+                        targets.Add(cardSpot.gameObject);
+                    }
+
+                    break;
+                case TargetType.ThisCardSetNotBoard:
+                    targets.AddRange(PlayingCharacter(isPlayers).deck.GetOtherCardFromSameCardSet(card));
+                    var x = Playing(isPlayers).GetNoNullCardsObjects();
+                    targets = targets.Except(x).ToList();
+                    break;
+                default:
                     break;
             }
 
@@ -123,7 +153,19 @@ namespace CardBattles.Managers {
         }
 
         private IEnumerable<GameObject> GetOpposingCard(Card card) {
-            throw new System.NotImplementedException();
+            if (card is not Minion) return new List<GameObject>();
+
+
+            var pc = Playing(card.IsPlayers);
+            var index = pc.ContainsCardAtIndex(card);
+
+            if (index == -1) return new List<GameObject>();
+
+            var enemyCard = Waiting(card.IsPlayers).cardSpots[index].card;
+
+            if (enemyCard is null) return new List<GameObject>();
+
+            return new List<GameObject> { enemyCard.gameObject };
         }
     }
 }

@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using CardBattles.CardScripts.CardDatas;
 using Esper.ESave;
-using Items;
+using UI.Inventory;
+using UI.Inventory.Items;
 using UnityEngine;
 
 namespace SaveSystem.SaveData {
@@ -18,6 +19,8 @@ namespace SaveSystem.SaveData {
         private const string ItemSaveID = "Inventory items";
         private const string CardSetSaveID = "Inventory Card Set";
         private const string DeckSaveID = "Inventory deck";
+
+        public static InventoryDataHandling Instance;
 
         private void Awake() {
             IEnumerable<ItemSlot> objects = FindObjectsOfType<MonoBehaviour>(true)
@@ -53,13 +56,13 @@ namespace SaveSystem.SaveData {
                 
                 CollectibleItem item = (CollectibleItem)itemSlot.GetItem();
                 string itemName = item.GetName();
-                string itemSpritePath = item.GetSprite().name;
                 CollectibleItemData itemData = item.GetItemData();
                 string id = itemData.itemID;
+                string jsonData = JsonUtility.ToJson(itemData);
                 
                 saveFile.AddOrUpdateData(itemSlotID + "_item", id);
                 saveFile.AddOrUpdateData(id + "_name", itemName);
-                saveFile.AddOrUpdateData(id + "_sprite", "Sprites/" + itemSpritePath);
+                saveFile.AddOrUpdateData(id + "_data", jsonData);
             }
             
             PopulateCardSetData(saveFile, allCardSets, CardSetSaveID);
@@ -101,14 +104,17 @@ namespace SaveSystem.SaveData {
                     CollectibleItemData itemData = ScriptableObject.CreateInstance<CollectibleItemData>();
                     string id = saveFile.GetData<string>(itemSlotID + "_item");
                     itemData.itemID = id;
+                    JsonUtility.FromJsonOverwrite(saveFile.GetData<string>(id + "_data"), itemData);
+                    
                     GameObject itemObject = new GameObject();
                     itemObject.AddComponent<DraggableItem>();
                     CollectibleItem item = itemObject.AddComponent<CollectibleItem>();
                     item.SetItemData(itemData);
+                    item.SetSprite(itemData.itemSprite);
                     item.SetName(saveFile.GetData<string>(id + "_name"));
-                    item.SetSprite(Resources.Load(saveFile.GetData<string>(id + "_sprite")) as Sprite);
                     
                     itemSlot.AddItem(item);
+                    Destroy(itemObject);
                 }
             }
             

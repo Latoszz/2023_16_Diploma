@@ -1,120 +1,135 @@
 using System;
+using UI.Inventory.Items;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
-    [SerializeField] private GameObject selectedShader;
-    [SerializeField] private GameObject itemList;
-    [SerializeField] private GameObject deckList;
-    [SerializeField] private GameObject cardSetList;
+namespace UI.Inventory {
+    public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
+        [SerializeField] private GameObject selectedShader;
+        [SerializeField] private GameObject itemList;
+        [SerializeField] private GameObject deckList;
+        [SerializeField] private GameObject cardSetList;
+        [SerializeField] private GameObject itemObjectPrefab;
 
-    [SerializeField] private string itemSlotID;
-    [ContextMenu("Generate guid for id")]
-    private void GenerateGuid() {
-        itemSlotID = Guid.NewGuid().ToString();
-    }
+        [SerializeField] private string itemSlotID;
+        [ContextMenu("Generate guid for id")]
+        private void GenerateGuid() {
+            itemSlotID = Guid.NewGuid().ToString();
+        }
 
-    private string parentName;
-    private Item item;
-    private bool isOccupied = false;
-    private bool isActive;
+        private InventoryController inventoryController;
+        private string parentName;
+        private Item item;
+        private GameObject itemObject;
+        private bool isOccupied = false;
 
-    private void Awake() {
-        parentName = transform.parent.name;
-    }
+        private void Awake() {
+            parentName = transform.parent.name;
+            inventoryController = InventoryController.Instance;
+        }
     
-    public void AddItem(Item item) {
-        this.item = item;
-        isOccupied = true;
-        CreateItemObject();
-    }
-    private void CreateItemObject() {
-        GameObject itemObject = new GameObject();
-        itemObject.transform.SetParent(transform);
+        public void AddItem(Item item) {
+            this.item = item;
+            isOccupied = true;
+            CreateItemObject();
+        }
+        private void CreateItemObject() {
+            itemObject = Instantiate(itemObjectPrefab, transform);
+            itemObject.transform.SetParent(transform);
+            itemObject.GetComponent<Image>().sprite = item.GetSprite();
+            itemObject.GetComponent<DraggableItem>().SetItemData(item);
+        }
+
+        public bool IsOccupied() {
+            return isOccupied;
+        }
+
+        public void SetIsOccupied(bool value) {
+            isOccupied = value;
+        }
+
+        public GameObject GetSelectedShader() {
+            return selectedShader;
+        }
+
+        public void OnPointerClick(PointerEventData eventData) {
+            if (eventData.button != PointerEventData.InputButton.Left) 
+                return;
         
-        RectTransform itemRectTransform = itemObject.AddComponent<RectTransform>();
-        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 0, 0);
-        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, 0);
-        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, 0);
-        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0, 0);
-        itemRectTransform.anchorMin = new Vector2(0, 0);
-        itemRectTransform.anchorMax = new Vector2(1, 1);
-        itemRectTransform.localScale = new Vector3(1, 1, 1);
-        
-        Image objectImage = itemObject.AddComponent<Image>();
-        objectImage.sprite = item.GetSprite();
-
-        itemObject.AddComponent<DraggableItem>().SetItemData(item);
-        itemObject.AddComponent<LayoutElement>();
-    }
-
-    public bool IsOccupied() {
-        return isOccupied;
-    }
-
-    public void SetIsOccupied(bool value) {
-        isOccupied = value;
-    }
-
-    public GameObject GetSelectedShader() {
-        return selectedShader;
-    }
-
-    public void OnPointerClick(PointerEventData eventData) {
-        if (eventData.button == PointerEventData.InputButton.Left)
+            if (selectedShader.activeSelf) {
+                inventoryController.DeselectAllSlots();
+                if (item is CardSetItem)
+                    inventoryController.HideCardSetDetails();
+                return;
+            }
             SelectSlot();
-    }
-
-    private void SelectSlot() {
-        InventoryController.Instance.DeselectAllSlots();
-        selectedShader.SetActive(true);
-        if (item is CardSetItem cardSet) {
-            InventoryController.Instance.ShowCardSetDetails(cardSet.GetCardSetData());
         }
-    }
 
-    public void OnDrop(PointerEventData eventData) {
-        if (!isOccupied) {
-            GameObject itemObject = eventData.pointerDrag;
-            DraggableItem draggableItem = itemObject.GetComponent<DraggableItem>();
-
-            if (parentName == itemList.name && draggableItem.GetItemData() is CardSetItem) {
-                return;
+        private void SelectSlot() {
+            inventoryController.DeselectAllSlots();
+            selectedShader.SetActive(true);
+            if (item is CardSetItem cardSet) {
+                if (inventoryController.IsCardSetDetailsOpen())
+                    inventoryController.HideCardSetDetails();
+                inventoryController.ShowCardSetDetails(cardSet.GetCardSetData());
             }
-
-            if ((parentName == cardSetList.name || parentName == deckList.name) &&
-                draggableItem.GetItemData() is CollectibleItem) {
-                return;
+            else if (item is CollectibleItem collectibleItem) {
+                if (collectibleItem.GetItemData().itemID.Contains("Note")) {
+                    inventoryController.OpenNotePanel(collectibleItem.GetItemData().text);
+                }
             }
-            
-            ItemSlot previousItemSlot = draggableItem.GetParent().GetComponent<ItemSlot>();
-            previousItemSlot.SetIsOccupied(false);
-            previousItemSlot.ClearItem();
-            
-            draggableItem.SetParentAfterDrag(transform);
-            SetIsOccupied(true);
-            SetItem(draggableItem.GetItemData());
         }
-    }
 
-    public Item GetItem() {
-        return item;
-    }
+        public void OnDrop(PointerEventData eventData) {
+            if (!isOccupied) {
+                GameObject itemObject = eventData.pointerDrag;
+                DraggableItem draggableItem = itemObject.GetComponent<DraggableItem>();
+                if (draggableItem is null)
+                    return;
 
-    private void SetItem(Item newItem) {
-        item = newItem;
-    }
+                if (parentName == itemList.name && draggableItem.GetItemData() is CardSetItem) {
+                    return;
+                }
 
-    private void ClearItem() {
-        item = null;
-    }
+                if ((parentName == cardSetList.name || parentName == deckList.name) &&
+                    draggableItem.GetItemData() is CollectibleItem) {
+                    return;
+                }
+            
+                ItemSlot previousItemSlot = draggableItem.GetParent().GetComponent<ItemSlot>();
+                previousItemSlot.SetIsOccupied(false);
+                previousItemSlot.ClearItem();
+            
+                draggableItem.SetParentAfterDrag(transform);
+                SetIsOccupied(true);
+                SetItem(draggableItem.GetItemData());
+            }
+        }
 
-    public string GetParentName() {
-        return parentName ??= transform.parent.name;
-    }
+        public Item GetItem() {
+            return item;
+        }
+
+        private void SetItem(Item newItem) {
+            item = newItem;
+        }
     
-    public string GetID() {
-        return itemSlotID;
+        private void ClearItem() {
+            item = null;
+        }
+
+        public void RemoveItem() {
+            item = null;
+            Destroy(itemObject);
+        }
+
+        public string GetParentName() {
+            return parentName ??= transform.parent.name;
+        }
+    
+        public string GetID() {
+            return itemSlotID;
+        }
     }
 }
