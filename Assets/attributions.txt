@@ -46,10 +46,8 @@ Rocks by Quaternius
 
 ===== TEXTURES =====
 Background 5 by FeonY | Animated Pixel Art Backgrounds
-Buttons from Sprout Lands UI by Cup Nooble
-Tilemaps from Sprout Lands Asset Pack by Cup Noodle
-
-Sprout Lands Asset Pack by Cup Nooble
+Sprout Lands UI by Cup Nooble
+Sprout Lands Asset Pack by Cup Noodle
 Modular Cards Demo by Pixel Life Studio
 
 ===== VFX =====

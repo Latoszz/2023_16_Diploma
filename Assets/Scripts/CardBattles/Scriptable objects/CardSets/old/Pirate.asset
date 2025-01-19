@@ -72,8 +72,8 @@ MonoBehaviour:
   - {fileID: 2903827800999297573}
   - {fileID: 8442043844084663693}
   - {fileID: 5898933018996567869}
-  setColor: {r: 0, g: 0, b: 1, a: 1}
-  cardSetIcon: {fileID: 2009050300, guid: bb669253fa2c0b44a9564f0b02c7dc8d, type: 3}
+  setColor: {r: 0.46269134, g: 0.46269134, b: 0.7735849, a: 1}
+  cardSetIcon: {fileID: 2994602152168299320, guid: f1c723bbe11701543bc88ac3fa65e655, type: 3}
 --- !u!114 &2903827800999297573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,18 +84,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Pirateno1
+  m_Name: Undecided Crewman
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Pirateno1
-  sprite: {fileID: 21300000, guid: fa957eb2686cec7488735fadbd2c7f86, type: 3}
-  description: 
+  cardName: Undecided Crewman
+  sprite: {fileID: 0}
+  description: 'On Death: Switch sides'
   flavourText: 
-  properties: 
+  properties: 00000000
   effectDictionary:
-    m_keys: 
-    m_values: []
-  attack: 5
+    m_keys: 01000000
+    m_values:
+    - effectName: 15
+      targetType: 16
+      value: 1
+  attack: 1
   maxHealth: 2
 --- !u!114 &5898933018996567869
 MonoBehaviour:
@@ -131,17 +134,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Mambo No. 5
+  m_Name: Pirate Skeleton
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Mambo No. 5
-  sprite: {fileID: 21300000, guid: e8158072827b21b458eb6c9233b03414, type: 3}
-  description: 
+  cardName: Pirate Skeleton
+  sprite: {fileID: 0}
+  description: 'On Death: Summon 2/1 Skeleton'
   flavourText: 
-  properties: 
+  properties: 08000000
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 13
+      targetType: 15
+      value: 1
   attack: 3
   maxHealth: 1
 --- !u!114 &8442043844084663693
@@ -154,12 +160,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
-  m_Name: Nas'hrah
+  m_Name: Lucky Trinket
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Nas'hrah
+  cardName: Lucky Trinket
   sprite: {fileID: 21300000, guid: 256656f16306ad5449a5ec19ead726fd, type: 3}
-  description: Cards from cardset +4 Attack
+  description: Cards from cardset +2 Attack
   flavourText: 
   properties: 07000000
   effectDictionary:
@@ -167,4 +173,4 @@ MonoBehaviour:
     m_values:
     - effectName: 0
       targetType: 11
-      value: 4
+      value: 2

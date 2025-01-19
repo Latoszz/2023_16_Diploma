@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using CardBattles.Enums;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace CardBattles.Managers {
     public static class EffectManager {
@@ -26,7 +28,11 @@ namespace CardBattles.Managers {
                     { EffectName.BuffAttackAndHp, BuffAttackAndHp },
                     { EffectName.SummonStrawmen, SummonStrawmen },
                     { EffectName.SummonFoxes, SummonFoxes },
-                    { EffectName.ReplaceWithSapling, ReplaceWithSapling }
+                    { EffectName.ReplaceWithSapling, ReplaceWithSapling },
+                    { EffectName.AddToHandAnts, AddToHandAnts },
+                    { EffectName.SummonSkeleton, SummonSkeleton },
+                    { EffectName.DealDamageToOneRandom, DealDamageToOneRandom},
+                    { EffectName.SummonCrewmate, SummonCrewmate}
                 };
 
 
@@ -130,19 +136,39 @@ namespace CardBattles.Managers {
             }
         }
 
+        private static IEnumerator AddToHandAnts(List<GameObject> targets, int value) {
+            var card = CardManager.Instance.LoadCardData("ToSummon", "Ant");
+            yield return AddCardToHand(targets, value, card);
+        }
 
         private static IEnumerator AddCardToHand(List<GameObject> targets, int value, CardData card) {
-            var x = targets.First();
-            if (!x.TryGetComponent(typeof(PlayerEnemyMonoBehaviour), out var playerEnemyMonoBehaviour))
+            if (targets.Count < 1)
                 yield break;
-            CharacterManager.DrawACard((PlayerEnemyMonoBehaviour)playerEnemyMonoBehaviour, 0);
+            if (card == null)
+                yield break;
+            if (value <= 0)
+                yield break;
+
+            if (!targets[0].TryGetComponent(typeof(PlayerEnemyMonoBehaviour), out var playerEnemyMonoBehaviour))
+                yield break;
+            CharacterManager.AddCardsToHand((PlayerEnemyMonoBehaviour)playerEnemyMonoBehaviour, card, value);
         }
+
 
         //EXPECTS CARDSPOTS AS TARGETS
         //Value determines amount
 
         private static IEnumerator SummonFoxes(List<GameObject> targets, int value) {
             var card = CardManager.Instance.LoadCardData("ToSummon", "Fox");
+            yield return SummonUnits(targets, value, card);
+        }
+
+        private static IEnumerator SummonSkeleton(List<GameObject> targets, int value) {
+            var card = CardManager.Instance.LoadCardData("ToSummon", "Skeleton");
+            yield return SummonUnits(targets, value, card);
+        }
+        private static IEnumerator SummonCrewmate(List<GameObject> targets, int value) {
+            var card = CardManager.Instance.LoadCardData("ToSummon", "Undecided Crewman");
             yield return SummonUnits(targets, value, card);
         }
 
@@ -153,7 +179,7 @@ namespace CardBattles.Managers {
 
         private static IEnumerator SummonUnits(List<GameObject> targets, int value, CardData unit) {
             if (unit == null)
-                yield return null;
+                yield break;
             var i = 0;
             foreach (var target in targets) {
                 if (i >= value)
@@ -198,5 +224,17 @@ namespace CardBattles.Managers {
 
             yield return null;
         }
+
+        private static IEnumerator DealDamageToOneRandom(List<GameObject> targets, int value) {
+            if (targets.Count < 1)
+                yield break;
+            
+            var randomIndex = (int)(Random.value * targets.Count);
+            var target = targets[randomIndex];
+            var targetAsList = new List<GameObject>{target};
+            yield return DealDamage(targetAsList, value);
+        }
+
     }
 }
+

@@ -22,13 +22,14 @@ namespace CardBattles.CardScripts {
         [NonSerialized] protected CardDisplay cardDisplay;
         [NonSerialized] protected CardAnimation cardAnimation;
         [NonSerialized] public CardDragging cardDragging;
+
         public bool FrontVisible {
             get {
                 if (this.cardDisplay is null) return false;
                 return this.cardDisplay.frontVisible;
             }
         }
-        
+
         [BoxGroup("Card")] public string cardName;
 
         [BoxGroup("Card"), ResizableTextArea]
@@ -36,7 +37,8 @@ namespace CardBattles.CardScripts {
 
         [BoxGroup("Card"), ResizableTextArea]
         public string flavourText;
-        [BoxGroup("Data"), Space,SerializeField]
+
+        [BoxGroup("Data"), Space, SerializeField]
         protected List<AdditionalProperty> properties;
 
         public List<AdditionalProperty> Properties {
@@ -44,7 +46,6 @@ namespace CardBattles.CardScripts {
             set {
                 cardDisplay.UpdateDescription(value);
                 properties = value;
-                
             }
         }
 
@@ -119,7 +120,6 @@ namespace CardBattles.CardScripts {
             yield return StartCoroutine(cardAnimation.Play(this)); //it has the trigger inside
             if (isPlacedAt != null)
                 transform.position = isPlacedAt.transform.position;
-
         }
 
 
@@ -131,14 +131,13 @@ namespace CardBattles.CardScripts {
                 yield return StartCoroutine(cardAnimation.OnPlayEffectDelay());
             var effectTargetValue = value;
             var targets = GetTargets(effectTargetValue.targetType);
-            yield return StartCoroutine(
-                EffectManager.effectDictionary[effectTargetValue.effectName](targets, effectTargetValue.value));
+            PersistentEffectManager.Instance.DoEffect(targets, effectTargetValue.effectName, effectTargetValue.value);
         }
 
-        public IEnumerator ChangeSortingOrderTemporarily(int num,bool val = true) {
+        public IEnumerator ChangeSortingOrderTemporarily(int num, bool val = true) {
             canvas.sortingOrder += num;
             if (!val) yield break;
-            
+
             yield return new WaitForSeconds(2f);
             canvas.sortingOrder -= num;
         }

@@ -5,6 +5,7 @@ using System.Linq;
 using Audio;
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.Additional;
+using CardBattles.CardScripts.CardDatas;
 using CardBattles.Character.Mana;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
@@ -34,22 +35,36 @@ namespace CardBattles.Character {
                 return false;
             }
         }
+        
+        private IEnumerator ForceAddCardsToHandCoroutine(CardData cardData, int amount) {
+            for (int i = 0; i < amount; i++) {
+                deck.AddCard(cardData);
+            }
+            yield return new WaitForSeconds(0.1f);
+            StartCoroutine(Draw(amount, 0));
+        }
 
-
+        
         private static UnityEvent<Card, ICardPlayTarget, bool> onCardPlayed =
             new UnityEvent<Card, ICardPlayTarget, bool>();
 
         private static UnityEvent<PlayerEnemyMonoBehaviour, IHasCost> onDrawCard =
             new UnityEvent<PlayerEnemyMonoBehaviour, IHasCost>();
 
+        private static UnityEvent<PlayerEnemyMonoBehaviour, CardData, int> onForceAddToHand =
+            new UnityEvent<PlayerEnemyMonoBehaviour, CardData, int>();
+        
         private void Awake() {
             onCardPlayed.AddListener(OnCardPlayedHandler);
             onDrawCard.AddListener(OnDrawCardHandler);
+            onForceAddToHand.AddListener(OnForceAddToHandHandler);
+
         }
 
         private void OnDestroy() {
             onCardPlayed.RemoveListener(OnCardPlayedHandler);
             onDrawCard.RemoveListener(OnDrawCardHandler);
+            onForceAddToHand.RemoveListener(OnForceAddToHandHandler);
         }
 
         public static void SummonACard(Card card, ICardPlayTarget target) {
@@ -67,7 +82,9 @@ namespace CardBattles.Character {
         public static void DrawACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, int cost = 1) {
             onDrawCard?.Invoke(playerEnemyMonoBehaviour, new HasCost(cost));
         }
-        
+        public static void AddCardsToHand(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, CardData cardData, int amount) {
+            onForceAddToHand?.Invoke(playerEnemyMonoBehaviour, cardData,amount);
+        }
         
         
         private void OnDrawCardHandler(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost) {
@@ -116,6 +133,12 @@ namespace CardBattles.Character {
                 hand.UpdateCardPositions();
         }
 
+        private void OnForceAddToHandHandler(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, CardData cardData, int amount) {
+            if (playerEnemyMonoBehaviour.IsPlayers != IsPlayers)
+                return;
+            StartCoroutine(ForceAddCardsToHandCoroutine(cardData, amount));
+        }
+        
         private bool PlayMinion(Minion minion, ICardPlayTarget target) {
             switch (target) {
                 case CardSpot cardSpot:
@@ -198,6 +221,8 @@ namespace CardBattles.Character {
             yield return hand.DrawManyCoroutine(cardsToDraw);
         }
 
+        
+        
         // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator StartOfTurn() {
             if (IsPlayers)

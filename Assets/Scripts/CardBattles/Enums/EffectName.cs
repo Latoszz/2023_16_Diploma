@@ -11,6 +11,10 @@ namespace CardBattles.Enums {
         BuffAttackAndHp,
         SummonStrawmen,
         SummonFoxes,
-        ReplaceWithSapling
+        ReplaceWithSapling,
+        AddToHandAnts,
+        SummonSkeleton,
+        DealDamageToOneRandom,
+        SummonCrewmate
     }
 }

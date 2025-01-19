@@ -15,7 +15,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Gnome
   sprite: {fileID: 21300000, guid: 1253127864275624ca8e25d9739a99fc, type: 3}
-  description: All your future gnomes have +1/+1
+  description: All future gnomes have +1/+1
   flavourText: 
   properties: 
   effectDictionary:
@@ -62,7 +62,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Gnome
   sprite: {fileID: 21300000, guid: 1253127864275624ca8e25d9739a99fc, type: 3}
-  description: All your future gnomes have +1/+1
+  description: All future gnomes have +1/+1
   flavourText: 
   properties: 
   effectDictionary:
@@ -88,7 +88,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Gnome
   sprite: {fileID: 21300000, guid: 1253127864275624ca8e25d9739a99fc, type: 3}
-  description: All your future gnomes have +1/+1
+  description: All future gnomes have +1/+1
   flavourText: 
   properties: 
   effectDictionary:
@@ -114,7 +114,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Gnome
   sprite: {fileID: 21300000, guid: 1253127864275624ca8e25d9739a99fc, type: 3}
-  description: All your future gnomes have +1/+1
+  description: All future gnomes have +1/+1
   flavourText: 
   properties: 
   effectDictionary:
@@ -140,7 +140,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Gnome
   sprite: {fileID: 21300000, guid: 1253127864275624ca8e25d9739a99fc, type: 3}
-  description: All your future gnomes have +1/+1
+  description: All future gnomes have +1/+1
   flavourText: 
   properties: 
   effectDictionary:

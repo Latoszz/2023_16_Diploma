@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Catnip
+  m_Name: Cat Flower
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Catnip
+  cardName: Cat Flower
   sprite: {fileID: 1805895790, guid: 91ece539279118a438c900dfb08582ed, type: 3}
   description: 
   flavourText: 
-  properties: 06000000
+  properties: 02000000
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 2
+  attack: 1
   maxHealth: 4
 --- !u!114 &-8147225101921612015
 MonoBehaviour:
@@ -40,12 +40,12 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
   description: 
   flavourText: 
-  properties: 0100000003000000
+  properties: 0300000007000000
   effectDictionary:
     m_keys: 
     m_values: []
   attack: 4
-  maxHealth: 3
+  maxHealth: 4
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 4
+  attack: 3
   maxHealth: 2
 --- !u!114 &1641530078219909850
 MonoBehaviour:
