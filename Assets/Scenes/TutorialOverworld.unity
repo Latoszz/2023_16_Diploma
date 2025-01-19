@@ -42370,7 +42370,7 @@ TerrainCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_TerrainData: {fileID: 15600000, guid: 3e4f509db4c343d4d9c4ee4a77d3ee3d, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 86a91c19207ee1445bc9869d477e48b8, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &913982388
 Terrain:
