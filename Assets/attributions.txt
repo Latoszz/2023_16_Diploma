@@ -3,6 +3,7 @@ A Positive And Inspiring Ambient by Muyo5438 [CC0]
 Serene Guitar Atmosphere by MichiJung [CC4.0]
 estate February NL Haanwijk 130217_00.flac by klankbeeld [CC4.0]
 
+
 ===== SOUNDS =====
 Classic Footstep SFX by Matthew Anett
 FemaleGrunt3.wav by BranndyBottle [CC0]
@@ -45,6 +46,11 @@ Rocks by Quaternius
 
 ===== TEXTURES =====
 Background 5 by FeonY | Animated Pixel Art Backgrounds
-UI Assets from Sprout Lands by Cup Nooble
+Buttons from Sprout Lands UI by Cup Nooble
+Tilemaps from Sprout Lands Asset Pack by Cup Noodle
+
+Sprout Lands Asset Pack by Cup Nooble
+Modular Cards Demo by Pixel Life Studio
 
 ===== VFX =====
+100 Best Effects Pack by GAPH
