@@ -52,6 +52,7 @@ MonoBehaviour:
   loadPlayerCards:
     m_PersistentCalls:
       m_Calls: []
+  debugBattleData: {fileID: 0}
 --- !u!114 &6383907233649725971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,8 +66,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleDatasWithFlags:
-    m_keys: []
-    m_values: 
+    m_keys:
+    - {fileID: 11400000, guid: 58dc7c87fd9be454491fa107c99174eb, type: 2}
+    - {fileID: 11400000, guid: d8b67e7c870c5e04790f446d7d6fa139, type: 2}
+    - {fileID: 11400000, guid: 43fa8444f3ee4e5408d29f1ee10fcd3e, type: 2}
+    - {fileID: 11400000, guid: 1f64ab7b31e879449b28a113acd5e31e, type: 2}
+    - {fileID: 11400000, guid: a54b233c69c13424cafdd3a724338f60, type: 2}
+    - {fileID: 11400000, guid: a2a6856ee2edadc47b7067a6bcd28ca5, type: 2}
+    - {fileID: 11400000, guid: 5c93dbf5930d1804eb5e6d26c58279ce, type: 2}
+    - {fileID: 11400000, guid: ceb10cdca68bf2b4280f29bee5115f59, type: 2}
+    - {fileID: 11400000, guid: 42f78cf8f914dea40bf29fa0a3f42d94, type: 2}
+    - {fileID: 11400000, guid: abe7c10c0e01e9746a2d94c0d32d4340, type: 2}
+    m_values: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!114 &1970967880447355281
 MonoBehaviour:
   m_ObjectHideFlags: 0
