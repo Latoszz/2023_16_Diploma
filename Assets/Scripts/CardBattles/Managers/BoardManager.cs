@@ -64,7 +64,7 @@ namespace CardBattles.Managers {
                 
 
                 if (attackers[i] is Minion minion) {
-                    StartCoroutine(minion.ChangeSortingOrderTemporarily(10 + i));
+                    minion.ChangeSortingOrderTemporarily(10 + i);
                 }
 
                 attackers[i].AttackTarget(targets[i]);

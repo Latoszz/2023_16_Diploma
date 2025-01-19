@@ -24,8 +24,8 @@ MonoBehaviour:
     - effectName: 2
       targetType: 7
       value: 5
-  attack: 4
-  maxHealth: 3
+  attack: 2
+  maxHealth: 2
 --- !u!114 &-954622363173427759
 MonoBehaviour:
   m_ObjectHideFlags: 0

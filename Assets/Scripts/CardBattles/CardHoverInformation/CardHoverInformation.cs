@@ -75,7 +75,8 @@ namespace CardBattles.CardHoverInformation {
             isDisplaying = true;
             tmp = 0;
             ClearPropertyBoxes();
-            if(currentCard is null) return;
+            if(currentCard == null)
+                return;
             CreateBoxes();
             FadeInBoxes();
         }

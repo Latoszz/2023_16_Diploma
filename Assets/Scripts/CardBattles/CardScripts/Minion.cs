@@ -143,7 +143,7 @@ namespace CardBattles.CardScripts {
         }
 
         private IEnumerator DeathCoroutine() {
-            yield return StartCoroutine(DoEffect(EffectTrigger.OnDeath));
+            DoEffect(EffectTrigger.OnDeath);
             
             yield return StartCoroutine(cardAnimation.Die());
             

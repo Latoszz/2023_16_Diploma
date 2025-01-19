@@ -247,7 +247,7 @@ namespace CardBattles.Character {
             manaManager.RefreshMana();
             var cards = boardSide.GetNoNullCards();
             foreach (var card in cards) {
-                StartCoroutine(card.DoEffect(EffectTrigger.OnStartTurn));
+                card.DoEffect(EffectTrigger.OnStartTurn);
             }
         }
 
@@ -266,7 +266,7 @@ namespace CardBattles.Character {
         public IEnumerator EndOfTurn() {
             yield return StartCoroutine(BoardManager.Instance.Attack(IsPlayers));
             foreach (var card in boardSide.GetNoNullCards()) {
-                StartCoroutine(card.DoEffect(EffectTrigger.OnEndTurn));
+                card.DoEffect(EffectTrigger.OnEndTurn);
             }
 
             yield return null;

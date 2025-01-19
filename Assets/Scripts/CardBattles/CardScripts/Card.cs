@@ -123,18 +123,21 @@ namespace CardBattles.CardScripts {
         }
 
 
-        public IEnumerator DoEffect(EffectTrigger effectTrigger) {
+        public void DoEffect(EffectTrigger effectTrigger) {
             if (!effectDictionary.TryGetValue(effectTrigger, out var value))
-                yield break;
+                return;
 
             if (effectTrigger == EffectTrigger.OnPlay)
-                yield return StartCoroutine(cardAnimation.OnPlayEffectDelay());
+                StartCoroutine(cardAnimation.OnPlayEffectDelay());
             var effectTargetValue = value;
             var targets = GetTargets(effectTargetValue.targetType);
             PersistentEffectManager.Instance.DoEffect(targets, effectTargetValue.effectName, effectTargetValue.value);
         }
 
-        public IEnumerator ChangeSortingOrderTemporarily(int num, bool val = true) {
+        public void ChangeSortingOrderTemporarily(int num, bool val = true) {
+            
+        }
+        public IEnumerator ChangeSortingOrderTemporarilyCoroutine(int num, bool val = true) {
             canvas.sortingOrder += num;
             if (!val) yield break;
 

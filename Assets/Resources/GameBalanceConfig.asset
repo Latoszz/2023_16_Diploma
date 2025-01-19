@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: GameBalanceConfig
   m_EditorClassIdentifier: 
   cardsExtraSleep: 1
-  overrideHeroMaxHp: 1
+  overrideHeroMaxHp: 0
   overrideHeroMaxHpValue: 10
-  resetDeckWhenEmpty: 1
+  resetDeckWhenEmpty: 0
   textureGuideLines: 'Card textures should be 32 x 32
 
     icons should be 8 x8'
-  isTutorial: 0
-  tutorialData: {fileID: 11400000, guid: 86880d6d6735cee42852dfb59aad0be2, type: 2}
+  isTutorial: 1
+  tutorialData: {fileID: 11400000, guid: ec2b77ecd4f5f2049988a053b515c6ab, type: 2}

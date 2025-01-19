@@ -50,8 +50,8 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         private IEnumerator PlayerDrawAnimationCoroutine(Vector3 finalPosition) {
-            var sequence = DOTween.Sequence().SetLink(gameObject, LinkBehaviour.KillOnDestroy);
-            StartCoroutine(card.ChangeSortingOrderTemporarily(30, false));
+            var sequence = DOTween.Sequence().SetLink(gameObject, LinkBehaviour.KillOnDestroy); 
+            card.ChangeSortingOrderTemporarily(30, false);
             var canvasGroup = GetComponent<CanvasGroup>();
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
@@ -73,7 +73,7 @@ namespace CardBattles.CardScripts.Additional {
 
             sequence.Play();
             yield return sequence.WaitForCompletion();
-            StartCoroutine(card.ChangeSortingOrderTemporarily(-30, false));
+            card.ChangeSortingOrderTemporarily(-30, false);
 
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
@@ -267,12 +267,12 @@ namespace CardBattles.CardScripts.Additional {
                 case Spell:
                     if (!card.IsPlayers)
                         yield return StartCoroutine(MoveToMiddle(card));
-                    StartCoroutine(card.DoEffect(EffectTrigger.OnPlay));
+                    card.DoEffect(EffectTrigger.OnPlay);
                     StartCoroutine(SpellShowcase(card.gameObject));
                     yield return StartCoroutine(FadeOut(card.gameObject));
                     break;
                 case Minion:
-                    StartCoroutine(card.DoEffect(EffectTrigger.OnPlay));
+                    card.DoEffect(EffectTrigger.OnPlay);
                     break;
             }
 
@@ -280,7 +280,7 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         private IEnumerator MoveToMiddle(Card card) {
-            StartCoroutine(card.ChangeSortingOrderTemporarily(15));
+            card.ChangeSortingOrderTemporarily(15);
             var cor = card.transform.DOMove(Vector3.zero, 0.5f).SetEase(Ease.InOutCubic)
                 .SetLink(card.gameObject, LinkBehaviour.KillOnDestroy);
             yield return cor.WaitForCompletion();

@@ -190,7 +190,7 @@ namespace CardBattles.CardScripts.Additional {
                 return;
             }
 
-            StartCoroutine(card.ChangeSortingOrderTemporarily(10, false));
+            card.ChangeSortingOrderTemporarily(10, false);
             transform.DOScale(scaleOnHover,
                 scaleOnHoverTime).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
@@ -200,7 +200,7 @@ namespace CardBattles.CardScripts.Additional {
                 return;
             }
 
-            StartCoroutine(card.ChangeSortingOrderTemporarily(-10, false));
+            card.ChangeSortingOrderTemporarily(-10, false);
             transform.DOScale(Vector3.one * currentScale, scaleOnHoverTime)
                 .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }

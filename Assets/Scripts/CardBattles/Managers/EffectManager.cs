@@ -166,18 +166,18 @@ namespace CardBattles.Managers {
 
         //EXPECTS CARDSPOTS AS TARGETS
         //Value determines amount
-
+        
         private static IEnumerator SummonFoxes(List<GameObject> targets, int value) {
             var card = CardManager.Instance.LoadCardData("ToSummon", "Fox");
             yield return SummonUnits(targets, value, card);
         }
 
         private static IEnumerator SummonSkeleton(List<GameObject> targets, int value) {
-            var card = CardManager.Instance.LoadCardData("ToSummon", "Skeleton");
+            var card = CardManager.Instance.LoadCardData("Pirate", "Skeleton");
             yield return SummonUnits(targets, value, card);
         }
         private static IEnumerator SummonCrewmate(List<GameObject> targets, int value) {
-            var card = CardManager.Instance.LoadCardData("ToSummon", "Undecided Crewman");
+            var card = CardManager.Instance.LoadCardData("Pirate", "Undecided Crewman");
             yield return SummonUnits(targets, value, card);
         }
 
@@ -252,7 +252,7 @@ namespace CardBattles.Managers {
             
             var card = CardManager.Instance.LoadCardData("ToSummon", "Queen Bee");
             
-
+            CharacterManager.ForceBottomDeck((PlayerEnemyMonoBehaviour)playerEnemyMonoBehaviour,card);
         }
 
     }
