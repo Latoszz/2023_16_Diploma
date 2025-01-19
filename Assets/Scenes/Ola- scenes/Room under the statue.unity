@@ -311,7 +311,7 @@ MonoBehaviour:
     that''s what they write, it is not known how real the part with the fog is. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19ef378f4cf35b64981a4655ed2d7d87, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 3700108273748071392, guid: 19ef378f4cf35b64981a4655ed2d7d87, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1534,8 +1534,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Fullscreen
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 16d4595c64adcf645b053078228ca79c, type: 2}
+  m_sharedMaterial: {fileID: 3700108273748071392, guid: 16d4595c64adcf645b053078228ca79c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9604,8 +9604,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Resolution
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 16d4595c64adcf645b053078228ca79c, type: 2}
+  m_sharedMaterial: {fileID: 3700108273748071392, guid: 16d4595c64adcf645b053078228ca79c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9700,6 +9700,10 @@ PrefabInstance:
       value: Exit to main menu?
       objectReference: {fileID: 0}
     - target: {fileID: 1605238155372147468, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 16d4595c64adcf645b053078228ca79c, type: 2}
+    - target: {fileID: 1605238155372147468, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
       propertyPath: m_fontColor.b
       value: 0.35686275
       objectReference: {fileID: 0}
@@ -9710,6 +9714,18 @@ PrefabInstance:
     - target: {fileID: 1605238155372147468, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
       propertyPath: m_fontColor.r
       value: 0.41960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605238155372147468, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3700108273748071392, guid: 16d4595c64adcf645b053078228ca79c, type: 2}
+    - target: {fileID: 1605238155372147468, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4284173163
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605238155372147468, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1616529896635916700, guid: 7026c706f2bba624dbecbd80c4dc1906, type: 3}
       propertyPath: m_IsActive
@@ -24479,8 +24495,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Music volume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 16d4595c64adcf645b053078228ca79c, type: 2}
+  m_sharedMaterial: {fileID: 3700108273748071392, guid: 16d4595c64adcf645b053078228ca79c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -25635,8 +25651,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SFX volume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 16d4595c64adcf645b053078228ca79c, type: 2}
+  m_sharedMaterial: {fileID: 3700108273748071392, guid: 16d4595c64adcf645b053078228ca79c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -25774,7 +25790,7 @@ MonoBehaviour:
     tradition that we are happy to continue.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19ef378f4cf35b64981a4655ed2d7d87, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 3700108273748071392, guid: 19ef378f4cf35b64981a4655ed2d7d87, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
