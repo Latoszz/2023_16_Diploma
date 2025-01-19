@@ -14561,8 +14561,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0c3f135f481904497e3b50f6ca53ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 336690235}
-  text: {fileID: 1885312097}
+  button: {fileID: 0}
+  text: {fileID: 0}
 --- !u!1001 &362069484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20902,8 +20902,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0c3f135f481904497e3b50f6ca53ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 667533253}
-  text: {fileID: 1579003734}
+  button: {fileID: 0}
+  text: {fileID: 0}
 --- !u!1 &690749945
 GameObject:
   m_ObjectHideFlags: 0
@@ -27251,7 +27251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6664eb657adb489baa739d092f7e5366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteOff: {fileID: 1872217001, guid: f2f1cf68878ff1a4683521f12c9b458c, type: 3}
+  spriteOff: {fileID: 0}
   buttons: []
   buttonCooldownTime: 0.5
   endTurnButton: {fileID: 667533253}
@@ -36316,6 +36316,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6101902786248913631, guid: 99ccd0a6ef645ac40aeeb0a21b7604ca, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
     - target: {fileID: 8188163123495324996, guid: 99ccd0a6ef645ac40aeeb0a21b7604ca, type: 3}
       propertyPath: m_Name
       value: AudioManager
