@@ -118,7 +118,7 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   attack: 2
-  maxHealth: 5
+  maxHealth: 2
 --- !u!114 &7329401131658345760
 MonoBehaviour:
   m_ObjectHideFlags: 0

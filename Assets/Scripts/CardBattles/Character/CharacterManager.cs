@@ -43,6 +43,11 @@ namespace CardBattles.Character {
             yield return new WaitForSeconds(0.1f);
             StartCoroutine(Draw(amount, 0));
         }
+        private IEnumerator AddToEndOfDeck(CardData cardData) {
+            deck.AddCardToEnd(cardData);
+            yield return null;
+        }
+        
 
         
         private static UnityEvent<Card, ICardPlayTarget, bool> onCardPlayed =
@@ -53,11 +58,14 @@ namespace CardBattles.Character {
 
         private static UnityEvent<PlayerEnemyMonoBehaviour, CardData, int> onForceAddToHand =
             new UnityEvent<PlayerEnemyMonoBehaviour, CardData, int>();
-        
+        private static UnityEvent<PlayerEnemyMonoBehaviour, CardData> onForceBottomDeck =
+            new UnityEvent<PlayerEnemyMonoBehaviour, CardData>();
+
         private void Awake() {
             onCardPlayed.AddListener(OnCardPlayedHandler);
             onDrawCard.AddListener(OnDrawCardHandler);
             onForceAddToHand.AddListener(OnForceAddToHandHandler);
+            onForceBottomDeck.AddListener(OnForceBottomDeckHandler);
 
         }
 
@@ -65,6 +73,7 @@ namespace CardBattles.Character {
             onCardPlayed.RemoveListener(OnCardPlayedHandler);
             onDrawCard.RemoveListener(OnDrawCardHandler);
             onForceAddToHand.RemoveListener(OnForceAddToHandHandler);
+            onForceBottomDeck.AddListener(OnForceBottomDeckHandler);
         }
 
         public static void SummonACard(Card card, ICardPlayTarget target) {
@@ -85,8 +94,14 @@ namespace CardBattles.Character {
         public static void AddCardsToHand(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, CardData cardData, int amount) {
             onForceAddToHand?.Invoke(playerEnemyMonoBehaviour, cardData,amount);
         }
-        
-        
+        public static void ForceBottomDeck(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, CardData cardData) {
+            onForceBottomDeck?.Invoke(playerEnemyMonoBehaviour, cardData);
+        }
+        private void OnForceBottomDeckHandler(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, CardData cardData) {
+            if (playerEnemyMonoBehaviour.IsPlayers != IsPlayers)
+                return;
+            StartCoroutine(AddToEndOfDeck(cardData));
+        }
         private void OnDrawCardHandler(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost) {
             if (playerEnemyMonoBehaviour.IsPlayers != IsPlayers)
                 return;

@@ -86,5 +86,29 @@ MonoBehaviour:
   - {fileID: -2690478386804958985}
   - {fileID: -1796300940614286644}
   - {fileID: -3349783091187184404}
+  - {fileID: 6303173125883962653}
   setColor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
   cardSetIcon: {fileID: 100458534, guid: 102545c1477f0b4479ffa443125463b8, type: 3}
+--- !u!114 &6303173125883962653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Queen Bee
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Queen Bee
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 07000000
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 5
+  maxHealth: 5

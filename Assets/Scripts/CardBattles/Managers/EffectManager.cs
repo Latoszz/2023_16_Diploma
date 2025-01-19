@@ -32,7 +32,8 @@ namespace CardBattles.Managers {
                     { EffectName.AddToHandAnts, AddToHandAnts },
                     { EffectName.SummonSkeleton, SummonSkeleton },
                     { EffectName.DealDamageToOneRandom, DealDamageToOneRandom},
-                    { EffectName.SummonCrewmate, SummonCrewmate}
+                    { EffectName.SummonCrewmate, SummonCrewmate},
+                    {EffectName.AddQueenBeeToBottomOfTheDeck, AddQueenBeeToBottomOfTheDeck}
                 };
 
 
@@ -122,18 +123,26 @@ namespace CardBattles.Managers {
         }
 
         private static IEnumerator BuffAttackAndHp(List<GameObject> targets, int value) {
-            foreach (var target in targets) {
-                if (target.TryGetComponent(typeof(IDamageable), out var component)) {
-                    ((IDamageable)component).BuffHp(value);
-                }
+            var attackAmount = value;
+            var healthAmount = value;
+            if (value > 9) {
+                attackAmount /= 10;
+                healthAmount %= 10;
             }
-
+            
             foreach (var target in targets) {
                 if (target.TryGetComponent(typeof(IAttacker), out var component)) {
-                    ((IAttacker)component).ChangeAttackBy(value);
+                    ((IAttacker)component).ChangeAttackBy(attackAmount);
                     yield return DoVisuals(EffectName.BuffAttackAndHp, component);
                 }
             }
+            foreach (var target in targets) {
+                if (target.TryGetComponent(typeof(IDamageable), out var component)) {
+                    ((IDamageable)component).BuffHp(healthAmount);
+                }
+            }
+
+            
         }
 
         private static IEnumerator AddToHandAnts(List<GameObject> targets, int value) {
@@ -233,6 +242,17 @@ namespace CardBattles.Managers {
             var target = targets[randomIndex];
             var targetAsList = new List<GameObject>{target};
             yield return DealDamage(targetAsList, value);
+        }
+
+        private static IEnumerator AddQueenBeeToBottomOfTheDeck(List<GameObject> targets, int value) {
+            if (!targets.Any())
+                yield break;
+            if (!targets[0].TryGetComponent(typeof(PlayerEnemyMonoBehaviour), out var playerEnemyMonoBehaviour))
+                yield break;
+            
+            var card = CardManager.Instance.LoadCardData("ToSummon", "Queen Bee");
+            
+
         }
 
     }

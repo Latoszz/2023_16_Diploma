@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
   m_Name: Pirate
   m_EditorClassIdentifier: 
-  displayName: Pirate
+  displayName: Pirate old
   cards:
   - {fileID: 6436932016818055626}
   - {fileID: -3874527451500097389}

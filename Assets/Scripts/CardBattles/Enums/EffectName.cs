@@ -15,6 +15,7 @@ namespace CardBattles.Enums {
         AddToHandAnts,
         SummonSkeleton,
         DealDamageToOneRandom,
-        SummonCrewmate
+        SummonCrewmate,
+        AddQueenBeeToBottomOfTheDeck
     }
 }
