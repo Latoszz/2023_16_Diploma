@@ -17,35 +17,12 @@ MonoBehaviour:
   sprite: {fileID: 0}
   description: 
   flavourText: 
-  properties: 
+  properties: 0100000008000000
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 2
-  maxHealth: 5
---- !u!114 &-5952612412866008078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: TODO
-  m_EditorClassIdentifier: 
-  cardSet: {fileID: 11400000}
-  cardName: TODO
-  sprite: {fileID: 0}
-  description: 
-  flavourText: 
-  properties: 
-  effectDictionary:
-    m_keys: 
-    m_values: []
-  attack: 0
-  maxHealth: 1
+  attack: 3
+  maxHealth: 3
 --- !u!114 &-3802190994855404132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +40,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   description: all allies get "Durable" until your next turn
   flavourText: NOT IMPLEMENTED
-  properties: 
+  properties: 0b000000
   effectDictionary:
     m_keys: 
     m_values: []
@@ -79,17 +56,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
   m_Name: Tavern Brawl
   m_EditorClassIdentifier: 
-  displayName: No Display Name
+  displayName: Tavern Brawl
   cards:
   - {fileID: 4869937702180265101}
-  - {fileID: -5952612412866008078}
   - {fileID: 142015570137778548}
-  - {fileID: 4336436882967866106}
   - {fileID: -7261556390278516968}
   - {fileID: 6328392604124694799}
   - {fileID: -3802190994855404132}
-  setColor: {r: 1, g: 1, b: 1, a: 1}
-  cardSetIcon: {fileID: 0}
+  setColor: {r: 0.7075472, g: 0.6701673, b: 0.6701673, a: 1}
+  cardSetIcon: {fileID: 21300000, guid: 07090a559a08a734e83b4351f82861ac, type: 3}
 --- !u!114 &142015570137778548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,35 +81,15 @@ MonoBehaviour:
   cardName: Bar thug
   sprite: {fileID: 0}
   description: 'On Play: Deal 1 damage to a random enemy.'
-  flavourText: NOT IMPLEMENTED
-  properties: 
-  effectDictionary:
-    m_keys: 
-    m_values: []
-  attack: 4
-  maxHealth: 2
---- !u!114 &4336436882967866106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: TODO
-  m_EditorClassIdentifier: 
-  cardSet: {fileID: 11400000}
-  cardName: TODO
-  sprite: {fileID: 0}
-  description: 
   flavourText: 
   properties: 
   effectDictionary:
-    m_keys: 
-    m_values: []
-  attack: 0
+    m_keys: 00000000
+    m_values:
+    - effectName: 14
+      targetType: 10
+      value: 1
+  attack: 3
   maxHealth: 1
 --- !u!114 &4869937702180265101
 MonoBehaviour:
@@ -151,7 +106,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Wine barrel
   sprite: {fileID: 0}
-  description: 'start of turn: Heal 1, Attack +1 to cardset'
+  description: 'Start of Surn: Heal 1 and  +1/+0 to cardset'
   flavourText: 
   properties: 
   effectDictionary:
@@ -177,7 +132,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Rowdy Rumble
   sprite: {fileID: 0}
-  description: All minions take 1 damage.
+  description: All minions take 2 damage.
   flavourText: 
   properties: 
   effectDictionary:
@@ -185,4 +140,4 @@ MonoBehaviour:
     m_values:
     - effectName: 1
       targetType: 0
-      value: 1
+      value: 2

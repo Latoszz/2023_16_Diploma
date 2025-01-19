@@ -36,10 +36,17 @@ namespace CardBattles.Character {
 
         private List<Card> cards = new List<Card>();
 
+        public int CardAmount => cards.Count;
+        
         public void AddCard(CardData cardData) {
             var card = CardManager.Instance.CreateCard(cardData,this);
             cards = cards.Prepend(card).ToList();
         }
+        public void AddCardToEnd(CardData cardData) {
+            var card = CardManager.Instance.CreateCard(cardData,this);
+            cards.Add(card);
+        }
+
 
         public void SetCardSetData(List<CardSetData> loadedCardSetDatas) {
             cardSetDatas = loadedCardSetDatas;

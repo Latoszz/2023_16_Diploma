@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8925646371999689347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Fat bee
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Fat bee
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 3
+--- !u!114 &-5371130731103078943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Worker Bee
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Worker Bee
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 2
+  maxHealth: 2
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
+  m_Name: Bees
+  m_EditorClassIdentifier: 
+  displayName: Bees
+  cards:
+  - {fileID: -5371130731103078943}
+  - {fileID: 5951944603467340347}
+  - {fileID: -8925646371999689347}
+  - {fileID: 4118106983317374293}
+  setColor: {r: 0.8584906, g: 0.82567686, b: 0.5539694, a: 1}
+  cardSetIcon: {fileID: 21300000, guid: 6827d2afd6fcd924aabced2cf785de1c, type: 3}
+--- !u!114 &4118106983317374293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Common Bee
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Common Bee
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 00000000
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 1
+--- !u!114 &5951944603467340347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Alarmed Bee
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Alarmed Bee
+  sprite: {fileID: 0}
+  description: Add Queen Bee to the bottom the deck
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 1

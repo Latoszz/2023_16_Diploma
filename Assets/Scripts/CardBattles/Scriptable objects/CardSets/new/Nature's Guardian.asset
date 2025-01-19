@@ -15,15 +15,15 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Seedling
   sprite: {fileID: 0}
-  description: 'Start of next turn: turn into 3/3 sapling'
+  description: 'Start of turn: +2/+1'
   flavourText: 
-  properties: 0500000000000000
+  properties: 00000000
   effectDictionary:
-    m_keys: 02000000
+    m_keys: 03000000
     m_values:
-    - effectName: 8
-      targetType: 0
-      value: 0
+    - effectName: 7
+      targetType: 4
+      value: 21
   attack: 0
   maxHealth: 2
 --- !u!114 &11400000
@@ -111,7 +111,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Willow wisp
   sprite: {fileID: 0}
-  description: +1 HP to cards from this set
+  description: 'Card Set: +0/+1'
   flavourText: 
   properties: 
   effectDictionary:
