@@ -52,3 +52,9 @@ Water 002 by Katsukagi [CC0]
 Seamless Grass Textures by athile [CC0]
 
 ===== VFX =====
+
+
+==== SCRIPTS ====
+Quest System by Shaped by Rain Studios
+QuickOutline by Chris Nolet
+ESave by Stylish Esper
