@@ -15,7 +15,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Rudder
   sprite: {fileID: 21300000, guid: f0d2a75f43353b046b6b50d84c92e54a, type: 3}
-  description: On death, heals your hero 5 Hp
+  description: 'On Death: Heals your Hero 5 HP'
   flavourText: 
   properties: 
   effectDictionary:
@@ -41,7 +41,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Card Chest
   sprite: {fileID: 21300000, guid: e7133e865ea165b4e8f8fd61afbfe353, type: 3}
-  description: 'On death: draw 1 card'
+  description: 'On Death: Draw a Card'
   flavourText: 
   properties: 
   effectDictionary:
@@ -115,7 +115,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Rum
   sprite: {fileID: 21300000, guid: 7d2ca709821489545ad29fad0cf9c7ea, type: 3}
-  description: Randomly deal or heal 2 hp to all Minions
+  description: Randomly Deal or Heal 2 HP to  ALL  Minions
   flavourText: 
   properties: 
   effectDictionary:
@@ -139,7 +139,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Pirate Skeleton
   sprite: {fileID: 0}
-  description: 'On Death: Summon 2/1 Skeleton'
+  description: 'On Death: Summon a 2/1 Skeleton'
   flavourText: 
   properties: 08000000
   effectDictionary:
@@ -165,7 +165,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Lucky Trinket
   sprite: {fileID: 21300000, guid: 256656f16306ad5449a5ec19ead726fd, type: 3}
-  description: Cards from cardset +2 Attack
+  description: Cards from Card Set +2/+0
   flavourText: 
   properties: 07000000
   effectDictionary:

@@ -64,7 +64,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Eldritch chant
   sprite: {fileID: 0}
-  description: Randomly deal or heal 2 hp to all Minions
+  description: Randomly Deal or Heal 2 HP to  ALL  Minions
   flavourText: 
   properties: 
   effectDictionary:
@@ -109,7 +109,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Spiked chest
   sprite: {fileID: 0}
-  description: 'On death: 2 damage to all minions'
+  description: 'On Death: 2 Damage to ALL Minions'
   flavourText: 
   properties: 0700000009000000
   effectDictionary:
@@ -142,5 +142,5 @@ MonoBehaviour:
     m_keys: 00000000
     m_values:
     - effectName: 4
-      targetType: 7
+      targetType: 13
       value: 3

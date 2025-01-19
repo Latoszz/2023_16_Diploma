@@ -15,7 +15,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Seedling
   sprite: {fileID: 0}
-  description: 'Start of turn: +2/+1'
+  description: 'Start of Turn: +2/+1'
   flavourText: 
   properties: 00000000
   effectDictionary:
@@ -62,7 +62,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Healing vine
   sprite: {fileID: 0}
-  description: Heal 5 to hero
+  description: Heal your Hero 5 HP
   flavourText: 
   properties: 
   effectDictionary:
@@ -111,7 +111,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Willow wisp
   sprite: {fileID: 0}
-  description: 'Card Set: +0/+1'
+  description: 'On Play: Card Set +0/+1'
   flavourText: 
   properties: 
   effectDictionary:

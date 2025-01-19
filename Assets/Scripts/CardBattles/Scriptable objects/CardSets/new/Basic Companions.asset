@@ -38,7 +38,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Forest animals
   sprite: {fileID: 0}
-  description: Summon two 2/2 foxes
+  description: Summon Two 2/2 foxes
   flavourText: 
   properties: 07000000
   effectDictionary:
@@ -69,7 +69,7 @@ MonoBehaviour:
   - {fileID: 7549058886613418407}
   - {fileID: -1089272386873160619}
   setColor: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
-  cardSetIcon: {fileID: 100458534, guid: 102545c1477f0b4479ffa443125463b8, type: 3}
+  cardSetIcon: {fileID: 100458534, guid: 15c022ddd4b9e5944a8b8f944caf8078, type: 3}
 --- !u!114 &1597232316267468199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Eager rabbit
   sprite: {fileID: 0}
-  description: 'Start of turn: +1 attack'
+  description: 'Start of Turn: +1/+0'
   flavourText: 
   properties: 
   effectDictionary:
@@ -134,7 +134,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Queen ant
   sprite: {fileID: 0}
-  description: 'On Play: Add two 1/1 ants to hand '
+  description: 'On Play: Add Two 1/1 Ants to Hand '
   flavourText: 
   properties: 07000000
   effectDictionary:
@@ -160,7 +160,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Healing herb
   sprite: {fileID: 0}
-  description: 'All allies: heal 1'
+  description: 'All Allies: Heal 1'
   flavourText: 
   properties: 00000000
   effectDictionary:

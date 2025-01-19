@@ -15,7 +15,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Fat bee
   sprite: {fileID: 0}
-  description: Bees, but smarter
+  description: 'On Play: Draw a Card'
   flavourText: 
   properties: 
   effectDictionary:
@@ -41,7 +41,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Worker Bee
   sprite: {fileID: 0}
-  description: Bees, but smarter
+  description: 'On Play: Draw a Card'
   flavourText: 
   properties: 
   effectDictionary:
@@ -87,7 +87,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Common Bee
   sprite: {fileID: 0}
-  description: Bees, but smarter
+  description: 'On Play: Draw a Card'
   flavourText: 
   properties: 00000000
   effectDictionary:
@@ -117,7 +117,10 @@ MonoBehaviour:
   flavourText: 
   properties: 00000000
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 16
+      targetType: 13
+      value: 1
   attack: 1
   maxHealth: 1
