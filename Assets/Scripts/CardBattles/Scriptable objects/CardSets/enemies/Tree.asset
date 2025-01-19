@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4138159573477999372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Tree Spell
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Tree Spell
+  sprite: {fileID: 0}
+  description: Heal your Minions 2 HP
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 2
+      targetType: 2
+      value: 2
+--- !u!114 &-2114875364221758901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Branch
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Branch
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
+  m_Name: Tree
+  m_EditorClassIdentifier: 
+  displayName: Tree
+  cards:
+  - {fileID: 7893861815438683296}
+  - {fileID: -2114875364221758901}
+  - {fileID: 4816539222626997457}
+  - {fileID: 4213352550979410505}
+  - {fileID: -4138159573477999372}
+  setColor: {r: 0.6509434, g: 0.30911776, b: 0.015352436, a: 1}
+  cardSetIcon: {fileID: 0}
+--- !u!114 &4213352550979410505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Leaf
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Leaf
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 1
+--- !u!114 &4816539222626997457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Twig
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Twig
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 1
+  maxHealth: 3
+--- !u!114 &7893861815438683296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Roots
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Roots
+  sprite: {fileID: 0}
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 2
+  maxHealth: 1
