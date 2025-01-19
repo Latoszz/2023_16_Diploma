@@ -53,12 +53,12 @@ namespace CardBattles.Managers.GameSettings {
     public class GameBalanceConfigWrapper : GameBalanceConfig
     {
 #pragma warning disable CS0108, CS0114
-        public  bool cardsExtraSleep => false;
-        public  bool overrideHeroMaxHp => false;
-        public  int overrideHeroMaxHpValue => 0;
+        public  bool cardsExtraSleep => true;
+        public  bool overrideHeroMaxHp => true;
+        public  int overrideHeroMaxHpValue => 15;
         public bool isTutorial => false;
         public TutorialData tutorialData => null;
-        public bool resetDeckWhenEmpty => false;
+        public bool resetDeckWhenEmpty => true;
 #pragma warning restore CS0108, CS0114
 
     }
