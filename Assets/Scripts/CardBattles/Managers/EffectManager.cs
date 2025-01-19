@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CardBattles.CardScripts;
+using CardBattles.CardScripts.Additional;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Character;
 using CardBattles.Enums;
@@ -198,6 +199,7 @@ namespace CardBattles.Managers {
                     continue;
 
                 var card = CardManager.Instance.CreateCard(unit, (CardSpot)component);
+
                 CharacterManager.SummonACard(card, (CardSpot)component);
             }
         }
