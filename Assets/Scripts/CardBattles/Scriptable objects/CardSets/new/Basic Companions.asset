@@ -23,29 +23,6 @@ MonoBehaviour:
     m_values: []
   attack: 1
   maxHealth: 2
---- !u!114 &-4486318246560240726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Wolf pup
-  m_EditorClassIdentifier: 
-  cardSet: {fileID: 11400000}
-  cardName: Wolf pup
-  sprite: {fileID: 0}
-  description: 'On Death: Summon 1/1 Wolf spirit'
-  flavourText: 
-  properties: 0b000000
-  effectDictionary:
-    m_keys: 
-    m_values: []
-  attack: 2
-  maxHealth: 3
 --- !u!114 &-1089272386873160619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +65,6 @@ MonoBehaviour:
   - {fileID: 1597232316267468199}
   - {fileID: -4788296099092171580}
   - {fileID: 9213248145029018052}
-  - {fileID: -4486318246560240726}
   - {fileID: 7329401131658345760}
   - {fileID: 7549058886613418407}
   - {fileID: -1089272386873160619}
@@ -109,7 +85,7 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Eager rabbit
   sprite: {fileID: 0}
-  description: 'Start of turn: +2 attack'
+  description: 'Start of turn: +1 attack'
   flavourText: 
   properties: 
   effectDictionary:
@@ -117,7 +93,7 @@ MonoBehaviour:
     m_values:
     - effectName: 0
       targetType: 4
-      value: 2
+      value: 1
   attack: 0
   maxHealth: 4
 --- !u!114 &2372559019292260079
@@ -142,7 +118,7 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   attack: 2
-  maxHealth: 5
+  maxHealth: 2
 --- !u!114 &7329401131658345760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,12 +134,15 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Queen ant
   sprite: {fileID: 0}
-  description: 'On play: Add 2 1/1 ants to hand '
+  description: 'On Play: Add two 1/1 ants to hand '
   flavourText: 
-  properties: 000000000b000000
+  properties: 07000000
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 12
+      targetType: 7
+      value: 2
   attack: 1
   maxHealth: 2
 --- !u!114 &7549058886613418407
@@ -185,8 +164,11 @@ MonoBehaviour:
   flavourText: 
   properties: 00000000
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - effectName: 2
+      targetType: 9
+      value: 1
 --- !u!114 &9213248145029018052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,5 +190,5 @@ MonoBehaviour:
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 4
+  attack: 3
   maxHealth: 1

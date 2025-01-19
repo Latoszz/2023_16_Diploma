@@ -5,6 +5,7 @@ using Audio;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
+using CardBattles.Managers;
 using CardBattles.Managers.GameSettings;
 using DG.Tweening;
 using NaughtyAttributes;
@@ -93,7 +94,11 @@ namespace CardBattles.CardScripts {
 
             if (Properties.Contains(AdditionalProperty.Durable))
                 amount = (amount + 1) / 2; //divide/2 round up
+
+            if (Properties.Contains(AdditionalProperty.Spiky)) 
+                TriggerSpiky();
             
+
             amount = amount > 0 ? amount : 0;
             CurrentHealth -= amount;
             
@@ -102,7 +107,14 @@ namespace CardBattles.CardScripts {
             var x =AudioCollection.Instance.GetClip(takeDamageSound);
             AudioManager.Instance.PlayWithVariation(x);
         }
-
+        
+        private void TriggerSpiky() {
+            var targets = BoardManager.Instance.GetTargets(TargetType.OpposingMinion, this);
+            if(!targets.Any())
+                return;
+            PersistentEffectManager.Instance.DoEffect(targets,EffectName.DealDamage,1);
+        }
+        
         private void PoisonCheck(bool isPoisonous) {
             if (!isPoisonous) return;
             
@@ -113,6 +125,8 @@ namespace CardBattles.CardScripts {
             else
                 Die();
         }
+
+        
         
         [SerializeField] private UnityEvent unhealableProc;
         public void Heal(int amount) {

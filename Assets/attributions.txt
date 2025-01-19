@@ -3,6 +3,7 @@ A Positive And Inspiring Ambient by Muyo5438 [CC0]
 Serene Guitar Atmosphere by MichiJung [CC4.0]
 estate February NL Haanwijk 130217_00.flac by klankbeeld [CC4.0]
 
+
 ===== SOUNDS =====
 Classic Footstep SFX by Matthew Anett
 FemaleGrunt3.wav by BranndyBottle [CC0]
@@ -46,7 +47,8 @@ Rocks by Quaternius
 
 ===== TEXTURES =====
 Background 5 by FeonY | Animated Pixel Art Backgrounds
-UI Assets from Sprout Lands by Cup Nooble
+Sprout Lands Asset Pack by Cup Noodle
+Modular Cards Demo by Pixel Life Studio
 Water 001 by Katsukagi [CC0]
 Water 002 by Katsukagi [CC0]
 Seamless Grass Textures by athile [CC0]
@@ -58,3 +60,6 @@ Seamless Grass Textures by athile [CC0]
 Quest System by Shaped by Rain Studios
 QuickOutline by Chris Nolet
 ESave by Stylish Esper
+
+===== VFX =====
+100 Best Effects Pack by GAPH

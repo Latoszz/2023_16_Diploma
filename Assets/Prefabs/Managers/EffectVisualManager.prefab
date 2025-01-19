@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1262707879874513357}
   - component: {fileID: 7228930405772500844}
+  - component: {fileID: 5168272826434889512}
   m_Layer: 0
   m_Name: EffectVisualManager
   m_TagString: Untagged
@@ -55,3 +56,15 @@ MonoBehaviour:
   offset: 250
   explosionVFX: {fileID: 114000013578891942, guid: 100a4b1ea60ed6946929b963910930b2, type: 3}
   explosionSoundName: Boom
+--- !u!114 &5168272826434889512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3266324706164366780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca197cce3d34ee4b8df04473ed45c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

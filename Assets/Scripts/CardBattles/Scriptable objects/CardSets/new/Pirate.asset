@@ -1,0 +1,176 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3874527451500097389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Rudder
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Rudder
+  sprite: {fileID: 21300000, guid: f0d2a75f43353b046b6b50d84c92e54a, type: 3}
+  description: On death, heals your hero 5 Hp
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 01000000
+    m_values:
+    - effectName: 2
+      targetType: 7
+      value: 5
+  attack: 4
+  maxHealth: 3
+--- !u!114 &-954622363173427759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Card Chest
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Card Chest
+  sprite: {fileID: 21300000, guid: e7133e865ea165b4e8f8fd61afbfe353, type: 3}
+  description: 'On death: draw 1 card'
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 01000000
+    m_values:
+    - effectName: 4
+      targetType: 13
+      value: 1
+  attack: 3
+  maxHealth: 2
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
+  m_Name: Pirate
+  m_EditorClassIdentifier: 
+  displayName: Pirates
+  cards:
+  - {fileID: 6436932016818055626}
+  - {fileID: -3874527451500097389}
+  - {fileID: -954622363173427759}
+  - {fileID: 2903827800999297573}
+  - {fileID: 8442043844084663693}
+  - {fileID: 5898933018996567869}
+  setColor: {r: 0.46269134, g: 0.46269134, b: 0.7735849, a: 1}
+  cardSetIcon: {fileID: 21300000, guid: fd6a2aa793f9cbf449c7f1a7c293dbf7, type: 3}
+--- !u!114 &2903827800999297573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Undecided Crewman
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Undecided Crewman
+  sprite: {fileID: 0}
+  description: 'On Death: Switch sides'
+  flavourText: 
+  properties: 00000000
+  effectDictionary:
+    m_keys: 01000000
+    m_values:
+    - effectName: 15
+      targetType: 16
+      value: 1
+  attack: 1
+  maxHealth: 2
+--- !u!114 &5898933018996567869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Rum
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Rum
+  sprite: {fileID: 21300000, guid: 7d2ca709821489545ad29fad0cf9c7ea, type: 3}
+  description: Randomly deal or heal 2 hp to all Minions
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 5
+      targetType: 0
+      value: 2
+--- !u!114 &6436932016818055626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Pirate Skeleton
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Pirate Skeleton
+  sprite: {fileID: 0}
+  description: 'On Death: Summon 2/1 Skeleton'
+  flavourText: 
+  properties: 08000000
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 13
+      targetType: 15
+      value: 1
+  attack: 3
+  maxHealth: 1
+--- !u!114 &8442043844084663693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Lucky Trinket
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Lucky Trinket
+  sprite: {fileID: 21300000, guid: 256656f16306ad5449a5ec19ead726fd, type: 3}
+  description: Cards from cardset +2 Attack
+  flavourText: 
+  properties: 07000000
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 0
+      targetType: 11
+      value: 2

@@ -1,10 +1,11 @@
 using System;
 using CardBattles.Interfaces;
+using CardBattles.Interfaces.InterfaceObjects;
 using CardBattles.Managers.GameSettings;
 using UnityEngine;
 
 namespace CardBattles.Character.Hero {
-    public class Hero : MonoBehaviour,IDamageable {
+    public class Hero : PlayerEnemyMonoBehaviour,IDamageable {
 
         public Action<bool> death;
         
