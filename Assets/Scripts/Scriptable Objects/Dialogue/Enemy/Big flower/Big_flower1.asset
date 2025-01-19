@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b2264e34dc4b458371e9125b11bb94, type: 3}
   m_Name: Big_flower1
   m_EditorClassIdentifier: 
-  icon: {fileID: -576096408, guid: 102545c1477f0b4479ffa443125463b8, type: 3}
+  icon: {fileID: 228781253, guid: 102545c1477f0b4479ffa443125463b8, type: 3}
   nameText: Cursed flower
   sentences:
   - Soon you'll join the fog too
+  displayOnce: 0

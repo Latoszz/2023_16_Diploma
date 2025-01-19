@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b2264e34dc4b458371e9125b11bb94, type: 3}
   m_Name: Talia_bad_Dialogue2
   m_EditorClassIdentifier: 
-  icon: {fileID: -1715136379, guid: 771bd3dde9b61fa4d9c47cacb637c5d4, type: 3}
+  icon: {fileID: 21300000, guid: 5c42e0af10423de4f9c14d8eada57504, type: 3}
   nameText: Talia
   sentences:
   - What, you want to play cards? I don't have time for that kind of thing.
   - What can you give me in return?
   - Flower tea?
   - '!!! So get ready to fight.'
+  displayOnce: 0
