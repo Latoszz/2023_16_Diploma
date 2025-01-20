@@ -6947,7 +6947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: secret
-  sprite: {fileID: -286293114, guid: 91551ffbe539d454aacec3e0958994d3, type: 3}
+  sprite: {fileID: 21300000, guid: fa718c1e144eea944975b2239eaf0c8c, type: 3}
   itemData: {fileID: 11400000, guid: 2b21cb7c0a4561444a8fc2892ffe258a, type: 2}
   npc: {fileID: 0}
   itemID: 28c2b67b-4974-4b9e-b331-8b53d7206257
