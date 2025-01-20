@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Card Set
-  sprite: {fileID: 0}
+  sprite: {fileID: 1470129168, guid: f7c5b48927246fb49a5607f8557faa68, type: 3}
   cardSetData: {fileID: 11400000, guid: 80430e0dc835bee4f9692493f888cf46, type: 2}
   itemID: 6c94b16a-c584-408c-95a0-bead10a570d4
   detectionDistance: 8

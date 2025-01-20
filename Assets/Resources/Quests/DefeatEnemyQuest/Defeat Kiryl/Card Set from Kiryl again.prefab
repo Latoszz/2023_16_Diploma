@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: KirylAgainCardSet
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 07090a559a08a734e83b4351f82861ac, type: 3}
   cardSetData: {fileID: 11400000, guid: 5a25b99241855fb41a49526b50957a9b, type: 2}
   itemID: 653a787a-c61b-4138-8e7a-e7b72946c491
   detectionDistance: 8

@@ -30220,7 +30220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Card Set 2
-  sprite: {fileID: 0}
+  sprite: {fileID: 1470129168, guid: f7c5b48927246fb49a5607f8557faa68, type: 3}
   cardSetData: {fileID: 11400000, guid: 33cdbe04e5344154daea0f1528c0ecbb, type: 2}
   itemID: e9b3a723-18d8-4841-8348-a82f09455be2
   detectionDistance: 4
@@ -30325,7 +30325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Card Set 2
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 7c9eaaefc237b4547b6719325ae92216, type: 3}
   cardSetData: {fileID: 11400000, guid: 85dbf340226519847b2db579e9d9a049, type: 2}
   itemID: e9eca184-e9e6-4ff5-8d37-d5a5c11e62bd
   detectionDistance: 4
