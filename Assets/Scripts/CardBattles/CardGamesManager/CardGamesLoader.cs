@@ -70,8 +70,8 @@ namespace CardBattles.CardGamesManager {
         }
 
         public void EndGame(bool val) {
-            if (currentBattleData is not null)
-                BattleDataHolder.Instance.SetBattleDataState(currentBattleData, val);
+            //if (currentBattleData is not null)
+              //  BattleDataHolder.Instance.SetBattleDataState(currentBattleData, val);
             /*
              * We can add a static event here, if you add a script like
              * class BattleDataContainer: MonoBehaviour

@@ -19,11 +19,8 @@ MonoBehaviour:
   flavourText: 
   properties: 00000000
   effectDictionary:
-    m_keys: 03000000
-    m_values:
-    - effectName: 7
-      targetType: 4
-      value: 21
+    m_keys: 
+    m_values: []
   attack: 0
   maxHealth: 2
 --- !u!114 &11400000
