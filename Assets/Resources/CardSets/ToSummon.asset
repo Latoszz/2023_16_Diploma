@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Undecided Crewman
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 3947e5d7600c9fb43b4a085d70f203f2, type: 3}
   description: 'On Death: Switch sides'
   flavourText: 
   properties: 00000000
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Skeleton
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: fa957eb2686cec7488735fadbd2c7f86, type: 3}
   description: 
   flavourText: 
   properties: 
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Fox
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d224c4c5a7d78164290f386e524e80ff, type: 3}
   description: 
   flavourText: 
   properties: 
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Ant
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 2da86b45adb76254eb970df4f1b4d708, type: 3}
   description: 
   flavourText: 
   properties: 00000000
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Queen Bee
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 75308f7b03bc46b43b5ebec17b668562, type: 3}
   description: 
   flavourText: 
   properties: 07000000
