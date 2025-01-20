@@ -40,7 +40,7 @@ namespace SaveSystem {
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
             if (scene.name == CardBattleSceneName) {
-                //LoadSettings();
+                LoadSettings();
                 return;
             }
             
