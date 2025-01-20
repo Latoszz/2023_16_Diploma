@@ -64,6 +64,8 @@ namespace Tutorial {
         private void Start() {
             currentTextIndex = 0;
             DisplaySentence(tutorialTexts[0]);
+            Debug.Log(TutorialUIManager.Instance.InventoryUnlocked);
+            Debug.Log(TutorialUIManager.Instance.QuestsUnocked);
         }
 
         public void DisplaySentence(DialogueText dialogue) {
