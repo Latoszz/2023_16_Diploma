@@ -4,6 +4,7 @@ using System.Linq;
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.temp;
 using CardBattles.Enums;
+using CardBattles.Interfaces.InterfaceObjects;
 using CardBattles.Managers;
 using CardBattles.Managers.GameSettings;
 using NaughtyAttributes;
@@ -14,7 +15,7 @@ using Math = System.Math;
 using Random = System.Random;
 
 namespace CardBattles.Character {
-    public class EnemyAi : MonoBehaviour {
+    public class EnemyAi : PlayerEnemyMonoBehaviour {
         private CharacterManager character;
         private Random random;
 
@@ -94,7 +95,7 @@ namespace CardBattles.Character {
 
             var cardSpot = cardSpots[random.Next(cardSpots.Count)];
 
-            yield return character.PlayCardCoroutine(card, cardSpot, waitBetweenPlayingCards);
+            yield return character.PlayCardCoroutine(this, card, cardSpot, waitBetweenPlayingCards);
         }
 
         private IEnumerator PlayASpell() {
@@ -114,7 +115,7 @@ namespace CardBattles.Character {
             }
 
 
-            yield return character.PlayCardCoroutine(card, SpellPlayTarget.Instance, waitBetweenPlayingCards);
+            yield return character.PlayCardCoroutine(this,card, SpellPlayTarget.Instance, waitBetweenPlayingCards);
         }
 
         public IEnumerator PlayTurn(bool repeat = true) {

@@ -200,7 +200,7 @@ namespace CardBattles.Managers {
 
                 var card = CardManager.Instance.CreateCard(unit, (CardSpot)component);
 
-                CharacterManager.SummonACard(card, (CardSpot)component);
+                CharacterManager.SummonACard((CardSpot)component, card, (CardSpot)component);
             }
         }
 
