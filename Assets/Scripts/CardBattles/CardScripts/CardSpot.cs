@@ -50,7 +50,7 @@ namespace CardBattles.CardScripts {
             }
 
             PlayDropSound();
-            CharacterManager.PlayACard((Card)draggedCard, this);
+            CharacterManager.PlayACard(this,(Card)draggedCard, this);
             StopHighlight();
         }
 

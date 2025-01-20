@@ -65,7 +65,7 @@ namespace CardBattles.CardScripts.temp {
                 return;
             }
 
-            CharacterManager.PlayACard((Card)draggedCard, this);
+            CharacterManager.PlayACard((Card)draggedCard,(Card)draggedCard, this);
             IsActive = false;
         }
 

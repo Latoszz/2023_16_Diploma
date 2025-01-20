@@ -50,8 +50,8 @@ namespace CardBattles.Character {
         
 
         
-        private static UnityEvent<Card, ICardPlayTarget, bool> onCardPlayed =
-            new UnityEvent<Card, ICardPlayTarget, bool>();
+        private static UnityEvent<PlayerEnemyMonoBehaviour,Card, ICardPlayTarget, bool> onCardPlayed =
+            new UnityEvent<PlayerEnemyMonoBehaviour,Card, ICardPlayTarget, bool>();
 
         private static UnityEvent<PlayerEnemyMonoBehaviour, IHasCost, int> onDrawCard =
             new UnityEvent<PlayerEnemyMonoBehaviour, IHasCost, int>();
@@ -76,12 +76,12 @@ namespace CardBattles.Character {
             onForceBottomDeck.AddListener(OnForceBottomDeckHandler);
         }
 
-        public static void SummonACard(Card card, ICardPlayTarget target) {
-            onCardPlayed?.Invoke(card, target, true);
+        public static void SummonACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour,Card card, ICardPlayTarget target) {
+            onCardPlayed?.Invoke(playerEnemyMonoBehaviour,card, target, true);
         }
 
-        public static void PlayACard(Card card, ICardPlayTarget target) {
-            onCardPlayed?.Invoke(card, target, false);
+        public static void PlayACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour,Card card, ICardPlayTarget target) {
+            onCardPlayed?.Invoke(playerEnemyMonoBehaviour,card, target, false);
         }
 
         public static void DrawACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost,int amount = 1) {
@@ -108,18 +108,17 @@ namespace CardBattles.Character {
             StartCoroutine(Draw(amount, iHasCost));
         }
 
-        private void OnCardPlayedHandler(Card card, ICardPlayTarget target,bool isSummoned = false) {
+        private void OnCardPlayedHandler(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour,Card card, ICardPlayTarget target,bool isSummoned = false) {
             
             var cost = card.GetCost();
             if (isSummoned) 
                 cost = 0;
             
             var costObject = new HasCost(cost);
-            
-            if (card.IsPlayers != IsPlayers)
+            if (playerEnemyMonoBehaviour.IsPlayers != IsPlayers && card is not Spell)
                 return;
-            if (!IsYourTurn || isSummoned)
-                return;
+          // if (!IsYourTurn)
+          //      return;
             if (!manaManager.CanUseMana(costObject, true) )
                 return;
 
@@ -177,8 +176,8 @@ namespace CardBattles.Character {
             Debug.LogError("This card cannot be played at given cardSpot");
         }
 
-        public IEnumerator PlayCardCoroutine(Card card, ICardPlayTarget target, float time) { //time defined in EnemyAi
-            OnCardPlayedHandler(card, target);
+        public IEnumerator PlayCardCoroutine(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour,Card card, ICardPlayTarget target, float time) { //time defined in EnemyAi
+            OnCardPlayedHandler(playerEnemyMonoBehaviour, card, target);
             yield return new WaitForSeconds(time);
         }
 
