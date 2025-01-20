@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Fat bee
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 0ca228bc0f1b784488c9bb228ba30815, type: 3}
   description: 'On Play: Draw a Card'
   flavourText: 
   properties: 
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Worker Bee
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 0ca228bc0f1b784488c9bb228ba30815, type: 3}
   description: 'On Play: Draw a Card'
   flavourText: 
   properties: 
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Common Bee
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 0ca228bc0f1b784488c9bb228ba30815, type: 3}
   description: 'On Play: Draw a Card'
   flavourText: 
   properties: 00000000
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Alarmed Bee
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 0ca228bc0f1b784488c9bb228ba30815, type: 3}
   description: Add Queen Bee to the bottom the deck
   flavourText: 
   properties: 00000000

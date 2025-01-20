@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Dormant Statue
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: c5b5b9c1781a109449e34b761bf708b3, type: 3}
   description: 
   flavourText: 
   properties: 05000000
@@ -37,7 +37,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Necronomicon
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 362826834de8f4e4c8986cecdd08fba9, type: 3}
   description: 'Start of turn: Summon 2/1 Skeleton'
   flavourText: 
   properties: 07000000
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Eldritch chant
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 5111ab02e1ced4f469e472399c1c15ae, type: 3}
   description: Randomly Deal or Heal 2 HP to  ALL  Minions
   flavourText: 
   properties: 
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Spiked chest
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 019eb1c97902dfe48aa9f14a0fe004b0, type: 3}
   description: 'On Death: 2 Damage to ALL Minions'
   flavourText: 
   properties: 0700000009000000
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Future riches
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 8ccebbca5c86f5e4489e659a8ce93ecd, type: 3}
   description: Draw 3 cards
   flavourText: 
   properties: 07000000

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Tree Spell
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 80033d83d740e5248a2e3d64fa63c595, type: 3}
   description: Heal your Minions 2 HP
   flavourText: 
   properties: 
@@ -38,7 +38,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Branch
-  sprite: {fileID: 0}
+  sprite: {fileID: -2032351880, guid: f7c5b48927246fb49a5607f8557faa68, type: 3}
   description: 
   flavourText: 
   properties: 
@@ -67,7 +67,7 @@ MonoBehaviour:
   - {fileID: 4213352550979410505}
   - {fileID: -4138159573477999372}
   setColor: {r: 0.6509434, g: 0.30911776, b: 0.015352436, a: 1}
-  cardSetIcon: {fileID: 0}
+  cardSetIcon: {fileID: -812500273, guid: f7c5b48927246fb49a5607f8557faa68, type: 3}
 --- !u!114 &4213352550979410505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Leaf
-  sprite: {fileID: 0}
+  sprite: {fileID: 2046471872, guid: f7c5b48927246fb49a5607f8557faa68, type: 3}
   description: 
   flavourText: 
   properties: 
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Twig
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: fdd366ccc64199b4cab114cae3b06cac, type: 3}
   description: 
   flavourText: 
   properties: 
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Roots
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 02ebcfee38c6df048904ed87c482fb4d, type: 3}
   description: 
   flavourText: 
   properties: 

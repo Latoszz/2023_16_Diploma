@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Spider
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 6cfd2ce047bf5274b86f4ba91b75479f, type: 3}
   description: 
   flavourText: 
   properties: 02000000
@@ -37,7 +37,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Forest animals
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 11536cbfb729add45a560d7b5f551c7c, type: 3}
   description: Summon Two 2/2 foxes
   flavourText: 
   properties: 07000000
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Eager rabbit
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 4feae07b12b58c04a8dbaf9381b10783, type: 3}
   description: 'Start of Turn: +1/+0'
   flavourText: 
   properties: 
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Rotund cat
-  sprite: {fileID: 0}
+  sprite: {fileID: 834666072, guid: f7c5b48927246fb49a5607f8557faa68, type: 3}
   description: 
   flavourText: 
   properties: 01000000
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Queen ant
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: dde5caa9d053a694aa0041be0aae60e5, type: 3}
   description: 'On Play: Add Two 1/1 Ants to Hand '
   flavourText: 
   properties: 07000000
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Healing herb
-  sprite: {fileID: 0}
+  sprite: {fileID: -1181158254, guid: f7c5b48927246fb49a5607f8557faa68, type: 3}
   description: 'All Allies: Heal 1'
   flavourText: 
   properties: 00000000
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Crow
-  sprite: {fileID: 0}
+  sprite: {fileID: 1801652851, guid: f7c5b48927246fb49a5607f8557faa68, type: 3}
   description: 
   flavourText: 
   properties: 

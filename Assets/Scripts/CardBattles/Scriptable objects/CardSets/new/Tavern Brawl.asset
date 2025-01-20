@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Roughneck
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 13d5a5d5cd9082c41af5a4b62e386351, type: 3}
   description: 
   flavourText: 
   properties: 0100000008000000
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Bar thug
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 0e2ecef412b8cc24fabd2777b32c74b2, type: 3}
   description: 'On Play: Deal 1 damage to a random enemy.'
   flavourText: 
   properties: 
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Wine barrel
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 2af96454dea345740bfac51780e5509a, type: 3}
   description: 'Start of Turn: Heal 1 and +1/+0 to Cardset'
   flavourText: 
   properties: 
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Rowdy Rumble
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f732b6f2723f031489e0f0d4d8f32be4, type: 3}
   description: ALL minions take 2 damage.
   flavourText: 
   properties: 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Seedling
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: afdb84d36d05d7f45845a9d5536bbdd4, type: 3}
   description: 'Start of turn: +2/+1'
   flavourText: 
   properties: 0000000009000000
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Healing vine
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 2ec68c46840a0bf41afbb4cc64555d38, type: 3}
   description: Heal your Hero 5 HP
   flavourText: 
   properties: 00000000
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Thorny vine
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 2e71febf600d9de4a85336b258e8de59, type: 3}
   description: 
   flavourText: 
   properties: 0800000009000000
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Willow wisp
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 9dddd1018d4421442a42831464f4b4c4, type: 3}
   description: 'On Play: Card Set +0/+1'
   flavourText: 
   properties: 
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
   cardName: Sapling
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 11ab1eaa04a8fa44aa3c9d5e75394e56, type: 3}
   description: 
   flavourText: 
   properties: 08000000
