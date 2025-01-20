@@ -21,7 +21,7 @@ MonoBehaviour:
   effectDictionary:
     m_keys: 03000000
     m_values:
-    - effectName: 7
+    - effectName: 8
       targetType: 4
       value: 21
   attack: 0

@@ -10,7 +10,6 @@ namespace CardBattles.Managers.GameSettings {
         {
             get
             {
-#if UNITY_EDITOR
                 if (config == null)
                 {
                     Debug.Log("Config loaded from resources");
@@ -21,10 +20,9 @@ namespace CardBattles.Managers.GameSettings {
                     }
                 }
                 return config;
-#else
-                Debug.LogWarning("Access to GameBalanceConfig is disabled in builds.");
-                return new GameBalanceConfigWrapper(); // Returns a wrapper object with all properties defaulted to false.
-#endif
+
+                // Debug.LogWarning("Access to GameBalanceConfig is disabled in builds.");
+                // return new GameBalanceConfigWrapper(); // Returns a wrapper object with all properties defaulted to false.
             }
         }
         // ReSharper disable InconsistentNaming
@@ -36,7 +34,7 @@ namespace CardBattles.Managers.GameSettings {
                 #if UNITY_EDITOR
                 return Config.isTutorial;
                 #else
-                return _isTutorial;
+                return false;
                 #endif
             }
             set {
@@ -53,9 +51,9 @@ namespace CardBattles.Managers.GameSettings {
     public class GameBalanceConfigWrapper : GameBalanceConfig
     {
 #pragma warning disable CS0108, CS0114
-        public  bool cardsExtraSleep => true;
-        public  bool overrideHeroMaxHp => true;
-        public  int overrideHeroMaxHpValue => 15;
+        public bool cardsExtraSleep => true;
+        public bool overrideHeroMaxHp => true;
+        public int overrideHeroMaxHpValue => 15;
         public bool isTutorial => false;
         public TutorialData tutorialData => null;
         public bool resetDeckWhenEmpty => true;
