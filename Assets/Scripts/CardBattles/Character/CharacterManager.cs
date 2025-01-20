@@ -53,8 +53,8 @@ namespace CardBattles.Character {
         private static UnityEvent<Card, ICardPlayTarget, bool> onCardPlayed =
             new UnityEvent<Card, ICardPlayTarget, bool>();
 
-        private static UnityEvent<PlayerEnemyMonoBehaviour, IHasCost> onDrawCard =
-            new UnityEvent<PlayerEnemyMonoBehaviour, IHasCost>();
+        private static UnityEvent<PlayerEnemyMonoBehaviour, IHasCost, int> onDrawCard =
+            new UnityEvent<PlayerEnemyMonoBehaviour, IHasCost, int>();
 
         private static UnityEvent<PlayerEnemyMonoBehaviour, CardData, int> onForceAddToHand =
             new UnityEvent<PlayerEnemyMonoBehaviour, CardData, int>();
@@ -84,12 +84,12 @@ namespace CardBattles.Character {
             onCardPlayed?.Invoke(card, target, false);
         }
 
-        public static void DrawACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost) {
-            onDrawCard?.Invoke(playerEnemyMonoBehaviour, iHasCost);
+        public static void DrawACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost,int amount = 1) {
+            onDrawCard?.Invoke(playerEnemyMonoBehaviour, iHasCost, amount);
         }
 
-        public static void DrawACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, int cost = 1) {
-            onDrawCard?.Invoke(playerEnemyMonoBehaviour, new HasCost(cost));
+        public static void DrawACard(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, int cost = 1, int amount = 1) {
+            onDrawCard?.Invoke(playerEnemyMonoBehaviour, new HasCost(cost), amount);
         }
         public static void AddCardsToHand(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, CardData cardData, int amount) {
             onForceAddToHand?.Invoke(playerEnemyMonoBehaviour, cardData,amount);
@@ -102,10 +102,10 @@ namespace CardBattles.Character {
                 return;
             StartCoroutine(AddToEndOfDeck(cardData));
         }
-        private void OnDrawCardHandler(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost) {
+        private void OnDrawCardHandler(PlayerEnemyMonoBehaviour playerEnemyMonoBehaviour, IHasCost iHasCost, int amount) {
             if (playerEnemyMonoBehaviour.IsPlayers != IsPlayers)
                 return;
-            StartCoroutine(Draw(1, iHasCost));
+            StartCoroutine(Draw(amount, iHasCost));
         }
 
         private void OnCardPlayedHandler(Card card, ICardPlayTarget target,bool isSummoned = false) {

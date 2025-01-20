@@ -89,7 +89,7 @@ namespace CardBattles.Managers {
             var x = targets.First();
             if (!x.TryGetComponent(typeof(PlayerEnemyMonoBehaviour), out var playerEnemyMonoBehaviour))
                 yield break;
-            CharacterManager.DrawACard((PlayerEnemyMonoBehaviour)playerEnemyMonoBehaviour, 0);
+            CharacterManager.DrawACard((PlayerEnemyMonoBehaviour)playerEnemyMonoBehaviour, 0, value);
         }
 
         private static IEnumerator DealOrHeal(List<GameObject> targets, int value) {
