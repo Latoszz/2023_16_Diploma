@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa8f146d52e70949af1e081eece28a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcName: Bad Talia
+  npcName: BadTalia
