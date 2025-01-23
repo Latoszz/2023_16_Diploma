@@ -4,7 +4,6 @@ Serene Guitar Atmosphere by MichiJung [CC4.0]
 estate February NL Haanwijk 130217_00.flac by klankbeeld [CC4.0]
 RPG Town Loop #1 by Sirkoto51 [CC4.0]
 
-
 ===== SOUNDS =====
 Classic Footstep SFX by Matthew Anett
 FemaleGrunt3.wav by BranndyBottle [CC0]
@@ -46,15 +45,14 @@ Crops by Quaternius
 Rock by Quaternius
 Rocks by Quaternius
 
-
 ===== TEXTURES =====
 Background 5 by FeonY | Animated Pixel Art Backgrounds
-Sprout Lands UI by Cup Nooble
-Sprout Lands Asset Pack by Cup Noodle
+Sprout Lands Asset Pack by Cup Nooble
 Modular Cards Demo by Pixel Life Studio
 Water 001 by Katsukagi [CC0]
 Water 002 by Katsukagi [CC0]
 Seamless Grass Textures by athile [CC0]
+Transparent Spiral Purple Picture by www.pngaaa.com [CC-NC]
 
 ==== SCRIPTS ====
 Quest System by Shaped by Rain Studios
